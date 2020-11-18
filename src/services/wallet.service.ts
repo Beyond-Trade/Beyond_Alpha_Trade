@@ -65,11 +65,15 @@ export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
             let wallets: Wallet[] = [];
 
             for (let i = 0; i < accounts.length; i++) {
+                let BYNBalance: any = await getAddressBalanceForERC20(ERC20Contracts.BEYOND, accounts[i]);
+                let USDbBalance: any = await getAddressBalanceForERC20(ERC20Contracts.BUSD, accounts[i]);
+                let EthBalance = await getETHBalance(accounts[i]);
+
                 let walletObj: Wallet = {
                     address: accounts[i],
-                    BYNBalance: await getAddressBalanceForERC20(ERC20Contracts.BEYOND, accounts[i]),
-                    EthBalance: await getETHBalance(accounts[i]),
-                    USDbBalance: await getAddressBalanceForERC20(ERC20Contracts.BUSD, accounts[i]),
+                    BYNBalance: BYNBalance ? BYNBalance : 0,
+                    EthBalance: EthBalance ? EthBalance : 0,
+                    USDbBalance: USDbBalance ? USDbBalance : 0,
                 }
                 wallets.push(walletObj);
             }
@@ -446,10 +450,10 @@ export const getAddressEtherBalance = async (address) => {
             return Number(balanceInWei);
         } catch (error) {
             console.error("Get Eth Address: ", error);
-            return error;
+            return 0;
         }
     } else {
-        return -1
+        return 0
     }
 }
 
@@ -469,12 +473,12 @@ export const getAddressBalanceForERC20 = async (erc20ContractName: ERC20Contract
                 return balanceInWei
             } catch (error) {
                 console.error("Get ECR20 Balance: ", error);
-                return error;
+                return 0;
             }
         }
 
     } else {
-        return -1
+        return 0
     }
 }
 
