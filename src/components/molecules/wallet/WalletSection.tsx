@@ -23,7 +23,7 @@ function WalletSection(props: IProps) {
         >
           <img src="assets/Icons/wallet-icon.svg" className="mr-2 h-3" />
           {!isConnected && "Connect Wallet"}
-          {isConnected && selected?.address}
+          {isConnected && selected?.address.slice(0, 5) + '...'+ selected?.address.slice(-5)}
         </button>
       </div>
       <SelectWalletModal isOpen={isOpen} close={() => setOpen(false)} />

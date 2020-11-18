@@ -34,53 +34,59 @@ const web3: Web3 = new Web3();
 const localStorage = new LocalStorage(window.localStorage);
 // @ts-ignore
 export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
-    switch (source) {
-        case web3Sources.Portis:
-            await initPortis();
-            break;
-        case web3Sources.Metamask:
-            await initMetamask();
-            break;
+    try {
+        switch (source) {
+            case web3Sources.Portis:
+                await initPortis();
+                break;
+            case web3Sources.Metamask:
+                await initMetamask();
+                break;
 
-        case web3Sources.Fortmatic:
-            await initFortmatic();
-            break;
+            case web3Sources.Fortmatic:
+                await initFortmatic();
+                break;
 
-        case web3Sources.WalletConnect:
-            await initWalletConnect();
-            break;
-        case web3Sources.Coinbase:
-            await initCoinbase();
-            break;
-        default:
-            break;
-    }
-    console.log("--------------web3", web3.currentProvider);
-    if (web3.currentProvider) {
-        // push to local storage
-        const accounts = await web3.eth.getAccounts();
-
-        console.log('All accounts', accounts);
-        let wallets: Wallet[] = [];
-
-        for(let i = 0; i<accounts.length; i++){
-            let walletObj: Wallet = {
-                address: accounts[i],
-                BYNBalance: await getAddressBalanceForERC20(ERC20Contracts.BEYOND, accounts[i]),
-                EthBalance: await getETHBalance(accounts[i]),
-                USDbBalance: await getAddressBalanceForERC20(ERC20Contracts.BUSD, accounts[i]),
-            }
-            wallets.push(walletObj);
+            case web3Sources.WalletConnect:
+                await initWalletConnect();
+                break;
+            case web3Sources.Coinbase:
+                await initCoinbase();
+                break;
+            default:
+                break;
         }
-    //    await accounts.forEach(async (address) => {
-    //     debugger
-          
-    //     });
-    debugger
-        store.dispatch(saveWalletsInfoAction(wallets, source));
-        return web3;
-    } else {
-        // return null;
+        console.log("--------------web3", web3.currentProvider);
+        if (web3.currentProvider) {
+            // push to local storage
+            const accounts = await web3.eth.getAccounts();
+
+            console.log('All accounts', accounts);
+            let wallets: Wallet[] = [];
+
+            for (let i = 0; i < accounts.length; i++) {
+                let walletObj: Wallet = {
+                    address: accounts[i],
+                    BYNBalance: await getAddressBalanceForERC20(ERC20Contracts.BEYOND, accounts[i]),
+                    EthBalance: await getETHBalance(accounts[i]),
+                    USDbBalance: await getAddressBalanceForERC20(ERC20Contracts.BUSD, accounts[i]),
+                }
+                wallets.push(walletObj);
+            }
+            //    await accounts.forEach(async (address) => {
+            //     debugger
+
+            //     });
+            debugger
+            if (wallets.length <= 0) { throw new Error('Error while accessing accounts.'); }
+            store.dispatch(saveWalletsInfoAction(wallets, source));
+
+        } else {
+            throw new Error('Error while accessing web3 provider.');
+        }
+    }
+    catch (e) {
+        throw e;
     }
 };
 

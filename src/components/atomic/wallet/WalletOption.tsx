@@ -2,7 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Web3 from "web3";
 import { locaStorageConstants, web3Sources } from "../../../constants";
-import { initializeWeb3, local_storage_action } from "../../../services/wallet.service";
+import {
+  initializeWeb3,
+  local_storage_action,
+} from "../../../services/wallet.service";
 import { saveWalletsInfoAction } from "../../../store/actions/WalletActions";
 interface IProps {
   text: string;
@@ -10,42 +13,19 @@ interface IProps {
   type: string;
 }
 function WalletOption(props: IProps) {
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   var web3: Web3;
-    const connectToWallet = async (value: any): Promise<any> => {
-        // console.info("props is ", this.props);
-        // props.startLoading(true);
-        // handleCancel(null);
-        web3 = await initializeWeb3(value);
-        // if (web3) {
-        //     const accounts = await web3.eth.getAccounts();
-        //     console.log("accounts is ---------------------------- ", accounts);
-        //     const wallet = await local_storage_action(locaStorageConstants.getWalletConnected, {});
-        //     if (accounts[0] != undefined) {
-        //         await local_storage_action(locaStorageConstants.saveAddress, { address: accounts[0] });
-        //         // alert("padggg g")
-        //         // dispatch(getBalance(accounts[0]));
-        //         // dispatch(ecr20TokenDetails(accounts[0]))
-        //         // //@ts-ignore
-        //         // setState({ connected: true, address: accounts[0], wallet: wallet.toString() });
-        //        // setConnected(true);
-        //         //setAddress(accounts[0]);
-        //         //@ts-ignore
-        //         console.log(wallet.toString());
-        //         dispatch(saveWalletsInfoAction([],''))
-        //         // setWallet(wallet.toString());
-
-        //     }
-        //     // props.initialize();
-        // }
-        // else {
-        //     //openNotificationWithIcon(notificationPrefix.Warning, notificationTitles.Transation, notificationMessages.messageTwo);
-
-        // }
-    }
+  const connectToWallet = async (value: any): Promise<any> => {
+    web3 = await initializeWeb3(value);
+  };
   return (
-    <button className="focus:outline-none flex border border-blue-300 bg-blue-300 rounded w-full mt-3" onClick={() => { connectToWallet(props.type) }}>
+    <button
+      className="focus:outline-none flex border border-blue-300 bg-blue-300 rounded w-full mt-3"
+      onClick={() => {
+        connectToWallet(props.type);
+      }}
+    >
       <div className="py-4 w-24 flex justify-center rounded-l">
         <img src={props.image} className="h-8" />
       </div>
