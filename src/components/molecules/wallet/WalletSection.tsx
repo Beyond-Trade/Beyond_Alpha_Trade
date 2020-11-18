@@ -8,7 +8,7 @@ interface IProps {
   location: string;
 }
 function WalletSection(props: IProps) {
-  const {isConnected, selected } = useSelector(
+  const { isConnected, selected } = useSelector(
     (state: RootState) => state.wallet
   );
 
@@ -23,10 +23,16 @@ function WalletSection(props: IProps) {
         >
           <img src="assets/Icons/wallet-icon.svg" className="mr-2 h-3" />
           {!isConnected && "Connect Wallet"}
-          {isConnected && selected?.address.slice(0, 5) + '...'+ selected?.address.slice(-5)}
+          {isConnected && (
+            <div className="h-2 w-2 bg-green-200 rounded mr-1 mt-1" />
+          )}
+          {isConnected &&
+            selected?.address.slice(0, 5) + "..." + selected?.address.slice(-5)}
         </button>
       </div>
-      <SelectWalletModal isOpen={isOpen} close={() => setOpen(false)} />
+      
+        <SelectWalletModal isOpen={isOpen} close={() => setOpen(false)} />
+      
     </Fragment>
   );
 }

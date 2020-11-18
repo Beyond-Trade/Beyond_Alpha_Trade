@@ -15,9 +15,9 @@ interface IProps {
 function WalletOption(props: IProps) {
   const dispatch = useDispatch();
 
-  var web3: Web3;
+
   const connectToWallet = async (value: any): Promise<any> => {
-    web3 = await initializeWeb3(value);
+    await initializeWeb3(value);
   };
   return (
     <button
