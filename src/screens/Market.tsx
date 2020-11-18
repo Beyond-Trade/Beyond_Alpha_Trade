@@ -1,10 +1,12 @@
 import React from "react";
 import GenericTab from "../components/atomic/GenericTab";
 import MarketCard from "../components/atomic/market/MarketCard";
+import MarketTable from "../components/molecules/market/marketTable";
+import MarketTop from "../components/molecules/market/MarketTop";
 import useMarketData from "../hooks/Market/useMarketData";
 
 function Market() {
-  const { marketIndex, setIndex } = useMarketData();
+  const { marketIndex, topIndex, setTopIndex, setIndex } = useMarketData();
 
   return (
     <div className="px-24">
@@ -15,6 +17,7 @@ function Market() {
           pair="GBP/ USDb"
           image="assets/Icons/pound.svg"
           change={2.22}
+          marginRight="mr-4"
         />
         <MarketCard
           coin="GOLD OUNCE"
@@ -22,6 +25,7 @@ function Market() {
           pair="GOLD/ USDb"
           image="assets/Icons/gold.svg"
           change={2.22}
+          marginRight="mr-4"
         />
         <MarketCard
           coin="ETHEREUM"
@@ -29,6 +33,7 @@ function Market() {
           pair="ETHEREUM/ USDb"
           image="assets/Icons/Ethereum.svg"
           change={2.22}
+          marginRight="mr-4"
         />
         <MarketCard
           coin="BITCOIN"
@@ -36,15 +41,29 @@ function Market() {
           pair="BTC/ USDb"
           image="assets/Icons/btc.svg"
           change={2.22}
+          marginRight=""
         />
       </div>
       <div className="flex">
-        <div className="">
+        <div className="w-full mt-4 mr-4 bg-customGray-100 rounded">
           <GenericTab
             index={marketIndex}
             onSelect={setIndex}
             tabs={["ALL", "EQUITIES", "COMMODITIES", "FOREX", "CRYPTO"]}
           />
+          <MarketTable />
+        </div>
+        <div className="mt-4" style={{width:"340px"}}>
+        <div className="flex border border-gray-500 mb-4">
+          <img src="assets/Icons/searching.svg" className="" />
+          <input type="text" className="focus:outline-none bg-white w-full py-1" />
+        </div>
+        <GenericTab
+            index={marketIndex}
+            onSelect={setIndex}
+            tabs={["TOP GAINERS", "NEWEST"]}
+          />
+          <MarketTop />
         </div>
       </div>
     </div>
