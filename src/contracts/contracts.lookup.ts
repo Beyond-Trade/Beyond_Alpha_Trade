@@ -1,6 +1,6 @@
 import {BtcAbi} from "./abi/btc.abi";
 import {SyntheticCategories} from "./constants/synthetic.enum";
-import {WeenusAbi} from "./abi/weenus.abi";
+import {bUSDAbi} from "./abi/weenus.abi";
 import {ERC20Contracts} from "./constants/contracts";
 import {BeyondAbi} from "./abi/beyond.abi";
 
@@ -15,10 +15,10 @@ export const ContractLookup = [
         syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
     },
     {
-        contractName: ERC20Contracts.WEENUS,
-        contractAddress: "0xaFF4481D10270F50f203E0763e2597776068CBc5",
-        contractTokenName: "weenus",
-        contractAbi: WeenusAbi,
+        contractName: ERC20Contracts.BUSD,
+        contractAddress: "0x09874C7705598a43999Ac84c487ACA9cE08AB50C",
+        contractTokenName: "bUSD",
+        contractAbi: bUSDAbi,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
         syntheticCategory: SyntheticCategories.CRYPTOCURRENCY

@@ -6,7 +6,7 @@ export enum ChainId {
     Kovan = 42,
     Ganache = 1337,
 }
-export enum Wallet {
+export enum web3Sources {
     Network = 'Network',
     Metamask = 'Metamask',
     Portis = 'Portis',

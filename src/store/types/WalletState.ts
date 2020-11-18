@@ -1,13 +1,24 @@
 
 export interface Wallet {
-    BYNBalance: string;
-    ETHBalance: number;
     address: string;
-    source: string;
+    BYNBalance:number, 
+    EthBalance:number,
+    USDbBalance:number,
+}
+
+export interface Balance {
+    name: string;
+    short: string;
+    cryptoBalance: string;
+    fiatBalance: string;
+    isEther: boolean;
+    isSiteToken: boolean;
 }
 
 export interface WalletState {
-    wallets: Wallet[];
-    defaultWallet: string;
+    selected:Wallet,
+    source: string; //Metamask etc
+    wallets: Wallet[];  // Reset balance is new source
+    balances: Balance[] //Current source default wallet balances  
     isConnected: boolean;
 }

@@ -1,4 +1,4 @@
-import { Wallet } from './constants';
+import { web3Sources } from './constants';
 //import * as _ from 'lodash';
 
 
@@ -18,7 +18,7 @@ export class LocalStorage {
         this._storage.setItem(walletConnectedKey, JSON.stringify(walletConnected));
     }
 
-    public getWalletConnected(): Wallet | null | boolean {
+    public getWalletConnected(): web3Sources | null | boolean {
         return JSON.parse(this._storage.getItem(walletConnectedKey) || JSON.stringify(false));
     }
 
@@ -36,11 +36,11 @@ export class LocalStorage {
         this._storage.setItem(walletAddressKey, JSON.stringify(false));
     }
 
-    public getWallets(): Array<{ wallet: Wallet, address: string }> {
+    public getWallets(): Array<{ wallet: web3Sources, address: string }> {
         return JSON.parse(this._storage.getItem(walletKey) as string) || [];
     }
 
-    public pushWallet(wallet: { wallet: Wallet, address: string }): void {
+    public pushWallet(wallet: { wallet: web3Sources, address: string }): void {
         let wallets = this.getWallets();
 
         wallets = [...wallets, wallet];

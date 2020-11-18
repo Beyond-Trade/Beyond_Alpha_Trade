@@ -17,34 +17,39 @@ import {
     NETWORK_ID,
     NETWORK_NAME,
     PORTIS_APP_ID,
-    Wallet
+    web3Sources
 } from '../constants';
 //import { notification } from 'antd';
 import { LocalStorage } from '../local_storage';
 import { ContractLookup } from "../contracts/contracts.lookup";
 import { ERC20Contracts } from "../contracts/constants/contracts";
+import { store } from '../App';
+import { saveWalletsInfoAction } from '../store/actions/WalletActions';
+import { Wallet } from '../store/types/WalletState';
+
+
 
 let web3Wrapper: Web3Wrapper | null = null;
 const web3: Web3 = new Web3();
 const localStorage = new LocalStorage(window.localStorage);
 // @ts-ignore
-export const initializeWeb3 = async (wallet: Wallet): Promise<Web3> => {
-    switch (wallet) {
-        case Wallet.Portis:
+export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
+    switch (source) {
+        case web3Sources.Portis:
             await initPortis();
             break;
-        case Wallet.Metamask:
+        case web3Sources.Metamask:
             await initMetamask();
             break;
-          
-        case Wallet.Fortmatic:
+
+        case web3Sources.Fortmatic:
             await initFortmatic();
             break;
-           
-        case Wallet.WalletConnect:
+
+        case web3Sources.WalletConnect:
             await initWalletConnect();
             break;
-        case Wallet.Coinbase:
+        case web3Sources.Coinbase:
             await initCoinbase();
             break;
         default:
@@ -54,14 +59,46 @@ export const initializeWeb3 = async (wallet: Wallet): Promise<Web3> => {
     if (web3.currentProvider) {
         // push to local storage
         const accounts = await web3.eth.getAccounts();
-        var EthBalance = await getWalletBalance();
-        var BYNBalance = await getAddressBalanceForERC20(ERC20Contracts.BEYOND, accounts[0]);
-        await local_storage_action(locaStorageConstants.addAddress, { address: accounts[0], wallet, EthBalance, BYNBalance })
+
+        console.log('All accounts', accounts);
+        let wallets: Wallet[] = [];
+
+        for(let i = 0; i<accounts.length; i++){
+            let walletObj: Wallet = {
+                address: accounts[i],
+                BYNBalance: await getAddressBalanceForERC20(ERC20Contracts.BEYOND, accounts[i]),
+                EthBalance: await getETHBalance(accounts[i]),
+                USDbBalance: await getAddressBalanceForERC20(ERC20Contracts.BUSD, accounts[i]),
+            }
+            wallets.push(walletObj);
+        }
+    //    await accounts.forEach(async (address) => {
+    //     debugger
+          
+    //     });
+    debugger
+        store.dispatch(saveWalletsInfoAction(wallets, source));
         return web3;
     } else {
         // return null;
     }
 };
+
+export const getETHBalance = async (address: string) => {
+    if (web3.currentProvider) {
+        try {
+            var balanceInWei = await web3.eth.getBalance(address)
+            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
+            return Number(balanceInWei);
+        } catch (error) {
+            console.error("Get ETH Balance: ", error);
+            return error;
+        }
+    } else {
+        return 0
+    }
+}
+
 // @ts-ignore
 export const initPortis = async (): Promise<Web3> => {
     const { location } = window;
@@ -80,14 +117,14 @@ export const initPortis = async (): Promise<Web3> => {
             location.reload();
         });
         portis.onLogin(() => {
-            localStorage.saveWalletConnected(Wallet.Portis);
-            localStorage.saveWalletConnected(Wallet.Portis);
+            localStorage.saveWalletConnected(web3Sources.Portis);
+            localStorage.saveWalletConnected(web3Sources.Portis);
             //@ts-ignore
             // document.getElementById('waa').innerHTML = 'Connected wallet is ' + localStorage.getWalletConnected();
             location.reload();
         });
         if (account) {
-            localStorage.saveWalletConnected(Wallet.Portis);
+            localStorage.saveWalletConnected(web3Sources.Portis);
             return web3;
         }
     } catch (error) {
@@ -116,7 +153,7 @@ export const initFortmatic = async (): Promise<Web3> => {
             await fm.user.login();
             isUserLoggedIn = await fm.user.isLoggedIn();
             if (isUserLoggedIn) {
-                localStorage.saveWalletConnected(Wallet.Fortmatic);
+                localStorage.saveWalletConnected(web3Sources.Fortmatic);
                 return web3;
             }
         }
@@ -145,7 +182,7 @@ export const initCoinbase = async (): Promise<Web3> => {
                 })
 
                 const address = await web3.eth.getAccounts();
-                localStorage.saveWalletConnected(Wallet.Coinbase);
+                localStorage.saveWalletConnected(web3Sources.Coinbase);
                 return web3;
             } catch (error) {
                 // The user denied account access
@@ -168,7 +205,7 @@ export const initWalletConnect = async (): Promise<Web3> => {
     try {
         const res = await provider.enable();
         console.log(res)
-        localStorage.saveWalletConnected(Wallet.WalletConnect);
+        localStorage.saveWalletConnected(web3Sources.WalletConnect);
     } catch {
         localStorage.resetWalletConnected();
         location.reload();
@@ -194,7 +231,7 @@ export const initWalletConnect = async (): Promise<Web3> => {
 
     // Subscribe to session connection/open
     provider.on('open', () => {
-        localStorage.saveWalletConnected(Wallet.WalletConnect);
+        localStorage.saveWalletConnected(web3Sources.WalletConnect);
     });
 
     // Subscribe to session disconnection/close
@@ -229,7 +266,7 @@ export const initMetamask = async (): Promise<Web3> => {
             provider.on('chainChanged', async (network: number) => {
                 window.location.reload();
             });
-            localStorage.saveWalletConnected(Wallet.Metamask);
+            // localStorage.saveWalletConnected(Wallet.Metamask);
             return web3;
         } catch (error) {
             // The user denied account access
@@ -279,7 +316,7 @@ export const sleep = (timeout: number) => new Promise<void>(resolve => setTimeou
 export const local_storage_action = async (action: Number, payload: any) => {
     switch (action) {
         case locaStorageConstants.default:
-            await initializeWeb3(localStorage.getWalletConnected() as Wallet)
+            await initializeWeb3(localStorage.getWalletConnected() as web3Sources)
             break;
         case locaStorageConstants.saveAddress:
             localStorage.saveWalletAddress(payload.address);
@@ -441,7 +478,7 @@ export const buyBYNToken = async (amount?: string) => {
     let from = localStorage.getWalletAddress() as string;
 
     // @ts-ignore
-    amount = web3.utils.toWei(amount,'ether');
+    amount = web3.utils.toWei(amount, 'ether');
 
     if (web3.currentProvider) {
         const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)

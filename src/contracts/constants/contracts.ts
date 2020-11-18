@@ -1,5 +1,5 @@
 export enum ERC20Contracts {
-    WEENUS = 'WEENUS',
+    BUSD = 'BUSD',
     BITCOIN = 'BITCOIN',
     BEYOND = 'BEYOND',
 }

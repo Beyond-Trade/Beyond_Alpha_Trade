@@ -4,7 +4,7 @@ import { walletReducer } from "./WalletReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  wallets: walletReducer,
+  wallet: walletReducer,
 });
 export { rootReducer };
 export type RootState = ReturnType<typeof rootReducer>;
