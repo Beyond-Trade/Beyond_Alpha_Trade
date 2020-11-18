@@ -3,7 +3,6 @@ import WalletOption from '../../atomic/wallet/WalletOption';
 
 import { Wallet } from '../../../constants';
 
-
 function SelectWalletType() {
    
     return (
