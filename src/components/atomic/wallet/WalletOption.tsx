@@ -2,10 +2,11 @@ import React from "react";
 interface IProps {
   text: string;
   image: string;
+  onClick: Function;
 }
 function WalletOption(props: IProps) {
   return (
-    <button className="focus:outline-none flex border border-blue-300 bg-blue-300 rounded w-full mt-3">
+    <button onClick={()=>props.onClick()} className="focus:outline-none flex border border-blue-300 bg-blue-300 rounded w-full mt-3">
       <div className="py-4 w-24 flex justify-center rounded-l">
         <img src={props.image} className="h-8" />
       </div>

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from "react-modal";
 import WalletOption from '../../atomic/wallet/WalletOption';
+import SelectWallet from './SelectWallet';
 import SelectWalletType from './SelectWalletType';
 interface IProps {
     isOpen: boolean;
@@ -8,10 +9,12 @@ interface IProps {
 }
 
 function SelectWalletModal(props:IProps) {
+  const [typeIndex, setType] = useState(0)
     return (
         <Modal isOpen={props.isOpen} style={customStyle}>
             <button onClick={()=>props.close()} className="focus:outline-none float-right"><img src="assets/Icons/Cross.svg" /></button>
-            <SelectWalletType />
+            {typeIndex===0 && <SelectWalletType onSelect={()=>setType(1)} />}
+            {typeIndex===1 && <SelectWallet onBack={()=>setType(0)} />}
         </Modal>
     )
 }
