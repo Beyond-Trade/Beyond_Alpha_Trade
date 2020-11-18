@@ -1,6 +1,7 @@
 import React from "react";
 import GenericTab from "../components/atomic/GenericTab";
 import MarketCard from "../components/atomic/market/MarketCard";
+import SearchTop from "../components/atomic/market/SearchTop";
 import MarketTable from "../components/molecules/market/marketTable";
 import MarketTop from "../components/molecules/market/MarketTop";
 import useMarketData from "../hooks/Market/useMarketData";
@@ -53,14 +54,11 @@ function Market() {
           />
           <MarketTable />
         </div>
-        <div className="mt-4" style={{width:"340px"}}>
-        <div className="flex border border-gray-500 mb-4">
-          <img src="assets/Icons/searching.svg" className="" />
-          <input type="text" className="focus:outline-none bg-white w-full py-1" />
-        </div>
-        <GenericTab
-            index={marketIndex}
-            onSelect={setIndex}
+        <div className="mt-4" style={{ width: "340px" }}>
+          <SearchTop />
+          <GenericTab
+            index={topIndex}
+            onSelect={setTopIndex}
             tabs={["TOP GAINERS", "NEWEST"]}
           />
           <MarketTop />

@@ -8,6 +8,7 @@ function SelectWallet(props: IProps) {
   const { wallets } = useSelector(
     (state: RootState) => state.wallet
   );
+  
   return (
     <div className="px-6 pb-2">
       <div className="text-center font-medium w-full text-green-400 mt-8">
