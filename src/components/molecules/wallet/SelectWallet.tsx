@@ -1,13 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { SetSelectedWalletAction } from "../../../store/actions/WalletActions";
 import { RootState } from "../../../store/reducers/Index";
 interface IProps {
   onBack: Function;
 }
 function SelectWallet(props: IProps) {
+  const dispatch = useDispatch();
   const { wallets } = useSelector((state: RootState) => state.wallet);
-  const changeSelectedWallet = async (value: any): Promise<any> => {
-   
+  const changeSelectedWallet = async (wallet: any): Promise<any> => {
+   dispatch(SetSelectedWalletAction(wallet))
   };
   return (
     <div className="px-6 pb-2">
@@ -25,7 +27,7 @@ function SelectWallet(props: IProps) {
         {wallets.map((item) => (
           <button className="focus:outline-none w-full text-xs font-medium border border-gray-600 rounded flex justify-between px-2 py-4 mt-3"
           onClick={() => {
-            connectToWallet(item);
+            changeSelectedWallet(item);
           }}
           >
             <text>
