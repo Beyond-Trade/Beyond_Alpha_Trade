@@ -2,8 +2,10 @@ import React from 'react';
 import WalletOption from '../../atomic/wallet/WalletOption';
 
 import { Wallet } from '../../../constants';
-
-function SelectWalletType() {
+interface IProps {
+    onSelect: Function;
+}
+function SelectWalletType(props: IProps) {
    
     return (
         <div className="px-16 pb-16">

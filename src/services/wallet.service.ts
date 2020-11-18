@@ -36,26 +36,16 @@ export const initializeWeb3 = async (wallet: Wallet): Promise<Web3> => {
         case Wallet.Metamask:
             await initMetamask();
             break;
-            // case Wallet.Torus:
-            //     web3Wrapper = await initTorus();
-            break;
+          
         case Wallet.Fortmatic:
             await initFortmatic();
             break;
-            // case Wallet.Enjin:
-            //     web3Wrapper = await initEnjin();
-            break;
+           
         case Wallet.WalletConnect:
             await initWalletConnect();
             break;
         case Wallet.Coinbase:
             await initCoinbase();
-            break;
-            // case Wallet.Trust:
-            //     web3Wrapper = await initTrustWallet(wallet);
-            //     break;
-            // case Wallet.Cipher:
-            //     web3Wrapper = await initProviderWallet(wallet);
             break;
         default:
             break;
@@ -265,18 +255,18 @@ export const deleteWeb3Wrapper = (): void => {
 export const deleteWeb3 = (): void => {
     // web3 = null;
 };
-export const disconnectWallet = async (): Promise<void> => {
-    console.log("1")
-    // const web3Wrapper = getWeb3Wrapper();
-    console.log("2", web3Wrapper);
-    // @ts-ignore
-    const provider = web3.currentProvider;
-    console.log("3", provider);
-    localStorage.resetWalletConnected();
+// export const disconnectWallet = async (): Promise<void> => {
+//     console.log("1")
+//     // const web3Wrapper = getWeb3Wrapper();
+//     console.log("2", web3Wrapper);
+//     // @ts-ignore
+//     const provider = web3.currentProvider;
+//     console.log("3", provider);
+//     localStorage.resetWalletConnected();
 
-    // @ts-ignore
-    await provider.close();
-}
+//     // @ts-ignore
+//     await provider.close();
+// }
 export const getWeb3 = async (): Promise<Web3> => {
     while (!web3) {
         // if web3Wrapper is not set yet, wait and retry
