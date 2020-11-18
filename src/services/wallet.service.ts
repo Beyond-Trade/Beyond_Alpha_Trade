@@ -33,7 +33,7 @@ let web3Wrapper: Web3Wrapper | null = null;
 const web3: Web3 = new Web3();
 const localStorage = new LocalStorage(window.localStorage);
 // @ts-ignore
-export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
+export const initializeWeb3 = async (source: web3Sources, callback: Function): Promise<Web3> => {
     try {
         switch (source) {
             case web3Sources.Portis:
@@ -73,10 +73,9 @@ export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
                 }
                 wallets.push(walletObj);
             }
-           
             if (wallets.length <= 0) { throw new Error('Error while accessing accounts.'); }
             store.dispatch(saveWalletsInfoAction(wallets, source));
-
+            callback()
         } else {
             throw new Error('Error while accessing web3 provider.');
         }
@@ -297,7 +296,7 @@ export const sleep = (timeout: number) => new Promise<void>(resolve => setTimeou
 export const local_storage_action = async (action: Number, payload: any) => {
     switch (action) {
         case locaStorageConstants.default:
-            await initializeWeb3(localStorage.getWalletConnected() as web3Sources)
+            await initializeWeb3(localStorage.getWalletConnected() as web3Sources, ()=>{})
             break;
         case locaStorageConstants.saveAddress:
             localStorage.saveWalletAddress(payload.address);

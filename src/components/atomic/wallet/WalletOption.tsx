@@ -11,13 +11,14 @@ interface IProps {
   text: string;
   image: string;
   type: string;
+  onConnected: Function;
 }
 function WalletOption(props: IProps) {
   const dispatch = useDispatch();
 
 
   const connectToWallet = async (value: any): Promise<any> => {
-    await initializeWeb3(value);
+    await initializeWeb3(value, ()=>{props.onConnected()});
   };
   return (
     <button
