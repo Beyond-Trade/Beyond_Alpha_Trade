@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from "react-modal";
-import WalletOption from '../../atomic/wallet/WalletOption';
 import SelectWallet from './SelectWallet';
 import SelectWalletType from './SelectWalletType';
 interface IProps {
