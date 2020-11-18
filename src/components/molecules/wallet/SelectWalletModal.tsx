@@ -27,13 +27,17 @@ function SelectWalletModal(props: IProps) {
       >
         <img src="assets/Icons/Cross.svg" />
       </button>
-      {typeIndex === 0 && <SelectWalletType onSelect={() => close()} />}
+      {typeIndex === 0 && <SelectWalletType onSelect={() => props.close()} />}
       {typeIndex === 1 && <SelectWallet onBack={() => setType(0)} />}
     </Modal>
   );
 }
 
 export default SelectWalletModal;
+
+
+
+
 
 const customStyle = {
   overlay: {

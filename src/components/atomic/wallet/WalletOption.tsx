@@ -18,7 +18,7 @@ function WalletOption(props: IProps) {
 
 
   const connectToWallet = async (value: any): Promise<any> => {
-    await initializeWeb3(value, ()=>{props.onConnected});
+    await initializeWeb3(value, ()=>{props.onConnected()});
   };
   return (
     <button
