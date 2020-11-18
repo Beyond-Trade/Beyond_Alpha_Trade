@@ -1,19 +1,22 @@
 import React from 'react';
 import WalletOption from '../../atomic/wallet/WalletOption';
-interface IProps {
-    onSelect: Function;
-}
-function SelectWalletType(props: IProps) {
+
+import { Wallet } from '../../../constants';
+
+function SelectWalletType() {
+   
     return (
         <div className="px-16 pb-16">
             <div className="text-center font-medium w-full text-blue-400 mt-8">Connect your wallet</div>
-            <WalletOption onClick={()=>props.onSelect()} text="Metamask" image="assets/Icons/Metamask.svg" />
-            <WalletOption onClick={()=>props.onSelect()} text="WalletConnect" image="assets/Icons/WalletConnect.svg" />
-            <WalletOption onClick={()=>props.onSelect()} text="Portis" image="assets/Icons/Portis.svg" />
-            <WalletOption onClick={()=>props.onSelect()} text="Coinbase Wallet" image="assets/Icons/Coinbase Wallet.svg" />
-            <WalletOption onClick={()=>props.onSelect()} text="Formatic" image="assets/Icons/Formatic.svg" />
+            <WalletOption text="Metamask" image="assets/Icons/Metamask.svg" type={Wallet.Metamask}/>
+            <WalletOption text="WalletConnect" image="assets/Icons/WalletConnect.svg" type={Wallet.WalletConnect}/>
+            <WalletOption text="Portis" image="assets/Icons/Portis.svg" type={Wallet.Portis}/>
+            <WalletOption text="Coinbase Wallet" image="assets/Icons/Coinbase Wallet.svg" type={Wallet.Coinbase}/>
+            <WalletOption text="Formatic" image="assets/Icons/Formatic.svg" type={Wallet.Fortmatic}/>
         </div>
     )
 }
+
+
 
 export default SelectWalletType
