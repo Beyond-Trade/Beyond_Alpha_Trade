@@ -24,7 +24,7 @@ import { LocalStorage } from '../local_storage';
 import { ContractLookup } from "../contracts/contracts.lookup";
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { store } from '../App';
-import { saveWalletsInfoAction } from '../store/actions/WalletActions';
+import { resetWalletsInfoAction, saveWalletsInfoAction } from '../store/actions/WalletActions';
 import { Wallet } from '../store/types/WalletState';
 
 
@@ -56,12 +56,8 @@ export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
             default:
                 break;
         }
-        console.log("--------------web3", web3.currentProvider);
         if (web3.currentProvider) {
-            // push to local storage
             const accounts = await web3.eth.getAccounts();
-
-            console.log('All accounts', accounts);
             let wallets: Wallet[] = [];
 
             for (let i = 0; i < accounts.length; i++) {
@@ -77,11 +73,7 @@ export const initializeWeb3 = async (source: web3Sources): Promise<Web3> => {
                 }
                 wallets.push(walletObj);
             }
-            //    await accounts.forEach(async (address) => {
-            //     debugger
-
-            //     });
-            debugger
+           
             if (wallets.length <= 0) { throw new Error('Error while accessing accounts.'); }
             store.dispatch(saveWalletsInfoAction(wallets, source));
 
@@ -276,7 +268,7 @@ export const initMetamask = async (): Promise<Web3> => {
             provider.on('chainChanged', async (network: number) => {
                 window.location.reload();
             });
-            // localStorage.saveWalletConnected(Wallet.Metamask);
+             localStorage.saveWalletConnected(web3Sources.Metamask);
             return web3;
         } catch (error) {
             // The user denied account access
@@ -291,6 +283,7 @@ export const initMetamask = async (): Promise<Web3> => {
         } else {
             console.log("---------------null ", web3);
             localStorage.resetWalletConnected();
+            store.dispatch(resetWalletsInfoAction());
             //  The user does not have metamask installed
         }
     }
@@ -299,29 +292,7 @@ export const deleteWeb3Wrapper = (): void => {
     web3Wrapper = null;
 };
 
-export const deleteWeb3 = (): void => {
-    // web3 = null;
-};
-// export const disconnectWallet = async (): Promise<void> => {
-//     console.log("1")
-//     // const web3Wrapper = getWeb3Wrapper();
-//     console.log("2", web3Wrapper);
-//     // @ts-ignore
-//     const provider = web3.currentProvider;
-//     console.log("3", provider);
-//     localStorage.resetWalletConnected();
 
-//     // @ts-ignore
-//     await provider.close();
-// }
-export const getWeb3 = async (): Promise<Web3> => {
-    while (!web3) {
-        // if web3Wrapper is not set yet, wait and retry
-        await sleep(100);
-    }
-
-    return web3;
-};
 export const sleep = (timeout: number) => new Promise<void>(resolve => setTimeout(resolve, timeout));
 export const local_storage_action = async (action: Number, payload: any) => {
     switch (action) {
