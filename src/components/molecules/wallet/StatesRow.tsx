@@ -2,14 +2,14 @@ import React from 'react';
 
 function StatesRow() {
     return (
-        <div className="px-24 flex mt-8">
-        <div className="bg-customGray-100 rounded mr-8 w-full">
+        <div className="px-8 xl:px-24 lg:px-24 xl:flex lg:flex">
+        <div className="bg-customGray-100 rounded mr-8 w-full mt-8">
             <div className="rounded-t bg-gray-300 text-gray-600 text-xs px-2 py-1 font-medium">
                 <h5>TOTAL SYNTHETIC ASSET VALUE</h5>
             </div>
             <h3 className="font-medium my-6 mx-2">$0.00 USD</h3>
         </div>
-        <div className="bg-customGray-100 rounded mr-8 w-full">
+        <div className="bg-customGray-100 rounded mr-8 w-full mt-8">
             <div className="rounded-t bg-gray-300 text-gray-600 text-xs px-2 py-1 font-medium">
                 <h5>SYNTHETIC ASSET BREAKDOWN</h5>
             </div>
@@ -34,7 +34,7 @@ function StatesRow() {
                 </div>
             </div>
         </div>
-        <div className="bg-customGray-100 rounded mr-8 w-full">
+        <div className="bg-customGray-100 rounded mr-8 mt-8 w-full">
             <div className="rounded-t bg-gray-300 text-gray-600 text-xs px-2 py-1 font-medium">
                 <h5>COLLETERLIZATION RATIO</h5>
             </div>
@@ -49,7 +49,7 @@ function StatesRow() {
             </div>
             </div>
         </div>
-        <div className="bg-customGray-100 rounded w-full">
+        <div className="bg-customGray-100 rounded mt-8 w-full">
             <div className="rounded-t bg-gray-300 text-gray-600 text-xs px-2 py-1 font-medium">
                 <h5>TOTAL WALLET VALUE</h5>
             </div>

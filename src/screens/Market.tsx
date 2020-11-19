@@ -10,8 +10,8 @@ function Market() {
   const { marketIndex, topIndex, setTopIndex, setIndex } = useMarketData();
 
   return (
-    <div className="px-24">
-      <div className="mt-12 flex">
+    <div className="px-8 xl:px-24 lg:px-24 md:px-24">
+      <div className="mt-12 xl:flex lg:flex">
         <MarketCard
           coin="POUND"
           price={5600.0}
@@ -45,8 +45,8 @@ function Market() {
           marginRight=""
         />
       </div>
-      <div className="flex">
-        <div className="w-full mt-4 mr-4 bg-customGray-100 rounded">
+      <div className="xl:flex lg:flex">
+        <div className="w-full mb-4 mr-4 bg-customGray-100 rounded overflow-auto">
           <GenericTab
             index={marketIndex}
             onSelect={setIndex}
@@ -54,7 +54,7 @@ function Market() {
           />
           <MarketTable />
         </div>
-        <div className="mt-4" style={{ width: "340px" }}>
+        <div className="xl:w-chartH lg:w-chartH">
           <SearchTop />
           <GenericTab
             index={topIndex}
