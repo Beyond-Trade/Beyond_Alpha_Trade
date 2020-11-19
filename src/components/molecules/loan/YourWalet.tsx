@@ -24,7 +24,7 @@ function YourWalet() {
               <h3 className="text-xs text-gray-600 py-2">ETH BALANCE</h3>
             </div>
             <div>
-              <h3 className="text-xs text-gray-600 py-2">0.00</h3>
+              <h3 className="text-xs py-2">0.00</h3>
             </div>
           </div>
         </div>

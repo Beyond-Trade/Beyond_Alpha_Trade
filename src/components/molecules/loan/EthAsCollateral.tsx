@@ -50,10 +50,10 @@ function EthAsCollateral() {
               <h3 className="text-xs text-gray-600 py-2">ETH PRICE (USD)</h3>
             </div>
             <div>
-              <h3 className="text-xs text-gray-600 py-2">1.0 ETH</h3>
-              <h3 className="text-xs text-gray-600 py-2">125%</h3>
-              <h3 className="text-xs text-gray-600 py-2">116%</h3>
-              <h3 className="text-xs text-gray-600 py-2">416.34</h3>
+              <h3 className="text-xs py-2">1.0 ETH</h3>
+              <h3 className="text-xs py-2">125%</h3>
+              <h3 className="text-xs py-2">116%</h3>
+              <h3 className="text-xs py-2">416.34</h3>
             </div>
           </div>
         </div>
