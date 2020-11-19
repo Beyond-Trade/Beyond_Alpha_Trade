@@ -14,7 +14,7 @@ function PairData() {
       </tr>
       {[1, 1, 1, 1, 1, 1, 1, 1].map((item) => (
         <tr className="bg-customGray-100 text-xs text-left text-gray-600 font-medium">
-          <td className="py-2 px-3">
+          <td className="py-3 px-3">
           <div className="flex items-center">
           <img src="assets/Icons/star.svg" className="h-3 mr-1" />
               BTC/USDT

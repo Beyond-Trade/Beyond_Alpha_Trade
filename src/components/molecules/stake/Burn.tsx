@@ -1,4 +1,5 @@
 import React from "react";
+import Dropdown from "../../atomic/stake/Dropdown";
 
 function Burn() {
   return (
@@ -32,10 +33,7 @@ function Burn() {
           <div className="mt-6">
             <p className="text-xs font-medium text-gray-500">$ 0</p>
             <div className="bg-gray-300 mt-2 rounded px-4 py-3 flex items-center">
-              <button className="focus:outline-none text-gray-600 text-xs font-medium flex items-center border-r pr-4 border-gray-500">
-                sUSD
-                <img src="assets/Icons/arrow-down.svg" className="ml-1 w-2" />
-              </button>
+              <Dropdown />
               <input
                 className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 text-xs font-medium"
                 type="text"

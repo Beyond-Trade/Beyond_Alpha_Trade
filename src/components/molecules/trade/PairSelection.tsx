@@ -4,7 +4,7 @@ import PairTable from "./PairTable";
 
 function PairSelection() {
   return (
-    <div className="w-56">
+    <div className="w-74">
       <PairSearch />
       <PairTable />
     </div>
