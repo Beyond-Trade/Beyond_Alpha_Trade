@@ -2,7 +2,7 @@ import * as React from "react";
 
 function MakeOrders() {
   return (
-    <div className="bg-customGray-100 rounded xl:ml-4 lg:ml-4 mt-4 xl:w-74 lg:w-74">
+    <div className="bg-customGray-100 rounded xl:ml-4 lg:ml-4 md:ml-4 mt-4 md:w-94 xl:w-94 lg:w-94">
       <div className="bg-gray-300 py-1 px-3 flex justify-between rounded-t">
         <h5 className="text-xs font-semibold text-gray-600">BUY/SELL</h5>
         <button className="focus:outline-none bg-customBlue-200 px-2 flex items-center text-xxs text-white">
