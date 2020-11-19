@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { EtherscanBrowsUrl } from "../../../constants";
 import { SetSelectedWalletAction } from "../../../store/actions/WalletActions";
 import { RootState } from "../../../store/reducers/Index";
 interface IProps {
@@ -36,7 +37,7 @@ function SelectWallet(props: IProps) {
             <text>{parseFloat(item.BYNBalance.toString()).toFixed(2)}</text>
             <text>{item.USDbBalance > 0?item.USDbBalance.toFixed(4):'00.00'}</text>
             <text>{item.EthBalance.toFixed(4)}</text>
-            <img src="assets/Icons/etherscan-logo-circle.svg" className="h-4" />
+            <a target='_blank' href={EtherscanBrowsUrl + item.address}> <img src="assets/Icons/etherscan-logo-circle.svg" className="h-4" /></a>
           </button>
         ))}
       </div>

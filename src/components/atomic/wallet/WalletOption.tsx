@@ -1,12 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Web3 from "web3";
-import { locaStorageConstants, web3Sources } from "../../../constants";
 import {
-  initializeWeb3,
-  local_storage_action,
-} from "../../../services/wallet.service";
-import { saveWalletsInfoAction } from "../../../store/actions/WalletActions";
+  initializeWeb3
+} from "../../../services/web3.service";
 interface IProps {
   text: string;
   image: string;
