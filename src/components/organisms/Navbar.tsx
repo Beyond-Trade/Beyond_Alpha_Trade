@@ -15,6 +15,7 @@ function Navbar() {
         <NavTab path="/trade" text="TRADE" active={location.pathname==='/trade'} />
         <NavTab path="/loan" text="LOAN" active={location.pathname==='/loan'} />
       </div>
+
       <WalletSection location={location.pathname} />
     </div>
   );

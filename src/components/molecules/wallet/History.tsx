@@ -12,12 +12,12 @@ function History() {
         <table width="100%">
           <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
             <td className="w-1/5 pl-2 flex items-center">
-              ASSETS{" "}
+              ASSETS
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </td>
             <td className="w-1/5">
               <div className="flex items-center">
-                DESCRIPTION{" "}
+                DESCRIPTION
                 <img
                   src="assets/Icons/up-down-arrow.svg"
                   className="ml-1 h-2"
@@ -26,7 +26,7 @@ function History() {
             </td>
             <td className="w-1/5">
               <div className="flex items-center">
-                Total{" "}
+                Total
                 <img
                   src="assets/Icons/up-down-arrow.svg"
                   className="ml-1 h-2"
@@ -35,7 +35,7 @@ function History() {
             </td>
             <td className="w-1/5">
               <div className="flex items-center">
-                USD Value{" "}
+                USD Value
                 <img
                   src="assets/Icons/up-down-arrow.svg"
                   className="ml-1 h-2"
