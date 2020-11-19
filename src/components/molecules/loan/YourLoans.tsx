@@ -2,7 +2,7 @@ import React from "react";
 
 function YourLoans() {
   return (
-    <div className="w-full bg-customGray-100 rounded mr-8 mt-3">
+    <div className="w-full bg-customGray-100 mb-4 rounded mr-8 mt-3">
       <div className="bg-gray-300 rounded-t pl-2 pt-2">
         <h3 className="font-medium text-xs text-gray-600">YOUR LOANS</h3>
       </div>

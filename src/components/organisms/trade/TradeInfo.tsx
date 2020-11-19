@@ -5,7 +5,7 @@ import MarketTable from "../../molecules/market/marketTable";
 function TradeInfo() {
   const [tabIndex, setIndex] = React.useState(0);
   return (
-    <div className="w-full mt-4 mr-4 bg-customGray-100 rounded">
+    <div className="w-full mt-4 mr-4 bg-customGray-100 rounded overflow-auto">
       <div className="w-94">
         <GenericTab
           index={tabIndex}
@@ -16,7 +16,7 @@ function TradeInfo() {
       <table width="100%">
         <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
           <td className="py-2 px-3">
-            <div className="flex items-center">
+            <div className="flex items-center whitespace-nowrap	">
               DATE | TIME
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
@@ -63,12 +63,12 @@ function TradeInfo() {
         </tr>
         {[1, 1, 1, 1, 1].map((item) => (
           <tr className="text-xs text-left text-gray-600 font-medium">
-            <td className="py-3 px-3">
+            <td className="py-3 px-3 whitespace-nowrap">
               <text>Oct 24, 20 | 23:08</text>
             </td>
-            <td className="py-3 px-3">sXAU / sUSD</td>
-            <td className="py-3 px-3">124564 sUSD</td>
-            <td className="py-3 px-3">0.0055 sXAU</td>
+            <td className="py-3 px-3 whitespace-nowrap">sXAU / sUSD</td>
+            <td className="py-3 px-3 whitespace-nowrap">124564 sUSD</td>
+            <td className="py-3 px-3 whitespace-nowrap">0.0055 sXAU</td>
             <td className="py-3 px-3">$1894.04</td>
             <td className="py-3 px-3">$1896.04</td>
             <td className="py-3 px-3">Complete</td>

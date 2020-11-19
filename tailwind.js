@@ -168,6 +168,8 @@ module.exports = {
       74: "18rem",
       84: "20rem",
       94: "25rem",
+      chartH: '340px',
+      300: '300px'
     },
     backgroundColor: (theme) => theme("colors"),
     backgroundImage: {

@@ -6,15 +6,15 @@ function FAQ() {
         <div className="bg-customGray-100 px-20 py-12">
             <h2 className="text-lg font-bold">FREQUENTLY ASKED QUESTIONS (FAQs)</h2>
             <p className="text-xxs mt-6">We always appreciate if you take a minute to look at the most common questions.</p>
-            <div className="flex px-20 mt-4">
-                <div className="w-full mr-2">
+            <div className="xl:flex lg:flex xl:px-20 lg:px-20 md:px-20 mt-4">
+                <div className="w-full xl:mr-2 lg:mr-2">
                     <FAQChip />
                     <FAQChip />
                     <FAQChip />
                     <FAQChip />
                     <FAQChip />
                 </div>
-                <div className="w-full ml-2">
+                <div className="w-full xl:ml-2 lg:ml-2">
                     <FAQChip />
                     <FAQChip />
                     <FAQChip />

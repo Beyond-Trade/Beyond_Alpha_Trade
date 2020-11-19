@@ -2,7 +2,7 @@ import React from "react";
 
 function History() {
   return (
-    <div className="px-24 mt-8 mb-8">
+    <div className="px-8 xl:px-24 lg:px-24 mt-8 mb-8">
       <div className="w-full bg-customGray-100 rounded mr-8">
         <div className="bg-gray-300 rounded-t pl-2 pt-2">
           <h3 className="font-medium text-xs text-gray-600">

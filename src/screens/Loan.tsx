@@ -10,17 +10,16 @@ function Loan() {
   return (
     <div>
       <LoanBanner />
-      <div className="flex px-24 mt-8">
-        <div className="flex-1 mr-8">
+      <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
+        <div className="flex-1 xl:mr-8 lg:mr-8">
           <EthAsCollateral />
           <YourWalet />
           <YourLoans />
         </div>
-        <div style={{ width: "28%" }}>
+        <div className="xl:w-300 lg:w-300">
           <CreateLoan />
           <CloseLoan />
         </div>
-        {/*  */}
       </div>
     </div>
   );

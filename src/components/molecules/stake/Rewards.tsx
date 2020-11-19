@@ -4,8 +4,8 @@ function Rewards() {
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="text-lg font-bold">REWARDS</h3>
-      <div className="flex">
-        <div className="w-full">
+      <div className="xl:flex lg:flex">
+        <div className="w-full mb-4">
           <p className="text-xs font-medium text-blue-300 mt-6">
             If you have staked your BYN tokens and
             <br />

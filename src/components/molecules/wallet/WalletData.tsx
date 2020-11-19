@@ -5,7 +5,7 @@ import { RootState } from "../../../store/reducers/Index";
 function WalletData() {
   const { balances } = useSelector((state: RootState) => state.wallet);
   return (
-    <div className="flex mt-8 px-24 mb-16">
+    <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
       <div className="w-full bg-customGray-100 rounded">
         <div className="bg-gray-300 rounded-t pl-2 pt-2">
           <h3 className="font-medium text-xs text-gray-600">YOUR SYNTHS</h3>

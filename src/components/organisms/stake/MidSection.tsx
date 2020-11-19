@@ -9,7 +9,7 @@ import Transfer from '../../molecules/stake/Transfer';
 function MidSection() {
     const [tabIndex, setTab] = useState(0)
     return (
-        <div className="px-48 mt-12">
+        <div className="px-8 sm:px-16 md:px-20 xl:px-48 lg:px-48 mt-12">
             <div className="flex justify-center">
                 <MidSectionTab text="Swap BYN" onClick={()=>setTab(0)} active={tabIndex===0} />
                 <MidSectionTab text="Mint" onClick={()=>setTab(1)} active={tabIndex===1} />

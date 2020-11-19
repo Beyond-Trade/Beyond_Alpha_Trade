@@ -5,8 +5,8 @@ import { RootState } from "../../../store/reducers/Index";
 const BottomSection = () => {
   const { balances } = useSelector((state: RootState) => state.wallet);
   return (
-    <div className="flex mt-8 px-48 mb-20">
-      <div className="w-full mr-2">
+    <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
+      <div className="w-full xl:mr-2 lg:mr-2 mb-4">
         <div className="flex justify-between items-center py-2 px-4 bg-customGray-100 rounded">
           <div className="flex items-center">
             <img src="assets/Icons/BYN-small.svg" className="h-6" />
@@ -47,7 +47,7 @@ const BottomSection = () => {
           </div>
         </div>
       </div>
-      <div className="w-full ml-2">
+      <div className="w-full xl:ml-2 lg:ml-2">
         <div className="bg-customGray-100 rounded pb-1">
           <div className="bg-gray-400 flex justify-between py-1 px-8 text-xs font-bold rounded-t">
             <h4>Asset Summary</h4>
