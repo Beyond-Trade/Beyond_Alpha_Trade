@@ -97,6 +97,9 @@ export const NETWORK_ID: number = Number.parseInt('50', 10) || Network.Mainnet;
 
 // export const NETWORK_NAME: string = Network[NETWORK_ID];
 export const NETWORK_NAME: string = 'rinkeby';
+
+export const EtherscanBrowsUrl = 'https://rinkeby.etherscan.io/address/';
+
 export const FORTMATIC_APP_ID: string = 'pk_test_E55592A7ED0DB69A';
 export const APP_NAME = 'My Awesome App'
 export const APP_LOGO_URL = 'https://example.com/logo.png'

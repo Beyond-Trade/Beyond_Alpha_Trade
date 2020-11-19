@@ -1,6 +1,9 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/reducers/Index";
 
 const BottomSection = () => {
+  const { balances } = useSelector((state: RootState) => state.wallet);
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
       <div className="w-full xl:mr-2 lg:mr-2 mb-4">
@@ -51,54 +54,16 @@ const BottomSection = () => {
             <h4>Balance</h4>
             <h4>USD</h4>
           </div>
+          {balances.map((item) => (
           <div className="flex justify-between px-8 py-2">
             <div className="flex items-center">
               <img src="assets/Icons/BYN-small.svg" className="h-4" />
-              <h6 className="ml-2 text-xxs font-medium">BYN</h6>
+              <h6 className="ml-2 text-xxs font-medium">{item.short}</h6>
             </div>
-            <h6 className="text-xxs font-medium">114.55</h6>
-            <h6 className="text-xxs font-medium">$227.55</h6>
+            <h6 className="text-xxs font-medium text-left">{item.cryptoBalance}</h6>
+            <h6 className="text-xxs font-medium">${(item.cryptoBalance * item.rate)}</h6>
           </div>
-          <div className="flex justify-between px-8 py-2">
-            <div className="flex items-center">
-              <img src="assets/Icons/eth-small.svg" className="h-4" />
-              <h6 className="ml-2 text-xxs font-medium">ETH</h6>
-            </div>
-            <h6 className="text-xxs font-medium">114.55</h6>
-            <h6 className="text-xxs font-medium">$227.55</h6>
-          </div>
-          <div className="flex justify-between px-8 py-2">
-            <div className="flex items-center">
-              <img src="assets/Icons/BYN-small.svg" className="h-4" />
-              <h6 className="ml-2 text-xxs font-medium">USDc</h6>
-            </div>
-            <h6 className="text-xxs font-medium">114.55</h6>
-            <h6 className="text-xxs font-medium">$227.55</h6>
-          </div>
-          <div className="flex justify-between px-8 py-2">
-            <div className="flex items-center">
-              <img src="assets/Icons/BYN-small.svg" className="h-4" />
-              <h6 className="ml-2 text-xxs font-medium">BYN</h6>
-            </div>
-            <h6 className="text-xxs font-medium">114.55</h6>
-            <h6 className="text-xxs font-medium">$227.55</h6>
-          </div>
-          <div className="flex justify-between px-8 py-2">
-            <div className="flex items-center">
-              <img src="assets/Icons/eth-small.svg" className="h-4" />
-              <h6 className="ml-2 text-xxs font-medium">ETH</h6>
-            </div>
-            <h6 className="text-xxs font-medium">114.55</h6>
-            <h6 className="text-xxs font-medium">$227.55</h6>
-          </div>
-          <div className="flex justify-between px-8 py-2">
-            <div className="flex items-center">
-              <img src="assets/Icons/BYN-small.svg" className="h-4" />
-              <h6 className="ml-2 text-xxs font-medium">USDc</h6>
-            </div>
-            <h6 className="text-xxs font-medium">114.55</h6>
-            <h6 className="text-xxs font-medium">$227.55</h6>
-          </div>
+             ))}
         </div>
       </div>
     </div>

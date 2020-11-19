@@ -1,0 +1,292 @@
+import { Web3Wrapper } from '@0x/web3-wrapper';
+import { providerUtils } from '@0x/utils';
+import WalletLink from 'walletlink'
+import { providers } from 'ethers';
+import Web3 from 'web3';
+import detectEthereumProvider from '@metamask/detect-provider';
+import BigNumber from 'bignumber.js'
+
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import {
+    APP_NAME,
+    CHAIN_ID,
+    ETH_JSONRPC_URL,
+    FORTMATIC_APP_ID,
+    INFURA_ID,
+    locaStorageConstants,
+    NETWORK_ID,
+    NETWORK_NAME,
+    PORTIS_APP_ID,
+    web3Sources
+} from '../constants';
+//import { notification } from 'antd';
+import { LocalStorage } from '../local_storage';
+
+import { ERC20Contracts } from "../contracts/constants/contracts";
+import { store } from '../App';
+import { resetWalletsInfoAction, saveWalletsInfoAction, SaveWeb3InfoAction, SetSelectedWalletAction } from '../store/actions/WalletActions';
+import { Wallet } from '../store/types/WalletState';
+import { getERC20Balance, getETHBalance, updateBalances } from './wallet.service';
+import { ContractLookup } from '../contracts/contracts.lookup';
+
+
+
+// let web3Wrapper: Web3Wrapper | null = null;
+const web3: Web3 = new Web3();
+
+// @ts-ignore
+export const initializeWeb3 = async (source: web3Sources, callback: Function): Promise<Web3> => {
+    try {
+        switch (source) {
+            case web3Sources.Portis:
+                await initPortis();
+                break;
+            case web3Sources.Metamask:
+                await initMetamask();
+                break;
+
+            case web3Sources.Fortmatic:
+                await initFortmatic();
+                break;
+
+            case web3Sources.WalletConnect:
+                await initWalletConnect();
+                break;
+            case web3Sources.Coinbase:
+                await initCoinbase();
+                break;
+            default:
+                break;
+        }
+        if (web3.currentProvider) {
+
+            store.dispatch(SaveWeb3InfoAction(source, web3));
+            const accounts = await web3.eth.getAccounts();
+
+
+
+            let wallets: Wallet[] = [];
+
+            let isDefaultSelected = false;
+            for (let i = 0; i < accounts.length; i++) {
+
+                const BEYOND = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
+                const BUSD = ContractLookup.find(contract => contract.contractName === ERC20Contracts.USDB)
+
+                let BYNBalance: any = await getERC20Balance(BEYOND, accounts[i]);
+                let USDbBalance: any = await getERC20Balance(BUSD, accounts[i]);
+                let EthBalance = await getETHBalance(accounts[i]);
+
+                let walletObj: Wallet = {
+                    address: accounts[i],
+                    BYNBalance: BYNBalance ? BYNBalance : 0,
+                    EthBalance: EthBalance ? EthBalance : 0,
+                    USDbBalance: USDbBalance ? USDbBalance : 0,
+                }
+                wallets.push(walletObj);
+                if (!isDefaultSelected) {
+                    isDefaultSelected = true;
+                    store.dispatch(SetSelectedWalletAction(walletObj));
+                }
+            }
+            if (wallets.length <= 0) { throw new Error('Error while accessing accounts.'); }
+            store.dispatch(saveWalletsInfoAction(wallets));
+
+            await updateBalances(); //Update all assets balances
+            callback()
+        } else {
+            throw new Error('Error while accessing web3 provider.');
+        }
+    }
+    catch (e) {
+        throw e;
+    }
+};
+
+
+// @ts-ignore
+export const initPortis = async (): Promise<Web3> => {
+    const { location } = window;
+    if (!PORTIS_APP_ID) {
+        // return null;
+    }
+    try {
+        const Portis = await import('@portis/web3');
+        console.log(PORTIS_APP_ID, 'netwrok ', NETWORK_NAME);
+        const portis = new Portis.default(PORTIS_APP_ID, NETWORK_NAME.toLowerCase());
+        console.log(portis);
+        web3.setProvider(portis.provider);
+        const [account] = await web3.eth.getAccounts();
+        portis.onLogout(() => {
+            location.reload();
+        });
+        portis.onLogin(() => {
+            location.reload();
+        });
+        if (account) {
+            return web3;
+        }
+    } catch (error) {
+        // return null;
+    }
+};
+// @ts-ignore
+export const initFortmatic = async (): Promise<Web3> => {
+    if (FORTMATIC_APP_ID) {
+
+        // @ts-ignore - no typings
+        const Fortmatic = await import('fortmatic');
+        const fm =
+            NETWORK_ID === 1
+                ? new Fortmatic.default(FORTMATIC_APP_ID)
+                : new Fortmatic.default(FORTMATIC_APP_ID, NETWORK_NAME.toLowerCase());
+
+        const provider = await fm.getProvider()
+        // @ts-ignore
+        web3.setProvider(provider);
+        let isUserLoggedIn = await fm.user.isLoggedIn();
+        // user is already logged
+        if (isUserLoggedIn) {
+            return web3;
+        } else {
+            await fm.user.login();
+            isUserLoggedIn = await fm.user.isLoggedIn();
+            if (isUserLoggedIn) {
+                //localStorage.saveWalletConnected(web3Sources.Fortmatic);
+                return web3;
+            }
+        }
+    }
+};
+// @ts-ignore
+export const initCoinbase = async (): Promise<Web3> => {
+    //@ts-ignore
+    if (window.web3) {
+        // @ts-ignore
+        const provider = providerUtils.standardizeOrThrow(window.web3.currentProvider);
+        if (provider) {
+            try {
+                const walletLink = new WalletLink({
+                    appName: APP_NAME,
+                    appLogoUrl: APP_NAME,
+                });
+                const eth = walletLink.makeWeb3Provider(ETH_JSONRPC_URL, CHAIN_ID);
+                const provider = new providers.Web3Provider(eth);
+                // @ts-ignore
+                web3.setProvider(provider);
+
+                eth.enable().then((accounts: string[]) => {
+                    console.log(`User's address is ${accounts[0]}`)
+                    web3.eth.defaultAccount = accounts[0]
+                })
+
+                //const address = await web3.eth.getAccounts();
+                //localStorage.saveWalletConnected(web3Sources.Coinbase);
+                return web3;
+            } catch (error) {
+                // The user denied account access
+
+            }
+        } else {
+            // localStorage.resetWalletConnected();
+        }
+    } else {
+        //localStorage.resetWalletConnected();
+        //  The user does not have metamask installed
+        // return null;
+    }
+};
+export const initWalletConnect = async (): Promise<Web3> => {
+    const { location } = window;
+
+    const provider = new WalletConnectProvider({ infuraId: INFURA_ID });
+    try {
+        const res = await provider.enable();
+        // console.log(res)
+        //localStorage.saveWalletConnected(web3Sources.WalletConnect);
+    } catch {
+        //localStorage.resetWalletConnected();
+        location.reload();
+    }
+
+    // @ts-ignore
+    web3.setProvider(provider);
+
+    // Subscribe to accounts change
+    provider.on('accountsChanged', (accounts: string[]) => {
+        location.reload();
+    });
+
+    // Subscribe to chainId change
+    provider.on('chainChanged', (chainId: number) => {
+        location.reload();
+    });
+
+    // Subscribe to networkId change
+    provider.on('networkChanged', (networkId: number) => {
+        location.reload();
+    });
+
+    // Subscribe to session connection/open
+    provider.on('open', () => {
+        //localStorage.saveWalletConnected(web3Sources.WalletConnect);
+    });
+
+    // Subscribe to session disconnection/close
+    provider.on('close', (code: number, reason: string) => {
+        //deleteWeb3Wrapper();
+        //localStorage.resetWalletConnected();
+        location.reload();
+    });
+
+    return web3;
+};
+// @ts-ignore
+export const initMetamask = async (): Promise<Web3> => {
+    //@ts-ignore
+    const provider = await detectEthereumProvider();
+
+    if (provider) {
+        try {
+            // @ts-ignore
+            web3.setProvider(provider);
+            // Request account access if needed
+            // @ts-ignore
+            // await provider.request('eth_requestAccounts')
+            await provider.enable()
+            // Subscriptions register
+            //@ts-ignore
+            provider.on('accountsChanged', async (accounts: []) => {
+                // Reload to avoid MetaMask bug: "MetaMask - RPC Error: Internal JSON-RPC"
+                window.location.reload();
+            });
+            //@ts-ignore
+            provider.on('chainChanged', async (network: number) => {
+                window.location.reload();
+            });
+            // localStorage.saveWalletConnected(web3Sources.Metamask);
+            return web3;
+        } catch (error) {
+            // The user denied account access
+        }
+    } else {
+        // @ts-ignore
+        if (window.web3) {
+            console.log("----------------curr provider ", web3);
+            // @ts-ignore
+            web3.setProvider(window.web3.currentProvider);
+            return web3;
+        } else {
+            console.log("---------------null ", web3);
+            //localStorage.resetWalletConnected();
+            store.dispatch(resetWalletsInfoAction());
+            //  The user does not have metamask installed
+        }
+    }
+};
+// export const deleteWeb3Wrapper = (): void => {
+//     web3Wrapper = null;
+// };
+
+
+
