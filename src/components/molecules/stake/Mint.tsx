@@ -1,4 +1,5 @@
 import React from "react";
+import Dropdown from "../../atomic/stake/Dropdown";
 import GeneralTab from "../../atomic/stake/GeneralTab";
 
 function Mint() {
@@ -28,10 +29,7 @@ function Mint() {
               Confirm or enter amount to mint:
             </p>
             <div className="bg-gray-300 mt-2 rounded p-2 flex items-center">
-              <button className="focus:outline-none text-xs font-medium flex items-center border-r pr-2 border-gray-500">
-                sUSD
-                <img src="assets/Icons/arrow-down.svg" className="ml-1 w-2" />
-              </button>
+              <Dropdown />
               <input
                 className="bg-gray-300 focus:outline-none ml-2"
                 type="text"

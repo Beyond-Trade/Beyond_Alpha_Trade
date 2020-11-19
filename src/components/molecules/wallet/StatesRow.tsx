@@ -36,15 +36,24 @@ function StatesRow() {
         </div>
         <div className="bg-customGray-100 rounded mr-8 w-full">
             <div className="rounded-t bg-gray-300 text-gray-600 text-xs px-2 py-1 font-medium">
-                <h5>SYNTHETIC ASSET SYNTHETIC</h5>
+                <h5>COLLETERLIZATION RATIO</h5>
             </div>
-            <img src="assets/Icons/Synthetic asset balance.svg" className="mt-2" />
+            <div className="flex">
+            <div className="flex flex-col items-center w-full pt-3">
+                <h2 className="text-orange-400 text-lg font-medium">0%</h2>
+                <p className="font-bold text-xxs">CURRENT</p>
+            </div>
+            <div className="flex flex-col items-center w-full pt-3">
+                <h2 className="text-green-400 text-lg font-medium">750%</h2>
+                <p className="font-bold text-xxs">TARGET</p>
+            </div>
+            </div>
         </div>
         <div className="bg-customGray-100 rounded w-full">
             <div className="rounded-t bg-gray-300 text-gray-600 text-xs px-2 py-1 font-medium">
                 <h5>TOTAL WALLET VALUE</h5>
             </div>
-            <h3 className="font-medium my-6 mx-2">$0.00 USD</h3>
+            <h3 className="font-semibold my-6 mx-2">$0.00 USD</h3>
         </div>
     </div>
     )
