@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
     return (
         <div className="bg-customBlue-300 px-20 py-16">
-            <div className="flex">
+            <div className="xl:flex lg:flex">
                 <div className="w-full">
                     <h1 className="font-bold text-white text-xl">BEYOND</h1>
                     <p className="text-gray-400 mt-4 text-xxs">Lorem ipsum dolor sit amet, consetetur sadipscing <br/> elitr, sed diam nonumy eirmod.</p>

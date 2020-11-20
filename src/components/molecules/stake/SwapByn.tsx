@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner'
 
 interface IProps {}
 function SwapByn(props: IProps) {
-  const { swapping, submit } = useSwap()
+  const { swapping, from, fromVal, to, handleInputChange, submit } = useSwap()
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="text-lg font-bold">SWAP</h3>
@@ -28,7 +28,9 @@ function SwapByn(props: IProps) {
               <h6 className="text-xxs font-medium">From</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
-                value={0.0}
+                name="from"
+                value={from}
+                onChange={handleInputChange}
               />
             </div>
             <div className="text-right">
@@ -42,6 +44,7 @@ function SwapByn(props: IProps) {
               </div>
             </div>
           </div>
+          <small className="text-red-500 italic block">{fromVal}</small>
           <img
             src="assets/Icons/arrow_down.svg"
             className="mt-6 m-auto h-4"
@@ -51,7 +54,7 @@ function SwapByn(props: IProps) {
               <h6 className="text-xxs font-medium">To</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
-                value={0.0}
+                value={to}
               />
             </div>
             <div className="text-right">
