@@ -5,7 +5,7 @@ import { Balance } from '../store/types/WalletState';
 import { ContractLookup } from '../contracts/contracts.lookup';
 import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
 import { saveBalanceInfoAction } from '../store/actions/WalletActions';
-import { getCrypto, getGBP } from './axios.service';
+import { getCrypto, getGBP, getSynthetixPrices } from './axios.service';
 
 
 
@@ -26,6 +26,7 @@ export const updateBalances = async () => {
             today: todayUpdated, yesterday: yesterday
         })
     ])
+   let synthetixPricesFeed = await getSynthetixPrices();
 debugger
     let balances: Balance[] = [];
     for (let i = 0; i < assets.length; i++) {
