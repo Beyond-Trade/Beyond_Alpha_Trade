@@ -23,17 +23,25 @@ function Burn() {
           />
         </div>
         <div className="w-full px-6">
-        <div className="mt-6">
-            <p className="text-xs font-medium">Confirm or enter amount to burn:</p>
+          <div className="mt-6">
+            <p className="text-xs font-medium">
+              Confirm or enter amount to burn:
+            </p>
             <div className="flex mt-2">
-              <button className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 text-xxs text-white rounded">Burn Max</button>
-              <div className="bg-gray-300 py-1 px-3 text-center text-xxs text-gray-600 font-medium ml-2 rounded w-full">Fix your collateralization Ratio</div>
+              <button className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 text-xxs text-white rounded">
+                Burn Max
+              </button>
+              <div className="bg-gray-300 py-1 px-3 text-center text-xxs text-gray-600 font-medium ml-2 rounded w-full">
+                Fix your collateralization Ratio
+              </div>
             </div>
           </div>
           <div className="mt-6">
             <p className="text-xs font-medium text-gray-500">$ 0</p>
             <div className="bg-gray-300 mt-2 rounded px-4 py-3 flex items-center">
-              <Dropdown />
+              <text className="focus:outline-none text-gray-600 text-xs font-medium flex items-center border-r pr-4 border-gray-500">
+                USDb
+              </text>
               <input
                 className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 text-xs font-medium"
                 type="text"
@@ -44,7 +52,9 @@ function Burn() {
               </button>
             </div>
           </div>
-          <div className="text-center mt-2 text-xxs text-gray-800 font-medium">View transferable BYN</div>
+          <div className="text-center mt-2 text-xxs text-gray-800 font-medium">
+            View transferable BYN
+          </div>
 
           <h6 className="mt-8 text-center text-xs text-gray-800 font-medium">
             Ethereum network fee: $0/25 GWEI
@@ -58,5 +68,4 @@ function Burn() {
   );
 }
 
-
-export default Burn
+export default Burn;

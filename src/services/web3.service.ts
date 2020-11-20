@@ -44,7 +44,6 @@ export const initializeWeb3 = async (source: web3Sources, callback: Function): P
             case web3Sources.Metamask:
                 await initMetamask();
                 break;
-
             case web3Sources.Fortmatic:
                 await initFortmatic();
                 break;
@@ -59,11 +58,8 @@ export const initializeWeb3 = async (source: web3Sources, callback: Function): P
                 break;
         }
         if (web3.currentProvider) {
-
             store.dispatch(SaveWeb3InfoAction(source, web3));
             const accounts = await web3.eth.getAccounts();
-
-
 
             let wallets: Wallet[] = [];
 

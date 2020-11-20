@@ -1,12 +1,12 @@
-import { ReactNotificationOptions, store } from 'react-notifications-component';
+import { ReactNotificationOptions, store } from "react-notifications-component";
 
 interface AlertTypes {
-    title: string;
-    message: string;
-    type: any
+  title: string;
+  message: string;
+  type: any;
 }
-export const showAlert = ({title, message, type}:AlertTypes) => {
 
+export const showAlert = ({ title, message, type }: AlertTypes) => {
   store.addNotification({
     title: title,
     message: message,
@@ -17,7 +17,7 @@ export const showAlert = ({title, message, type}:AlertTypes) => {
     animationOut: ["animate__animated", "animate__fadeOut"],
     dismiss: {
       duration: 5000,
-      onScreen: true
-    }
+      onScreen: true,
+    },
   });
-}
+};

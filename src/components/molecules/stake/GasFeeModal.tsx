@@ -35,6 +35,10 @@ function GasFeeModal(props: IProps) {
 
 export default GasFeeModal;
 
+
+
+
+
 const customStyle = {
   overlay: {
     backgroundColor: "#00000080",
