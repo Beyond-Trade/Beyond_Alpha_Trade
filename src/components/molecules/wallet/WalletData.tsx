@@ -1,6 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { RootState } from "../../../store/reducers/Index";
+import { useSelector } from "react-redux";
 
 function WalletData() {
   const { balances } = useSelector((state: RootState) => state.wallet);
@@ -66,11 +66,11 @@ function WalletData() {
           </tbody>
         </table>
         {balances.length <= 0 && (
-        <div className="py-20 flex justify-center items-center">
-          <h6 className="text-gray-600 font-medium text-xxs">
-            No assets associated with this wallet
-          </h6>
-        </div>
+          <div className="py-20 flex justify-center items-center">
+            <h6 className="text-gray-600 font-medium text-xxs">
+              No assets associated with this wallet
+            </h6>
+          </div>
         )}
       </div>
       {/* <div className="w-84 bg-customGray-100 rounded">
