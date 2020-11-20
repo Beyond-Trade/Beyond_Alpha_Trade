@@ -1,11 +1,12 @@
 export enum ERC20Contracts {
-    USDB = 'USDb',
+    USDb = 'USDb',
+    EURb = 'EURb',
     BEYOND = 'Beyond',
     ETHb = 'ETHb ',
-    OIL = 'OILb',
-    GBP ='GBPb',
-    BTC = 'BTCb',
+    OILb = 'OILb',
+    GBPb ='GBPb',
+    BTCb = 'BTCb',
     BEYOND_EXCHANGE = 'BEYOND_EXCHANGE',
     PRICE_FEED='PriceFeed',
-    
+    BEYOND_EX_PROX = 'BEYOND_EX_PROX',
 }
