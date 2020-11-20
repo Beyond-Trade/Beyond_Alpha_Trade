@@ -16,7 +16,7 @@ function TradeInfo() {
       <table width="100%">
         <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
           <td className="py-2 px-3">
-            <div className="flex items-center whitespace-nowrap	">
+            <div className="flex items-center whitespace-nowrap	w-20 bg-red-400">
               DATE | TIME
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>

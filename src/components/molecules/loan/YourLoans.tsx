@@ -2,48 +2,58 @@ import React from "react";
 
 function YourLoans() {
   return (
-    <div className="w-full bg-customGray-100 mb-4 rounded mr-8 mt-3">
-      <div className="bg-gray-300 rounded-t pl-2 pt-2">
+    <div className="w-full bg-customGray-100 whitespace-nowrap  mb-4 overflow-auto rounded mr-8 mt-3">
+      <div className="bg-gray-300 w-auto rounded-t pl-2 pt-2">
         <h3 className="font-medium text-xs text-gray-600">YOUR LOANS</h3>
       </div>
       <table width="100%">
         <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
-          <td className="w-1/7 pl-2 flex items-center">
-            AMOUNT BORROWED{" "}
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+          <td className="w-1/7 ">
+            <div className="flex items-center " style={{ width: "130px" }}>
+              AMOUNT BORROWED{" "}
+              <img
+                src="assets/Icons/up-down-arrow.svg"
+                alt="img"
+                className="ml-1 h-2"
+              />
+            </div>
           </td>
-          <td className="w-1/7">
-            <div className="flex items-center">
+          <td className="w-1/7 ">
+            <div className="flex items-center" style={{ width: "90px" }}>
               COLLATERAL{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img
+                src="assets/Icons/up-down-arrow.svg"
+                alt="img"
+                className="ml-1 h-2"
+              />
             </div>
           </td>
           <td className="w-1/7">
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ width: "70px" }}>
               C-RATIO{" "}
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ width: "100px" }}>
               TIME OPENED{" "}
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ width: "130px" }}>
               CURRENT.INST.FEE{" "}
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ width: "70px" }}>
               STATUS{" "}
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
-            <div className="flex items-center">
+            <div className="flex items-center" style={{ width: "70px" }}>
               VERIFY{" "}
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
