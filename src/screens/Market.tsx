@@ -18,6 +18,8 @@ function Market() {
     marketTopData,
     balances,
     marketTabs,
+    handleSearch,
+    search,
     handleSort,
     activeData,
     setTopIndex,
@@ -25,16 +27,16 @@ function Market() {
   } = useMarketData();
 
   let GBPRate = balances.filter(function (obj: any) {
-    return obj.short == ERC20Contracts.GBP;
+    return obj.short == ERC20Contracts.GBPb;
   })[0];
   let OILRate = balances.filter(function (obj: any) {
-    return obj.short == ERC20Contracts.OIL;
+    return obj.short == ERC20Contracts.OILb;
   })[0];
   let ETHbRate = balances.filter(function (obj: any) {
     return obj.short == ERC20Contracts.ETHb;
   })[0];
   let BTCRate = balances.filter(function (obj: any) {
-    return obj.short == ERC20Contracts.BTC;
+    return obj.short == ERC20Contracts.BTCb;
   })[0];
 
 
@@ -81,10 +83,14 @@ function Market() {
             onSelect={setIndex}
             tabs={marketTabs}
           />
-          <MarketTable data={activeData} handleSort={handleSort} />
+          <MarketTable
+            data={activeData}
+            handleSort={handleSort}
+            search={search}
+          />
         </div>
         <div className="xl:w-chartH lg:w-chartH">
-          <SearchTop />
+          <SearchTop handleSearch={handleSearch} search={search} />
           <GenericTab index={topIndex} onSelect={setTopIndex} tabs={topTabs} />
           <MarketTop data={marketTopData} />
         </div>

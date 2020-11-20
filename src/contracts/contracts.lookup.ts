@@ -1,18 +1,27 @@
-import { BtcAbi } from "./abi/btc.abi";
+import { BTCbAbi } from "./abi/btcb.abi";
+import { ETHbAbi } from "./abi/ethb.abi";
+import { OILbAbi } from "./abi/oilb.abi";
+import { GBPbAbi } from "./abi/gbpb.abi";
+import { EURbAbi } from "./abi/eurb.abi";
 import { SyntheticCategories } from "./constants/synthetic.enum";
 import { WeenusAbi } from "./abi/weenus.abi";
 import { ERC20Contracts } from "./constants/contracts";
 import { BeyondAbi } from "./abi/beyond.abi";
 import { BeyondExchangeAbi } from "./abi/beyondExchange.abi";
-import { USDb } from "./abi/Usdb.abi";
-import { PRICEFEED } from "./abi/priceFeed";
+import { BeyondExProxAbi } from "./abi/beyondExProx.abi";
+import { PriceFeedAbi } from "./abi/priceFeed";
+import { USDbAbi } from "./abi/Usdb.abi";
+
+
 
 export const ContractLookup = [
     {
-        contractName: ERC20Contracts.BTC,
-        contractAddress: "0xaFF4481D10270F50f203E0763e2597776068CBc5",
+        contractName: ERC20Contracts.BTCb,
+        contractAddress: "0xee482F26d93A1C6A402f2F010cdAfC12EcFe429E",
+        marketRateApiID: "bitcoin",
+        oracleRateID: "sBTC",
         fullName: "Bitcoin",
-        contractAbi: BtcAbi,
+        contractAbi: BTCbAbi,
         decimal:18,
         isSyntheticAsset:true,
         isNativeToken: false,
@@ -21,20 +30,63 @@ export const ContractLookup = [
     },  
     {
         contractName: ERC20Contracts.ETHb,
-        contractAddress: "0xaFF4481D10270F50f203E0763e2597776068CBc5",
+        contractAddress: "0x575d28D9bfB056cB29ef49A201438448b755965B",
+        marketRateApiID: "ether",
+        oracleRateID: "sETH",
         fullName: "Ethereum",
-        contractAbi: BtcAbi,
+        contractAbi: ETHbAbi,
         decimal:18,
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
         syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
-    },  
+    },
     {
-        contractName: ERC20Contracts.USDB,
-        contractAddress: "0x09874C7705598a43999Ac84c487ACA9cE08AB50C",
+        contractName: ERC20Contracts.OILb,
+        contractAddress: "0xB4D1B06b12f09d2bB07129b0F2eD95A1A46A8c00",
+        marketRateApiID: "oil",
+        oracleRateID: "sOIL",
+        fullName: "OIL",
+        contractAbi: OILbAbi,
+        decimal:18,
+        isSyntheticAsset:true,
+        isNativeToken: false,
+        isMainToken: false, // only for BYN,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+    }, 
+    {
+        contractName: ERC20Contracts.GBPb,
+        contractAddress: "0x6c5289168677f7978D9f727aB880030Df14B98C0",
+        marketRateApiID: "gbp",
+        oracleRateID: "sGBP",
+        fullName: "Great britain Pound",
+        contractAbi: GBPbAbi,
+        decimal:18,
+        isSyntheticAsset:true,
+        isNativeToken: false,
+        isMainToken: false, // only for BYN,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+    }, 
+    {
+        contractName: ERC20Contracts.EURb,
+        contractAddress: "0x4Cea0F30FD3cFd0a029E8f9D0EF43C7F424d5334",
+        marketRateApiID: "Euro",
+        oracleRateID: "sEUR",
+        fullName: "Euro",
+        contractAbi: EURbAbi,
+        decimal:18,
+        isSyntheticAsset:true,
+        isNativeToken: false,
+        isMainToken: false, // only for BYN,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+    },
+    {
+        contractName: ERC20Contracts.USDb,
+        contractAddress: "0x44dE6196e76F0624863BcD2D69Dd525d10437bE9",
+        marketRateApiID: "",
+        oracleRateID: "",
         fullName: "USDb",
-        contractAbi: USDb,
+        contractAbi: USDbAbi,
         decimal:18,
         isSyntheticAsset:true,
         isNativeToken: false,
@@ -43,10 +95,12 @@ export const ContractLookup = [
     },
     {
         contractName: ERC20Contracts.PRICE_FEED,
-        contractAddress: "0x411ae0bbb51aF95f5E41D9e79228B78497d18648",
+        contractAddress: "0xc8Aa560cd3179dCc7646bab4Ad80d66dEdf76d9F",
+        marketRateApiID: "",
+        oracleRateID: "",
         fullName: "PriceFeed",
         decimal:18,
-        contractAbi: PRICEFEED,
+        contractAbi: PriceFeedAbi,
         isSyntheticAsset:false,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
@@ -54,7 +108,9 @@ export const ContractLookup = [
     },
     {
         contractName: ERC20Contracts.BEYOND,
-        contractAddress: "0xC9869c7D380FD0272282fA7B7Fe26deF2f991332",
+        contractAddress: "0xaC9f43Be5f3b7CdD03478f13B429DA5e156399C8",
+        marketRateApiID: "",
+        oracleRateID: "",
         fullName: "Beyond",
         decimal:18,
         contractAbi: BeyondAbi,
@@ -65,7 +121,9 @@ export const ContractLookup = [
     },
     {
         contractName: ERC20Contracts.BEYOND_EXCHANGE,
-        contractAddress: "0x057127BA6E64B166fE22b1ea213Db04473725eef",
+        contractAddress: "0xFC723dCfFa670D6C069E3A71e863371330655368",
+        marketRateApiID: "",
+        oracleRateID: "",
         fullName: "beyondExchange",
         decimal:18,
         contractAbi: BeyondExchangeAbi,
@@ -74,4 +132,17 @@ export const ContractLookup = [
         isMainToken: false, // only for BYN,
         syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
     },
+    {
+        contractName: ERC20Contracts.BEYOND_EX_PROX,
+        contractAddress: "0x83d061a39e1E3eAc554FeD8d8206FD4c320bbe9a",
+        marketRateApiID: "",
+        oracleRateID: "",
+        fullName: "beyondExProx",
+        decimal:18,
+        contractAbi: BeyondExProxAbi,
+        isSyntheticAsset:false,
+        isNativeToken: false,
+        isMainToken: false, // only for BYN,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
+    }
 ]

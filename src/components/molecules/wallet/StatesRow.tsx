@@ -26,7 +26,7 @@ function StatesRow() {
     ((bynBalance?.cryptoBalance + bynBalance?.rate) / totalSynthValue) * 100:0;
 
   let USDbBalance = balances.filter(function (obj) {
-    return obj.short == ERC20Contracts.USDB;
+    return obj.short == ERC20Contracts.USDb;
   })[0];
   
   let totalUSDbBalancePercentage =USDbBalance?

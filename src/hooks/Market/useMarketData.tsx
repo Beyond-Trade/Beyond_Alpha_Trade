@@ -14,6 +14,7 @@ const useMarketData = () => {
     topIndex: 0,
     topTabs: ["TOP GAINERS", "TOP LOOSERS"],
     activeData: init,
+    search: "",
     marketTabs: [],
   });
 
@@ -40,6 +41,9 @@ const useMarketData = () => {
 
     console.log(unique);
   }, [balances]);
+  const handleSearch = (e: any) => {
+    setState((prev) => ({ ...prev, search: e.target.value }));
+  };
   const handleSort = (sortOn: any, orderBy: any) => {
     console.log(orderBy);
     let data: any = [];
@@ -90,6 +94,7 @@ const useMarketData = () => {
   return {
     ...state,
     setIndex,
+    handleSearch,
     handleSort,
     setTopIndex,
     balances,

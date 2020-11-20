@@ -5,12 +5,13 @@ import { Balance } from '../store/types/WalletState';
 import { ContractLookup } from '../contracts/contracts.lookup';
 import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
 import { saveBalanceInfoAction } from '../store/actions/WalletActions';
-import { getCrypto, getGBP } from './axios.service';
+import { getCrypto, getGBP, getSynthetixPrices } from './axios.service';
 
 
 
 
 let web3: Web3 = new Web3();
+
 export const updateBalances = async () => {
     let walletInfo = store.getState().wallet;
 
@@ -19,13 +20,14 @@ export const updateBalances = async () => {
     var today = new Date(Date.now());
     var todayUpdated = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
     var yesterday = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + (today.getDate() - 1);
-    const [cryptoRates,gbpPrice] = await Promise.all([
+    const [cryptoRates, gbpPrice] = await Promise.all([
         getCrypto('bitcoin,litecoin'),
         getGBP({
             today: todayUpdated, yesterday: yesterday
         })
     ])
-    debugger
+   let synthetixPricesFeed = await getSynthetixPrices();
+debugger
     let balances: Balance[] = [];
     for (let i = 0; i < assets.length; i++) {
         let bal: any = 0;
@@ -47,6 +49,18 @@ export const updateBalances = async () => {
             isEther: false,
             isSiteToken: assets[i].isMainToken,
         }
+        if (balanceObj.category == SyntheticCategories.CRYPTOCURRENCY) {
+
+            let rateObj = cryptoRates.find((x: any) => x.id == assets[i].fullName.toLowerCase())
+            
+            if (rateObj) {
+                balanceObj.change24h = rateObj.price_change_percentage_24h;
+                balanceObj.high24h = rateObj.high_24h;
+                balanceObj.low24h = rateObj.low_24h;
+                balanceObj.rate = rateObj.current_price
+            }
+        }
+
         balances.push(balanceObj);
         console.log(balances)
     }
