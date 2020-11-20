@@ -23,7 +23,7 @@ function Dropdown(props: IProps) {
         <div className="absolute text-gray-600 text-xs font-medium bg-white shadow">
           {props.fields.map((item, i) => (
             <button
-              className="focus:outline-none py-2 px-4 hover:bg-gray-200"
+              className="focus:outline-none py-2 w-full px-4 hover:bg-gray-200"
               onClick={() => select(i)}
             >
               {item}

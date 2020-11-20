@@ -70,7 +70,7 @@ function MakeOrders() {
             </text>
           </div>
         </div>
-        <button className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-1 mt-4">
+        <button className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-4">
           CONFIRM TRADE NOW
         </button>
       </div>

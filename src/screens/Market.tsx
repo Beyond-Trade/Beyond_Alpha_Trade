@@ -37,8 +37,7 @@ function Market() {
     return obj.short == ERC20Contracts.BTC;
   })[0];
 
-  console.log("=========", topTabs[topIndex]);
-  useEffect(() => {});
+
   return (
     <div className="px-8 xl:px-24 lg:px-24 md:px-24">
       <div className="mt-12 xl:flex lg:flex">
@@ -51,8 +50,8 @@ function Market() {
           marginRight="mr-4"
         />
         <MarketCard
-          coin="GOLD"
-          price={OILRate?Number(OILRate.rate).toFixed(4):"00.00"}
+          coin="GOLD OUNCE"
+          price={OILRate ? Number(OILRate.rate).toFixed(4) : "00.00"}
           pair="GOLD/ USDb"
           image="assets/Icons/gold.svg"
           change={OILRate ? Number(OILRate.change24h).toFixed(4) : "00.00"}

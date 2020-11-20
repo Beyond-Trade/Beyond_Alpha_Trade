@@ -14,14 +14,11 @@ export const transferEther = async (to: string, amount: any, gas: any) => {
 
         amount = Web3Wrapper.toWei(amount.toString())
 
-        try {
+
             // @ts-ignore
             const tx = await web3.eth.sendTransaction({ from: from.toString(), to: to, value: amount, gasPrice: gas });
             return tx;
-        } catch (error) {
-            console.error("Transfer ETH Balance: ", error);
-            return error;
-        }
+
     }
     else return null;
 }
@@ -39,13 +36,10 @@ export const transferERC20 = async (to: string, amount: string, erc20ContractNam
         const contractInfo = ContractLookup.find(contract => contract.contractName === erc20ContractName)
         if (contractInfo) {
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-            try {
+
                 const tx = await contract.methods.transfer(to, amount.toString()).send({ gasPrice: gas });
                 return tx;
-            } catch (error) {
-                console.error("Transfer ECR20: ", error);
-                return error;
-            }
+
         }
     }
     else return null;

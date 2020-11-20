@@ -38,6 +38,24 @@ export default SelectWalletModal;
 
 
 
+const getWidth = () => {
+  const width = window.innerWidth
+  if(width > 1000){
+    return "30%"
+  }
+  if(width < 1000 && width > 800){
+    return "50%"
+  }
+  if(width < 800 && width > 600){
+    return "60%"
+  }
+  if(width < 600 && width > 400){
+    return "80%"
+  }
+  if(width < 400){
+    return "80%"
+  }
+}
 
 const customStyle = {
   overlay: {
@@ -50,7 +68,7 @@ const customStyle = {
   content: {
     padding: "10px",
     backgroundColor: "#ffffff",
-    width: "30%",
+    width: getWidth(),
     border: "0 px",
     top: "auto",
     left: "auto",
