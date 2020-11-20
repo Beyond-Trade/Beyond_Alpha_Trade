@@ -1,56 +1,82 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+
+import { ERC20Contracts } from "../contracts/constants/contracts";
 import GenericTab from "../components/atomic/GenericTab";
 import MarketCard from "../components/atomic/market/MarketCard";
-import SearchTop from "../components/atomic/market/SearchTop";
 import MarketTable from "../components/molecules/market/marketTable";
 import MarketTop from "../components/molecules/market/MarketTop";
-import { ERC20Contracts } from "../contracts/constants/contracts";
-import useMarketData from "../hooks/Market/useMarketData";
 import { RootState } from "../store/reducers/Index";
+import SearchTop from "../components/atomic/market/SearchTop";
+import useMarketData from "../hooks/Market/useMarketData";
+import { useSelector } from "react-redux";
 
 function Market() {
-  const { marketIndex, topIndex, setTopIndex, setIndex } = useMarketData();
-  const { balances } = useSelector((state: RootState) => state.wallet);
+  const {
+    marketIndex,
+    topIndex,
+    topTabs,
+    marketTopData,
+    balances,
+    marketTabs,
+    handleSort,
+    activeData,
+    setTopIndex,
+    setIndex,
+  } = useMarketData();
 
-  let GBPRate = balances.filter(function (obj) {return obj.short == ERC20Contracts.GBP;})[0];
-  let OILRate = balances.filter(function (obj) {return obj.short == ERC20Contracts.OIL;})[0];
-  let ETHbRate = balances.filter(function (obj) {return obj.short == ERC20Contracts.ETHb;})[0];
-  let BTCRate = balances.filter(function (obj) {return obj.short == ERC20Contracts.BTC;})[0];
+  let GBPRate = balances.filter(function (obj: any) {
+    return obj.short == ERC20Contracts.GBP;
+  })[0];
+  let OILRate = balances.filter(function (obj: any) {
+    return obj.short == ERC20Contracts.OIL;
+  })[0];
+  let ETHbRate = balances.filter(function (obj: any) {
+    return obj.short == ERC20Contracts.ETHb;
+  })[0];
+  let BTCRate = balances.filter(function (obj: any) {
+    return obj.short == ERC20Contracts.BTC;
+  })[0];
 
+  console.log("=========", topTabs[topIndex]);
+  useEffect(() => {});
   return (
     <div className="px-8 xl:px-24 lg:px-24 md:px-24">
       <div className="mt-12 xl:flex lg:flex">
         <MarketCard
           coin="POUND"
-          price={GBPRate?Number(GBPRate.rate).toFixed(4):"00.00"}
+          price={GBPRate ? Number(GBPRate.rate).toFixed(4) : "00.00"}
           pair="GBP/ USDb"
           image="assets/Icons/pound.svg"
-          change={GBPRate?Number(GBPRate.change24h).toFixed(4):"00.00"}
+          change={GBPRate ? Number(GBPRate.change24h).toFixed(4) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
+<<<<<<< HEAD
           coin="GOLD OUNCE"
+          price={OILRate ? Number(OILRate.rate).toFixed(4) : "00.00"}
+=======
+          coin="GOLD"
           price={OILRate?Number(OILRate.rate).toFixed(4):"00.00"}
+>>>>>>> 7e44e6d85786b0ab88f7ff78480ae00840aedccc
           pair="GOLD/ USDb"
           image="assets/Icons/gold.svg"
-          change={OILRate?Number(OILRate.change24h).toFixed(4):"00.00"}
+          change={OILRate ? Number(OILRate.change24h).toFixed(4) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="ETHEREUM"
-          price={ETHbRate?Number(ETHbRate.rate).toFixed(4):"00.00"}
+          price={ETHbRate ? Number(ETHbRate.rate).toFixed(4) : "00.00"}
           pair="ETHEREUM/ USDb"
           image="assets/Icons/Ethereum.svg"
-          change={ETHbRate?Number(ETHbRate.change24h).toFixed(4):"00.00"}
+          change={ETHbRate ? Number(ETHbRate.change24h).toFixed(4) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="BITCOIN"
-          price={BTCRate?Number(BTCRate.rate).toFixed(4):"00.00"}
+          price={BTCRate ? Number(BTCRate.rate).toFixed(4) : "00.00"}
           pair="BTC/ USDb"
           image="assets/Icons/btc.svg"
-          change={BTCRate?Number(BTCRate.change24h).toFixed(4):"00.00"}
+          change={BTCRate ? Number(BTCRate.change24h).toFixed(4) : "00.00"}
           marginRight=""
         />
       </div>
@@ -59,18 +85,14 @@ function Market() {
           <GenericTab
             index={marketIndex}
             onSelect={setIndex}
-            tabs={["ALL", "EQUITIES", "COMMODITIES", "FOREX", "CRYPTO"]}
+            tabs={marketTabs}
           />
-          <MarketTable />
+          <MarketTable data={activeData} handleSort={handleSort} />
         </div>
         <div className="xl:w-chartH lg:w-chartH">
           <SearchTop />
-          <GenericTab
-            index={topIndex}
-            onSelect={setTopIndex}
-            tabs={["TOP GAINERS", "NEWEST"]}
-          />
-          <MarketTop />
+          <GenericTab index={topIndex} onSelect={setTopIndex} tabs={topTabs} />
+          <MarketTop data={marketTopData} />
         </div>
       </div>
     </div>
