@@ -1,57 +1,16 @@
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { providerUtils } from '@0x/utils';
-import WalletLink from 'walletlink'
-import { providers } from 'ethers';
 import Web3 from 'web3';
-import detectEthereumProvider from '@metamask/detect-provider';
-import BigNumber from 'bignumber.js'
-
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import {
-    APP_NAME,
-    CHAIN_ID,
-    ETH_JSONRPC_URL,
-    FORTMATIC_APP_ID,
-    INFURA_ID,
-    locaStorageConstants,
-    NETWORK_ID,
-    NETWORK_NAME,
-    PORTIS_APP_ID,
-    web3Sources
-} from '../constants';
-//import { notification } from 'antd';
-import { LocalStorage } from '../local_storage';
-
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { store } from '../App';
-import { resetWalletsInfoAction, saveBalanceInfoAction, saveWalletsInfoAction } from '../store/actions/WalletActions';
-import { Balance, Wallet } from '../store/types/WalletState';
+import { Balance } from '../store/types/WalletState';
 import { ContractLookup } from '../contracts/contracts.lookup';
 import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
+import { saveBalanceInfoAction } from '../store/actions/WalletActions';
 
 
 
 
 let web3: Web3 = new Web3();
 // let web3 = store.getState().wallet.web3;
-
-export const getETHBalance = async (address: string) => {
-    web3 = store.getState().wallet.web3;
-    if (web3.currentProvider) {
-        try {
-            var balanceInWei = await web3.eth.getBalance(address)
-            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
-            return Number(balanceInWei);
-        } catch (error) {
-            console.error("Get ETH Balance: ", error);
-            return 0;
-        }
-    } else {
-        return 0
-    }
-}
-
-
 export const updateBalances = async () => {
     let walletInfo = store.getState().wallet;
 
@@ -99,9 +58,21 @@ export const updateBalances = async () => {
     store.dispatch(saveBalanceInfoAction(balances));
 }
 
-
-
-
+export const getETHBalance = async (address: string) => {
+    web3 = store.getState().wallet.web3;
+    if (web3.currentProvider) {
+        try {
+            var balanceInWei = await web3.eth.getBalance(address)
+            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
+            return Number(balanceInWei);
+        } catch (error) {
+            console.error("Get ETH Balance: ", error);
+            return 0;
+        }
+    } else {
+        return 0
+    }
+}
 
 // @ts-ignore
 export const getERC20Balance = async (contractInfo: any, address: string) => {
@@ -123,7 +94,6 @@ export const getERC20Balance = async (contractInfo: any, address: string) => {
     }
 }
 
-
 // @ts-ignore
 export const getPriceFeed = async (contractName: any, decimal: number): Promise<number> => {
     web3 = store.getState().wallet.web3;
@@ -144,6 +114,7 @@ export const getPriceFeed = async (contractName: any, decimal: number): Promise<
     }
     else return 0;
 }
+
 
 
 
