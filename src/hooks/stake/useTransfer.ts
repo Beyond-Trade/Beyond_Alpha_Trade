@@ -102,7 +102,6 @@ const useTransfer = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        console.log("transfer erc20 error", e);
         showAlert({
           title: "Error!",
           message: "Unable to transfer",

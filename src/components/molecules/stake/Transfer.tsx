@@ -81,7 +81,7 @@ function Transfer() {
           </text>
           <text onClick={openFeeModal} className="text-blue-500 underline ml-1 cursor-pointer">EDIT</text>
           </div>
-          <button onClick={submit} className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-2">
+          <button onClick={submit} className="focus:outline-none flex justify-center bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-2">
           {!submitting && "SEND NOW"}
             {submitting && (
               <Loader type="Bars" color="#ffffff" height={18} width={20} />

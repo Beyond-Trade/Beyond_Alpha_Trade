@@ -34,8 +34,8 @@ function SelectWallet(props: IProps) {
             <text>
               {item.address.slice(0, 5) + "..." + item.address.slice(-5)}
             </text>
-            <text>{parseFloat(item.BYNBalance.toString()).toFixed(2)}</text>
-            <text>{item.USDbBalance > 0?item.USDbBalance.toFixed(4):'00.00'}</text>
+            <text>{item.BYNBalance}</text>
+            <text>{item.USDbBalance}</text>
             <text>{item.EthBalance.toFixed(4)}</text>
             <a target='_blank' href={EtherscanBrowsUrl + item.address}> <img src="assets/Icons/etherscan-logo-circle.svg" className="h-4" /></a>
           </button>
