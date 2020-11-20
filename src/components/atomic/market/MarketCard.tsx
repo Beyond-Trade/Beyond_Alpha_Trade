@@ -1,10 +1,10 @@
 import React from "react";
 interface IProps {
   pair: string;
-  change: number;
+  change: string;
   image: string;
   coin: string;
-  price: number;
+  price: string;
   marginRight: string
 }
 
