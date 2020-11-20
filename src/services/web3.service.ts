@@ -71,7 +71,7 @@ export const initializeWeb3 = async (source: web3Sources, callback: Function): P
             for (let i = 0; i < accounts.length; i++) {
 
                 const BEYOND = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
-                const BUSD = ContractLookup.find(contract => contract.contractName === ERC20Contracts.USDB)
+                const BUSD = ContractLookup.find(contract => contract.contractName === ERC20Contracts.USDb)
 
                 let BYNBalance: any = await getERC20Balance(BEYOND, accounts[i]);
                 let USDbBalance: any = await getERC20Balance(BUSD, accounts[i]);

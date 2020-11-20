@@ -11,7 +11,7 @@ export const mintERC20 = async (amount: number, erc20ContractName: ERC20Contract
     //let activeAddress = walletInfo.selected.address;
    
     if (web3.currentProvider) {
-        const contractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.USDB);
+        const contractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.USDb);
         if (contractInfo) {
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
             try {

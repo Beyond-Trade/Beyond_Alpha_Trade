@@ -27,16 +27,16 @@ function Market() {
   } = useMarketData();
 
   let GBPRate = balances.filter(function (obj: any) {
-    return obj.short == ERC20Contracts.GBP;
+    return obj.short == ERC20Contracts.GBPb;
   })[0];
   let OILRate = balances.filter(function (obj: any) {
-    return obj.short == ERC20Contracts.OIL;
+    return obj.short == ERC20Contracts.OILb;
   })[0];
   let ETHbRate = balances.filter(function (obj: any) {
     return obj.short == ERC20Contracts.ETHb;
   })[0];
   let BTCRate = balances.filter(function (obj: any) {
-    return obj.short == ERC20Contracts.BTC;
+    return obj.short == ERC20Contracts.BTCb;
   })[0];
 
   console.log("=========", topTabs[topIndex]);
