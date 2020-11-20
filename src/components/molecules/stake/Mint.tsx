@@ -56,7 +56,7 @@ function Mint() {
           </div>
           <button
             onClick={submit}
-            className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-2"
+            className="focus:outline-none bg-customBlue-200 flex justify-center text-white text-xs w-full rounded py-2 mt-2"
           >
             {!submitting && "MINT NOW"}
             {submitting && (
