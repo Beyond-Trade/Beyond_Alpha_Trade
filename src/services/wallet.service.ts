@@ -10,7 +10,6 @@ import { saveBalanceInfoAction } from '../store/actions/WalletActions';
 
 
 let web3: Web3 = new Web3();
-// let web3 = store.getState().wallet.web3;
 export const updateBalances = async () => {
     let walletInfo = store.getState().wallet;
 
@@ -19,8 +18,10 @@ export const updateBalances = async () => {
 
     let balances: Balance[] = [];
     for (let i = 0; i < assets.length; i++) {
-        let bal: any = await getERC20Balance(assets[i], activeAddress);
-
+        let bal: any = 0;
+        if (activeAddress) {
+            bal = await getERC20Balance(assets[i], activeAddress);
+        }
         let price: number = await getPriceFeed(assets[i].contractName, assets[i].decimal);
 
         console.log('Price of ' + assets[i].contractName + ' is ' + price);
