@@ -5,6 +5,7 @@ import { Balance } from '../store/types/WalletState';
 import { ContractLookup } from '../contracts/contracts.lookup';
 import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
 import { saveBalanceInfoAction } from '../store/actions/WalletActions';
+import { getCrypto, getGBP } from './axios.service';
 
 
 
@@ -15,7 +16,16 @@ export const updateBalances = async () => {
 
     let activeAddress = walletInfo.selected.address;
     const assets = ContractLookup.filter(c => c.isSyntheticAsset && !c.isNativeToken);
-
+    var today = new Date(Date.now());
+    var todayUpdated = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    var yesterday = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + (today.getDate() - 1);
+    const [cryptoRates,gbpPrice] = await Promise.all([
+        getCrypto('bitcoin,litecoin'),
+        getGBP({
+            today: todayUpdated, yesterday: yesterday
+        })
+    ])
+    debugger
     let balances: Balance[] = [];
     for (let i = 0; i < assets.length; i++) {
         let bal: any = 0;
@@ -55,7 +65,6 @@ export const updateBalances = async () => {
         isSiteToken: false,
     }
     balances.push(balanceObj);
-
     store.dispatch(saveBalanceInfoAction(balances));
 }
 

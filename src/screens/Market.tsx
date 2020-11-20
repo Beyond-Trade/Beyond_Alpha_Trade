@@ -30,7 +30,7 @@ function Market() {
           marginRight="mr-4"
         />
         <MarketCard
-          coin="GOLD OUNCE"
+          coin="GOLD"
           price={OILRate?Number(OILRate.rate).toFixed(4):"00.00"}
           pair="GOLD/ USDb"
           image="assets/Icons/gold.svg"
