@@ -8,8 +8,8 @@ interface AlertTypes {
 export const showAlert = ({title, message, type}:AlertTypes) => {
 
   store.addNotification({
-    title: {title},
-    message: {message},
+    title: title,
+    message: message,
     type: type,
     insert: "top",
     container: "top-right",

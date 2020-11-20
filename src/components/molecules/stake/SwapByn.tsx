@@ -2,9 +2,10 @@ import React from "react";
 import useSwap from "../../../hooks/stake/useSwap";
 import Loader from 'react-loader-spinner'
 
-interface IProps {}
+interface IProps { }
 function SwapByn(props: IProps) {
-  const { swapping, from, fromVal, to, handleInputChange, submit } = useSwap()
+  const { swapping, from, fromVal, to, balance, setMax, handleInputChange, submit } = useSwap()
+
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="text-lg font-bold">SWAP</h3>
@@ -34,9 +35,9 @@ function SwapByn(props: IProps) {
               />
             </div>
             <div className="text-right">
-              <h6 className="text-xxs font-medium break-normal">Balance: 0</h6>
+              <h6 className="text-xxs font-medium break-normal">Balance: {balance}</h6>
               <div className="flex items-center w-16 text-right justify-end mt-2">
-                <button className="focus:outline-none bg-customBlue-100 px-1 text-xxs text-white mr-4">
+                <button onClick={setMax} className="focus:outline-none bg-customBlue-100 px-1 text-xxs text-white mr-4">
                   MAX
                 </button>
                 <img src="assets/Icons/eth-small.svg" className="h-4" />
