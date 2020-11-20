@@ -18,7 +18,7 @@ function MarketSort({ sortOn, handleSort }: any) {
         <img
           src="assets/Icons/sort-arrows-couple-pointing-up-and-down-1.svg"
           alt="img"
-          className="ml-1 h-2  cursor-pointer"
+          className="ml-1 h-2 cursor-pointer"
           onClick={() => {
             setActiveButton(3);
             handleSort(sortOn, "desc");
@@ -29,7 +29,7 @@ function MarketSort({ sortOn, handleSort }: any) {
         <img
           src="assets/Icons/sort-arrows-couple-pointing-up-and-down.svg"
           alt="img"
-          className="ml-1 h-2  cursor-pointer"
+          className="ml-1 h-2 cursor-pointer"
           onClick={() => {
             setActiveButton(1);
             handleSort(sortOn, "");
