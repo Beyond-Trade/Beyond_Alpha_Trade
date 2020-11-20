@@ -1,39 +1,8 @@
 import axios from 'axios';
-const CoinGecko = require('coingecko-api');
-const CoinGeckoClient = new CoinGecko();
 
 export const zero_x_base_url = 'https://api.0x.org';
 export const coinGeko = 'https://api.coingecko.com/api/v3/'
 export const twelveData = 'https://api.twelvedata.com/';
-
-
-
-// var getMarketData = async (coinsFullNames:string) => {
-//     return new Promise(async (resolve, reject) => {
-//         try {
-//             coinsFullNames = encodeURI(coinsFullNames);
-//             let data = await CoinGeckoClient.simple.price({
-//                 ids: coinsFullNames,
-//                 vs_currencies: ['usd'],
-//                 include_market_cap:true,
-//                 include_24hr_vol:true,
-//                 include_24hr_change:true,
-//                 include_last_updated_at:true,
-//             });
-//             if(data.success)
-//             {
-//                 resolve(data.data)
-//             }
-//           else{
-//             reject(data.message)
-//           }
-//         } catch (err) {
-//             reject(err)
-//         }
-//     });
-// };
-
-
 
 export async function getCrypto(coinIds: any) {
     try {
