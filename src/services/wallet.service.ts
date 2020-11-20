@@ -26,7 +26,7 @@ export const updateBalances = async () => {
             today: todayUpdated, yesterday: yesterday
         })
     ])
-
+debugger
     let balances: Balance[] = [];
     for (let i = 0; i < assets.length; i++) {
         let bal: any = 0;
