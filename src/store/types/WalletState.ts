@@ -11,10 +11,10 @@ export interface Wallet {
 export interface Balance {
     name: string;
     short: string;
-    rate:number;
-    change24h:number;
-    high24h:number;
-    low24h:number;
+    rate: number;
+    change24h: number;
+    high24h: number;
+    low24h: number;
     cryptoBalance: number;
     category: SyntheticCategories;
     isEther: boolean;
@@ -27,6 +27,6 @@ export interface WalletState {
     selected:Wallet,
     source: string; //Metamask etc
     wallets: Wallet[];  // Reset balance is new source
-    balances: Balance[] //Current source default wallet balances  
+    balances: Balance[] //Current source default wallet balances
     isConnected: boolean;
 }
