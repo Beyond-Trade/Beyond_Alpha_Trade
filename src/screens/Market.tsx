@@ -18,6 +18,8 @@ function Market() {
     marketTopData,
     balances,
     marketTabs,
+    handleSearch,
+    search,
     handleSort,
     activeData,
     setTopIndex,
@@ -82,10 +84,14 @@ function Market() {
             onSelect={setIndex}
             tabs={marketTabs}
           />
-          <MarketTable data={activeData} handleSort={handleSort} />
+          <MarketTable
+            data={activeData}
+            handleSort={handleSort}
+            search={search}
+          />
         </div>
         <div className="xl:w-chartH lg:w-chartH">
-          <SearchTop />
+          <SearchTop handleSearch={handleSearch} search={search} />
           <GenericTab index={topIndex} onSelect={setTopIndex} tabs={topTabs} />
           <MarketTop data={marketTopData} />
         </div>
