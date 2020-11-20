@@ -34,7 +34,7 @@ const useSwap = () => {
   const buyTokens = () => {
     setState((prev) => ({ ...prev, swapping: true }));
 
-    buyBYNToken(selected.address, state.from)
+    buyBYNToken(state.from)
       .then((data) => {
         if (!data) {
           throw new Error("no data");
