@@ -1,67 +1,37 @@
-import { Web3Wrapper } from '@0x/web3-wrapper';
-import { providerUtils } from '@0x/utils';
-import WalletLink from 'walletlink'
-import { providers } from 'ethers';
 import Web3 from 'web3';
-import detectEthereumProvider from '@metamask/detect-provider';
-import BigNumber from 'bignumber.js'
-
-import WalletConnectProvider from "@walletconnect/web3-provider";
-import {
-    APP_NAME,
-    CHAIN_ID,
-    ETH_JSONRPC_URL,
-    FORTMATIC_APP_ID,
-    INFURA_ID,
-    locaStorageConstants,
-    NETWORK_ID,
-    NETWORK_NAME,
-    PORTIS_APP_ID,
-    web3Sources
-} from '../constants';
-//import { notification } from 'antd';
-import { LocalStorage } from '../local_storage';
-
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { store } from '../App';
-import { resetWalletsInfoAction, saveBalanceInfoAction, saveWalletsInfoAction } from '../store/actions/WalletActions';
-import { Balance, Wallet } from '../store/types/WalletState';
+import { Balance } from '../store/types/WalletState';
 import { ContractLookup } from '../contracts/contracts.lookup';
 import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
+import { saveBalanceInfoAction } from '../store/actions/WalletActions';
+import { getCrypto, getGBP } from './axios.service';
 
 
 
 
 let web3: Web3 = new Web3();
-// let web3 = store.getState().wallet.web3;
-
-export const getETHBalance = async (address: string) => {
-    web3 = store.getState().wallet.web3;
-    if (web3.currentProvider) {
-        try {
-            var balanceInWei = await web3.eth.getBalance(address)
-            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
-            return Number(balanceInWei);
-        } catch (error) {
-            console.error("Get ETH Balance: ", error);
-            return 0;
-        }
-    } else {
-        return 0
-    }
-}
-
-
 export const updateBalances = async () => {
     let walletInfo = store.getState().wallet;
 
     let activeAddress = walletInfo.selected.address;
     const assets = ContractLookup.filter(c => c.isSyntheticAsset && !c.isNativeToken);
-
+    var today = new Date(Date.now());
+    var todayUpdated = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    var yesterday = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + (today.getDate() - 1);
+    const [cryptoRates,gbpPrice] = await Promise.all([
+        getCrypto('bitcoin,litecoin'),
+        getGBP({
+            today: todayUpdated, yesterday: yesterday
+        })
+    ])
+    debugger
     let balances: Balance[] = [];
     for (let i = 0; i < assets.length; i++) {
-        let bal: any = await getERC20Balance(assets[i], activeAddress);
-
+        let bal: any = 0;
+        if (activeAddress) {
+            bal = await getERC20Balance(assets[i], activeAddress);
+        }
         let price: number = await getPriceFeed(assets[i].contractName, assets[i].decimal);
 
         console.log('Price of ' + assets[i].contractName + ' is ' + price);
@@ -95,13 +65,24 @@ export const updateBalances = async () => {
         isSiteToken: false,
     }
     balances.push(balanceObj);
-
     store.dispatch(saveBalanceInfoAction(balances));
 }
 
-
-
-
+export const getETHBalance = async (address: string) => {
+    web3 = store.getState().wallet.web3;
+    if (web3.currentProvider) {
+        try {
+            var balanceInWei = await web3.eth.getBalance(address)
+            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
+            return Number(balanceInWei);
+        } catch (error) {
+            console.error("Get ETH Balance: ", error);
+            return 0;
+        }
+    } else {
+        return 0
+    }
+}
 
 // @ts-ignore
 export const getERC20Balance = async (contractInfo: any, address: string) => {
@@ -123,7 +104,6 @@ export const getERC20Balance = async (contractInfo: any, address: string) => {
     }
 }
 
-
 // @ts-ignore
 export const getPriceFeed = async (contractName: any, decimal: number): Promise<number> => {
     web3 = store.getState().wallet.web3;
@@ -144,6 +124,7 @@ export const getPriceFeed = async (contractName: any, decimal: number): Promise<
     }
     else return 0;
 }
+
 
 
 
