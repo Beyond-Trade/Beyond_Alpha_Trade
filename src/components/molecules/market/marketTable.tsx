@@ -1,79 +1,94 @@
 import * as React from "react";
 
-function MarketTable() {
+import MarketSort from "../../atomic/market/MarketSort";
+import { RootState } from "../../../store/reducers/Index";
+import { useSelector } from "react-redux";
+
+interface IProps {
+  data: any;
+  handleSort: Function;
+  search: any;
+}
+function MarketTable({ data, handleSort, search }: IProps) {
   return (
     <table width="100%">
       <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
         <td className="py-2 px-3">
           <div className="flex items-center">
             ASSET
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            {/* <MarketSort handleSort={handleSort} sortOn={"short"} /> */}
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
             LAST PRICE
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            <MarketSort handleSort={handleSort} sortOn={"rate"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
-            25 HOUR CHANGE
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            24 HOUR CHANGE
+            <MarketSort handleSort={handleSort} sortOn={"change24h"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
             24 HOUR HIGH
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            <MarketSort handleSort={handleSort} sortOn={"high24h"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
             24 HOUR LOW
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            <MarketSort handleSort={handleSort} sortOn={"low24h"} />
           </div>
         </td>
-        <td className="py-2 px-3">
+        {/* <td className="py-2 px-3">
           <div className="flex items-center">
             24 HOUR TREND
             <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
           </div>
-        </td>
+        </td> */}
         <td className="py-2 px-3">
           <div className="flex items-center">TRADE NOW</div>
         </td>
       </tr>
-      {[1, 1, 1, 1, 1].map((item) => (
-        <tr className="text-xs text-left text-gray-700 font-medium">
-          <td className="py-3 px-3">
-            <div className="flex items-center">
-              <text className="text-black">sLTC</text>
-              <text className="text-gray-400 ml-2">Litecoin</text>
-            </div>
-          </td>
-          <td className="py-3 px-3">
-              $58.91
-          </td>
-          <td className="py-3 px-3">
-            <button className="bg-green-200 text-green-400 rounded-sm px-1">
-              9.09 %
-            </button>
-          </td>
-          <td className="py-3 px-3">
-            $16.21
-          </td>
-          <td className="py-3 px-3">
-            $56.51
-          </td>
-          <td className="py-3 px-3">
+      {data
+        .filter((data: any) =>
+          data.short.toLowerCase().includes(search.toLowerCase())
+        )
+        .map((item: any) => (
+          <tr className="text-xs text-left text-gray-700 font-medium">
+            <td className="py-3 px-3">
+              <div className="flex items-center">
+                <text className="text-black">{item.short}</text>
+                <text className="text-gray-400 ml-2">Litecoin</text>
+              </div>
+            </td>
+            <td className="py-3 px-3">${item.rate}</td>
+            <td className="py-3 px-3">
+              <button
+                className={`rounded-sm px-1 ${
+                  item.change24h >= 0
+                    ? "bg-green-200 text-green-400"
+                    : "bg-red-200 text-red-400"
+                } `}
+              >
+                {item.change24h} %
+              </button>
+            </td>
+            <td className="py-3 px-3">${item.high24h}</td>
+            <td className="py-3 px-3">${item.low24h}</td>
+            {/* <td className="py-3 px-3">
             <img src="assets/Images/Up.png" className="h-8" />
-          </td>
-          <td className="py-3 px-3">
-            <button className="focus:outline-none bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white text-xs rounded-sm">TRADE</button>
-          </td>
-        </tr>
-      ))}
+          </td> */}
+            <td className="py-3 px-3">
+              <button className="focus:outline-none bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white text-xs rounded-sm">
+                TRADE
+              </button>
+            </td>
+          </tr>
+        ))}
     </table>
   );
 }
