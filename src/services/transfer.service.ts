@@ -12,11 +12,13 @@ export const transferEther = async (to: string, amount: any, gas: any) => {
     web3 = store.getState().wallet.web3;
 
     if (web3.currentProvider) {
-        let from = localStorage.getWalletAddress();
+        let walletInfo = store.getState().wallet;
 
+        let activeAddress = walletInfo.selected.address;
+      
         amount = Web3Wrapper.toWei(amount.toString())
         // @ts-ignore
-        const tx = await web3.eth.sendTransaction({ from: from.toString(), to: to, value: amount, gasPrice: gas });
+        const tx = await web3.eth.sendTransaction({ from: activeAddress.toString(), to: to, value: amount, gasPrice: gas });
         return tx;
 
     }

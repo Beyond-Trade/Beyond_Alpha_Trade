@@ -4,7 +4,6 @@ import WalletLink from 'walletlink'
 import { providers } from 'ethers';
 import Web3 from 'web3';
 import detectEthereumProvider from '@metamask/detect-provider';
-import BigNumber from 'bignumber.js'
 
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import {
@@ -13,14 +12,11 @@ import {
     ETH_JSONRPC_URL,
     FORTMATIC_APP_ID,
     INFURA_ID,
-    locaStorageConstants,
     NETWORK_ID,
     NETWORK_NAME,
     PORTIS_APP_ID,
     web3Sources
 } from '../constants';
-//import { notification } from 'antd';
-import { LocalStorage } from '../local_storage';
 
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { store } from '../App';
