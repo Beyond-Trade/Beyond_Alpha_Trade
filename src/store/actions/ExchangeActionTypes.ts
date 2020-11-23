@@ -11,6 +11,11 @@ interface SelectAssetPair {
     counter: string;
     baseBalance: number;
     counterBalance: number;
+    fromRate: number;
+    toRate: number;
+    change24h: number;
+    high24h: number;
+    low24h: number;
 }
 
 interface SetMarketData {

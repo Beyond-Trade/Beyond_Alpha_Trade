@@ -1,267 +1,182 @@
-import { ContractLookup, IContractLookup } from "../contracts/contracts.lookup";
-import { getCrypto, getForex, getSynthetixPrices } from "./axios.service";
-
-import { Balance } from "../store/types/WalletState";
+import Web3 from 'web3';
 import { ERC20Contracts } from "../contracts/constants/contracts";
-import { SyntheticCategories } from "../contracts/constants/synthetic.enum";
-import Web3 from "web3";
-import { saveBalanceInfoAction } from "../store/actions/WalletActions";
-import { store } from "../App";
+import { store } from '../App';
+import { Balance } from '../store/types/WalletState';
+import { ContractLookup, IContractLookup } from '../contracts/contracts.lookup';
+import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
+import { saveBalanceInfoAction } from '../store/actions/WalletActions';
+import { getCrypto, getForex, getSynthetixPrices } from './axios.service';
+
+
 
 let cryptoRates: any, forexRates: any, synthetixRates: any, activeAddress: any;
 let web3: Web3 = new Web3();
 
 var curDate = new Date(Date.now());
-var today =
-  curDate.getFullYear() +
-  "-" +
-  (curDate.getMonth() + 1) +
-  "-" +
-  curDate.getDate();
-var yesterday =
-  curDate.getFullYear() +
-  "-" +
-  (curDate.getMonth() + 1) +
-  "-" +
-  (curDate.getDate() - 1);
+var today = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
+var yesterday = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + (curDate.getDate() - 1);
 
 const loadRates = async () => {
-  var cryptoCoinsIds = ContractLookup.reduce(function (
-    filtered: any,
-    option: any
-  ) {
-    if (
-      option.syntheticCategory == SyntheticCategories.CRYPTOCURRENCY &&
-      !option.isFixedRate &&
-      !option.isNativeToken &&
-      option.isSyntheticAsset
-    ) {
-      filtered.push(option.marketRateApiID);
-    }
-    return filtered;
-  },
-  []).join(",");
+    var cryptoCoinsIds = ContractLookup.reduce(function (filtered: any, option: any) {
+        if (option.syntheticCategory == SyntheticCategories.CRYPTOCURRENCY && !option.isFixedRate && !option.isNativeToken && option.isSyntheticAsset) {
+            filtered.push(option.marketRateApiID);
+        }
+        return filtered;
+    }, []).join(",");
 
-  var forexCoinsIds = ContractLookup.reduce(function (
-    filtered: any,
-    option: any
-  ) {
-    if (
-      option.syntheticCategory == SyntheticCategories.FOREX &&
-      !option.isFixedRate &&
-      !option.isNativeToken &&
-      option.isSyntheticAsset
-    ) {
-      filtered.push(option.marketRateApiID);
-    }
-    return filtered;
-  },
-  []).join(",");
+    var forexCoinsIds = ContractLookup.reduce(function (filtered: any, option: any) {
+        if (option.syntheticCategory == SyntheticCategories.FOREX && !option.isFixedRate && !option.isNativeToken && option.isSyntheticAsset) {
+            filtered.push(option.marketRateApiID);
+        }
+        return filtered;
+    }, []).join(",");
 
-  [cryptoRates, forexRates, synthetixRates] = await Promise.all([
-    getCrypto(cryptoCoinsIds),
-    getForex({
-      today: today,
-      yesterday: yesterday,
-      symbols: forexCoinsIds,
-    }),
-    getSynthetixPrices(),
-  ]);
-};
 
-function getForexChange(symbol: any) {
-  symbol = symbol.toUpperCase();
-  if (forexRates) {
-    var startprice = forexRates[yesterday][symbol];
-    var endprice = forexRates[today][symbol];
-    var change = ((endprice - startprice) / startprice) * 100;
-    change = parseFloat(change.toFixed(2));
-    return change;
-  } else return 0;
+    [cryptoRates, forexRates, synthetixRates] = await Promise.all([
+        getCrypto(cryptoCoinsIds),
+        getForex({
+            today: today, yesterday: yesterday, symbols: forexCoinsIds
+        }),
+        getSynthetixPrices()
+    ])
+
+
 }
 
-const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
-  let balance: Balance = {
-    name: asset.fullName,
-    short: asset.contractName,
-    rate: 0,
-    change24h: 0,
-    high24h: 0,
-    low24h: 0,
-    cryptoBalance: 0,
-    category: asset.syntheticCategory,
-    isEther: asset.isNativeToken,
-    isSiteToken: asset.isMainToken,
-    icon: asset.icon,
-  };
-
-  if (synthetixRates) {
-    let synthRate = synthetixRates.find((x: any) => x.id == asset.oracleRateID);
-
-    balance.rate = synthRate ? synthRate.rate / Math.pow(10, asset.decimal) : 0;
-  }
-  if (activeAddress) {
-    if (balance.isEther) {
-      balance.cryptoBalance = await getETHBalance(activeAddress);
-    } else {
-      balance.cryptoBalance = await getERC20Balance(asset, activeAddress);
+function getForexChange(symbol: any) {
+    symbol = symbol.toUpperCase();
+    if (forexRates) {
+        var startprice = (forexRates[yesterday])[symbol];
+        var endprice = (forexRates[today])[symbol];
+        var change = (endprice - startprice) / startprice * 100;
+        change = parseFloat(change.toFixed(2))
+        return change;
     }
-  }
-  switch (asset.syntheticCategory) {
-    case SyntheticCategories.CRYPTOCURRENCY:
-      let rateObj = cryptoRates.find((x: any) => x.id == asset.marketRateApiID);
-      if (rateObj) {
-        balance.change24h = rateObj.price_change_percentage_24h;
-        balance.high24h = rateObj.high_24h;
-        balance.low24h = rateObj.low_24h;
-      }
-      break;
+    else
+        return 0
+}
 
-    case SyntheticCategories.FOREX:
-      let fchange = getForexChange(asset.marketRateApiID);
-      balance.change24h = fchange ? fchange : 0;
-      break;
-  }
-  if (asset.isFixedRate) {
-    balance.rate = asset.fixedRateValue;
-  }
-  return balance;
-};
+
+const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
+
+    let balance: Balance = {
+        name: asset.fullName,
+        short: asset.contractName,
+        rate: 0,
+        change24h: 0,
+        high24h: 0,
+        low24h: 0,
+        cryptoBalance: 0,
+        category: asset.syntheticCategory,
+        isEther: asset.isNativeToken,
+        isSiteToken: asset.isMainToken,
+        icon: asset.icon
+    }
+
+    if (synthetixRates) {
+        let synthRate = synthetixRates.find((x: any) => x.id == asset.oracleRateID);
+
+        balance.rate = synthRate ? synthRate.rate / Math.pow(10, asset.decimal) : 0;
+    }
+    if (activeAddress) {
+        if (balance.isEther) {
+            balance.cryptoBalance = await getETHBalance(activeAddress);
+        }
+        else {
+            balance.cryptoBalance = await getERC20Balance(asset, activeAddress);
+        }
+    }
+    switch (asset.syntheticCategory) {
+        case SyntheticCategories.CRYPTOCURRENCY:
+
+            let rateObj = cryptoRates.find((x: any) => x.id == asset.marketRateApiID)
+            if (rateObj) {
+                balance.change24h = rateObj.price_change_percentage_24h;
+                balance.high24h = rateObj.high_24h;
+                balance.low24h = rateObj.low_24h;
+            }
+            break;
+
+        case SyntheticCategories.FOREX:
+            let fchange = getForexChange(asset.marketRateApiID);
+            balance.change24h = fchange ? fchange : 0;
+            break;
+    }
+    if (asset.isFixedRate) {
+        balance.rate = asset.fixedRateValue;
+    }
+    return balance;
+}
 
 export const updateBalances = async () => {
-  let walletInfo = store.getState().wallet;
+    let walletInfo = store.getState().wallet;
 
-  activeAddress = walletInfo.selected.address;
-  const assets = ContractLookup.filter((c) => c.isSyntheticAsset);
+    activeAddress = walletInfo.selected.address;
+    const assets = ContractLookup.filter(c => c.isSyntheticAsset);
 
-  await loadRates();
-  let balances: Balance[] = [];
-  for (let i = 0; i < assets.length; i++) {
-    // let bal: any = 0;
-    // if (activeAddress) {
-    //     bal = await getERC20Balance(assets[i], activeAddress);
-    // }
-    // let price: number = await getPriceFeed(assets[i].contractName, assets[i].decimal);
-
-    // console.log('Price of ' + assets[i].contractName + ' is ' + price);
-    // let balanceObj: Balance = {
-    //     name: assets[i].contractName,
-    //     short: assets[i].contractName,
-    //     rate: price,
-    //     change24h: 0,
-    //     high24h: 0,
-    //     low24h: 0,
-    //     cryptoBalance: bal,
-    //     category: assets[i].syntheticCategory,
-    //     isEther: false,
-    //     isSiteToken: assets[i].isMainToken,
-    // }
-    // if (balanceObj.category == SyntheticCategories.CRYPTOCURRENCY) {
-
-    //     let rateObj = cryptoRates.find((x: any) => x.id == assets[i].fullName.toLowerCase())
-
-    //     if (rateObj) {
-    //         balanceObj.change24h = rateObj.price_change_percentage_24h;
-    //         balanceObj.high24h = rateObj.high_24h;
-    //         balanceObj.low24h = rateObj.low_24h;
-    //         balanceObj.rate = rateObj.current_price
-    //     }
-    // }
-
-    balances.push(await getPriceObject(assets[i]));
-    //console.log(balances)
-  }
-
-  // let EthBalance = await getETHBalance(activeAddress);
-  // let balanceObj: Balance = {
-  //     name: "Ethereum",
-  //     short: "ETH",
-  //     rate: 0,
-  //     change24h: 0,
-  //     high24h: 0,
-  //     low24h: 0,
-  //     cryptoBalance: EthBalance,
-  //     category: SyntheticCategories.CRYPTOCURRENCY,
-  //     isEther: true,
-  //     isSiteToken: false,
-  // }
-  // balances.push(balanceObj);
-  store.dispatch(saveBalanceInfoAction(balances));
-  debugger;
-};
+    await loadRates();
+    let balances: Balance[] = [];
+    for (let i = 0; i < assets.length; i++) {
+        balances.push(await getPriceObject(assets[i]));
+    }
+    store.dispatch(saveBalanceInfoAction(balances));
+}
 
 export const getETHBalance = async (address: string): Promise<number> => {
-  web3 = store.getState().wallet.web3;
-  if (web3.currentProvider) {
-    try {
-      var balanceInWei = await web3.eth.getBalance(address);
-      balanceInWei = Web3.utils.fromWei(balanceInWei, "ether");
-      return Number(balanceInWei);
-    } catch (error) {
-      console.error("Get ETH Balance: ", error);
-      return 0;
+    web3 = store.getState().wallet.web3;
+    if (web3.currentProvider) {
+        try {
+            var balanceInWei = await web3.eth.getBalance(address)
+            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
+            return Number(balanceInWei);
+        } catch (error) {
+            return 0;
+        }
+    } else {
+        return 0
     }
-  } else {
-    return 0;
-  }
-};
+}
 
 // @ts-ignore
-export const getERC20Balance = async (
-  contractInfo: any,
-  address: string
-): Promise<number> => {
-  web3 = store.getState().wallet.web3;
-  if (web3.currentProvider) {
-    if (contractInfo) {
-      const contract = new web3.eth.Contract(
-        contractInfo.contractAbi,
-        contractInfo.contractAddress,
-        {}
-      );
-      try {
-        const balance = await contract.methods.balanceOf(address).call();
-        var balanceInWei = web3.utils.fromWei(balance, "ether");
-        let bal: number =
-          parseInt(balanceInWei) / Math.pow(10, contractInfo.decimal);
-        return bal;
-      } catch (error) {
-        console.error("Get ECR20 Balance: ", error);
-        return 0;
-      }
+export const getERC20Balance = async (contractInfo: any, address: string): Promise<number> => {
+    web3 = store.getState().wallet.web3;
+    if (web3.currentProvider) {
+        if (contractInfo) {
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo.contractAddress, {});
+            try {
+                const balance = await contract.methods.balanceOf(address).call();
+                var balanceInWei = web3.utils.fromWei(balance, 'ether');
+                let bal: number = parseInt(balanceInWei) / Math.pow(10, contractInfo.decimal)
+                return bal;
+            } catch (error) {
+                return 0;
+            }
+        }
+    } else {
+        return 0
     }
-  } else {
-    return 0;
-  }
-};
+}
 
 // @ts-ignore
-export const getPriceFeed = async (
-  contractName: any,
-  decimal: number
-): Promise<number> => {
-  web3 = store.getState().wallet.web3;
-  const contractInfo = ContractLookup.find(
-    (contract) => contract.contractName === ERC20Contracts.PRICE_FEED
-  );
-  if (web3.currentProvider) {
-    if (contractInfo) {
-      // @ts-ignore
-      const contract = new web3.eth.Contract(
-        contractInfo.contractAbi,
-        contractInfo?.contractAddress
-      );
-      try {
-        const price = await contract.methods
-          .viewLatestPrice(contractName)
-          .call();
-        return price;
-      } catch (error) {
-        return 0;
-      }
+export const getPriceFeed = async (contractName: any, decimal: number): Promise<number> => {
+    web3 = store.getState().wallet.web3;
+    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.PRICE_FEED)
+    if (web3.currentProvider) {
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
+            try {
+                const price = await contract.methods.viewLatestPrice(contractName).call();
+                return price;
+            } catch (error) {
+                return 0;
+            }
+        }
     }
-  } else return 0;
-};
+    else return 0;
+}
+
+
 
 // export const getByondRate = async () => {
 //     web3 = store.getState().wallet.web3;
@@ -281,3 +196,7 @@ export const getPriceFeed = async (
 //     else return null;
 
 // };
+
+
+
+

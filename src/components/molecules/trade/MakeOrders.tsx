@@ -18,7 +18,9 @@ function MakeOrders() {
     from,
     fromBalance,
     toBalance,
-    handleInputChange
+    handleFromChange,
+    handleToChange,
+    setPercentage
   } = useMakeOrders();
 
   return (
@@ -40,11 +42,11 @@ function MakeOrders() {
           {from}
           <div className="h-4 mx-2 border-r border-gray-600 py-2" />
           <input
-            className="bg-gray-300 focus:outline-none ml-2 w-full"
-            type="text"
+            className="bg-gray-300 focus:outline-none ml-2 w-full appearance-none"
+            type="number"
             name="from"
             value={inputs.from}
-            onChange={handleInputChange}
+            onChange={handleFromChange}
           />
         </div>
         <small className="italic text-red-500 text-xxs">{inputs.fromVal}</small>
@@ -57,25 +59,25 @@ function MakeOrders() {
           {to}
           <div className="h-4 mx-2 border-r border-gray-600 py-2" />
           <input
-            className="bg-gray-300 focus:outline-none ml-2 w-full"
-            type="text"
+            className="bg-gray-300 focus:outline-none ml-2 w-full appearance-none"
+            type="number"
             name="to"
             value={inputs.to}
-            onChange={handleInputChange}
+            onChange={handleToChange}
           />
         </div>
         <small className="italic text-red-500 text-xxs">{inputs.toVal}</small>
         <div className="flex mt-3">
-          <button className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs mr-2">
+          <button onClick={()=>setPercentage(25)} className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs mr-2">
             25%
           </button>
-          <button className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs mr-2">
+          <button onClick={()=>setPercentage(50)} className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs mr-2">
             50%
           </button>
-          <button className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs mr-2">
+          <button onClick={()=>setPercentage(75)} className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs mr-2">
             75%
           </button>
-          <button className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs">
+          <button onClick={()=>setPercentage(100)} className="focus:outline-none w-full rounded-sm text-white bg-customBlue-100 py-1 px-2 text-xxs">
             100%
           </button>
         </div>

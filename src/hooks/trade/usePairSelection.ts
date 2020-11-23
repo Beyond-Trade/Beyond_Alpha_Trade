@@ -19,7 +19,7 @@ const usePairSelection = () => {
         tabs: getTabs()
     })
 
-    useEffect(()=>{
+    useEffect(() => {
         selectAssetPairAction(TradePairsLookup[0].marketCoin, TradePairsLookup[0].pairs[0].coin)
     },[])
 
