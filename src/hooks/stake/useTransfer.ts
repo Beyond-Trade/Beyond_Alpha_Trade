@@ -24,7 +24,7 @@ const useTransfer = () => {
   });
 
   useEffect(() => {
-    const balance = balances.find((balance) => balance.isEther);
+    const balance = balances.find((balance) => balance.short===state.dropValues[state.dropIndex]);
     if (balance) {
       setState((prev) => ({ ...prev, balance: balance.cryptoBalance }));
     }
@@ -37,7 +37,8 @@ const useTransfer = () => {
         coins.push(item.contractName);
       }
     });
-    setState((prev) => ({ ...prev, dropValues: coins }));
+    const balance = balances.find((balance) => balance.short === coins[0]);
+    setState((prev) => ({ ...prev, dropValues: coins, balance: balance?.cryptoBalance||0 }));
   }, []);
 
   const submit = () => {
@@ -117,6 +118,10 @@ const useTransfer = () => {
       setState((prev) => ({ ...prev, amountVal: "This field is required" }));
       validated = false;
     }
+    if (Number(state.amount) > state.balance) {
+      setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
+      validated = false;
+    }
     if (state.address === "") {
       setState((prev) => ({ ...prev, addressVal: "This field is required" }));
       validated = false;
@@ -131,7 +136,8 @@ const useTransfer = () => {
   };
 
   const onCoinSelect = (i: number) => {
-    setState((prev) => ({ ...prev, dropIndex: i }));
+    const balance = balances.find((balance) => balance.short === state.dropValues[i]);
+    setState((prev) => ({ ...prev, dropIndex: i, balance: balance?.cryptoBalance||0 }));
   };
 
   return {

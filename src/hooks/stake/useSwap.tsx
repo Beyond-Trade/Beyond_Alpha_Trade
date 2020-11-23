@@ -82,7 +82,7 @@ const useSwap = () => {
     if (Number(state.from) > state.balance) {
       setState((prev) => ({
         ...prev,
-        fromVal: "Amount can't be greater than your balance",
+        fromVal: "Not enough balance",
       }));
       validated = false;
     }

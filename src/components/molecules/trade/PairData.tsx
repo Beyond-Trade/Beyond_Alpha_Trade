@@ -1,6 +1,6 @@
 import * as React from "react";
 import { MarketPair, MarketPairs } from "../../../store/types/ExchangeState";
-import { nowrap } from "../../../utils/constants";
+import { assetChartNames, nowrap } from "../../../utils/constants";
 
 interface IProps {
   data: MarketPairs,
@@ -29,8 +29,8 @@ function PairData(props:IProps) {
               {/* <div className="px-2 ml-2 bg-yellow-400 border rounded-sm border-yellow-600 text-yellow-600 text-xxs">10X</div> */}
             </div>
           </td>
-          <td className={`py-2 px-3 text-right text-${item.rate>0?'green':'red'}-500`}>
-              {item.rate} %
+          <td className={`py-2 px-3 text-right`} style={nowrap}>
+              {item.rate} {assetChartNames[props.data.marketCoin]}
           </td>
         </tr>
       ))}

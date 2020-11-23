@@ -29,6 +29,7 @@ function SwapByn(props: IProps) {
               <h6 className="text-xxs font-medium">From (ETH)</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
+                type="number"
                 name="from"
                 value={from}
                 onChange={handleInputChange}

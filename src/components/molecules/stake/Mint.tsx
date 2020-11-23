@@ -4,7 +4,20 @@ import Loader from "react-loader-spinner";
 import GasFeeModal from "./GasFeeModal";
 
 function Mint() {
-  const { amount, amountVal, submit, fee, submitting, setAmount, openFeeModal, close, selectFee, isOpen,cRatio,BYNStackingAmount } = useMint();
+  const {
+    amount,
+    amountVal,
+    submit,
+    fee,
+    submitting,
+    setAmount,
+    openFeeModal,
+    close,
+    selectFee,
+    isOpen,
+    cRatio,
+    BYNStackingAmount,
+  } = useMint();
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="text-lg font-bold">Mint</h3>
@@ -49,10 +62,13 @@ function Mint() {
             <h6>Estimated C-Ratio: {cRatio}%</h6>
           </div>
           <div className="mt-24 text-center text-xs font-medium">
-          <text>
-            Ethereum network fee: $0/{fee} GWEI
-          </text>
-          <text onClick={openFeeModal} className="text-blue-500 underline ml-1 cursor-pointer">EDIT</text>
+            <text>Ethereum network fee: $0/{fee} GWEI</text>
+            <text
+              onClick={openFeeModal}
+              className="text-blue-500 underline ml-1 cursor-pointer"
+            >
+              EDIT
+            </text>
           </div>
           <button
             onClick={submit}
@@ -65,7 +81,12 @@ function Mint() {
           </button>
         </div>
       </div>
-      <GasFeeModal isOpen={isOpen} close={close} activeFee={fee} select={selectFee} />
+      <GasFeeModal
+        isOpen={isOpen}
+        close={close}
+        activeFee={fee}
+        select={selectFee}
+      />
     </div>
   );
 }

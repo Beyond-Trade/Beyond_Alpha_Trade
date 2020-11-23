@@ -19,7 +19,8 @@ const useMint = () => {
     isOpen: false,
     cRatio: 0,
     BYNStackingAmount: 0,
-    BynRate: 0
+    BynRate: 0,
+    BynBalance: 0
   });
 
   const submit = () => {
@@ -36,7 +37,7 @@ const useMint = () => {
     const BYNObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
-    setState((prev) => ({ ...prev, BynRate: BYNObj?.rate || 0 }));
+    setState((prev) => ({ ...prev, BynRate: BYNObj?.rate || 0, BynBalance: BYNObj?.cryptoBalance||0 }));
   }, [])
 
 
@@ -74,6 +75,16 @@ const useMint = () => {
       setState((prev) => ({ ...prev, amountVal: "This field is required" }));
       validated = false;
     }
+    if (Number(state.amount) <= 0) {
+      setState((prev) => ({ ...prev, amountVal: "Amount is not valid" }));
+      validated = false;
+    }
+
+    debugger
+    if (state.BYNStackingAmount > state.BynBalance||state.BynBalance===0) {
+      setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
+      validated = false;
+    }
 
     return validated;
   };
@@ -81,7 +92,8 @@ const useMint = () => {
   const setAmount = (event: any) => {
     const value = event.target.value;
     let stacking = ((value * state.cRatio) / state.BynRate);
-    setState((prev) => ({ ...prev, amount: value, amountVal: "",BYNStackingAmount: stacking }));
+    debugger
+    setState((prev) => ({ ...prev, amount: value, amountVal: "",BYNStackingAmount:state.BynRate===0?0: stacking }));
   };
 
   return {
