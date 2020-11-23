@@ -3,7 +3,7 @@ export enum ERC20Contracts {
     USDb = 'USDb',
     EURb = 'EURb',
     BEYOND = 'Beyond',
-    ETHb = 'ETHb ',
+    ETHb = 'ETHb',
     OILb = 'OILb',
     GBPb ='GBPb',
     BTCb = 'BTCb',

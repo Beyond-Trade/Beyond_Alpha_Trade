@@ -14,6 +14,7 @@ export const assetChartNames:any = {
     OILb: 'OIL',
     GBPb:'GBP',
     BTCb: 'BTC',
+    Beyond: 'BYN'
 }
 
 export const nowrap:any = { whiteSpace: 'nowrap' }
