@@ -53,12 +53,12 @@ function WalletData() {
                 <td className="w-1/5">{item.name}</td>
                 <td className="w-1/5">
                   <div className="flex items-center">
-                    {item.cryptoBalance} {item.short}
+                    {item.cryptoBalance.toFixed(4)} {item.short}
                   </div>
                 </td>
                 <td className="w-1/5">
                   <div className="flex items-center">
-                    ${item.cryptoBalance * item.rate}
+                    ${(item.cryptoBalance * item.rate).toFixed(2)}
                   </div>
                 </td>
               </tr>

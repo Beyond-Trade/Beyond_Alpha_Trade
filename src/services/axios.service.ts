@@ -28,11 +28,9 @@ export async function getForex(params: any) {
     try {
 
         const url = 'https://api.exchangerate.host/timeseries?start_date=' + params.yesterday + '&end_date=' + params.today + '&symbols='+params.symbols+'&base=USD'
-        console.log(url)
         var prices = await axios.get(url);
         return prices.data.rates;
     } catch (error) {
-        console.log("--------- error is -------------------");
         return error;
     }
 } 

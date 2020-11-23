@@ -7,7 +7,7 @@ import { Balance } from "../../../store/types/WalletState";
 function StatesRow() {
   const { balances } = useSelector((state: RootState) => state.wallet);
   let totalWalletValue = balances.reduce((a: any, b: any) => {
-    return Number(a.cryptoBalance * a.rate) + Number(b.cryptoBalance * b.rate);
+    return a + Number(b.cryptoBalance * b.rate);
   }, 0);
 
   let totalSynthValue = balances
@@ -16,24 +16,27 @@ function StatesRow() {
     })
     .reduce((a: any, b: any) => {
       return (
-        Number(a.cryptoBalance * a.rate) + Number(b.cryptoBalance * b.rate)
+        a + Number(b.cryptoBalance * b.rate)
       );
     }, 0);
-  let bynBalance = balances.filter(function (obj) {
+  let bynBalance = balances.find(function (obj) {
     return obj.isSiteToken;
-  })[0];
-  let totalBynPercentage =bynBalance?
-    ((bynBalance?.cryptoBalance + bynBalance?.rate) / totalSynthValue) * 100:0;
-
-  let USDbBalance = balances.filter(function (obj) {
+  });
+  let totalBynPercentage = bynBalance? ((bynBalance?.cryptoBalance * bynBalance?.rate) / totalSynthValue) * 100: 0;
+  debugger;
+  let USDbBalance = balances.find(function (obj) {
     return obj.short == ERC20Contracts.USDb;
-  })[0];
-  
-  let totalUSDbBalancePercentage =USDbBalance?
-    ((USDbBalance?.cryptoBalance + USDbBalance?.rate) / totalSynthValue) * 100:0;
+  });
 
-  let othersBalPercentage =totalUSDbBalancePercentage && totalBynPercentage ? 
-    ((totalUSDbBalancePercentage + totalBynPercentage) / totalSynthValue) * 100:0;
+  let totalUSDbBalancePercentage = USDbBalance
+    ? ((USDbBalance?.cryptoBalance * USDbBalance?.rate) / totalSynthValue) * 100
+    : 0;
+
+  let othersBalPercentage =
+    totalUSDbBalancePercentage && totalBynPercentage
+      ? ((totalUSDbBalancePercentage + totalBynPercentage) / totalSynthValue) *
+        100
+      : 0;
   return (
     <div className="px-8 xl:px-24 lg:px-24 xl:flex lg:flex">
       <div className="bg-customGray-100 rounded mr-8 w-full mt-8">
@@ -103,10 +106,9 @@ function StatesRow() {
           <h5>TOTAL WALLET VALUE</h5>
         </div>
         <h3 className="font-semibold my-6 mx-2">
-        ${totalWalletValue ? totalWalletValue.toFixed(2) : "0.00"} USD
-      </h3>
+          ${totalWalletValue ? totalWalletValue.toFixed(2) : "0.00"} USD
+        </h3>
       </div>
-      
     </div>
   );
 }

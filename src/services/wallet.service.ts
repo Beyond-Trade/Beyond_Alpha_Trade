@@ -70,7 +70,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
         category: asset.syntheticCategory,
         isEther: asset.isNativeToken,
         isSiteToken: asset.isMainToken,
-        icon: asset.icon
+        icon:asset.icon
     }
 
     if (synthetixRates) {

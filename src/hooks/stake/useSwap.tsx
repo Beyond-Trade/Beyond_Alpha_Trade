@@ -1,26 +1,38 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { ERC20Contracts } from "../../contracts/constants/contracts";
 import { showAlert } from "../../services/generic.services";
 import { buyBYNToken } from "../../services/swap.service";
 import { RootState } from "../../store/reducers/Index";
+import { Balance } from "../../store/types/WalletState";
 
 const useSwap = () => {
   const { balances, selected } = useSelector(
     (state: RootState) => state.wallet
   );
+
   const [state, setState] = useState({
     swapping: false,
     from: "",
     to: 0,
     fromVal: "",
     balance: 0,
-    rate: 2.5,
+    rate: 0,
   });
 
   useEffect(() => {
+    const BYNObj = balances.find(
+      (bal: Balance) => bal.short == ERC20Contracts.BEYOND
+    );
     const balance = balances.find((balance) => balance.isEther);
+      // @ts-ignore
+    let byninEthPrice = (balance.rate/BYNObj.rate)
     if (balance) {
-      setState((prev) => ({ ...prev, balance: balance.cryptoBalance }));
+      setState((prev) => ({
+        ...prev,
+        balance: balance.cryptoBalance,
+        rate: byninEthPrice,
+      }));
     }
   }, [balances]);
 
@@ -68,9 +80,12 @@ const useSwap = () => {
       validated = false;
     }
     if (Number(state.from) > state.balance) {
-        setState((prev) => ({ ...prev, fromVal: "Amount can't be greater than your balance" }));
-        validated = false;
-      }
+      setState((prev) => ({
+        ...prev,
+        fromVal: "Amount can't be greater than your balance",
+      }));
+      validated = false;
+    }
     return validated;
   };
   const setMax = () =>
