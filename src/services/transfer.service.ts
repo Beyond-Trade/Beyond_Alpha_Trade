@@ -35,6 +35,7 @@ export const transferERC20 = async (to: string, amount: string, erc20ContractNam
     if (web3.currentProvider) {
         const contractInfo = ContractLookup.find(contract => contract.contractName === erc20ContractName)
         if (contractInfo) {
+            // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
 
                 const tx = await contract.methods.transfer(to, amount.toString()).send({ gasPrice: gas });

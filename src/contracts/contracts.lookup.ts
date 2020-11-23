@@ -11,10 +11,61 @@ import { BeyondExchangeAbi } from "./abi/beyondExchange.abi";
 import { BeyondExProxAbi } from "./abi/beyondExProx.abi";
 import { PriceFeedAbi } from "./abi/priceFeed";
 import { USDbAbi } from "./abi/Usdb.abi";
+import * as icons from "../utils/coinIcons";
+import { AbiItem } from 'web3-utils'
 
 
+export interface IContractLookup {
+    contractName: string,
+    contractAddress:string,
+    marketRateApiID: string,
+    oracleRateID:string,
+    fullName: string,
+    contractAbi: any,
+    decimal:number,
+    isSyntheticAsset:boolean,
+    isNativeToken: boolean,
+    isMainToken: boolean, // only for BYN,
+    isFixedRate:boolean,
+    fixedRateValue:number,
+    syntheticCategory: any, 
+    icon:string
+}
 
-export const ContractLookup = [
+
+export const ContractLookup:IContractLookup[] = [
+    {
+        contractName: ERC20Contracts.ETH,
+        contractAddress: "",
+        marketRateApiID: "ethereum",
+        oracleRateID: "sETH",
+        fullName: "Ethereum",
+        contractAbi: '',
+        decimal:18,
+        isSyntheticAsset:true,
+        isNativeToken: true,
+        isMainToken: false, // only for BYN,
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+        icon:icons.iconETH
+    }, 
+    {
+        contractName: ERC20Contracts.BEYOND,
+        contractAddress: "0xaC9f43Be5f3b7CdD03478f13B429DA5e156399C8",
+        marketRateApiID: "",
+        oracleRateID: "",
+        fullName: "Beyond",
+        decimal:18,
+        contractAbi: BeyondAbi,
+        isSyntheticAsset:true,
+        isNativeToken: false,
+        isMainToken: true, // only for BYN,
+        isFixedRate:true,
+        fixedRateValue:0.5,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY,
+        icon:icons.iconBEYOND
+    }, 
     {
         contractName: ERC20Contracts.BTCb,
         contractAddress: "0xee482F26d93A1C6A402f2F010cdAfC12EcFe429E",
@@ -26,12 +77,15 @@ export const ContractLookup = [
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
+        isFixedRate:false,
+        fixedRateValue:0,
         syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+        icon:icons.iconBTCb
     },  
     {
         contractName: ERC20Contracts.ETHb,
         contractAddress: "0x575d28D9bfB056cB29ef49A201438448b755965B",
-        marketRateApiID: "ether",
+        marketRateApiID: "ethereum",
         oracleRateID: "sETH",
         fullName: "Ethereum",
         contractAbi: ETHbAbi,
@@ -39,12 +93,15 @@ export const ContractLookup = [
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
+        isFixedRate:false,
+        fixedRateValue:0,
         syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+        icon:icons.iconETHb
     },
     {
         contractName: ERC20Contracts.OILb,
         contractAddress: "0xB4D1B06b12f09d2bB07129b0F2eD95A1A46A8c00",
-        marketRateApiID: "oil",
+        marketRateApiID: "OIL",
         oracleRateID: "sOIL",
         fullName: "OIL",
         contractAbi: OILbAbi,
@@ -52,7 +109,10 @@ export const ContractLookup = [
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.COMMODITIES, 
+        icon:icons.iconOILb
     }, 
     {
         contractName: ERC20Contracts.GBPb,
@@ -65,7 +125,10 @@ export const ContractLookup = [
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.FOREX, 
+        icon:icons.iconGBPb
     }, 
     {
         contractName: ERC20Contracts.EURb,
@@ -78,7 +141,10 @@ export const ContractLookup = [
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY, 
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.FOREX, 
+        icon:icons.iconEURb
     },
     {
         contractName: ERC20Contracts.USDb,
@@ -91,8 +157,12 @@ export const ContractLookup = [
         isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
+        isFixedRate:true,
+        fixedRateValue:1,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY,
+        icon:icons.iconUSDb
     },
+    
     {
         contractName: ERC20Contracts.PRICE_FEED,
         contractAddress: "0xc8Aa560cd3179dCc7646bab4Ad80d66dEdf76d9F",
@@ -104,21 +174,12 @@ export const ContractLookup = [
         isSyntheticAsset:false,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY,
+        icon:icons.iconUSDb
     },
-    {
-        contractName: ERC20Contracts.BEYOND,
-        contractAddress: "0xaC9f43Be5f3b7CdD03478f13B429DA5e156399C8",
-        marketRateApiID: "",
-        oracleRateID: "",
-        fullName: "Beyond",
-        decimal:18,
-        contractAbi: BeyondAbi,
-        isSyntheticAsset:true,
-        isNativeToken: false,
-        isMainToken: true, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
-    },
+    
     {
         contractName: ERC20Contracts.BEYOND_EXCHANGE,
         contractAddress: "0xFC723dCfFa670D6C069E3A71e863371330655368",
@@ -130,7 +191,10 @@ export const ContractLookup = [
         isSyntheticAsset:false,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY,
+        icon:icons.iconETH
     },
     {
         contractName: ERC20Contracts.BEYOND_EX_PROX,
@@ -143,6 +207,9 @@ export const ContractLookup = [
         isSyntheticAsset:false,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
-        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY,
+        icon:icons.iconETH
     }
 ]

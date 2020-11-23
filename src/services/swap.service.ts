@@ -16,6 +16,7 @@ export const buyBYNToken = async (amount?: string) => {
     if (web3.currentProvider) {
         const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
         if (contractInfo) {
+            // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
 
             const tx = await web3.eth.sendTransaction({
@@ -37,6 +38,7 @@ export const getBynETHRate = async (): Promise<number> => {
     const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
     if (web3.currentProvider) {
         if (contractInfo) {
+            // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
             try {
                 const price = await contract.methods.tokenValue().call();
