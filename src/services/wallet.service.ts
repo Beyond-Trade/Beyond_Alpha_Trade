@@ -75,11 +75,14 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
 
     if (synthetixRates) {
         try{
+
         let synthRate = synthetixRates.find((x: any) => x.id == asset.oracleRateID);
 
         balance.rate = synthRate ? synthRate.rate / Math.pow(10, asset.decimal) : 0;
         }
-        catch(e){console.log(e)}
+        catch(e){
+            debugger
+            console.log(e)}
     }
     if (activeAddress) {
         if (balance.isEther) {

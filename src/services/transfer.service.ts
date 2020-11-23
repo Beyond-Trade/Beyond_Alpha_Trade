@@ -9,17 +9,15 @@ let web3: Web3 = new Web3();
 //For transer of ether 
 // @ts-ignore
 export const transferEther = async (to: string, amount: any, gas: any) => {
-    debugger
+    web3 = store.getState().wallet.web3;
+
     if (web3.currentProvider) {
         let from = localStorage.getWalletAddress();
 
         amount = Web3Wrapper.toWei(amount.toString())
-
-
-            // @ts-ignore
-            const tx = await web3.eth.sendTransaction({ from: from.toString(), to: to, value: amount, gasPrice: gas });
-            debugger
-            return tx;
+        // @ts-ignore
+        const tx = await web3.eth.sendTransaction({ from: from.toString(), to: to, value: amount, gasPrice: gas });
+        return tx;
 
     }
     else return null;
@@ -40,9 +38,8 @@ export const transferERC20 = async (to: string, amount: string, erc20ContractNam
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
 
-                const tx = await contract.methods.transfer(to, amount.toString()).send({ gasPrice: gas });
-                return tx;
-
+            const tx = await contract.methods.transfer(to, amount.toString()).send({ gasPrice: gas });
+            return tx;
         }
     }
     else return null;
