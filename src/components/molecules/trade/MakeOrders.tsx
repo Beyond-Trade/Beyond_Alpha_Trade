@@ -1,6 +1,19 @@
 import * as React from "react";
+import Loader from "react-loader-spinner";
+import useMakeOrders from "../../../hooks/trade/useMakeOrders";
+import GasFeeModal from "../stake/GasFeeModal";
 
 function MakeOrders() {
+  const {
+    submitting,
+    isFeeOpen,
+    fee,
+    openFeeModal,
+    closeFeeModal,
+    submit,
+    selectFee,
+  } = useMakeOrders();
+  
   return (
     <div className="bg-customGray-100 rounded xl:ml-4 lg:ml-4 md:ml-4 mt-4 md:w-94 xl:w-94 lg:w-94">
       <div className="bg-gray-300 py-1 px-3 flex justify-between rounded-t">
@@ -64,16 +77,31 @@ function MakeOrders() {
         <div className="flex justify-between text-xxs text-gray-700 mt-1">
           <text>GAS PRICE(GWE)</text>
           <div>
-            <text>$35.00</text>
-            <text className="text-customBlue-200 underline cursor-pointer	">
+            <text>${fee}</text>
+            <text
+              onClick={openFeeModal}
+              className="text-customBlue-200  ml-1 underline cursor-pointer	"
+            >
               Edit
             </text>
           </div>
         </div>
-        <button className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-4">
-          CONFIRM TRADE NOW
+        <button
+          onClick={submit}
+          className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-4"
+        >
+          {!submitting && "CONFIRM TRADE NOW"}
+          {submitting && (
+            <Loader type="Bars" color="#ffffff" height={18} width={20} />
+          )}
         </button>
       </div>
+      <GasFeeModal
+        isOpen={isFeeOpen}
+        close={closeFeeModal}
+        activeFee={fee}
+        select={selectFee}
+      />
     </div>
   );
 }
