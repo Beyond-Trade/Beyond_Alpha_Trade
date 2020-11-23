@@ -9,6 +9,7 @@ let web3: Web3 = new Web3();
 //For transer of ether 
 // @ts-ignore
 export const transferEther = async (to: string, amount: any, gas: any) => {
+    debugger
     if (web3.currentProvider) {
         let from = localStorage.getWalletAddress();
 
@@ -17,6 +18,7 @@ export const transferEther = async (to: string, amount: any, gas: any) => {
 
             // @ts-ignore
             const tx = await web3.eth.sendTransaction({ from: from.toString(), to: to, value: amount, gasPrice: gas });
+            debugger
             return tx;
 
     }

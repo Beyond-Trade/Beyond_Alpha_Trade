@@ -17,6 +17,7 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
 
             const tx = await contract.methods.buybUSD(amount).send({ gasPrice: gasPrice });
+            debugger
             return tx;
 
         }

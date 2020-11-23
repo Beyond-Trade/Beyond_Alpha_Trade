@@ -74,6 +74,7 @@ const useTransfer = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        debugger
         console.log("transfer ether error", e);
         showAlert({
           title: "Error!",
@@ -92,6 +93,7 @@ const useTransfer = () => {
       state.fee
     )
       .then((data) => {
+        debugger
         if (!data) {
           throw new Error("no data");
         }
@@ -103,6 +105,7 @@ const useTransfer = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        debugger
         showAlert({
           title: "Error!",
           message: "Unable to transfer",
