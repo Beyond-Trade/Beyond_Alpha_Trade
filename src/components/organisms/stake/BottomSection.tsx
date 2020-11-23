@@ -57,11 +57,11 @@ const BottomSection = () => {
           {balances.map((item) => (
           <div className="flex justify-between px-8 py-2">
             <div className="flex items-center">
-              <img src="assets/Icons/BYN-small.svg" className="h-4" />
+              <img src={item.icon} className="h-4" />
               <h6 className="ml-2 text-xxs font-medium">{item.short}</h6>
             </div>
-            <h6 className="text-xxs font-medium text-left">{item.cryptoBalance}</h6>
-            <h6 className="text-xxs font-medium">${(item.cryptoBalance * item.rate)}</h6>
+            <h6 className="text-xxs font-medium">{item.cryptoBalance.toFixed(4)}</h6>
+            <h6 className="text-xxs font-medium">${(item.cryptoBalance * item.rate).toFixed(2)}</h6>
           </div>
              ))}
         </div>

@@ -13,6 +13,7 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
     if (web3.currentProvider) {
         const contractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND_EXCHANGE);
         if (contractInfo) {
+            // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress,{from:activeAddress});
 
                 const tx = await contract.methods.buybUSD(amount).send({ gasPrice: gasPrice });

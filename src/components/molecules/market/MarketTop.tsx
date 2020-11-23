@@ -23,8 +23,8 @@ function MarketTop({ data }: IProps) {
               <text className="text-black">{item.short}</text>
             </div>
           </td>
-          <td className="py-3 px-3">${item.rate}</td>
-          <td className="py-3 px-3">${item.change24h}</td>
+          <td className="py-3 px-3">${item.rate.toFixed(2)}</td>
+          <td className="py-3 px-3">{item.change24h.toFixed(2)}%</td>
         </tr>
       ))}
     </table>
