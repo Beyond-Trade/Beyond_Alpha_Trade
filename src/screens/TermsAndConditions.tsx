@@ -1,4 +1,3 @@
-import PrivacyPolicyBanner from "../components/atomic/privacyPolicy/PrivacyPolicyBanner";
 import React from "react";
 import TermsAndConditionsBanner from "../components/atomic/termsAndConditions/TermsAndConditionsBanner";
 function TermsAndConditions() {
