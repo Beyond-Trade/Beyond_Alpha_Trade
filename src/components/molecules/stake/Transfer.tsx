@@ -46,10 +46,10 @@ function Transfer() {
           </div>
           <div className="mt-6">
             <p className="text-xs font-medium">Enter amount:</p>
-            <div className="bg-gray-300 mt-2 rounded px-4 py-3 flex items-center">
+            <div className="bg-gray-300 mt-2 rounded px-4 py-2 flex items-center">
               <Dropdown fields={dropValues} index={dropIndex} onSelect={onCoinSelect} />
               <input
-                className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 text-xs font-medium"
+                className="bg-gray-300 focus:outline-none ml-2 py-1 w-full text-gray-600 text-xs font-medium"
                 type="text"
                 name="amount"
                 value={amount}
@@ -63,9 +63,9 @@ function Transfer() {
           </div>
           <div className="mt-6">
             <p className="text-xs font-medium">Enter destination address:</p>
-            <div className="bg-gray-300 mt-2 rounded px-4 py-3 flex items-center">
+            <div className="bg-gray-300 mt-2 rounded px-4 py-2 flex items-center">
               <input
-                className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 text-xs font-medium"
+                className="bg-gray-300 focus:outline-none ml-2 py-1 w-full text-gray-600 text-xs font-medium"
                 type="text"
                 placeholder="eg 0XB8B...8F6BA"
                 name="address"

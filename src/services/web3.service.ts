@@ -83,9 +83,8 @@ export const initializeWeb3 = async (source: web3Sources, callback: Function): P
             }
             if (wallets.length <= 0) { throw new Error('Error while accessing accounts.'); }
             store.dispatch(saveWalletsInfoAction(wallets));
-
-            await updateBalances(); //Update all assets balances
             callback()
+            await updateBalances(); //Update all assets balances
         } else {
             throw new Error('Error while accessing web3 provider.');
         }

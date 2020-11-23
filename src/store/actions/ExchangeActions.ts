@@ -15,6 +15,7 @@ export const selectAssetPair = (
   counterBalance: number,
   fromRate: number,
   toRate: number,
+  rate: number,
   change24h: number,
   high24h: number,
   low24h: number
@@ -27,6 +28,7 @@ export const selectAssetPair = (
     counterBalance,
     fromRate,
     toRate,
+    rate,
     change24h,
     high24h,
     low24h,
@@ -39,7 +41,7 @@ export const searchAsset = (search: string): GetExchangeInfoType => {
   return { type: SEARCH_ASSETS, search };
 };
 
-export const selectAssetPairAction = (from: string, to: string) => {
+export const selectAssetPairAction = (from: string, to: string, rate:number) => {
   const state: RootState = store.getState();
   const fromBalance = state.wallet.balances.find((item) => item.short === from);
   const toBalance = state.wallet.balances.find((item) => item.short === to);
@@ -52,9 +54,10 @@ export const selectAssetPairAction = (from: string, to: string) => {
       toBalance?.cryptoBalance || 0,
       fromBalance?.rate||0,
       toBalance?.rate||0,
+      rate,
       fromBalance?.change24h||0,
       fromBalance?.high24h||0,
-      fromBalance?.low24h||0
+      fromBalance?.low24h||0,
     )
   );
 };
