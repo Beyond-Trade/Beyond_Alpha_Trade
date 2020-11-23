@@ -27,17 +27,30 @@ function Footer() {
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">COMPANY</h4>
-          <button className="text-xs text-gray-500 mt-4">About Us</button>
           <button
             className="text-xs text-gray-500 mt-4"
             onClick={() => {
-              console.log("in contact us click");
+              history.push("/about_us");
+            }}
+          >
+            About Us
+          </button>
+          <button
+            className="text-xs text-gray-500 mt-4"
+            onClick={() => {
               history.push("/contact_us");
             }}
           >
             Contact Us
           </button>
-          <button className="text-xs text-gray-500 mt-4">Support</button>
+          <button
+            className="text-xs text-gray-500 mt-4"
+            onClick={() => {
+              history.push("/support");
+            }}
+          >
+            Support
+          </button>
           <button className="text-xs text-gray-500 mt-4">News/Blog</button>
         </div>
         <div className="flex flex-col items-start w-64 mr-16">
@@ -55,7 +68,12 @@ function Footer() {
           >
             Terms of Usage
           </button>
-          <button className="text-xs text-gray-500 mt-4">Disclaimer</button>
+          <button
+            className="text-xs text-gray-500 mt-4"
+            onClick={() => history.push("/disclaimer")}
+          >
+            Disclaimer
+          </button>
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">SOCIAL</h4>

@@ -5,55 +5,55 @@ function PrivacyPolicy() {
     <div>
       <PrivacyPolicyBanner />
       <div className=" px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           BEYOND PRIVACY POLICY
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           At Beyond Exchange, accessible from
           https://warm-inlet-70613.herokuapp.com/, one of our main priorities is
           the privacy of our visitors. This Privacy Policy document contains
           types of information that is collected and recorded by Beyond Exchange
           and how we use it.
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           If you have additional questions or require more information about our
           Privacy Policy, do not hesitate to contact us
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           This Privacy Policy applies only to our online activities and is valid
           for visitors to our website with regards to the information that they
           shared and/or collect in Beyond Exchange. This policy is not
           applicable to any information collected offline or via channels other
           than this website.
         </p>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           Consent
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           By using our website, you hereby consent to our Privacy Policy and
           agree to its terms. For our Terms and Conditions, please visit the
           Terms & Conditions Generator.
         </p>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           Information we collect
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           The personal information that you are asked to provide, and the
           reasons why you are asked to provide it, will be made clear to you at
           the point we ask you to provide your personal information.
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           If you contact us directly, we may receive additional information
           about you such as your name, email address, phone number, the contents
           of the message and/or attachments you may send us, and any other
           information you may choose to provide.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           When you register for an Account, we may ask for your contact
           information, including items such as name, company name, address,
           email address, and telephone number.
         </p>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           How we use your information
         </h1>
         <p className="text-xs items-center justify-center my-3">
@@ -85,10 +85,10 @@ function PrivacyPolicy() {
             Find and prevent fraud
           </li>
         </ol>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           Log Files
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Beyond Exchange follows a standard procedure of using log files. These
           files log visitors when they visit websites. All hosting companies do
           this and a part of hosting services' analytics. The information
@@ -101,14 +101,14 @@ function PrivacyPolicy() {
           information.
         </p>
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           Advertising Partners Privacy Policies
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           You may consult this list to find the Privacy Policy for each of the
           advertising partners of Beyond Exchange.
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           Third-party ad servers or ad networks uses technologies like cookies,
           JavaScript, or Web Beacons that are used in their respective
           advertisements and links that appear on Beyond Exchange, which are
@@ -117,103 +117,103 @@ function PrivacyPolicy() {
           effectiveness of their advertising campaigns and/or to personalize the
           advertising content that you see on websites that you visit.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Note that Beyond Exchange has no access to or control over these
           cookies that are used by third-party advertisers.
         </p>
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           Third Party Privacy Policies
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Beyond Exchange's Privacy Policy does not apply to other advertisers
           or websites. Thus, we are advising you to consult the respective
           Privacy Policies of these third-party ad servers for more detailed
           information. It may include their practices and instructions about how
           to opt-out of certain options.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           You can choose to disable cookies through your individual browser
           options. To know more detailed information about cookie management
           with specific web browsers, it can be found at the browsers'
           respective websites.
         </p>
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           CCPA Privacy Rights (Do Not Sell My Personal Information)
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Under the CCPA, among other rights, California consumers have the
           right to:
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           Request that a business that collects a consumer's personal data
           disclose the categories and specific pieces of personal data that a
           business has collected about consumers.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Request that a business delete any personal data about the consumer
           that a business has collected.
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           Request that a business that sells a consumer's personal data, not
           sell the consumer's personal data.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           If you make a request, we have one month to respond to you. If you
           would like to exercise any of these rights, please contact us.
         </p>
 
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           GDPR Data Protection Rights
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           We would like to make sure you are fully aware of all of your data
           protection rights. Every user is entitled to the following:
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           The right to access – You have the right to request copies of your
           personal data. We may charge you a small fee for this service.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           The right to rectification – You have the right to request that we
           correct any information you believe is inaccurate. You also have the
           right to request that we complete the information you believe is
           incomplete.
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           The right to erasure – You have the right to request that we erase
           your personal data, under certain conditions.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           The right to restrict processing – You have the right to request that
           we restrict the processing of your personal data, under certain
           conditions.
         </p>
-        <p className="text-xs items-center justify-center my-3">
+        <p className="text-xs items-center text-center justify-center my-3">
           The right to object to processing – You have the right to object to
           our processing of your personal data, under certain conditions.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           The right to data portability – You have the right to request that we
           transfer the data that we have collected to another organization, or
           directly to you, under certain conditions.
         </p>
-        <p className="text-xs items-center justify-center mt-3">
+        <p className="text-xs items-center text-center justify-center mt-3">
           If you make a request, we have one month to respond to you. If you
           would like to exercise any of these rights, please contact us.
         </p>
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
           Children's Information
         </h1>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Another part of our priority is adding protection for children while
           using the internet. We encourage parents and guardians to observe,
           participate in, and/or monitor and guide their online activity.
         </p>
-        <p className="text-xs items-center justify-center">
+        <p className="text-xs items-center text-center justify-center">
           Beyond Exchange does not knowingly collect any Personal Identifiable
           Information from children under the age of 13. If you think that your
           child provided this kind of information on our website, we strongly

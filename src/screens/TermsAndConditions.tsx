@@ -5,220 +5,176 @@ function TermsAndConditions() {
     <div>
       <TermsAndConditionsBanner />
       <div className=" px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          BEYOND PRIVACY POLICY
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          INTRODUCTION
         </h1>
-        <p className="text-xs items-center justify-center">
-          At Beyond Exchange, accessible from
-          https://warm-inlet-70613.herokuapp.com/, one of our main priorities is
-          the privacy of our visitors. This Privacy Policy document contains
-          types of information that is collected and recorded by Beyond Exchange
-          and how we use it.
+        <p className="text-xs items-center text-center justify-center">
+          These Website Standard Terms and Conditions written on this webpage
+          shall manage your use of our website, Beyond Exchange accessible at
+          www.beyondexchange.com.
         </p>
-        <p className="text-xs items-center justify-center my-3">
-          If you have additional questions or require more information about our
-          Privacy Policy, do not hesitate to contact us
+        <p className="text-xs items-center text-center justify-center my-3">
+          These Terms will be applied fully and affect to your use of this
+          Website. By using this Website, you agreed to accept all terms and
+          conditions written in here. You must not use this Website if you
+          disagree with any of these Website Standard Terms and Conditions.
+          These Terms and Conditions have been generated with the help of the
+          Terms And Conditiions Sample and the Privacy Policy Generator.Minors
+          or people below 18 years old are not allowed to use this Website.
         </p>
-        <p className="text-xs items-center justify-center">
-          This Privacy Policy applies only to our online activities and is valid
-          for visitors to our website with regards to the information that they
-          shared and/or collect in Beyond Exchange. This policy is not
-          applicable to any information collected offline or via channels other
-          than this website.
-        </p>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          Consent
+
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          INTELLECTUAL PROPERTY RIGHTS
         </h1>
-        <p className="text-xs items-center justify-center">
-          By using our website, you hereby consent to our Privacy Policy and
-          agree to its terms. For our Terms and Conditions, please visit the
-          Terms & Conditions Generator.
+        <p className="text-xs items-center text-center justify-center">
+          Other than the content you own, under these Terms, Beyond Exchange
+          and/or its licensors own all the intellectual property rights and
+          materials contained in this Website. You are granted limited license
+          only for purposes of viewing the material contained on this Website.
         </p>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          Information we collect
-        </h1>
-        <p className="text-xs items-center justify-center">
-          The personal information that you are asked to provide, and the
-          reasons why you are asked to provide it, will be made clear to you at
-          the point we ask you to provide your personal information.
-        </p>
-        <p className="text-xs items-center justify-center my-3">
-          If you contact us directly, we may receive additional information
-          about you such as your name, email address, phone number, the contents
-          of the message and/or attachments you may send us, and any other
-          information you may choose to provide.
-        </p>
-        <p className="text-xs items-center justify-center">
-          When you register for an Account, we may ask for your contact
-          information, including items such as name, company name, address,
-          email address, and telephone number.
-        </p>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          How we use your information
+
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          RESTRICTIONS
         </h1>
         <p className="text-xs items-center justify-center my-3">
-          We use the information we collect in various ways, including to:
+          You are specifically restricted from all of the following:
         </p>
         <ol className="ml-5">
           <li className="text-xs items-center justify-center my-2">
-            Provide, operate, and maintain our webste
+            publishing any Website material in any other media.
           </li>
           <li className="text-xs items-center justify-center my-2">
-            Improve, personalize, and expand our webste
+            selling, sublicensing and/or otherwise commercializing any Website
+            material.
           </li>
           <li className="text-xs items-center justify-center my-2">
-            Understand and analyze how you use our webste
+            publicly performing and/or showing any Website material.
           </li>
           <li className="text-xs items-center justify-center my-2">
-            Develop new products, services, features, and functionality
+            using this Website in any way that is or may be damaging to this
+            Website;
           </li>
           <li className="text-xs items-center justify-center my-2">
-            Communicate with you, either directly or through one of our
-            partners, including for customer service, to provide you with
-            updates and other information relating to the webste, and for
-            marketing and promotional purposes
+            using this Website in any way that impacts user access to this
+            Website;
           </li>
           <li className="text-xs items-center justify-center my-2">
-            Send you emails
+            using this Website contrary to applicable laws and regulations, or
+            in any way may cause harm to the Website, or to any person or
+            business entity;
           </li>
           <li className="text-xs items-center justify-center my-2">
-            Find and prevent fraud
+            engaging in any data mining, data harvesting, data extracting or any
+            other similar activity in relation to this Website;
+          </li>
+          <li className="text-xs items-center justify-center my-2">
+            using this Website to engage in any advertising or marketing.
           </li>
         </ol>
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          Log Files
+        <p className="text-xs items-center text-center justify-center">
+          Certain areas of this Website are restricted from being access by you
+          and Beyond Exchange may further restrict access by you to any areas of
+          this Website, at any time, in absolute discretion. Any user ID and
+          password you may have for this Website are confidential and you must
+          maintain confidentiality as well.
+        </p>
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          YOUR CONTENT
         </h1>
-        <p className="text-xs items-center justify-center">
-          Beyond Exchange follows a standard procedure of using log files. These
-          files log visitors when they visit websites. All hosting companies do
-          this and a part of hosting services' analytics. The information
-          collected by log files include internet protocol (IP) addresses,
-          browser type, Internet Service Provider (ISP), date and time stamp,
-          referring/exit pages, and possibly the number of clicks. These are not
-          linked to any information that is personally identifiable. The purpose
-          of the information is for analyzing trends, administering the site,
-          tracking users' movement on the website, and gathering demographic
-          information.
+        <p className="text-xs items-center text-center justify-center">
+          In these Website Standard Terms and Conditions, "Your Content" shall
+          mean any audio, video text, images or other material you choose to
+          display on this Website. By displaying Your Content, you grant Beyond
+          Exchange a non-exclusive, worldwide irrevocable, sub licensable
+          license to use, reproduce, adapt, publish, translate and distribute it
+          in any and all media. Your Content must be your own and must not be
+          invading any third-party’s rights. Beyond Exchange reserves the right
+          to remove any of Your Content from this Website at any time without
+          notice.
         </p>
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          Advertising Partners Privacy Policies
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          NO WARRANTIES
         </h1>
-        <p className="text-xs items-center justify-center">
-          You may consult this list to find the Privacy Policy for each of the
-          advertising partners of Beyond Exchange.
-        </p>
-        <p className="text-xs items-center justify-center my-3">
-          Third-party ad servers or ad networks uses technologies like cookies,
-          JavaScript, or Web Beacons that are used in their respective
-          advertisements and links that appear on Beyond Exchange, which are
-          sent directly to users' browser. They automatically receive your IP
-          address when this occurs. These technologies are used to measure the
-          effectiveness of their advertising campaigns and/or to personalize the
-          advertising content that you see on websites that you visit.
-        </p>
-        <p className="text-xs items-center justify-center">
-          Note that Beyond Exchange has no access to or control over these
-          cookies that are used by third-party advertisers.
-        </p>
-        {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          Third Party Privacy Policies
-        </h1>
-        <p className="text-xs items-center justify-center">
-          Beyond Exchange's Privacy Policy does not apply to other advertisers
-          or websites. Thus, we are advising you to consult the respective
-          Privacy Policies of these third-party ad servers for more detailed
-          information. It may include their practices and instructions about how
-          to opt-out of certain options.
-        </p>
-        <p className="text-xs items-center justify-center">
-          You can choose to disable cookies through your individual browser
-          options. To know more detailed information about cookie management
-          with specific web browsers, it can be found at the browsers'
-          respective websites.
-        </p>
-        {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          CCPA Privacy Rights (Do Not Sell My Personal Information)
-        </h1>
-        <p className="text-xs items-center justify-center">
-          Under the CCPA, among other rights, California consumers have the
-          right to:
-        </p>
-        <p className="text-xs items-center justify-center my-3">
-          Request that a business that collects a consumer's personal data
-          disclose the categories and specific pieces of personal data that a
-          business has collected about consumers.
-        </p>
-        <p className="text-xs items-center justify-center">
-          Request that a business delete any personal data about the consumer
-          that a business has collected.
-        </p>
-        <p className="text-xs items-center justify-center my-3">
-          Request that a business that sells a consumer's personal data, not
-          sell the consumer's personal data.
-        </p>
-        <p className="text-xs items-center justify-center">
-          If you make a request, we have one month to respond to you. If you
-          would like to exercise any of these rights, please contact us.
+        <p className="text-xs items-center text-center justify-center">
+          This Website is provided "as is," with all faults, and Beyond Exchange
+          express no representations or warranties, of any kind related to this
+          Website or the materials contained on this Website. Also, nothing
+          contained on this Website shall be interpreted as advising you.
         </p>
 
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          GDPR Data Protection Rights
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          LIMITATION OF LIABILITY
         </h1>
-        <p className="text-xs items-center justify-center">
-          We would like to make sure you are fully aware of all of your data
-          protection rights. Every user is entitled to the following:
+        <p className="text-xs items-center text-center justify-center">
+          In no event shall Beyond Exchange, nor any of its officers, directors
+          and employees, shall be held liable for anything arising out of or in
+          any way connected with your use of this Website whether such liability
+          is under contract. Beyond Exchange, including its officers, directors
+          and employees shall not be held liable for any indirect, consequential
+          or special liability arising out of or in any way related to your use
+          of this Website.
         </p>
-        <p className="text-xs items-center justify-center my-3">
-          The right to access – You have the right to request copies of your
-          personal data. We may charge you a small fee for this service.
+
+        {/*  */}
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          INDEMNIFICATION
+        </h1>
+        <p className="text-xs items-center text-center justify-center">
+          You hereby indemnify to the fullest extent Beyond Exchange from and
+          against any and/or all liabilities, costs, demands, causes of action,
+          damages and expenses arising in any way related to your breach of any
+          of the provisions of these Terms.
         </p>
-        <p className="text-xs items-center justify-center">
-          The right to rectification – You have the right to request that we
-          correct any information you believe is inaccurate. You also have the
-          right to request that we complete the information you believe is
-          incomplete.
+
+        {/*  */}
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          SEVERABILITY
+        </h1>
+        <p className="text-xs items-center text-center justify-center">
+          If any provision of these Terms is found to be invalid under any
+          applicable law, such provisions shall be deleted without affecting the
+          remaining provisions herein.
         </p>
-        <p className="text-xs items-center justify-center my-3">
-          The right to erasure – You have the right to request that we erase
-          your personal data, under certain conditions.
-        </p>
-        <p className="text-xs items-center justify-center">
-          The right to restrict processing – You have the right to request that
-          we restrict the processing of your personal data, under certain
-          conditions.
-        </p>
-        <p className="text-xs items-center justify-center my-3">
-          The right to object to processing – You have the right to object to
-          our processing of your personal data, under certain conditions.
-        </p>
-        <p className="text-xs items-center justify-center">
-          The right to data portability – You have the right to request that we
-          transfer the data that we have collected to another organization, or
-          directly to you, under certain conditions.
-        </p>
-        <p className="text-xs items-center justify-center mt-3">
-          If you make a request, we have one month to respond to you. If you
-          would like to exercise any of these rights, please contact us.
+
+        {/*  */}
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          VARIATION OF TERMS
+        </h1>
+        <p className="text-xs items-center text-center justify-center">
+          Beyond Exchange is permitted to revise these Terms at any time as it
+          sees fit, and by using this Website you are expected to review these
+          Terms on a regular basis.
         </p>
         {/*  */}
-        <h1 className="text-2xl flex  p-8 items-center justify-center">
-          Children's Information
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          ASSIGNMENT
         </h1>
-        <p className="text-xs items-center justify-center">
-          Another part of our priority is adding protection for children while
-          using the internet. We encourage parents and guardians to observe,
-          participate in, and/or monitor and guide their online activity.
+        <p className="text-xs items-center text-center justify-center">
+          The Beyond Exchange is allowed to assign, transfer, and subcontract
+          its rights and/or obligations under these Terms without any
+          notification. However, you are not allowed to assign, transfer, or
+          subcontract any of your rights and/or obligations under these Terms.
         </p>
-        <p className="text-xs items-center justify-center">
-          Beyond Exchange does not knowingly collect any Personal Identifiable
-          Information from children under the age of 13. If you think that your
-          child provided this kind of information on our website, we strongly
-          encourage you to contact us immediately and we will do our best
-          efforts to promptly remove such information from our records
+        {/*  */}
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          ENTIRE AGREEMENT
+        </h1>
+        <p className="text-xs items-center text-center justify-center">
+          These Terms constitute the entire agreement between Beyond Exchange
+          and you in relation to your use of this Website, and supersede all
+          prior agreements and understandings.
+        </p>
+        {/*  */}
+        <h1 className="text-2xl flex  p-8 items-center text-center justify-center">
+          GOVERNING LAW & JURISDICTION
+        </h1>
+        <p className="text-xs items-center text-center justify-center">
+          These Terms will be governed by and interpreted in accordance with the
+          laws of the State of um, and you submit to the non-exclusive
+          jurisdiction of the state and federal courts located in um for the
+          resolution of any disputes.
         </p>
       </div>
     </div>
