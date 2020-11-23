@@ -80,7 +80,6 @@ const useMint = () => {
       validated = false;
     }
 
-    debugger
     if (state.BYNStackingAmount > state.BynBalance||state.BynBalance===0) {
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;
@@ -92,7 +91,6 @@ const useMint = () => {
   const setAmount = (event: any) => {
     const value = event.target.value;
     let stacking = ((value * state.cRatio) / state.BynRate);
-    debugger
     setState((prev) => ({ ...prev, amount: value, amountVal: "",BYNStackingAmount:state.BynRate===0?0: stacking }));
   };
 

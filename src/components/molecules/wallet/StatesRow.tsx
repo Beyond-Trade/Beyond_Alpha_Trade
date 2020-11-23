@@ -23,7 +23,6 @@ function StatesRow() {
     return obj.isSiteToken;
   });
   let totalBynPercentage = bynBalance? ((bynBalance?.cryptoBalance * bynBalance?.rate) / totalSynthValue) * 100: 0;
-  debugger;
   let USDbBalance = balances.find(function (obj) {
     return obj.short == ERC20Contracts.USDb;
   });

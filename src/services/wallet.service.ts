@@ -81,7 +81,6 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
         balance.rate = synthRate ? synthRate.rate / Math.pow(10, asset.decimal) : 0;
         }
         catch(e){
-            debugger
             console.log(e)}
     }
     if (activeAddress) {
@@ -153,7 +152,6 @@ export const getERC20Balance = async (contractInfo: any, address: string): Promi
                 const balance = await contract.methods.balanceOf(address).call();
                 var balanceInWei = web3.utils.fromWei(balance, 'ether');
                 let bal: number = parseInt(balanceInWei);// / Math.pow(10, contractInfo.decimal)
-                debugger
                 return bal;
             } catch (error) {
                 return 0;

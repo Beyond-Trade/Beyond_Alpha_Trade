@@ -61,7 +61,7 @@ const useTransfer = () => {
     setState((prev) => ({ ...prev, amount: state.balance.toString() }));
 
   const transferEtherBalance = () => {
-    transferEther(state.address, state.amount, state.fee)
+    transferEther(state.address, parseFloat(state.amount), state.fee)
       .then((data) => {
         if (!data) {
           throw new Error("no data");
