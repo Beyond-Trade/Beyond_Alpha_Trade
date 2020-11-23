@@ -14,6 +14,7 @@ const useMarketData = () => {
     topIndex: 0,
     topTabs: ["TOP GAINERS", "TOP LOOSERS"],
     activeData: init,
+    orgActiveData: init,
     search: "",
     marketTabs: [],
   });
@@ -36,6 +37,7 @@ const useMarketData = () => {
       ...prev,
       marketTabs: unique,
       activeData: balances,
+      orgActiveData: balances,
       marketTopData: marketTop,
     }));
 
@@ -56,7 +58,7 @@ const useMarketData = () => {
         (a: any, b: any) => Number(b[sortOn]) - Number(a[sortOn])
       );
     } else {
-      data = balances;
+      data = state.orgActiveData;
     }
     console.log(data);
     setState((prev) => ({ ...prev, activeData: data }));
@@ -72,7 +74,12 @@ const useMarketData = () => {
         }
       });
     }
-    setState((prev) => ({ ...prev, marketIndex: index, activeData: data }));
+    setState((prev) => ({
+      ...prev,
+      marketIndex: index,
+      activeData: data,
+      orgActiveData: data,
+    }));
   };
   const setTopIndex = (index: number) => {
     let data: any = [];
