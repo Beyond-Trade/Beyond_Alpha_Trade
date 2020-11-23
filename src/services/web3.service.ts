@@ -108,9 +108,7 @@ export const initPortis = async (): Promise<Web3> => {
     }
     try {
         const Portis = await import('@portis/web3');
-        console.log(PORTIS_APP_ID, 'netwrok ', NETWORK_NAME);
         const portis = new Portis.default(PORTIS_APP_ID, NETWORK_NAME.toLowerCase());
-        console.log(portis);
         web3.setProvider(portis.provider);
         const [account] = await web3.eth.getAccounts();
         portis.onLogout(() => {
@@ -172,7 +170,6 @@ export const initCoinbase = async (): Promise<Web3> => {
                 web3.setProvider(provider);
 
                 eth.enable().then((accounts: string[]) => {
-                    console.log(`User's address is ${accounts[0]}`)
                     web3.eth.defaultAccount = accounts[0]
                 })
 
@@ -198,7 +195,6 @@ export const initWalletConnect = async (): Promise<Web3> => {
     const provider = new WalletConnectProvider({ infuraId: INFURA_ID });
     try {
         const res = await provider.enable();
-        // console.log(res)
         //localStorage.saveWalletConnected(web3Sources.WalletConnect);
     } catch {
         //localStorage.resetWalletConnected();
@@ -268,12 +264,10 @@ export const initMetamask = async (): Promise<Web3> => {
     } else {
         // @ts-ignore
         if (window.web3) {
-            console.log("----------------curr provider ", web3);
             // @ts-ignore
             web3.setProvider(window.web3.currentProvider);
             return web3;
         } else {
-            console.log("---------------null ", web3);
             //localStorage.resetWalletConnected();
             store.dispatch(resetWalletsInfoAction());
             //  The user does not have metamask installed

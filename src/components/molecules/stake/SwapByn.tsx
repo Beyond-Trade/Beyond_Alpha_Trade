@@ -26,7 +26,7 @@ function SwapByn(props: IProps) {
           {/* <GeneralTab tabs={["SWAP", "POOL"]} onClick={() => {}} index={0} /> */}
           <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
-              <h6 className="text-xxs font-medium">From</h6>
+              <h6 className="text-xxs font-medium">From (ETH)</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
                 name="from"
@@ -35,7 +35,7 @@ function SwapByn(props: IProps) {
               />
             </div>
             <div className="text-right">
-              <h6 className="text-xxs font-medium break-normal">Balance: {balance}</h6>
+              <h6 className="text-xxs font-medium break-normal">Balance: {balance.toFixed(5)}ETH</h6>
               <div className="flex items-center w-16 text-right justify-end mt-2">
                 <button onClick={setMax} className="focus:outline-none bg-customBlue-100 px-1 text-xxs text-white mr-4">
                   MAX
@@ -52,7 +52,7 @@ function SwapByn(props: IProps) {
           />
           <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
-              <h6 className="text-xxs font-medium">To</h6>
+              <h6 className="text-xxs font-medium">To (BYN)</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
                 value={to}

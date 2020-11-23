@@ -20,7 +20,6 @@ export interface Balance {
     isEther: boolean;
     isSiteToken: boolean;
     icon:string;
-
 }
 
 export interface WalletState {

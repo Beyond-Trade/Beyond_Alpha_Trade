@@ -24,3 +24,25 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
     else return null;
 
 };
+// @ts-ignore
+export const checkUserCollatteral = async (): Promise<number> => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+
+    let activeAddress = walletInfo.selected.address;
+    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
+    if (web3.currentProvider) {
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
+            try {
+                const price = await contract.methods.checkUserCollatteral(activeAddress).call();
+                debugger
+                return price;
+            } catch (error) {
+                return 0;
+            }
+        }
+    }
+    else return 0;
+}
