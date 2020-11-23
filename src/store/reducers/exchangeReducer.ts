@@ -13,6 +13,11 @@ const initialState: ExchangeState = {
     counter: TradePairsLookup[0].pairs[0].coin,
     baseBalance: 0,
     counterBalance: 0,
+    fromRate: 0,
+    toRate: 0,
+    change24h: 0,
+    high24h: 0,
+    low24h: 0
   },
   marketData: TradePairsLookup,
   search: ""
@@ -31,6 +36,11 @@ export function exchangeReducer(
           counter: action.counter,
           baseBalance: action.baseBalance,
           counterBalance: action.counterBalance,
+          fromRate: action.fromRate,
+          toRate: action.toRate,
+          change24h: action.change24h,
+          high24h: action.high24h,
+          low24h: action.low24h
         },
       };
     case SET_MARKET_DATA:

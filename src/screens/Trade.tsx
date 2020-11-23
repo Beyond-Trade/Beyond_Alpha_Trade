@@ -15,7 +15,7 @@ function Trade() {
         <PairSelection />
         <div className="w-full xl:ml-4 lg:ml-4">
           <h3 className="font-bold text-2xl ml-4">{selectedPair.counter+" / "+selectedPair.base}</h3>
-          <MarketData />
+          <MarketData selectedPair={selectedPair} />
           <div className="xl:flex lg:flex md:flex">
             <Chart selectedPair={selectedPair} />
             <MakeOrders />

@@ -3,7 +3,12 @@ export interface AssetPair {
     base: string;
     counter: string;
     baseBalance: number;
-    counterBalance: number
+    counterBalance: number;
+    fromRate: number;
+    toRate: number;
+    change24h: number;
+    high24h: number;
+    low24h: number;
 }
 
 export interface MarketPair {

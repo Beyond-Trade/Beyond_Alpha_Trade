@@ -6,7 +6,7 @@ import { RootState } from "../../store/reducers/Index"
 
 
 const usePairSelection = () => {
-    const { marketData, search } = useSelector((state: RootState)=>state.exchange)
+    const { exchange:{marketData, search}, wallet:{balances} } = useSelector((state: RootState)=>state)
     const getTabs = () => {
         let tabs:string[] = []
         marketData.forEach((item) => {
@@ -19,9 +19,9 @@ const usePairSelection = () => {
         tabs: getTabs()
     })
 
-    useEffect(()=>{
+    useEffect(() => {
         selectAssetPairAction(TradePairsLookup[0].marketCoin, TradePairsLookup[0].pairs[0].coin)
-    },[])
+    },[balances])
 
     const setMarketTab = (index:number) => setState(prev=>({...prev, marketTab: index}))
     const setSelectedPair = (from:string, to:string) => {
