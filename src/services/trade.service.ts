@@ -86,25 +86,25 @@ export const TradePairsLookup = [
   },
 ];
 
-export const addTrade = async (from:string, to:string, amount:number, gasFee:number) => {
-    if (from === ERC20Contracts.USDb) {
-        const res = await mintSynth(to, amount, gasFee);
-        return res;
-      } else if (
-        from !== ERC20Contracts.USDb &&
-        to !== ERC20Contracts.USDb
-      ) {
-        const res = await convertSynths(from, to, amount, gasFee)
-        return res
-      } else if (to === ERC20Contracts.USDb) {
-        const res = await convertSynthsToUSD(from, amount, gasFee)
-        return res
-      }
+export const addTrade = async (from: string, to: string, amount: number, gasFee: number) => {
+  if (from === ERC20Contracts.USDb) {
+    const res = await mintSynth(to, amount, gasFee);
+    return res;
+  } else if (
+    from !== ERC20Contracts.USDb &&
+    to !== ERC20Contracts.USDb
+  ) {
+    const res = await convertSynths(from, to, amount, gasFee)
+    return res
+  } else if (to === ERC20Contracts.USDb) {
+    const res = await convertSynthsToUSD(from, amount, gasFee)
+    return res
+  }
 }
 
 // @ts-ignore
 export const mintSynth = async (
-  to: string,
+  toSynth: string,
   amount: number,
   gasPrice: number
 ) => {
@@ -127,7 +127,7 @@ export const mintSynth = async (
       amount = amount * Math.pow(10, contractInfo.decimal);
       // @ts-ignore
       const tx = await contract.methods
-        .mintSynth(to, amount.toString())
+        .mintSynth(toSynth, amount.toString())
         .send({ gasPrice: gasPrice });
       return tx;
     }
@@ -168,32 +168,32 @@ export const convertSynths = async (
 
 
 export const convertSynthsToUSD = async (
-    from: string,
-    amount: number,
-    gasPrice: number
-  ) => {
-    web3 = store.getState().wallet.web3;
-    let walletInfo = store.getState().wallet;
-  
-    let activeAddress = walletInfo.selected.address;
-  
-    if (web3.currentProvider) {
-      const contractInfo = ContractLookup.find(
-        (c) => c.contractName == ERC20Contracts.BEYOND_EXCHANGE
+  from: string,
+  amount: number,
+  gasPrice: number
+) => {
+  web3 = store.getState().wallet.web3;
+  let walletInfo = store.getState().wallet;
+
+  let activeAddress = walletInfo.selected.address;
+
+  if (web3.currentProvider) {
+    const contractInfo = ContractLookup.find(
+      (c) => c.contractName == ERC20Contracts.BEYOND_EXCHANGE
+    );
+    if (contractInfo) {
+      const contract = new web3.eth.Contract(
+        contractInfo.contractAbi,
+        contractInfo.contractAddress,
+        { from: activeAddress }
       );
-      if (contractInfo) {
-        const contract = new web3.eth.Contract(
-          contractInfo.contractAbi,
-          contractInfo.contractAddress,
-          { from: activeAddress }
-        );
-  
-        amount = amount * Math.pow(10, contractInfo.decimal);
-        // @ts-ignore
-        const tx = await contract.methods
-          .convertSynths(from, amount.toString())
-          .send({ gasPrice: gasPrice });
-        return tx;
-      }
-    } else return null;
-  };
+
+      amount = amount * Math.pow(10, contractInfo.decimal);
+      // @ts-ignore
+      const tx = await contract.methods
+        .convertSynths(from, amount.toString())
+        .send({ gasPrice: gasPrice });
+      return tx;
+    }
+  } else return null;
+};
