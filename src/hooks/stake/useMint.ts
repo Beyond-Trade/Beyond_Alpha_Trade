@@ -80,7 +80,6 @@ const useMint = () => {
       setState((prev) => ({ ...prev, amountVal: "Amount is not valid" }));
       validated = false;
     }
-    
     if (state.BYNStackingAmount > state.BynBalance||state.BynBalance===0) {
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;

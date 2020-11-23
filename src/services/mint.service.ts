@@ -54,7 +54,6 @@ export const getStackedByn = async (): Promise<any> => {
                 // @ts-ignore
                 stack.totalBYN = parseInt(data.totalBYN) / Math.pow(10, bynContract.decimal);
 
-                debugger
                 return stack;
             } catch (error) {
                 return stack;
