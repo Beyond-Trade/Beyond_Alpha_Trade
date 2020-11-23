@@ -74,6 +74,7 @@ const useTransfer = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        debugger
         console.log("transfer ether error", e);
         showAlert({
           title: "Error!",

@@ -11,7 +11,7 @@ function MarketData(props:IProps) {
     <div className="bg-customGray-100 rounded py-2 px-6 flex justify-between whitespace-nowrap overflow-auto mt-4">
       <div>
         <h5 className="text-gray-600 text-xxs xl:text-xxs lg:text-xxs">Price</h5>
-        <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">{props.selectedPair.fromRate} USD</h2>
+        <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">{props.selectedPair.rate} USD</h2>
       </div>
       <div>
         <h5 className="text-gray-600 text-xxs xl:text-xxs lg:text-xxs">Change(24h)</h5>

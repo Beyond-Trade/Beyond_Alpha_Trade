@@ -15,6 +15,7 @@ const initialState: ExchangeState = {
     counterBalance: 0,
     fromRate: 0,
     toRate: 0,
+    rate: 0,
     change24h: 0,
     high24h: 0,
     low24h: 0
@@ -38,6 +39,7 @@ export function exchangeReducer(
           counterBalance: action.counterBalance,
           fromRate: action.fromRate,
           toRate: action.toRate,
+          rate: action.rate,
           change24h: action.change24h,
           high24h: action.high24h,
           low24h: action.low24h

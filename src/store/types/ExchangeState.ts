@@ -6,6 +6,7 @@ export interface AssetPair {
     counterBalance: number;
     fromRate: number;
     toRate: number;
+    rate: number;
     change24h: number;
     high24h: number;
     low24h: number;

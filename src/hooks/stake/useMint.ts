@@ -40,7 +40,6 @@ const useMint = () => {
     setState((prev) => ({ ...prev, BynRate: BYNObj?.rate || 0, BynBalance: BYNObj?.cryptoBalance||0 }));
   }, [])
 
-
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
   const selectFee = (fee: number) =>
@@ -50,6 +49,7 @@ const useMint = () => {
     setState((prev) => ({ ...prev, submitting: true }));
     mintERC20(Number(state.amount), state.fee)
       .then((data) => {
+        debugger
         if (!data) {
           throw new Error("no data");
         }
@@ -61,6 +61,7 @@ const useMint = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        debugger
         showAlert({
           title: "Error!",
           message: "Error while minting",
@@ -79,7 +80,6 @@ const useMint = () => {
       setState((prev) => ({ ...prev, amountVal: "Amount is not valid" }));
       validated = false;
     }
-
     if (state.BYNStackingAmount > state.BynBalance||state.BynBalance===0) {
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;
