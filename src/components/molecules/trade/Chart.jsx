@@ -1,10 +1,10 @@
 import * as React from "react";
 import TradingViewWidget from "react-tradingview-widget";
 
-function Chart() {
+function Chart({selectedPair}) {
   return (
     <div className="mt-4 w-full h-chartH">
-      <TradingViewWidget symbol="NASDAQ:AAPL" autosize />
+      <TradingViewWidget symbol={`${selectedPair.counter.slice(0, -1)}${selectedPair.base.slice(0, -1)}`} autosize />
     </div>
   );
 }

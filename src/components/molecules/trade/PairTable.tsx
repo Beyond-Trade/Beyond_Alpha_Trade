@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import usePairSelection from "../../../hooks/trade/usePairSelection";
 import GenericTab from "../../atomic/GenericTab";
-import MarketTop from "../market/MarketTop";
 import PairData from "./PairData";
 
 function PairTable() {
-  const [index, setIndex] = useState(0)
+  const { marketTab, tabs, setMarketTab, marketData, setSelectedPair, search } = usePairSelection()
   return (
     <div className="mt-4">
       <GenericTab
-        index={index}
-        onSelect={setIndex}
-        tabs={["EQUITY", "FOREX", "CRYPTO"]}
+        index={marketTab}
+        onSelect={setMarketTab}
+        tabs={tabs}
       />
-      <PairData />
+      <PairData data={marketData[marketTab]} search={search} onSelect={setSelectedPair} />
     </div>
   );
 }

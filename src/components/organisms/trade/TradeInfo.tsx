@@ -62,7 +62,7 @@ function TradeInfo() {
           </td>
         </tr>
         {[1, 1, 1, 1, 1].map((item) => (
-          <tr className="text-xs text-left text-gray-600 font-medium">
+          <tr className="text-xs text-left text-gray-600 font-medium hover:bg-gray-300">
             <td className="py-3 px-3 whitespace-nowrap">
               <text>Oct 24, 20 | 23:08</text>
             </td>

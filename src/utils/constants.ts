@@ -5,3 +5,15 @@ export const feesDescription:any = {
     1: "Fast",
     2: "Fastest"
 }
+
+export const assetChartNames:any = {
+    USDb: 'USD',
+    EURb: 'EUR',
+    BEYOND: 'Beyond',
+    ETHb: 'ETH',
+    OILb: 'OIL',
+    GBPb:'GBP',
+    BTCb: 'BTC',
+}
+
+export const nowrap:any = { whiteSpace: 'nowrap' }
