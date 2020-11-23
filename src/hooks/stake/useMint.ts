@@ -1,8 +1,15 @@
-import { mintERC20 } from "../../services/mint.service";
+import { collatteralRatio, mintERC20 } from "../../services/mint.service";
 import { showAlert } from "../../services/generic.services";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Balance } from "../../store/types/WalletState";
+import { ERC20Contracts } from "../../contracts/constants/contracts";
+import { RootState } from "../../store/reducers/Index";
+import { useSelector } from "react-redux";
 
 const useMint = () => {
+  const { balances } = useSelector(
+    (state: RootState) => state.wallet
+  );
   const gasFees = [17, 23, 34];
   const [state, setState] = useState({
     submitting: false,
@@ -10,6 +17,9 @@ const useMint = () => {
     amountVal: "",
     fee: gasFees[0],
     isOpen: false,
+    cRatio: 0,
+    BYNStackingAmount: 0,
+    BynRate: 0
   });
 
   const submit = () => {
@@ -18,6 +28,18 @@ const useMint = () => {
     }
     mintToken();
   };
+
+  useEffect(() => {
+    collatteralRatio().then((c) => {
+      setState((prev) => ({ ...prev, cRatio: c }));
+    })
+    const BYNObj = balances.find(
+      (bal: Balance) => bal.short == ERC20Contracts.BEYOND
+    );
+    setState((prev) => ({ ...prev, BynRate: BYNObj?.rate || 0 }));
+  }, [])
+
+
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
   const selectFee = (fee: number) =>
@@ -46,7 +68,6 @@ const useMint = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };
-
   const isValidated = () => {
     let validated = true;
     if (state.amount === "") {
@@ -59,7 +80,8 @@ const useMint = () => {
 
   const setAmount = (event: any) => {
     const value = event.target.value;
-    setState((prev) => ({ ...prev, amount: value, amountVal: "" }));
+    let stacking = ((value * state.cRatio) / state.BynRate);
+    setState((prev) => ({ ...prev, amount: value, amountVal: "",BYNStackingAmount: stacking }));
   };
 
   return {

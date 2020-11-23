@@ -2,16 +2,17 @@ import * as React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ERC20Contracts } from "../../../contracts/constants/contracts";
-import { checkUserCollatteral } from "../../../services/mint.service";
+import {getStackedByn } from "../../../services/mint.service";
 import { RootState } from "../../../store/reducers/Index";
 import { Balance } from "../../../store/types/WalletState";
 
 const BottomSection = () => {
   const [state, setState] = useState({
-    userCollatteral: 0,
+    stackedBYN: 0,
+    unstackedBYN: 0,
+    totalBYN: 0,
     ETHBal: 0,
     ethRate: 0,
-    BYNBal: 0,
     bynRate: 0,
   });
   const { balances } = useSelector((state: RootState) => state.wallet);
@@ -28,12 +29,11 @@ const BottomSection = () => {
       ...prev,
       ethRate: ETHObj?.rate || 0,
       ETHBal: ETHObj?.cryptoBalance || 0,
-      bynRate: BYNObj?.rate || 0,
-      BYNBal: BYNObj?.cryptoBalance || 0,
+      bynRate: BYNObj?.rate || 0
     }));
 
-    checkUserCollatteral().then((data: any) => {
-      setState((prev) => ({ ...prev, userCollatteral: data }));
+    getStackedByn().then((data: any) => {
+      setState((prev) => ({ ...prev, stackedBYN: data.stackedBYN,unstackedBYN:data.unstackedBYN,totalBYN:data.totalBYN }));
     });
   }, []);
 
@@ -58,15 +58,15 @@ const BottomSection = () => {
           <div className="flex justify-between border-b border-gray-400 pb-2">
             <h6 className="text-xs">TOTAL BYN:</h6>
             <h6 className="text-xs font-medium text-blue-300">
-              {state.BYNBal} BYN
+              {state.totalBYN} BYN
             </h6>
           </div>
           <div className="flex justify-between mt-4">
             <h6 className="text-xs font-medium">
-              Staked: {state.userCollatteral}
+              Staked: {state.stackedBYN}
             </h6>
             <h6 className="text-xs font-medium">
-              Not Staked: {state.BYNBal - state.userCollatteral}
+              Not Staked: {state.unstackedBYN}
             </h6>
           </div>
           <div className="flex mt-1">

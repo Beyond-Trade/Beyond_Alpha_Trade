@@ -4,7 +4,7 @@ import Loader from "react-loader-spinner";
 import GasFeeModal from "./GasFeeModal";
 
 function Mint() {
-  const { amount, amountVal, submit, fee, submitting, setAmount, openFeeModal, close, selectFee, isOpen } = useMint();
+  const { amount, amountVal, submit, fee, submitting, setAmount, openFeeModal, close, selectFee, isOpen,cRatio,BYNStackingAmount } = useMint();
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="text-lg font-bold">Mint</h3>
@@ -45,8 +45,8 @@ function Mint() {
             <small className="block text-red-500 italic">{amountVal}</small>
           </div>
           <div className="flex justify-between text-xxs font-medium mt-1">
-            <h6>Staking: 0 BYN</h6>
-            <h6>Estimated C-Ratio: 0%</h6>
+            <h6>Staking: {BYNStackingAmount} BYN</h6>
+            <h6>Estimated C-Ratio: {cRatio}%</h6>
           </div>
           <div className="mt-24 text-center text-xs font-medium">
           <text>
