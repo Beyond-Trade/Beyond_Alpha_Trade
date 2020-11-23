@@ -8,13 +8,11 @@ import {
   mintSynth,
 } from "../../services/trade.service";
 import { RootState } from "../../store/reducers/Index";
-import { Balance } from "../../store/types/WalletState";
 
 const useMakeOrders = () => {
   const gasFees = [17, 23, 34];
   const {
     exchange: { selectedPair },
-    wallet: { balances },
   } = useSelector((state: RootState) => state);
   const [state, setState] = useState({
     submitting: false,
@@ -26,6 +24,7 @@ const useMakeOrders = () => {
     toBalance: 0,
     fromRate: 0,
     toRate: 0,
+    usdValue: 0
   });
   const [inputs, setInputs] = useState({
     to: "",
@@ -44,6 +43,7 @@ const useMakeOrders = () => {
       fromRate: selectedPair.fromRate,
       toRate: selectedPair.toRate,
     }));
+    setInputs({to: "", fromVal: "", from: "", toVal: ""})
   }, [selectedPair]);
 
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
@@ -126,30 +126,32 @@ const useMakeOrders = () => {
 
   const getPairPrice = (fromRate:number, toRate:number) => {
     if(fromRate===0) return 0
-    let result = (1/fromRate)*toRate;
-    return result.toFixed(7);
+    let result = (1/toRate)*fromRate;
+    return result;
   }
 
   const handleFromChange = (event: any) => {
     const { value } = event.target;
     const price = getPairPrice(state.fromRate, state.toRate)
-    debugger
     setInputs((prev) => ({
       ...prev,
       from: value,
       fromVal: "",
       to: (Number(price)*Number(value)).toString()
     }));
+    setState(prev=>({...prev, usdValue: Number(value)*prev.fromRate}))
   };
   const handleToChange = (event: any) => {
     const { value } = event.target;
     const price = getPairPrice(state.fromRate, state.toRate)
+    const from = price===0?'0': (Number(value)/Number(price)).toString()
     setInputs((prev) => ({
       ...prev,
       to: value,
       toVal: "",
-      from: (value/Number(price)).toString()
+      from: from
     }));
+    setState(prev=>({...prev, usdValue: Number(from)*prev.fromRate}))
   };
 
   return {

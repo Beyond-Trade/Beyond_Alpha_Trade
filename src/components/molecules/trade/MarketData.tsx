@@ -6,6 +6,7 @@ interface IProps {
 }
 
 function MarketData(props:IProps) {
+  
   return (
     <div className="bg-customGray-100 rounded py-2 px-6 flex justify-between whitespace-nowrap overflow-auto mt-4">
       <div>

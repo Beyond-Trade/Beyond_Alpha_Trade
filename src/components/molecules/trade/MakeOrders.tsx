@@ -20,7 +20,8 @@ function MakeOrders() {
     toBalance,
     handleFromChange,
     handleToChange,
-    setPercentage
+    setPercentage,
+    usdValue
   } = useMakeOrders();
 
   return (
@@ -83,7 +84,7 @@ function MakeOrders() {
         </div>
         <div className="flex justify-between font-medium text-xxs text-gray-700 mt-2">
           <text>USD Value</text>
-          <text>$0</text>
+          <text>${usdValue}</text>
         </div>
         <div className="flex justify-between text-xxs font-medium text-gray-700 mt-1">
           <text>FEE ?</text>

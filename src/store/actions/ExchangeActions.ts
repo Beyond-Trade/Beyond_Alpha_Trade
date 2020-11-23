@@ -41,8 +41,8 @@ export const searchAsset = (search: string): GetExchangeInfoType => {
 
 export const selectAssetPairAction = (from: string, to: string) => {
   const state: RootState = store.getState();
-  const fromBalance = state.wallet.balances.find((item) => item.name === from);
-  const toBalance = state.wallet.balances.find((item) => item.name === to);
+  const fromBalance = state.wallet.balances.find((item) => item.short === from);
+  const toBalance = state.wallet.balances.find((item) => item.short === to);
 
   store.dispatch(
     selectAssetPair(
