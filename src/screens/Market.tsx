@@ -45,34 +45,34 @@ function Market() {
       <div className="mt-12 xl:flex lg:flex">
         <MarketCard
           coin="POUND"
-          price={GBPRate ? Number(GBPRate.rate).toFixed(4) : "00.00"}
+          price={GBPRate ? Number(GBPRate.rate).toFixed(2) : "00.00"}
           pair="GBP/ USDb"
           image="assets/Icons/pound.svg"
-          change={GBPRate ? Number(GBPRate.change24h).toFixed(4) : "00.00"}
+          change={GBPRate ? Number(GBPRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="GOLD OUNCE"
-          price={OILRate ? Number(OILRate.rate).toFixed(4) : "00.00"}
+          price={OILRate ? Number(OILRate.rate).toFixed(2) : "00.00"}
           pair="GOLD/ USDb"
           image="assets/Icons/gold.svg"
-          change={OILRate ? Number(OILRate.change24h).toFixed(4) : "00.00"}
+          change={OILRate ? Number(OILRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="ETHEREUM"
-          price={ETHbRate ? Number(ETHbRate.rate).toFixed(4) : "00.00"}
+          price={ETHbRate ? Number(ETHbRate.rate).toFixed(2) : "00.00"}
           pair="ETHEREUM/ USDb"
           image="assets/Icons/Ethereum.svg"
-          change={ETHbRate ? Number(ETHbRate.change24h).toFixed(4) : "00.00"}
+          change={ETHbRate ? Number(ETHbRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="BITCOIN"
-          price={BTCRate ? Number(BTCRate.rate).toFixed(4) : "00.00"}
+          price={BTCRate ? Number(BTCRate.rate).toFixed(2) : "00.00"}
           pair="BTC/ USDb"
           image="assets/Icons/btc.svg"
-          change={BTCRate ? Number(BTCRate.change24h).toFixed(4) : "00.00"}
+          change={BTCRate ? Number(BTCRate.change24h).toFixed(2) : "00.00"}
           marginRight=""
         />
       </div>

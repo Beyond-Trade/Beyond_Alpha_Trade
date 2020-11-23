@@ -19,6 +19,7 @@ export interface Balance {
     category: SyntheticCategories;
     isEther: boolean;
     isSiteToken: boolean;
+    icon:string;
 
 }
 

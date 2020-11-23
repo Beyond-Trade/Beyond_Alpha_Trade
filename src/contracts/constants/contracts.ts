@@ -1,4 +1,5 @@
 export enum ERC20Contracts {
+    ETH = 'ETH',
     USDb = 'USDb',
     EURb = 'EURb',
     BEYOND = 'Beyond',

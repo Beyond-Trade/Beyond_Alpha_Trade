@@ -62,10 +62,10 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <td className="py-3 px-3">
               <div className="flex items-center">
                 <text className="text-black">{item.short}</text>
-                <text className="text-gray-400 ml-2">Litecoin</text>
+                <text className="text-gray-400 ml-2">{item.name}</text>
               </div>
             </td>
-            <td className="py-3 px-3">${item.rate}</td>
+            <td className="py-3 px-3">${item.rate.toFixed(2)}</td>
             <td className="py-3 px-3">
               <button
                 className={`rounded-sm px-1 ${
@@ -74,11 +74,11 @@ function MarketTable({ data, handleSort, search }: IProps) {
                     : "bg-red-200 text-red-400"
                 } `}
               >
-                {item.change24h} %
+                {item.change24h.toFixed(2)}%
               </button>
             </td>
-            <td className="py-3 px-3">${item.high24h}</td>
-            <td className="py-3 px-3">${item.low24h}</td>
+            <td className="py-3 px-3">${item.high24h.toFixed(2)}</td>
+            <td className="py-3 px-3">${item.low24h.toFixed(2)}</td>
             {/* <td className="py-3 px-3">
             <img src="assets/Images/Up.png" className="h-8" />
           </td> */}
