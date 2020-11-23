@@ -1,8 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/organisms/Navbar";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
+import ContactUs from "./screens/ContactUs";
+import Footer from "./components/organisms/Footer";
 import Loan from "./screens/Loan";
 import Market from "./screens/Market";
+import Navbar from "./components/organisms/Navbar";
+import PrivacyPolicy from "./screens/PrivacyPolicy";
+import React from "react";
 import Stake from "./screens/Stake";
 import Trade from "./screens/Trade";
 import Wallet from "./screens/Wallet";
@@ -27,7 +31,14 @@ function Navigation() {
         <Route path="/loan">
           <Loan />
         </Route>
+        <Route path="/privacy_policy">
+          <PrivacyPolicy />
+        </Route>
+        <Route path="/contact_us">
+          <ContactUs />
+        </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }

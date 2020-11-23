@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { showAlert } from "../../services/generic.services";
 import { mintERC20 } from "../../services/mint.service";
+import { showAlert } from "../../services/generic.services";
+import { useState } from "react";
 
 const useMint = () => {
   const gasFees = [17, 23, 34];
@@ -30,7 +30,6 @@ const useMint = () => {
         if (!data) {
           throw new Error("no data");
         }
-        debugger
         showAlert({
           title: "Success!",
           message: "Mint successful",
@@ -39,7 +38,6 @@ const useMint = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-          debugger
         showAlert({
           title: "Error!",
           message: "Error while minting",
