@@ -16,19 +16,29 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
         const contractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND_EXCHANGE);
         if (contractInfo) {
             // @ts-ignore
-            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-debugger
-
-const beyonContractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND);
-
-gasPrice = gasPrice * Math.pow(10, 9);
-  // @ts-ignore
-  //amount = amount * Math.pow(10, beyonContractInfo.decimal);
-  amount = Web3Wrapper.toWei(new BigNumber(amount))
-            const tx = await contract.methods.buybUSD(amount).send({ gasPrice: gasPrice });
+            const contract = new web3.eth.Contract(
+                contractInfo.contractAbi, 
+                contractInfo?.contractAddress, 
+                { from: activeAddress }
+            );
             debugger
-            return tx;
 
+            // const beyonContractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND);
+
+            // gasPrice = gasPrice * Math.pow(10, 9);
+            // // @ts-ignore
+            // //amount = amount * Math.pow(10, beyonContractInfo.decimal);
+            // amount = Web3Wrapper.toWei(new BigNumber(amount))
+            //             const tx = await contract.methods.buybUSD(amount).send({ gasPrice: gasPrice });
+            //             debugger
+            //             return tx;
+            amount = amount * Math.pow(10, contractInfo.decimal);
+            gasPrice = gasPrice * Math.pow(10, 9);
+            // @ts-ignore
+            const tx = await contract.methods
+                .buybUSD(amount.toString())
+                .send({ gasPrice: gasPrice });
+            return tx;
         }
     }
     else return null;
