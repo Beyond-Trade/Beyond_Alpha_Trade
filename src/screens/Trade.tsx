@@ -8,7 +8,7 @@ import TradeInfo from "../components/organisms/trade/TradeInfo";
 import { RootState } from "../store/reducers/Index";
 
 function Trade() {
-  const { selectedPair } = useSelector((state:RootState)=>state.exchange)
+  const { selectedPair } = useSelector((state:RootState) => state.exchange)
   return (
     <div className="px-8 xl:px-20 lg:px-20 md:px-12">
       <div className="xl:flex lg:flex mt-8">

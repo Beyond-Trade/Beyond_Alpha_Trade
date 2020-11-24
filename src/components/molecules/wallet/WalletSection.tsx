@@ -16,10 +16,10 @@ function WalletSection(props: IProps) {
   return (
     <Fragment>
       <div className="flex items-center">
-        <div className="hidden xl:block lg:block"><NavTab path="/" text="WALLET" active={props.location === "/"} /></div>
+        <div className="hidden sm:block"><NavTab path="/" text="WALLET" active={props.location === "/"} /></div>
         <button
           onClick={() => setOpen(true)}
-          className="px-4 py-1 rounded-sm bg-customBlue-200 text-white text-xs ml-12 flex items-center"
+          className="px-4 py-1 rounded-sm bg-customBlue-200 text-white text-xs ml-6 md:ml-12 flex items-center"
         >
           <img src="assets/Icons/wallet-icon.svg" className="mr-2 h-3" />
           {!isConnected && "Connect Wallet"}

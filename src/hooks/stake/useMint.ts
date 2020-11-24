@@ -10,7 +10,8 @@ const useMint = () => {
   const { balances } = useSelector(
     (state: RootState) => state.wallet
   );
-  const gasFees = [17, 23, 34];
+  const gasFees = [1, 23, 34];
+
   const [state, setState] = useState({
     submitting: false,
     amount: "",
@@ -84,7 +85,9 @@ const useMint = () => {
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;
     }
-
+    if(state.submitting){
+      validated = false
+    }
     return validated;
   };
 

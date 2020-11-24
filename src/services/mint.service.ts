@@ -2,6 +2,8 @@ import Web3 from "web3";
 import { store } from "../App";
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { ContractLookup } from "../contracts/contracts.lookup";
+import { Web3Wrapper } from '@0x/web3-wrapper';
+import BigNumber from 'bignumber.js'
 let web3: Web3 = new Web3();
 
 export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contracts,*/ gasPrice: any) => {
@@ -15,7 +17,14 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+debugger
 
+const beyonContractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND);
+
+gasPrice = gasPrice * Math.pow(10, 9);
+  // @ts-ignore
+  //amount = amount * Math.pow(10, beyonContractInfo.decimal);
+  amount = Web3Wrapper.toWei(new BigNumber(amount))
             const tx = await contract.methods.buybUSD(amount).send({ gasPrice: gasPrice });
             debugger
             return tx;

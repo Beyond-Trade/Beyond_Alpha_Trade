@@ -125,6 +125,7 @@ export const mintSynth = async (
       );
 
       amount = amount * Math.pow(10, contractInfo.decimal);
+      gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       const tx = await contract.methods
         .mintSynth(toSynth, amount.toString())
@@ -157,6 +158,7 @@ export const convertSynths = async (
       );
 
       amount = amount * Math.pow(10, contractInfo.decimal);
+      gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       const tx = await contract.methods
         .convertSynths(from, to, amount.toString())
@@ -189,6 +191,7 @@ export const convertSynthsToUSD = async (
       );
 
       amount = amount * Math.pow(10, contractInfo.decimal);
+      gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       const tx = await contract.methods
         .convertSynths(from, amount.toString())
