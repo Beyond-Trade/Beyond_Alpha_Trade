@@ -10,7 +10,7 @@ import {
 import { RootState } from "../../store/reducers/Index";
 
 const useMakeOrders = () => {
-  const gasFees = [17, 23, 34];
+  const gasFees = [1, 23, 34];
   const {
     exchange: { selectedPair },
   } = useSelector((state: RootState) => state);

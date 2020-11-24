@@ -22,8 +22,8 @@ const usePairSelection = () => {
     })
 
     useEffect(() => {
-        selectAssetPairAction(TradePairsLookup[0].marketCoin, TradePairsLookup[0].pairs[0].coin, selectedPair.rate)
         getPrices()
+        selectAssetPairAction(TradePairsLookup[0].marketCoin, TradePairsLookup[0].pairs[0].coin, selectedPair.rate)
     },[balances])
 
     const getPrices = () => {

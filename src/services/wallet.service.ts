@@ -151,7 +151,7 @@ export const getERC20Balance = async (contractInfo: any, address: string): Promi
             try {
                 const balance = await contract.methods.balanceOf(address).call();
                 var balanceInWei = web3.utils.fromWei(balance, 'ether');
-                let bal: number = parseInt(balanceInWei);// / Math.pow(10, contractInfo.decimal)
+                let bal: number = Number(balanceInWei);// / Math.pow(10, contractInfo.decimal)
                 return bal;
             } catch (error) {
                 return 0;
