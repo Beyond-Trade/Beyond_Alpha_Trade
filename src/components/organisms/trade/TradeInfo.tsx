@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import GenericTab from "../../atomic/GenericTab";
 import MarketTable from "../../molecules/market/marketTable";
 
@@ -14,7 +15,7 @@ function TradeInfo() {
         />
       </div>
       <table width="100%">
-        <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
+        <tr className="bg-gray-300 xl:text-xxs xxl:text-sm text-left text-gray-600 font-medium">
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	w-20">
               DATE | TIME
@@ -62,7 +63,7 @@ function TradeInfo() {
           </td>
         </tr>
         {[1, 1, 1, 1, 1].map((item) => (
-          <tr className="text-xs text-left text-gray-600 font-medium hover:bg-gray-300">
+          <tr className="xl:text-xs xxl:text-sm text-left text-gray-600 font-medium hover:bg-gray-300">
             <td className="py-3 px-3 whitespace-nowrap">
               <text>Oct 24, 20 | 23:08</text>
             </td>
