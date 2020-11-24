@@ -1,13 +1,13 @@
-import React from "react";
 import Dropdown from "../../atomic/stake/Dropdown";
+import React from "react";
 
 function Burn() {
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
-      <h3 className="text-lg font-bold">BURN</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold">BURN</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="text-xs font-medium text-blue-300 mt-6">
+          <p className="xl:text-xs xxl:text-xl font-light text-blue-500 mt-6">
             Burn sUSD to unlock your staked BYN. This
             <br />
             increases your Collateralization Ratio and
@@ -19,47 +19,52 @@ function Burn() {
           <img
             src="assets/Icons/burn.svg"
             style={{ height: "150px" }}
+            alt="img"
             className="m-auto mt-10"
           />
         </div>
         <div className="w-full px-6">
           <div className="mt-6">
-            <p className="text-xs font-medium">
+            <p className="xl:text-xs xxl:text-base font-normal">
               Confirm or enter amount to burn:
             </p>
             <div className="flex mt-2">
-              <button className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 text-xxs text-white rounded">
+              <button className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 xl:text-xxs xxl:text-base xl:h-8 xxl:h-12 text-white rounded">
                 Burn Max
               </button>
-              <div className="bg-gray-300 py-1 px-3 text-center text-xxs text-gray-600 font-medium ml-2 rounded w-full">
+              <div className="bg-gray-300 py-1 px-3 text-center flex items-center justify-center xl:text-xxs xxl:text-base text-gray-600 font-medium ml-2 xl:h-8 xxl:h-12 rounded w-full">
                 Fix your collateralization Ratio
               </div>
             </div>
           </div>
-          <div className="mt-6">
-            <p className="text-xs font-medium text-gray-500">$ 0</p>
+          <div className="mt-6 xl:text-xs xxl:text-base">
+            <div className="flex justify-between">
+              <p className=" font-medium text-gray-500">$ 0</p>
+              <p className=" font-medium text-gray-500">$ 0</p>
+            </div>
+
             <div className="bg-gray-300 mt-2 rounded px-4 py-3 flex items-center">
-              <text className="focus:outline-none text-gray-600 text-xs font-medium flex items-center border-r pr-4 border-gray-500">
+              <text className="focus:outline-none text-gray-600 font-medium flex items-center border-r pr-4 border-gray-500">
                 USDb
               </text>
               <input
-                className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 text-xs font-medium"
+                className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 font-medium"
                 type="text"
                 value="0.00"
               />
-              <button className="focus:outline-none bg-customBlue-200 rounded px-2 py-1 text-white text-xxs">
+              <button className="focus:outline-none bg-customBlue-200 rounded px-2 py-1 text-white ">
                 Max
               </button>
             </div>
           </div>
-          <div className="text-center mt-2 text-xxs text-gray-800 font-medium">
+          <div className="text-center mt-2 xl:text-xxs xxl:text-base text-gray-800 font-normal">
             View transferable BYN
           </div>
 
-          <h6 className="mt-8 text-center text-xs text-gray-800 font-medium">
+          <h6 className="mt-8 text-center xl:text-xs xxl:text-base text-gray-800 font-normal">
             Ethereum network fee: $0/25 GWEI
           </h6>
-          <button className="focus:outline-none bg-customBlue-200 text-white text-xs w-full rounded py-2 mt-2">
+          <button className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-base w-full rounded py-2 mt-2">
             BURN NOW
           </button>
         </div>
