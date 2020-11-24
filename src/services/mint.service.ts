@@ -4,6 +4,7 @@ import { ERC20Contracts } from "../contracts/constants/contracts";
 import { ContractLookup } from "../contracts/contracts.lookup";
 import { Web3Wrapper } from '@0x/web3-wrapper';
 import BigNumber from 'bignumber.js'
+import {ethers} from "ethers"
 let web3: Web3 = new Web3();
 
 export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contracts,*/ gasPrice: any) => {
@@ -31,11 +32,13 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
             //             const tx = await contract.methods.buybUSD(amount).send({ gasPrice: gasPrice });
             //             debugger
             //             return tx;
-            amount = amount * Math.pow(10, contractInfo.decimal);
+            //amount = amount * Math.pow(10, contractInfo.decimal);
+            // let amountToSend = Web3Wrapper.toWei(new BigNumber(amount))
+            var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
             gasPrice = gasPrice * Math.pow(10, 9);
             // @ts-ignore
             const tx = await contract.methods
-                .buybUSD(amount.toString())
+                .buybUSD(amountToSend)
                 .send({ gasPrice: gasPrice });
             return tx;
         }

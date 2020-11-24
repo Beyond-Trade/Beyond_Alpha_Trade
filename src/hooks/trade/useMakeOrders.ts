@@ -119,6 +119,7 @@ const useMakeOrders = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        console.log('Error!',e)
         debugger
         showAlert({
           title: "Error",

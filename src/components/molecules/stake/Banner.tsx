@@ -13,7 +13,7 @@ function Banner() {
         </p>
       </div>
       <img
-        src="assets/Images/header-Illustrations.png"
+        src="assets/Images/header-illustrations.png"
         alt="img"
         className="h-24 sm:h-56 md:h-64 lg:h-94 xl:h-94"
       />

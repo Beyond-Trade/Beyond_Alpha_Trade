@@ -5,6 +5,7 @@ import { store } from '../App';
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { ContractLookup } from '../contracts/contracts.lookup';
 import BigNumber from 'bignumber.js'
+import {ethers} from "ethers"
 let web3: Web3 = new Web3();
 
 
@@ -19,11 +20,12 @@ export const transferEther = async (toAddress: string, amount:  number | BigNumb
         let activeAddress = walletInfo.selected.address;
         // amount = amount * Math.pow(10,18);
         // amount = Web3Wrapper.toWei(amount.toString())
-        amount = Web3Wrapper.toWei(new BigNumber(amount))
+        //amount = Web3Wrapper.toWei(new BigNumber(amount))
+        var amountToSend:any = ethers.utils.parseUnits(amount.toString(),18);
         gas = gas * Math.pow(10, 9);
 
         // @ts-ignore
-        const tx = await web3.eth.sendTransaction({ from: activeAddress.toString(), to: toAddress, value: amount.toString(), gasPrice: gas });
+        const tx = await web3.eth.sendTransaction({ from: activeAddress.toString(), to: toAddress, value: amountToSend, gasPrice: gas });
         return tx;
 
     }
@@ -39,15 +41,18 @@ export const transferERC20 = async (to: string, amount: string, erc20ContractNam
 
     let activeAddress = walletInfo.selected.address;
     //let amountToSend = parseInt(amount) * Math.pow(10,18);
-    let amountWei = Web3.utils.toWei(amount, 'ether');
+    //let amountWei = Web3.utils.toWei(amount, 'ether');
+   
     if (web3.currentProvider) {
         const contractInfo = ContractLookup.find(contract => contract.contractName === erc20ContractName)
+        // @ts-ignore
+        var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             gas = gas * Math.pow(10, 9);
          
-            const tx = await contract.methods.transfer(to, amountWei).send({ gasPrice: gas });
+            const tx = await contract.methods.transfer(to, amountToSend).send({ gasPrice: gas });
             return tx;
         }
     }

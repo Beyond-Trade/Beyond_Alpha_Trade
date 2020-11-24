@@ -3,7 +3,6 @@ import { store } from '../App';
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { ContractLookup } from '../contracts/contracts.lookup';
 let web3: Web3 = new Web3();
-
 export const buyBYNToken = async (amount?: string) => {
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;

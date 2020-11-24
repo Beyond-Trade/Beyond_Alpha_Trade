@@ -4,6 +4,8 @@ import Web3 from "web3";
 import { store } from "../App";
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { ContractLookup } from "../contracts/contracts.lookup";
+ import {ethers} from "ethers"
+
 let web3: Web3 = new Web3();
 
 export const TradePairsLookup = [
@@ -124,7 +126,8 @@ export const mintSynth = async (
       );
 // amount = amount * Math.pow(10, contractInfo.decimal);
       //let amountToSend =1000 * 1000000000000000000///= (amount * Math.pow(10, contractInfo.decimal)).toString();
-      let amountToSend = Web3Wrapper.toWei(new BigNumber(amount))
+     // let amountToSend = Web3Wrapper.toWei(new BigNumber(amount))
+     var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       
@@ -157,11 +160,12 @@ export const convertSynths = async (
         contractInfo.contractAddress,
         { from: activeAddress }
       );
-      amount = amount * Math.pow(10, contractInfo.decimal);
+      //amount = amount * Math.pow(10, contractInfo.decimal);
+      var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       const tx = await contract.methods
-        .convertSynths(from, to, amount.toString())
+        .convertSynths(from, to, amountToSend)
         .send({ gasPrice: gasPrice });
       return tx;
     }
@@ -190,11 +194,12 @@ export const convertSynthsToUSD = async (
         { from: activeAddress }
       );
 
-      amount = amount * Math.pow(10, contractInfo.decimal);
+      //amount = amount * Math.pow(10, contractInfo.decimal);
+      var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       const tx = await contract.methods
-        .convertSynthsToUSD(from, amount.toString())
+        .convertSynthsToUSD(from, amountToSend)
         .send({ gasPrice: gasPrice });
       return tx;
     }
