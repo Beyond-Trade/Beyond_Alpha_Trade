@@ -13,7 +13,7 @@ import { PriceFeedAbi } from "./abi/priceFeed";
 
 import * as icons from "../utils/coinIcons";
 import { AbiItem } from 'web3-utils'
-import { USDbAbi } from "./abi/usdb.abi";
+import { USDbAbi } from "./abi/Usdb.abi";
 
 
 export interface IContractLookup {

@@ -21,7 +21,7 @@ function SelectWallet(props: IProps) {
         <div className="text-xs font-medium flex justify-between px-2">
           <h6>Wallet Address</h6>
           <h6>BYN</h6>
-          <h6>sUSD</h6>
+          <h6>USDb</h6>
           <h6>ETH</h6>
           <div />
         </div>

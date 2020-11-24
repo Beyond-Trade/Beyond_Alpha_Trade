@@ -4,6 +4,7 @@ import {
   SEARCH_ASSETS,
   SELECT_ASSET_PAIR,
   SET_MARKET_DATA,
+  SET_MY_ORDER,
 } from "../actions/ExchangeActionTypes";
 import { ExchangeState } from "../types/ExchangeState";
 
@@ -15,13 +16,16 @@ const initialState: ExchangeState = {
     counterBalance: 0,
     fromRate: 0,
     toRate: 0,
+    fromImage: "",
+    toImage: "",
     rate: 0,
     change24h: 0,
     high24h: 0,
     low24h: 0
   },
   marketData: TradePairsLookup,
-  search: ""
+  search: "",
+  myOrders: []
 };
 
 export function exchangeReducer(
@@ -39,6 +43,8 @@ export function exchangeReducer(
           counterBalance: action.counterBalance,
           fromRate: action.fromRate,
           toRate: action.toRate,
+          fromImage: action.fromImage,
+          toImage: action.toImage,
           rate: action.rate,
           change24h: action.change24h,
           high24h: action.high24h,
@@ -54,6 +60,11 @@ export function exchangeReducer(
       return {
         ...state,
         search: action.search,
+      }
+    case SET_MY_ORDER:
+      return {
+        ...state,
+        myOrders: [...state.myOrders, action.order]
       }
     default:
       return state;

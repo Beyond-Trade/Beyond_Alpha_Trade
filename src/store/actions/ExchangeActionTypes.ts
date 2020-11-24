@@ -1,8 +1,9 @@
-import { MarketPairs } from "../types/ExchangeState";
+import { MarketPairs, Order } from "../types/ExchangeState";
 
 export const SELECT_ASSET_PAIR = 'SELECT_ASSET_PAIR';
 export const SET_MARKET_DATA = 'SET_MARKET_DATA';
 export const SEARCH_ASSETS = 'SEARCH_ASSETS';
+export const SET_MY_ORDER = 'SET_MY_ORDER';
 
 
 interface SelectAssetPair {
@@ -13,6 +14,8 @@ interface SelectAssetPair {
     counterBalance: number;
     fromRate: number;
     toRate: number;
+    fromImage: string;
+    toImage: string;
     rate: number;
     change24h: number;
     high24h: number;
@@ -24,9 +27,14 @@ interface SetMarketData {
     data: MarketPairs[]
 }
 
+interface SetMyOrder {
+    type: typeof SET_MY_ORDER;
+    order: Order
+}
+
 interface SearchAssets {
     type: typeof SEARCH_ASSETS;
     search: string
 }
 
-export type GetExchangeInfoType = SelectAssetPair | SetMarketData | SearchAssets
+export type GetExchangeInfoType = SelectAssetPair | SetMarketData | SearchAssets | SetMyOrder

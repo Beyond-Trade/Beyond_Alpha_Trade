@@ -6,6 +6,8 @@ export interface AssetPair {
     counterBalance: number;
     fromRate: number;
     toRate: number;
+    fromImage: string;
+    toImage: string;
     rate: number;
     change24h: number;
     high24h: number;
@@ -22,8 +24,31 @@ export interface MarketPairs {
     pairs: MarketPair[];
 }
 
+export interface Order {
+    date: string;
+    pair: string;
+    buying: string;
+    selling: string;
+    price: number;
+    status: string;
+    infoURL: string;
+}
+export interface Trade {
+    tokenSymbol: string;
+    tokenName: string;
+    amount: number;
+    time: string;
+    infoURL: string;
+    confirmations: string;
+    fromAddress: string;
+    toAddress: string;
+    hash: string;
+    blockHeight: string;
+}
+
 export interface ExchangeState {
     selectedPair: AssetPair;
     marketData: MarketPairs[];
     search: string;
+    myOrders: Order[];
 }

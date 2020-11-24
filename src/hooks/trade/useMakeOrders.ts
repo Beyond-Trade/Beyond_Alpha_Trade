@@ -1,5 +1,6 @@
+import moment from "moment";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
 import { showAlert } from "../../services/generic.services";
 import {
@@ -7,6 +8,7 @@ import {
   convertSynths,
   mintSynth,
 } from "../../services/trade.service";
+import { setMyOrder } from "../../store/actions/ExchangeActions";
 import { RootState } from "../../store/reducers/Index";
 
 const useMakeOrders = () => {
@@ -14,6 +16,7 @@ const useMakeOrders = () => {
   const {
     exchange: { selectedPair },
   } = useSelector((state: RootState) => state);
+  const dispatch = useDispatch()
   const [state, setState] = useState({
     submitting: false,
     isFeeOpen: false,
@@ -24,6 +27,8 @@ const useMakeOrders = () => {
     toBalance: 0,
     fromRate: 0,
     toRate: 0,
+    fromImage: "",
+    toImage: "",
     usdValue: 0
   });
   const [inputs, setInputs] = useState({
@@ -42,6 +47,8 @@ const useMakeOrders = () => {
       toBalance: selectedPair.counterBalance,
       fromRate: selectedPair.fromRate,
       toRate: selectedPair.toRate,
+      fromImage: selectedPair.fromImage,
+      toImage: selectedPair.toImage
     }));
     setInputs({to: "", fromVal: "", from: "", toVal: ""})
   }, [selectedPair]);
@@ -61,6 +68,8 @@ const useMakeOrders = () => {
       toBalance: prev.fromBalance,
       fromRate: prev.toRate,
       toRate: prev.fromRate,
+      fromImage: prev.toImage,
+      toImage: prev.fromImage
     }));
     setInputs((prev) => ({
       ...prev,
@@ -88,10 +97,20 @@ const useMakeOrders = () => {
   const addTradeAction = () => {
     addTrade(state.from, state.to, Number(inputs.from), state.fee)
       .then((data) => {
-        debugger
         if (!data) {
           throw Error("Error");
         }
+        
+        const price = getPairPrice(state.fromRate, state.toRate)
+        dispatch(setMyOrder({
+          date: moment().format("MMM Do YY")+"|"+moment().format("TL"),
+          pair: state.to+"/"+state.from,
+          buying: inputs.to+" "+state.to,
+          selling: inputs.from+" "+inputs.to,
+          price: price,
+          status: 'pending',
+          infoURL: 'https://rinkeby.etherscan.io/tx/'
+        }))
         showAlert({
           title: "Success",
           message: "Order added",
@@ -100,7 +119,6 @@ const useMakeOrders = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        debugger
         showAlert({
           title: "Error",
           message: "Unable to add order",

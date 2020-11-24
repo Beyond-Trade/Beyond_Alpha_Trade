@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 
 export const zero_x_base_url = 'https://api.0x.org';
 export const coinGeko = 'https://api.coingecko.com/api/v3/'
@@ -60,33 +61,31 @@ export async function getSynthetixPrices() {
 }
 
 
-// export const getContractTransactions = async (contractAddress: any, address: any, coinShort: any, decimal: number) => {
-//     const url = 'https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&contractaddress=' + contractAddress + '&address=' + address + '&page=1&offset=1000&sort=asc&apikey=GIX8SDXWGSK2Q3JFXBQIIZIT3TKIXKHGMH';
-//     var response = await axios.get(url);
-//     let result = response.data.result;
+export const getContractTransactions = async (contractAddress: any) => {
+    const url = 'https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&contractaddress=' + contractAddress + '&page=1&offset=1000&sort=asc&apikey=GIX8SDXWGSK2Q3JFXBQIIZIT3TKIXKHGMH';
+    var response = await axios.get(url);
+    let result = response.data.result;
 
-//     if (result.includes('Error')) { return 0 }
-//     var transactionsArray:any = []
+    if (result.includes('Error')) { return 0 }
+    var transactionsArray:any = []
 
-//     var appendZeros = Math.pow(10, decimal)
-
-//     result.forEach((elementData: any) => {
-//         let type = elementData.from.toLowerCase() == address.toLowerCase() ? 'Sent' : 'Received';
-//         let amount = elementData.value / appendZeros;
-//         let dateTime = new Date(elementData.timeStamp * 1000)
-//         var objectFormat = {
-//             'coinShortName': coinShort,
-//             'type': type,
-//             'amount': amount,
-//             'time': dateTime,
-//             'infoURL': 'https://rinkeby.etherscan.io/tx/' + elementData.hash,
-//             'confirmations': elementData.confirmations,
-//             'fromAddress': elementData.from.toLowerCase(),
-//             'toAddress': elementData.to.toLowerCase(),
-//             'hash': elementData.hash,
-//             'blockHeight': elementData.blockNumber
-//         }
-//         transactionsArray.push(objectFormat);
-//     })
-//     return transactionsArray;
-// }
+    result.forEach((elementData: any) => {
+       
+        let amount = elementData.value / Math.pow(10,parseInt(elementData.tokenDecimal));
+        let dateTime = new Date(elementData.timeStamp * 1000)
+        let objectFormat = {
+            tokenSymbol: elementData.tokenSymbol,
+            tokenName: elementData.tokenName,
+            amount: amount,
+            time: moment(dateTime).format("MMM Do YY"),
+            infoURL: 'https://rinkeby.etherscan.io/tx/' + elementData.hash,
+            confirmations: elementData.confirmations,
+            fromAddress: elementData.from.toLowerCase(),
+            toAddress: elementData.to.toLowerCase(),
+            hash: elementData.hash,
+            blockHeight: elementData.blockNumber
+        }
+        transactionsArray.push(objectFormat);
+    })
+    return transactionsArray;
+}

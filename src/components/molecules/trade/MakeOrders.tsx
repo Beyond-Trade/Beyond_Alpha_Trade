@@ -21,7 +21,9 @@ function MakeOrders() {
     handleFromChange,
     handleToChange,
     setPercentage,
-    usdValue
+    usdValue,
+    toImage,
+    fromImage
   } = useMakeOrders();
 
   return (
@@ -39,7 +41,7 @@ function MakeOrders() {
           <text>Balance: {fromBalance}</text>
         </div>
         <div className="bg-gray-300 mt-2 rounded-sm py-2 font-medium text-xs text-gray-700 px-2 flex items-center">
-          <img src="assets/Icons/eth.svg" className="ml-1 w-4 mr-1" />
+          <img src={fromImage} className="ml-1 w-4 mr-1" />
           {from}
           <div className="h-4 mx-2 border-r border-gray-600 py-2" />
           <input
@@ -56,7 +58,7 @@ function MakeOrders() {
           <text>Balance: {toBalance}</text>
         </div>
         <div className="bg-gray-300 mt-2 rounded-sm py-2 font-medium text-xs text-gray-700 px-2 flex items-center">
-          <img src="assets/Icons/eth.svg" className="ml-1 w-4 mr-1" />
+          <img src={toImage} className="ml-1 w-4 mr-1" />
           {to}
           <div className="h-4 mx-2 border-r border-gray-600 py-2" />
           <input
