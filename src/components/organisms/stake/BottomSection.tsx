@@ -41,7 +41,7 @@ const BottomSection = () => {
         totalBYN: data.totalBYN,
       }));
     });
-  }, []);
+  }, [balances]);
 
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">

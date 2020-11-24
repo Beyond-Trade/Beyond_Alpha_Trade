@@ -55,7 +55,6 @@ export const selectAssetPairAction = (from: string, to: string, rate:number) => 
   const state: RootState = store.getState();
   const fromBalance = state.wallet.balances.find((item) => item.short === from);
   const toBalance = state.wallet.balances.find((item) => item.short === to);
-
   store.dispatch(
     selectAssetPair(
       from,

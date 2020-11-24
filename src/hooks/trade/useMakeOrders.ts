@@ -100,7 +100,7 @@ const useMakeOrders = () => {
         if (!data) {
           throw Error("Error");
         }
-        
+        debugger
         const price = getPairPrice(state.fromRate, state.toRate)
         dispatch(setMyOrder({
           date: moment().format("MMM Do YY")+"|"+moment().format("TL"),
@@ -109,7 +109,7 @@ const useMakeOrders = () => {
           selling: inputs.from+" "+inputs.to,
           price: price,
           status: 'pending',
-          infoURL: 'https://rinkeby.etherscan.io/tx/'
+          infoURL: 'https://rinkeby.etherscan.io/tx/'+data.transactionHash
         }))
         showAlert({
           title: "Success",
@@ -119,6 +119,7 @@ const useMakeOrders = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        debugger
         showAlert({
           title: "Error",
           message: "Unable to add order",

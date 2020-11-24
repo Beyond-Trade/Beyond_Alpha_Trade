@@ -21,7 +21,6 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
                 contractInfo?.contractAddress, 
                 { from: activeAddress }
             );
-            debugger
 
             // const beyonContractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND);
 

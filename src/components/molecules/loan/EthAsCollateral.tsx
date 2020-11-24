@@ -6,10 +6,10 @@ function EthAsCollateral() {
         <div className="rounded-t flex justify-between items-center bg-gray-300 text-gray-600 xl:text-xs xxl:text-sm px-2 py-2 font-medium">
           <div className="flex items-center ">
             <h5>ETH AS COLLATERAL</h5>
-            <div className="ml-12 bg-gray-400 py-1 px-4 mr-4 rounded-sm">
+            <div className="ml-12 bg-gray-400 py-1 px-4 mr-4 rounded-sm cursor-pointer">
               sETH
             </div>
-            <div className="border border-gray-400 py-1 px-4 rounded-sm">
+            <div className="border border-gray-400 py-1 px-4 rounded-sm cursor-pointer">
               sUSD
             </div>
           </div>

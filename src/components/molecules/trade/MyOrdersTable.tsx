@@ -68,9 +68,9 @@ function MyOrdersTable(props: IProps) {
             {/* <td className="py-3 px-3">$1896.04</td> */}
             <td className="py-3 px-3">{item.status}</td>
             <td className="py-3 px-3">
-              <button className="focus:outline-none text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm">
+              <a href={item.infoURL} target="_blank" className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm">
                 VIEW
-              </button>
+              </a>
             </td>
           </tr>
         ))}

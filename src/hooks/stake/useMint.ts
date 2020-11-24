@@ -50,7 +50,6 @@ const useMint = () => {
     setState((prev) => ({ ...prev, submitting: true }));
     mintERC20(Number(state.amount), state.fee)
       .then((data) => {
-        debugger
         if (!data) {
           throw new Error("no data");
         }
@@ -62,7 +61,6 @@ const useMint = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        debugger
         showAlert({
           title: "Error!",
           message: "Error while minting",
@@ -93,7 +91,7 @@ const useMint = () => {
 
   const setAmount = (event: any) => {
     const value = event.target.value;
-    let stacking = ((value * state.cRatio) / state.BynRate);
+    let stacking = ((value * (state.cRatio/100)) / state.BynRate);
     setState((prev) => ({ ...prev, amount: value, amountVal: "",BYNStackingAmount:state.BynRate===0?0: stacking }));
   };
 
