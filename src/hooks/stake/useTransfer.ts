@@ -127,7 +127,9 @@ const useTransfer = () => {
       setState((prev) => ({ ...prev, addressVal: "This field is required" }));
       validated = false;
     }
-
+    if(state.submitting){
+      validated = false
+    }
     return validated;
   };
 

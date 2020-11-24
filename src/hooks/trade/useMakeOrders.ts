@@ -88,6 +88,7 @@ const useMakeOrders = () => {
   const addTradeAction = () => {
     addTrade(state.from, state.to, Number(inputs.to), state.fee)
       .then((data) => {
+        debugger
         if (!data) {
           throw Error("Error");
         }
@@ -99,6 +100,7 @@ const useMakeOrders = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
+        debugger
         showAlert({
           title: "Error",
           message: "Unable to add order",

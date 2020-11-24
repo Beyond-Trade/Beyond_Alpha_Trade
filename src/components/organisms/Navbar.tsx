@@ -64,7 +64,7 @@ function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <img src="assets/Images/Logo.png" className="h-8 xxl:h-12" />
             </div>
-            <div className="hidden sm:block sm:ml-6">
+            <div className="hidden sm:block md:ml-6">
               <div className="flex space-x-4">
                 <NavTab
                   path="/stake"

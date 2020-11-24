@@ -86,6 +86,9 @@ const useSwap = () => {
       }));
       validated = false;
     }
+    if(state.swapping){
+      validated = false
+    }
     return validated;
   };
   const setMax = () =>
