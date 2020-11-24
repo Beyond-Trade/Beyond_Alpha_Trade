@@ -1,3 +1,5 @@
+import { Web3Wrapper } from "@0x/web3-wrapper";
+import BigNumber from "bignumber.js";
 import Web3 from "web3";
 import { store } from "../App";
 import { ERC20Contracts } from "../contracts/constants/contracts";
@@ -87,7 +89,6 @@ export const TradePairsLookup = [
 ];
 
 export const addTrade = async (from: string, to: string, amount: number, gasFee: number) => {
-  debugger
   if (from === ERC20Contracts.USDb) {
     const res = await mintSynth(to, amount, gasFee);
     return res;
@@ -121,12 +122,14 @@ export const mintSynth = async (
         contractInfo.contractAddress,
         { from: activeAddress }
       );
-
-      amount = amount * Math.pow(10, contractInfo.decimal);
+// amount = amount * Math.pow(10, contractInfo.decimal);
+      //let amountToSend =1000 * 1000000000000000000///= (amount * Math.pow(10, contractInfo.decimal)).toString();
+      let amountToSend = Web3Wrapper.toWei(new BigNumber(amount))
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
+      debugger
       const tx = await contract.methods
-        .mintSynth(toSynth, amount.toString())
+        .mintSynth(toSynth, amountToSend)
         .send({ gasPrice: gasPrice });
       return tx;
     }
@@ -139,6 +142,7 @@ export const convertSynths = async (
   amount: number,
   gasPrice: number
 ) => {
+  debugger
   web3 = store.getState().wallet.web3;
   let walletInfo = store.getState().wallet;
 
@@ -154,7 +158,6 @@ export const convertSynths = async (
         contractInfo.contractAddress,
         { from: activeAddress }
       );
-debugger
       amount = amount * Math.pow(10, contractInfo.decimal);
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore

@@ -88,7 +88,6 @@ const useMakeOrders = () => {
   const addTradeAction = () => {
     addTrade(state.from, state.to, Number(inputs.from), state.fee)
       .then((data) => {
-        debugger
         if (!data) {
           throw Error("Error");
         }
