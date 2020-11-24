@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { showAlert } from "../../../services/generic.services";
 import {
   initializeWeb3
 } from "../../../services/web3.service";
@@ -14,7 +15,10 @@ function WalletOption(props: IProps) {
 
 
   const connectToWallet = async (value: any): Promise<any> => {
-    await initializeWeb3(value, ()=>{props.onConnected()});
+
+    await initializeWeb3(value, ()=>{props.onConnected()}).catch((e)=>{
+      showAlert({title: "Error", message:"Provider is not available", type: 'danger'})
+    });
   };
   return (
     <button

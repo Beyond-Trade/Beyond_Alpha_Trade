@@ -51,5 +51,23 @@ export const getBynETHRate = async (): Promise<number> => {
     else return 0;
 }
 
+// @ts-ignore
+export const BYNTokenValue = async (): Promise<number> => {
+    web3 = store.getState().wallet.web3;
 
-
+    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
+    if (web3.currentProvider) {
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
+            try {
+                let value = await contract.methods.tokenValue().call();
+                value = value/Math.pow(10,contractInfo.decimal)
+                return Number(value);
+            } catch (error) {
+                return 0;
+            }
+        }
+    }
+    else return 0;
+}

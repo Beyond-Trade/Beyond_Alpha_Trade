@@ -26,7 +26,7 @@ const useSwap = () => {
     );
     const balance = balances.find((balance) => balance.isEther);
       // @ts-ignore
-    let byninEthPrice = ((balance?.rate||0) / (BYNObj?.rate||0))  
+    let byninEthPrice =5000;// ((balance?.rate||0) / (BYNObj?.rate||0))  For now its hard coded
     if (balance) {
       setState((prev) => ({
         ...prev,
