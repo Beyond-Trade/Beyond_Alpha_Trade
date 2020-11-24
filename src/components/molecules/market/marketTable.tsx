@@ -12,7 +12,7 @@ interface IProps {
 function MarketTable({ data, handleSort, search }: IProps) {
   return (
     <table width="100%">
-      <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
+      <tr className="bg-gray-300 xl:text-xxs xxl:text-sm text-left text-gray-600 font-bold">
         <td className="py-2 px-3">
           <div className="flex items-center">
             ASSET
@@ -58,11 +58,11 @@ function MarketTable({ data, handleSort, search }: IProps) {
           data.short.toLowerCase().includes(search.toLowerCase())
         )
         .map((item: any) => (
-          <tr className="text-xs text-left text-gray-700 font-medium">
+          <tr className="xl:text-xs xxl:text-base text-left text-gray-700 font-medium">
             <td className="py-3 px-3">
               <div className="flex items-center">
                 <text className="text-black">{item.short}</text>
-                <text className="text-gray-400 ml-2">{item.name}</text>
+                <text className="text-gray-500 ml-2">{item.name}</text>
               </div>
             </td>
             <td className="py-3 px-3">${item.rate.toFixed(2)}</td>
