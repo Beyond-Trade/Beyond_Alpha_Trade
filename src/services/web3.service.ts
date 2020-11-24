@@ -27,11 +27,13 @@ import { ContractLookup } from '../contracts/contracts.lookup';
 
 
 
+
 // let web3Wrapper: Web3Wrapper | null = null;
 const web3: Web3 = new Web3();
 
 // @ts-ignore
-export const initializeWeb3 = async (source: web3Sources, callback: Function): Promise<Web3> => {
+export const initializeWeb3 = async (source: web3Sources, callback: Function): Promise<any> => {
+
     try {
         switch (source) {
             case web3Sources.Portis:
@@ -56,6 +58,8 @@ export const initializeWeb3 = async (source: web3Sources, callback: Function): P
         if (web3.currentProvider) {
             store.dispatch(SaveWeb3InfoAction(source, web3));
             const accounts = await web3.eth.getAccounts();
+
+            if (accounts.length <= 0) { throw new Error('Error, Provider is not available') }
 
             let wallets: Wallet[] = [];
 
