@@ -16,7 +16,7 @@ function Loan() {
           <YourWalet />
           <YourLoans />
         </div>
-        <div className="xl:w-300 lg:w-300">
+        <div className="xl:w-300 lg:w-300 xxl:w-1/3 xxxl:1/3">
           <CreateLoan />
           <CloseLoan />
         </div>

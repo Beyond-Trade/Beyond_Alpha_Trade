@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store/reducers/Index";
+
 import NavTab from "../../atomic/NavTab";
+import { RootState } from "../../../store/reducers/Index";
 import SelectWalletModal from "./SelectWalletModal";
+import { useSelector } from "react-redux";
 
 interface IProps {
   location: string;
@@ -16,12 +17,18 @@ function WalletSection(props: IProps) {
   return (
     <Fragment>
       <div className="flex items-center">
-        <div className="hidden sm:block"><NavTab path="/" text="WALLET" active={props.location === "/"} /></div>
+        <div className="hidden xl:block lg:block">
+          <NavTab path="/" text="WALLET" active={props.location === "/"} />
+        </div>
         <button
           onClick={() => setOpen(true)}
-          className="px-4 py-1 rounded-sm bg-customBlue-200 text-white text-xs ml-6 md:ml-12 flex items-center"
+          className="px-4 py-1 rounded-sm bg-customBlue-200 text-white xl:text-xs xxl:text-lg ml-12 flex items-center"
         >
-          <img src="assets/Icons/wallet-icon.svg" className="mr-2 h-3" />
+          <img
+            src="assets/Icons/wallet-icon.svg"
+            alt="img"
+            className="mr-2 h-3"
+          />
           {!isConnected && "Connect Wallet"}
           {isConnected && (
             <div className="h-2 w-2 bg-green-200 rounded mr-1 mt-1" />

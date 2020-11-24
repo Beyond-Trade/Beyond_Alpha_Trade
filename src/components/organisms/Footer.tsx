@@ -20,60 +20,60 @@ function Footer() {
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">PRODUCTS</h4>
-          <button className="text-xs text-gray-500 mt-4">Stake</button>
-          <button className="text-xs text-gray-500 mt-4">Market</button>
-          <button className="text-xs text-gray-500 mt-4">Trade</button>
-          <button className="text-xs text-gray-500 mt-4">Loan</button>
+          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Stake</p>
+          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Market</p>
+          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Trade</p>
+          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Loan</p>
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">COMPANY</h4>
-          <button
-            className="text-xs text-gray-500 mt-4"
+          <p
+            className="text-xs text-gray-500 mt-4 cursor-pointer"
             onClick={() => {
               history.push("/about_us");
             }}
           >
             About Us
-          </button>
-          <button
-            className="text-xs text-gray-500 mt-4"
+          </p>
+          <p
+            className="text-xs text-gray-500 mt-4 cursor-pointer"
             onClick={() => {
               history.push("/contact_us");
             }}
           >
             Contact Us
-          </button>
-          <button
-            className="text-xs text-gray-500 mt-4"
+          </p>
+          <p
+            className="text-xs text-gray-500 mt-4 cursor-pointer"
             onClick={() => {
               history.push("/support");
             }}
           >
             Support
-          </button>
-          <button className="text-xs text-gray-500 mt-4">News/Blog</button>
+          </p>
+          <p className="text-xs text-gray-500 mt-4 cursor-pointer">News/Blog</p>
         </div>
         <div className="flex flex-col items-start w-64 mr-16">
           <h4 className="text-white text-sm font-semibold">TERMS</h4>
-          <button
-            className="text-xs text-gray-500 mt-4"
+          <p
+            className="text-xs text-gray-500 mt-4 cursor-pointer"
             onClick={() => history.push("/privacy_policy")}
           >
             {" "}
             Privacy Policy
-          </button>
-          <button
-            className="text-xs text-gray-500 mt-4"
+          </p>
+          <p
+            className="text-xs text-gray-500 mt-4 cursor-pointer"
             onClick={() => history.push("/terms_and_conditions")}
           >
             Terms of Usage
-          </button>
-          <button
-            className="text-xs text-gray-500 mt-4"
+          </p>
+          <p
+            className="text-xs text-gray-500 mt-4 cursor-pointer"
             onClick={() => history.push("/disclaimer")}
           >
             Disclaimer
-          </button>
+          </p>
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">SOCIAL</h4>
