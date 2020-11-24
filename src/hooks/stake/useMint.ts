@@ -39,7 +39,7 @@ const useMint = () => {
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
     setState((prev) => ({ ...prev, BynRate: BYNObj?.rate || 0, BynBalance: BYNObj?.cryptoBalance||0 }));
-  }, [])
+  }, [balances])
 
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));

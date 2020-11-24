@@ -156,7 +156,7 @@ export const convertSynths = async (
         contractInfo.contractAddress,
         { from: activeAddress }
       );
-
+debugger
       amount = amount * Math.pow(10, contractInfo.decimal);
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
