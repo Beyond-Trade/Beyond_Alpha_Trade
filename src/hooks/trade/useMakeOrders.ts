@@ -100,7 +100,7 @@ const useMakeOrders = () => {
         if (!data) {
           throw Error("Error");
         }
-        debugger
+        
         const price = getPairPrice(state.fromRate, state.toRate)
         dispatch(setMyOrder({
           date: moment().format("MMM Do YY")+"|"+moment().format("TL"),
