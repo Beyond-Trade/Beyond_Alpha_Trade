@@ -15,6 +15,8 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+      xxl: "1440px",
+      xxxl: "1680px",
     },
     colors: {
       transparent: "transparent",
@@ -44,7 +46,7 @@ module.exports = {
         100: "#A0C1F3",
         200: "#5183BF",
         300: "#131023",
-        active: '#28272D'
+        active: "#28272D",
       },
       red: {
         100: "#fff5f5",
@@ -169,8 +171,8 @@ module.exports = {
       74: "18rem",
       84: "20rem",
       94: "25rem",
-      chartH: '340px',
-      300: '300px'
+      chartH: "340px",
+      300: "300px",
     },
     backgroundColor: (theme) => theme("colors"),
     backgroundImage: {

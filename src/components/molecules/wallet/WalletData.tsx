@@ -8,37 +8,46 @@ function WalletData() {
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
       <div className="w-full bg-customGray-100 rounded">
         <div className="bg-gray-300 rounded-t pl-2 pt-2">
-          <h3 className="font-medium text-xs text-gray-600">YOUR SYNTHS</h3>
+          <h3 className="font-medium xl:text-xs xxl:text-lg text-gray-600">
+            YOUR SYNTHS
+          </h3>
         </div>
         <table width="100%">
-          <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
-            <td className="w-1/5 pl-2 flex items-center my-2">
+          <tr className="bg-gray-300 xl:text-xxs xxl:text-base text-left text-gray-600 font-medium">
+            <td className="w-1/4 pl-2 flex items-center my-2">
               ASSETS{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img
+                src="assets/Icons/up-down-arrow.svg"
+                alt="img"
+                className="ml-1 h-2"
+              />
             </td>
-            <td className="w-1/5">
+            <td className="w-1/4">
               <div className="flex items-center">
-                DESCRIPTION{" "}
+                RATES{" "}
+                {/* <img
+                  src="assets/Icons/up-down-arrow.svg"
+                  alt="img"
+                  className="ml-1 h-2"
+                /> */}
+              </div>
+            </td>
+            <td className="w-1/4">
+              <div className="flex items-center">
+                TOTAL{" "}
                 <img
                   src="assets/Icons/up-down-arrow.svg"
+                  alt="img"
                   className="ml-1 h-2"
                 />
               </div>
             </td>
-            <td className="w-1/5">
+            <td className="w-1/4">
               <div className="flex items-center">
-                Total{" "}
+                USD VALUE{" "}
                 <img
                   src="assets/Icons/up-down-arrow.svg"
-                  className="ml-1 h-2"
-                />
-              </div>
-            </td>
-            <td className="w-1/5">
-              <div className="flex items-center">
-                USD Value{" "}
-                <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  alt="img"
                   className="ml-1 h-2"
                 />
               </div>
@@ -46,17 +55,17 @@ function WalletData() {
           </tr>
           <tbody>
             {balances.map((item) => (
-              <tr className="py-20 text-xxs text-left text-gray-600 font-medium">
-                <td className="w-1/5 pl-2 flex items-center my-2">
+              <tr className="py-20 xl:text-xxs xxl:text-base text-left text-gray-600 font-bold">
+                <td className="w-1/4 pl-2 flex items-center my-2">
                   {item.short}
                 </td>
-                <td className="w-1/5">{item.name}</td>
-                <td className="w-1/5">
+                <td className="w-1/4">{item.rate}</td>
+                <td className="w-1/4">
                   <div className="flex items-center">
                     {item.cryptoBalance.toFixed(4)} {item.short}
                   </div>
                 </td>
-                <td className="w-1/5">
+                <td className="w-1/4">
                   <div className="flex items-center">
                     ${(item.cryptoBalance * item.rate).toFixed(2)}
                   </div>

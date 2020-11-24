@@ -15,18 +15,20 @@ function Dropdown(props: IProps) {
 
   return (
     <div className="relative" onMouseOver={show} onMouseLeave={hide}>
-      <button className="focus:outline-none text-gray-600 text-xs font-medium flex items-center border-r pr-4 border-gray-500">
-        {props.fields[props.index]}
+      <button className="focus:outline-none text-gray-600 xl:text-xs xxl:text-base font-medium flex items-center border-r pr-4 border-gray-500">
+        {props.fields[props.index] === "Beyond"
+          ? "BYN"
+          : props.fields[props.index]}
         <img src="assets/Icons/arrow-down.svg" className="ml-1 w-2" />
       </button>
       {visible && (
-        <div className="absolute text-gray-600 text-xs font-medium bg-white shadow">
+        <div className="absolute text-gray-600 xl:text-xs xxl:text-base font-medium bg-white shadow">
           {props.fields.map((item, i) => (
             <button
               className="focus:outline-none py-2 w-full px-4 hover:bg-gray-200"
               onClick={() => select(i)}
             >
-              {item}
+              {item === "Beyond" ? "BYN" : item}
             </button>
           ))}
         </div>

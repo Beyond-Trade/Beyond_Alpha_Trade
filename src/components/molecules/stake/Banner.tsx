@@ -12,7 +12,11 @@ function Banner() {
           your BYN holdings compound on daily basis.
         </p>
       </div>
-      <img src="assets/Images/header-Illustrations.png" className="h-24 sm:h-56 md:h-64 lg:h-94 xl:h-94" />
+      <img
+        src="assets/Images/header-Illustrations.png"
+        alt="img"
+        className="h-24 sm:h-56 md:h-64 lg:h-94 xl:h-94"
+      />
     </div>
   );
 }

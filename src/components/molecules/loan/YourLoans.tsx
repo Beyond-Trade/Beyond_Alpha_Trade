@@ -4,10 +4,12 @@ function YourLoans() {
   return (
     <div className="w-full bg-customGray-100 whitespace-nowrap  mb-4 overflow-auto rounded mr-8 mt-3">
       <div className="bg-gray-300 w-auto rounded-t pl-2 pt-2">
-        <h3 className="font-medium text-xs text-gray-600">YOUR LOANS</h3>
+        <h3 className="font-medium xl:text-xs xxl:text-base text-gray-600">
+          YOUR LOANS
+        </h3>
       </div>
       <table width="100%">
-        <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
+        <tr className="bg-gray-300 xl:text-xxs xxl:text-xs text-left text-gray-600 font-medium">
           <td className="w-1/7 ">
             <div className="flex items-center " style={{ width: "130px" }}>
               AMOUNT BORROWED{" "}
@@ -62,7 +64,7 @@ function YourLoans() {
         <tbody></tbody>
       </table>
       <div className="h-64 p-5">
-        <h6 className="text-blue-700 font-medium text-xxs">
+        <h6 className="text-blue-700 font-medium xl:text-xxs xxl:text-base">
           No assets associated with this wallet
         </h6>
       </div>

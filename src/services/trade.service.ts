@@ -91,10 +91,7 @@ export const addTrade = async (from: string, to: string, amount: number, gasFee:
   if (from === ERC20Contracts.USDb) {
     const res = await mintSynth(to, amount, gasFee);
     return res;
-  } else if (
-    from !== ERC20Contracts.USDb &&
-    to !== ERC20Contracts.USDb
-  ) {
+  } else if ( from !== ERC20Contracts.USDb && to !== ERC20Contracts.USDb) {
     const res = await convertSynths(from, to, amount, gasFee)
     return res
   } else if (to === ERC20Contracts.USDb) {
