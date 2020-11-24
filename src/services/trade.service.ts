@@ -87,13 +87,11 @@ export const TradePairsLookup = [
 ];
 
 export const addTrade = async (from: string, to: string, amount: number, gasFee: number) => {
+  debugger
   if (from === ERC20Contracts.USDb) {
     const res = await mintSynth(to, amount, gasFee);
     return res;
-  } else if (
-    from !== ERC20Contracts.USDb &&
-    to !== ERC20Contracts.USDb
-  ) {
+  } else if ( from !== ERC20Contracts.USDb && to !== ERC20Contracts.USDb) {
     const res = await convertSynths(from, to, amount, gasFee)
     return res
   } else if (to === ERC20Contracts.USDb) {
@@ -194,7 +192,7 @@ export const convertSynthsToUSD = async (
       gasPrice = gasPrice * Math.pow(10, 9);
       // @ts-ignore
       const tx = await contract.methods
-        .convertSynths(from, amount.toString())
+        .convertSynthsToUSD(from, amount.toString())
         .send({ gasPrice: gasPrice });
       return tx;
     }

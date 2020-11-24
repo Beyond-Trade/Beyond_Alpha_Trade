@@ -10,9 +10,10 @@ import { BeyondAbi } from "./abi/beyond.abi";
 import { BeyondExchangeAbi } from "./abi/beyondExchange.abi";
 import { BeyondExProxAbi } from "./abi/beyondExProx.abi";
 import { PriceFeedAbi } from "./abi/priceFeed";
-import { USDbAbi } from "./abi/Usdb.abi";
+
 import * as icons from "../utils/coinIcons";
 import { AbiItem } from 'web3-utils'
+import { USDbAbi } from "./abi/usdb.abi";
 
 
 export interface IContractLookup {
