@@ -15,7 +15,7 @@ function Banner() {
       <img
         src="assets/Images/header-illustrations.png"
         alt="img"
-        className="h-56 sm:h-56 md:h-64 lg:h-94 xl:h-94"
+        className="h-56 sm:h-56 md:h-64 lg:h-94 xl:h-94 xxl:h-3/4"
       />
     </div>
   );
