@@ -6,7 +6,7 @@ function Rewards() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">REWARDS</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full mb-4">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-500 mt-6">
+          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
             If you have staked your BYN tokens and
             <br />
             minted USDb, you are eligible to collect BYN
@@ -57,10 +57,10 @@ function Rewards() {
             </div>
           </div>
           <div className="flex">
-            <button className="focus:outline-none bg-customBlue-200 text-white mr-2 xl:text-xs xxl:text-lg w-full rounded py-2 mt-8">
+            <button className="focus:outline-none bg-customBlue-200 text-white mr-2 xl:text-xs xxl:text-lg w-full rounded xl:py-2 xxl:py-4 mt-8">
               SEND TO WALLET
             </button>
-            <button className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-lg w-full rounded py-2 mt-8">
+            <button className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-lg w-full rounded xl:py-2 xxl:py-4 mt-8">
               STAKE & MINT
             </button>
           </div>

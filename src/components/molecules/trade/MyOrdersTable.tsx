@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { Order } from "../../../store/types/ExchangeState";
 
 interface IProps {
@@ -9,9 +10,9 @@ function MyOrdersTable(props: IProps) {
   return (
     <React.Fragment>
       <table width="100%">
-        <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
+        <tr className="bg-gray-300 xl:text-xxs xxl:text-xs text-left text-gray-600 font-medium">
           <td className="py-2 px-3">
-            <div className="flex items-center whitespace-nowrap	w-20">
+            <div className="flex items-center whitespace-nowrap	xl:w-20 xxl:w-32">
               DATE | TIME
               <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
@@ -68,14 +69,22 @@ function MyOrdersTable(props: IProps) {
             {/* <td className="py-3 px-3">$1896.04</td> */}
             <td className="py-3 px-3">{item.status}</td>
             <td className="py-3 px-3">
-              <a href={item.infoURL} target="_blank" className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm">
+              <a
+                href={item.infoURL}
+                target="_blank"
+                className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm"
+              >
                 VIEW
               </a>
             </td>
           </tr>
         ))}
       </table>
-      {props.data.length===0&&<div className="h-48 text-blue-500 text-xs flex justify-center items-center">No data found</div>}
+      {props.data.length === 0 && (
+        <div className="h-48 text-blue-500 text-xs flex justify-center items-center">
+          No data found
+        </div>
+      )}
     </React.Fragment>
   );
 }

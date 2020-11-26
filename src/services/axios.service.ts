@@ -16,15 +16,6 @@ export async function getCrypto(coinIds: any) {
     }
 }
 
-// export async function getForex(params: any) {
-//     try {
-//         const url = twelveData + 'time_series?symbol='+params.coinId+'/USD&interval=1h&apikey=a1083c8f173849f0a0a395b2eb896d85'
-//         var prices = await axios.get(url);
-//         return prices.data.values;
-//     } catch (error) {
-//         return error;
-//     }
-// }
 export async function getForex(params: any) {
     try {
 

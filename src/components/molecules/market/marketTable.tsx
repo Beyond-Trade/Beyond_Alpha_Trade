@@ -50,7 +50,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
           </div>
         </td> */}
         <td className="py-2 px-3">
-          <div className="flex items-center">TRADE NOW</div>
+          <div className="flex items-center content-center">TRADE NOW</div>
         </td>
       </tr>
       {data
@@ -83,7 +83,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <img src="assets/Images/Up.png" className="h-8" />
           </td> */}
             <td className="py-3 px-3">
-              <button className="focus:outline-none bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white text-xs rounded-sm">
+              <button className="focus:outline-none flex content-center bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white xl:text-xs xxl:text-sm rounded-sm">
                 TRADE
               </button>
             </td>

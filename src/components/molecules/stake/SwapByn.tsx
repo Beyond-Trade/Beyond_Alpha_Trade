@@ -20,7 +20,7 @@ function SwapByn(props: IProps) {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">SWAP</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-500 mt-6">
+          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
             Onboard Beyond exchange by swapping your ETH
             <br />
             into BYN.

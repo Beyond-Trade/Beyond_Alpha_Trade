@@ -7,7 +7,7 @@ function PrivacyPolicyBanner() {
         <img
           src="assets/Images/header-illustrations.png"
           alt="img"
-          className="h-56 content-end"
+          className="xl:h-56 xxl:h-94 content-end"
         />
         <div className="absolute inset-0 flex items-center ">
           <div className="text-center ml-36" style={{ marginLeft: "40px" }}>

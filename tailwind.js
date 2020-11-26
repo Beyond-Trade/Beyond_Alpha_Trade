@@ -113,6 +113,7 @@ module.exports = {
         700: "#2b6cb0",
         800: "#2c5282",
         900: "#2a4365",
+        1000: "#5183BF",
       },
       indigo: {
         100: "#ebf4ff",
@@ -172,6 +173,7 @@ module.exports = {
       84: "20rem",
       94: "25rem",
       chartH: "340px",
+      chartHXXL: "450px",
       300: "300px",
     },
     backgroundColor: (theme) => theme("colors"),
