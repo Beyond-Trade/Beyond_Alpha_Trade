@@ -69,7 +69,7 @@ const BottomSection = () => {
           </div>
         </div>
         <div className="xl:mt-2 xxl:mt-5 bg-customGray-100 rounded xl:p-4 xxl:p-8">
-          <div className="flex justify-between border-b border-gray-400 pb-2">
+          <div className="flex justify-between border-b border-gray-400 pb-3">
             <h6 className="xxl:text-xl xl:text-xs">TOTAL BYN:</h6>
             <h6 className="xxl:text-xl xl:text-xs font-medium text-blue-1000">
               {state.totalBYN} BYN
@@ -83,7 +83,7 @@ const BottomSection = () => {
               Not Staked: {state.unstackedBYN}
             </h6>
           </div>
-          <div className="flex mt-1">
+          <div className="flex mt-1 pb-2">
             <div className="w-full h-4 bg-gray-300"></div>
             <div className="w-24 h-4 bg-gray-400"></div>
           </div>
@@ -162,7 +162,7 @@ const BottomSection = () => {
               </td>
             </tr>
             {balances.map((item) => (
-              <tr className="flex bg-gray-100 justify-between py-1 px-8 text-xs font-light rounded-t">
+              <tr className="flex bg-gray-100 justify-between xl:py-1 xl:py-2 px-8 text-xs font-light rounded-t">
                 <td style={{ width: "120px" }}>
                   <div className="flex items-center">
                     <img

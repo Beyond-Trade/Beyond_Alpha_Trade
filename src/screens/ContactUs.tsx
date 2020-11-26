@@ -21,17 +21,19 @@ function ContactUs() {
             <div className="w-full py-3 mr-3">
               <p className="py-2">Name</p>
               <input
-                className="bg-gray-100 focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3"
                 type="text"
-                value="0.00"
+                style={{ backgroundColor: "#fcfcfc" }}
+                value=""
               />
             </div>
             <div className="w-full py-3">
               <p className="py-2">Email</p>
               <input
-                className="bg-gray-100 focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3"
                 type="text"
-                value="0.00"
+                style={{ backgroundColor: "#fcfcfc" }}
+                value=""
               />
             </div>
           </div>
@@ -39,17 +41,19 @@ function ContactUs() {
             <div className="w-full py-3 mr-3">
               <p className="py-2">Phone</p>
               <input
-                className="bg-gray-100 focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3"
                 type="text"
-                value="0.00"
+                style={{ backgroundColor: "#fcfcfc" }}
+                value=""
               />
             </div>
             <div className="w-full py-3">
               <p className="py-2">Website</p>
               <input
-                className="bg-gray-100 focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3"
                 type="text"
-                value="0.00"
+                style={{ backgroundColor: "#fcfcfc" }}
+                value=""
               />
             </div>
           </div>
@@ -57,47 +61,52 @@ function ContactUs() {
             <div className="w-full py-3">
               <p className="py-2">Message</p>
               <textarea
-                className="bg-gray-100 focus:outline-none w-full p-3"
-                value="0.00"
+                className=" focus:outline-none w-full p-3"
+                style={{ backgroundColor: "#fcfcfc" }}
+                value=""
               />
             </div>
           </div>
           <div className="flex" style={{ justifyContent: "flex-end" }}>
-            <button className="bg-customBlue-200 p-3 content-end text-white rounded">
+            <button className="bg-customBlue-200 p-3 content-end xl:text-sm text-white rounded">
               SEND MESSAGE
             </button>
           </div>
         </div>
         {/* <div className="xl:w-300 lg:w-300">MAP</div> */}
       </div>
-      <div className=" lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8 h-48">
+      <div className=" lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8 xl:h-48 xxl:h-64">
         <div className="flex justify-center w-full">
-          <div className="w-64 flex-col border flex  p-8 items-center justify-center">
+          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium">
             <img
               src="assets/Icons/phone-black.png"
               alt="img"
-              className="h-8 content-end"
+              className="xl:h-8 xxl:h-12 content-end"
             />
             CALL US
-            <p className="xl:text-xs xxl:text-lg">+94 722 321 911</p>
+            <p className="xl:text-xxs xxl:text-lg font-light">
+              +94 722 321 911
+            </p>
           </div>
-          <div className="w-64 flex-col border mx-3  p-8 flex items-center justify-center">
+          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium">
             <img
               src="assets/Icons/plane@3x.png"
               alt="img"
-              className="h-8 content-end"
+              className="xl:h-8 xxl:h-12 content-end"
             />
             EMAIL US
-            <p className="xl:text-xs xxl:text-lg">suppport@beyond.com</p>
+            <p className="xl:text-xxs xxl:text-lg font-light">
+              suppport@beyond.com
+            </p>
           </div>
-          <div className="w-64 flex-col border p-8 flex items-center justify-center">
+          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex text-center items-center justify-center  xxl:font-medium">
             <img
               src="assets/Icons/pin-black.png"
               alt="img"
-              className="h-8 content-end"
+              className="xl:h-8 xxl:h-12 content-end"
             />
             LOCATE US
-            <p className="xl:text-xs xxl:text-lg">
+            <p className="xl:text-xxs xxl:text-lg font-light">
               2591 nort Forsyth Road Suite H,Orlando (32807) Florida United
               States.
             </p>
