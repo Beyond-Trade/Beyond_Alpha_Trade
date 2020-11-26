@@ -7,7 +7,7 @@ function TermsAndConditionsBanner() {
         <img
           src="assets/Images/header-illustrations.png"
           alt="img"
-          className="xl:h-56 xxl:h-94 content-end"
+          className="xl:h-84 xxl:h-full xl:w-1/2 xxl:w-1/2  content-end"
         />
         <div className="absolute inset-0 flex items-center ">
           <div className="text-center ml-36" style={{ marginLeft: "40px" }}>

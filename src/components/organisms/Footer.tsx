@@ -55,7 +55,14 @@ function Footer() {
           >
             Support
           </p>
-          <p className="text-gray-500 mt-4 cursor-pointer">News/Blog</p>
+          <p
+            className="text-gray-500 mt-4 cursor-pointer"
+            onClick={() => {
+              history.push("/news_blog");
+            }}
+          >
+            News/Blog
+          </p>
         </div>
         <div className="flex flex-col xl:text-xs xxl:text-base items-start w-64 mr-16">
           <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">
