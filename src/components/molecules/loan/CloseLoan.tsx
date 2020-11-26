@@ -41,7 +41,7 @@ function CloseLoan() {
           </p>
         </div>
         <div className="flex mt-3">
-          <button className="bg-customBlue-200 p-1 w-full text-white rounded">
+          <button className="bg-customBlue-200 xl:p-2 xxl:p-4 w-full text-white rounded">
             CONFIRM
           </button>
         </div>

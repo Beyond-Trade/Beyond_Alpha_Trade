@@ -1,8 +1,9 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { EtherscanBrowsUrl } from "../../../constants";
-import { SetSelectedWalletAction } from "../../../store/actions/WalletActions";
+import React from "react";
 import { RootState } from "../../../store/reducers/Index";
+import { SetSelectedWalletAction } from "../../../store/actions/WalletActions";
 interface IProps {
   onBack: Function;
 }
@@ -10,8 +11,9 @@ function SelectWallet(props: IProps) {
   const dispatch = useDispatch();
   const { wallets } = useSelector((state: RootState) => state.wallet);
   const changeSelectedWallet = async (wallet: any): Promise<any> => {
-   dispatch(SetSelectedWalletAction(wallet))
+    dispatch(SetSelectedWalletAction(wallet));
   };
+  console.log(wallets);
   return (
     <div className="px-6 pb-2">
       <div className="text-center font-medium w-full text-green-400 mt-8">
@@ -26,10 +28,11 @@ function SelectWallet(props: IProps) {
           <div />
         </div>
         {wallets.map((item) => (
-          <button className="focus:outline-none w-full text-xs font-medium border border-gray-600 rounded flex justify-between px-2 py-4 mt-3"
-          onClick={() => {
-            changeSelectedWallet(item);
-          }}
+          <button
+            className="focus:outline-none w-full text-xs font-medium border border-gray-600 rounded flex justify-between px-2 py-4 mt-3"
+            onClick={() => {
+              changeSelectedWallet(item);
+            }}
           >
             <text>
               {item.address.slice(0, 5) + "..." + item.address.slice(-5)}
@@ -37,7 +40,13 @@ function SelectWallet(props: IProps) {
             <text>{item.BYNBalance}</text>
             <text>{item.USDbBalance}</text>
             <text>{item.EthBalance.toFixed(4)}</text>
-            <a target='_blank' href={EtherscanBrowsUrl + item.address}> <img src="assets/Icons/etherscan-logo-circle.svg" className="h-4" /></a>
+            <a target="_blank" href={EtherscanBrowsUrl + item.address}>
+              {" "}
+              <img
+                src="assets/Icons/etherscan-logo-circle.svg"
+                className="h-4"
+              />
+            </a>
           </button>
         ))}
       </div>

@@ -76,7 +76,7 @@ function WalletData() {
         </table>
         {balances.length <= 0 && (
           <div className="py-20 flex justify-center items-center">
-            <h6 className="text-gray-600 font-medium text-xxs">
+            <h6 className="text-blue-700 font-medium text-xxs">
               No assets associated with this wallet
             </h6>
           </div>

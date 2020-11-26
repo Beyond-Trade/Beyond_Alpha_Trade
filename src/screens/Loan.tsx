@@ -11,12 +11,12 @@ function Loan() {
     <div>
       <LoanBanner />
       <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
-        <div className="flex-1 xl:mr-8 lg:mr-8">
+        <div className="flex-1 xl:mr-8 xxl:mr-10 lg:mr-8">
           <EthAsCollateral />
           <YourWalet />
           <YourLoans />
         </div>
-        <div className="xl:w-300 lg:w-300 xxl:w-1/3 xxxl:1/3">
+        <div className="xl:w-300 lg:w-300 xxl:w-28% xxxl:1/4">
           <CreateLoan />
           <CloseLoan />
         </div>
