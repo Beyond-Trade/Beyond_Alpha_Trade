@@ -1,15 +1,16 @@
 import { collatteralRatio, mintERC20 } from "../../services/mint.service";
-import { showAlert } from "../../services/generic.services";
 import { useEffect, useState } from "react";
 import { Balance } from "../../store/types/WalletState";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
 import { RootState } from "../../store/reducers/Index";
 import { useSelector } from "react-redux";
+import { useAlert } from "react-alert";
 
 const useMint = () => {
   const { balances } = useSelector(
     (state: RootState) => state.wallet
   );
+  const alert = useAlert()
   const gasFees = [1, 23, 34];
 
   const [state, setState] = useState({
@@ -53,19 +54,13 @@ const useMint = () => {
         if (!data) {
           throw new Error("no data");
         }
-        showAlert({
-          title: "Success!",
-          message: "Mint successful",
-          type: "success",
-        });
+
+        alert.show('Mint successful', {type:'success'})
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        showAlert({
-          title: "Error!",
-          message: "Error while minting",
-          type: "danger",
-        });
+        console.log('e', e)
+        alert.show('Error while minting', {type:'error'})
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };

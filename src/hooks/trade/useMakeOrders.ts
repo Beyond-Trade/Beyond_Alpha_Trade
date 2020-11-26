@@ -1,13 +1,8 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
+import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { ERC20Contracts } from "../../contracts/constants/contracts";
-import { showAlert } from "../../services/generic.services";
-import {
-  addTrade,
-  convertSynths,
-  mintSynth,
-} from "../../services/trade.service";
+import { addTrade } from "../../services/trade.service";
 import { setMyOrder } from "../../store/actions/ExchangeActions";
 import { RootState } from "../../store/reducers/Index";
 
@@ -16,7 +11,8 @@ const useMakeOrders = () => {
   const {
     exchange: { selectedPair },
   } = useSelector((state: RootState) => state);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const alert = useAlert();
   const [state, setState] = useState({
     submitting: false,
     isFeeOpen: false,
@@ -29,7 +25,7 @@ const useMakeOrders = () => {
     toRate: 0,
     fromImage: "",
     toImage: "",
-    usdValue: 0
+    usdValue: 0,
   });
   const [inputs, setInputs] = useState({
     to: "",
@@ -48,9 +44,9 @@ const useMakeOrders = () => {
       fromRate: selectedPair.fromRate,
       toRate: selectedPair.toRate,
       fromImage: selectedPair.fromImage,
-      toImage: selectedPair.toImage
+      toImage: selectedPair.toImage,
     }));
-    setInputs({to: "", fromVal: "", from: "", toVal: ""})
+    setInputs({ to: "", fromVal: "", from: "", toVal: "" });
   }, [selectedPair]);
 
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
@@ -69,7 +65,7 @@ const useMakeOrders = () => {
       fromRate: prev.toRate,
       toRate: prev.fromRate,
       fromImage: prev.toImage,
-      toImage: prev.fromImage
+      toImage: prev.fromImage,
     }));
     setInputs((prev) => ({
       ...prev,
@@ -100,32 +96,27 @@ const useMakeOrders = () => {
         if (!data) {
           throw Error("Error");
         }
-        
-        const price = getPairPrice(state.fromRate, state.toRate)
-        dispatch(setMyOrder({
-          date: moment().format("MMM Do YY")+"|"+moment().format("TL"),
-          pair: state.to+"/"+state.from,
-          buying: inputs.to+" "+state.to,
-          selling: inputs.from+" "+inputs.to,
-          price: price,
-          status: 'pending',
-          infoURL: 'https://rinkeby.etherscan.io/tx/'+data.transactionHash
-        }))
-        showAlert({
-          title: "Success",
-          message: "Order added",
-          type: "success",
-        });
+
+        const price = getPairPrice(state.fromRate, state.toRate);
+        dispatch(
+          setMyOrder({
+            date: moment().format("MMM Do YY") + "|" + moment().format("TL"),
+            pair: state.to + "/" + state.from,
+            buying: inputs.to + " " + state.to,
+            selling: inputs.from + " " + inputs.to,
+            price: price,
+            status: "pending",
+            infoURL: "https://rinkeby.etherscan.io/tx/" + data.transactionHash,
+          })
+        );
+
+        alert.show("Order added", { type: "success" });
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        console.log('Error!',e)
-        debugger
-        showAlert({
-          title: "Error",
-          message: "Unable to add order",
-          type: "danger",
-        });
+        console.log("Error!", e);
+
+        alert.show("Unable to add order", { type: "error" });
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };
@@ -150,34 +141,34 @@ const useMakeOrders = () => {
     return validated;
   };
 
-  const getPairPrice = (fromRate:number, toRate:number) => {
-    if(fromRate===0) return 0
-    let result = (1/toRate)*fromRate;
+  const getPairPrice = (fromRate: number, toRate: number) => {
+    if (fromRate === 0) return 0;
+    let result = (1 / toRate) * fromRate;
     return result;
-  }
+  };
 
   const handleFromChange = (event: any) => {
     const { value } = event.target;
-    const price = getPairPrice(state.fromRate, state.toRate)
+    const price = getPairPrice(state.fromRate, state.toRate);
     setInputs((prev) => ({
       ...prev,
       from: value,
       fromVal: "",
-      to: (Number(price)*Number(value)).toString()
+      to: (Number(price) * Number(value)).toString(),
     }));
-    setState(prev=>({...prev, usdValue: Number(value)*prev.fromRate}))
+    setState((prev) => ({ ...prev, usdValue: Number(value) * prev.fromRate }));
   };
   const handleToChange = (event: any) => {
     const { value } = event.target;
-    const price = getPairPrice(state.fromRate, state.toRate)
-    const from = price===0?'0': (Number(value)/Number(price)).toString()
+    const price = getPairPrice(state.fromRate, state.toRate);
+    const from = price === 0 ? "0" : (Number(value) / Number(price)).toString();
     setInputs((prev) => ({
       ...prev,
       to: value,
       toVal: "",
-      from: from
+      from: from,
     }));
-    setState(prev=>({...prev, usdValue: Number(from)*prev.fromRate}))
+    setState((prev) => ({ ...prev, usdValue: Number(from) * prev.fromRate }));
   };
 
   return {
