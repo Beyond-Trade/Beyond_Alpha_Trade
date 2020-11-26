@@ -1,10 +1,10 @@
 import React from 'react'
 
 const alertStyle = {
-  backgroundColor: '#070e16',
-  color: 'white',
+  backgroundColor: '#ffffff',
+  color: 'black',
   padding: '10px',
-  borderRadius: '25px',
+  borderRadius: '10px',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -24,12 +24,12 @@ const buttonStyle = {
 const AlertTemplate = ({ message, options, style, close }) => {
   return (
     <div style={{ ...alertStyle, ...style }}>
-      {options.type === 'info' && <img src="assets/Icons/info.png" />}
-      {options.type === 'success' && <SuccessIcon />}
-      {options.type === 'error' && <ErrorIcon />}
+      {options.type === 'info' && <img src="assets/Icons/info.png" className="w-6 mr-2" />}
+      {options.type === 'success' && <img src="assets/Icons/success.png" className="w-6 mr-2" />}
+      {options.type === 'error' && <img src="assets/Icons/error.png" className="w-6 mr-2" />}
       <span style={{ flex: 2 }}>{message}</span>
       <button onClick={close} style={buttonStyle}>
-        <CloseIcon />
+      <img src="assets/Icons/Cross.svg" className="w-3" />
       </button>
     </div>
   )

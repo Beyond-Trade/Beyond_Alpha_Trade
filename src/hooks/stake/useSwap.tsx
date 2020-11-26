@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
-import { showAlert } from "../../services/generic.services";
 import { buyBYNToken } from "../../services/swap.service";
 import { RootState } from "../../store/reducers/Index";
 import { Balance } from "../../store/types/WalletState";
@@ -10,6 +10,7 @@ const useSwap = () => {
   const { balances, selected } = useSelector(
     (state: RootState) => state.wallet
   );
+  const alert = useAlert()
 
   const [state, setState] = useState({
     swapping: false,
@@ -51,20 +52,13 @@ const useSwap = () => {
         if (!data) {
           throw new Error("no data");
         }
-        showAlert({
-          title: "Success!",
-          message: "Swap successful",
-          type: "success",
-        });
+        alert.show('Swap successful', {type:'success'})
 
         setState((prev) => ({ ...prev, swapping: false, from: "", to: 0 }));
       })
       .catch((e) => {
-        showAlert({
-          title: "Error!",
-          message: "Unable to swap",
-          type: "danger",
-        });
+        console.log('e',e)
+        alert.show('Unable to swap', {type:'error'})
         setState((prev) => ({ ...prev, swapping: false }));
       });
   };

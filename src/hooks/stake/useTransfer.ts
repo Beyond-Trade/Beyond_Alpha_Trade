@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
 import { ContractLookup } from "../../contracts/contracts.lookup";
-import { showAlert } from "../../services/generic.services";
 import { transferERC20, transferEther } from "../../services/transfer.service";
 import { RootState } from "../../store/reducers/Index";
 
 const useTransfer = () => {
   const gasFees = [17, 23, 34];
   const { balances } = useSelector((state: RootState) => state.wallet);
-
+  const alert = useAlert()
   const [state, setState] = useState({
     submitting: false,
     amount: "",
@@ -66,20 +66,14 @@ const useTransfer = () => {
         if (!data) {
           throw new Error("no data");
         }
-        showAlert({
-          title: "Success!",
-          message: "Transfer successful",
-          type: "success",
-        });
+
+        alert.show('Transfer successful', {type:'success'})
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
         console.log("transfer ether error", e);
-        showAlert({
-          title: "Error!",
-          message: "Unable to transfer",
-          type: "danger",
-        });
+
+        alert.show('Unable to transfer', {type:'error'})
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };
@@ -95,19 +89,12 @@ const useTransfer = () => {
         if (!data) {
           throw new Error("no data");
         }
-        showAlert({
-          title: "Success!",
-          message: "Transfer successful",
-          type: "success",
-        });
+        alert.show('Transfer successful', {type:'success'})
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        showAlert({
-          title: "Error!",
-          message: "Unable to transfer",
-          type: "danger",
-        });
+        console.log('e', e)
+        alert.show('Unable to transfer', {type:'error'})
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };
