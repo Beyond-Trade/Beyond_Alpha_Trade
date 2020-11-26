@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-
+import Loader from "react-loader-spinner";
 import NavTab from "../../atomic/NavTab";
 import { RootState } from "../../../store/reducers/Index";
 import SelectWalletModal from "./SelectWalletModal";
@@ -9,7 +9,7 @@ interface IProps {
   location: string;
 }
 function WalletSection(props: IProps) {
-  const { isConnected, selected } = useSelector(
+  const { isConnected, selected, loadingBalance } = useSelector(
     (state: RootState) => state.wallet
   );
 
@@ -22,18 +22,20 @@ function WalletSection(props: IProps) {
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="px-4 py-1 rounded-sm bg-customBlue-200 text-white xl:text-xs xxl:text-lg ml-12 flex items-center"
+          className="focus:outline-none px-4 py-1 rounded-sm bg-customBlue-200 text-white xl:text-xs xxl:text-lg ml-12 flex items-center"
         >
-          <img
+          {loadingBalance && <Loader type="TailSpin" color="#ffffff" height={10} width={10} />}
+          {loadingBalance && <text className="ml-2">Processing...</text>}
+          {!loadingBalance&&<img
             src="assets/Icons/wallet-icon.svg"
             alt="img"
             className="mr-2 h-3"
-          />
-          {!isConnected && "Connect Wallet"}
-          {isConnected && (
+          />}
+          {!isConnected && !loadingBalance && "Connect Wallet"}
+          {isConnected && !loadingBalance && (
             <div className="h-2 w-2 bg-green-200 rounded mr-1 mt-1" />
           )}
-          {isConnected &&
+          {!loadingBalance && isConnected &&
             selected?.address.slice(0, 5) + "..." + selected?.address.slice(-5)}
         </button>
       </div>

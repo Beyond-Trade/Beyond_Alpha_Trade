@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function Footer() {
   const history = useHistory();
@@ -20,10 +20,10 @@ function Footer() {
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">PRODUCTS</h4>
-          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Stake</p>
-          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Market</p>
-          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Trade</p>
-          <p className="text-xs text-gray-500 mt-4 cursor-pointer">Loan</p>
+          <NavLink to="/stake" className="text-xs text-gray-500 mt-4 cursor-pointer">Stake</NavLink>
+          <NavLink to="/market" className="text-xs text-gray-500 mt-4 cursor-pointer">Market</NavLink>
+          <NavLink to="/trade" className="text-xs text-gray-500 mt-4 cursor-pointer">Trade</NavLink>
+          <NavLink to="/loan" className="text-xs text-gray-500 mt-4 cursor-pointer">Loan</NavLink>
         </div>
         <div className="flex flex-col items-start pr-20">
           <h4 className="text-white text-sm font-semibold">COMPANY</h4>

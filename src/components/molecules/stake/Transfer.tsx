@@ -24,7 +24,7 @@ function Transfer() {
     onCoinSelect,
     dropIndex,
   } = useTransfer();
-  console.log(dropValues);
+  
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="xl:text-lg xxl:text-2xl font-bold">TRANSFER</h3>

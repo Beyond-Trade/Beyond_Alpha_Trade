@@ -1,14 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "react-loader-spinner";
 import { EtherscanBrowsUrl } from "../../../constants";
 import { SetSelectedWalletAction } from "../../../store/actions/WalletActions";
 import { RootState } from "../../../store/reducers/Index";
+
 interface IProps {
   onBack: Function;
 }
 function SelectWallet(props: IProps) {
   const dispatch = useDispatch();
-  const { wallets } = useSelector((state: RootState) => state.wallet);
+  const { wallets, loadingBalance } = useSelector((state: RootState) => state.wallet);
   const changeSelectedWallet = async (wallet: any): Promise<any> => {
    dispatch(SetSelectedWalletAction(wallet))
   };
@@ -25,7 +27,12 @@ function SelectWallet(props: IProps) {
           <h6>ETH</h6>
           <div />
         </div>
-        {wallets.map((item) => (
+        {loadingBalance && (
+          <div className="flex justify-center items-center mt-6">
+            <Loader type="Bars" color="#5183BF" height={30} width={30} />
+          </div>
+        )}
+        {!loadingBalance && wallets.map((item) => (
           <button className="focus:outline-none w-full text-xs font-medium border border-gray-600 rounded flex justify-between px-2 py-4 mt-3"
           onClick={() => {
             changeSelectedWallet(item);

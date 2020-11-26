@@ -1,14 +1,11 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import React, { useState } from "react";
-
 import NavTab from "../atomic/NavTab";
 import WalletSection from "../molecules/wallet/WalletSection";
 import { updateBalances } from "../../services/wallet.service";
-import { useAlert } from "react-alert";
 
 function Navbar() {
   updateBalances();
-  const alert = useAlert()
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const toggle = () => setCollapsed((prev) => !prev);

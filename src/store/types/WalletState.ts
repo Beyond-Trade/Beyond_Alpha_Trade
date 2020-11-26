@@ -29,4 +29,5 @@ export interface WalletState {
     wallets: Wallet[];  // Reset balance is new source
     balances: Balance[] //Current source default wallet balances
     isConnected: boolean;
+    loadingBalance: boolean;
 }

@@ -50,10 +50,8 @@ const useMakeOrders = () => {
   }, [selectedPair]);
 
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
-  const closeFeeModal = () =>
-    setState((prev) => ({ ...prev, isFeeOpen: false }));
-  const selectFee = (fee: number) =>
-    setState((prev) => ({ ...prev, fee: fee, isFeeOpen: false }));
+  const closeFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: false }));
+  const selectFee = (fee: number, close:boolean) => setState((prev) => ({ ...prev, fee: fee, isFeeOpen: !close }));
 
   const toggleBuySell = () => {
     setState((prev) => ({

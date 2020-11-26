@@ -6,6 +6,7 @@ export const RESET_WALLET_DATA = "RESET_WALLET_DATA"
 export const SET_Selected_DATA = "SET_Selected_DATA"
 export const SAVE_BALANCE_DATA = "SAVE_BALANCE_DATA"
 export const SAVE_WEB3_DATA = "SAVE_WEB3_DATA";
+export const LOADING_BALANCE_PENDING = "LOADING_BALANCE_PENDING";
 
 interface SaveWeb3Data {
     type: typeof SAVE_WEB3_DATA;
@@ -22,6 +23,9 @@ interface SaveWalletData {
     wallets: Wallet[];
     
 }
+interface LoadingBalancePending {
+    type: typeof LOADING_BALANCE_PENDING;
+}
 interface resetWalletData {
     type: typeof RESET_WALLET_DATA;
     source:string;
@@ -36,4 +40,4 @@ interface SaveBalanceData {
 }
 
 
-export type GetWalletInfoType = SaveWalletData | SaveBalanceData | SetSelectedWalletData | resetWalletData | SaveWeb3Data
+export type GetWalletInfoType = SaveWalletData | LoadingBalancePending | SaveBalanceData | SetSelectedWalletData | resetWalletData | SaveWeb3Data

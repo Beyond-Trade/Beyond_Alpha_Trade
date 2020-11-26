@@ -20,9 +20,10 @@ function GasFeeModal(props: IProps) {
         </button>
       </div>
       <div>
+        <input placeholder="CUSTOM" onChange={(event)=>props.select(event.target.value, false)} className="focus:outline-none border border-gray-300 px-3 rounded py-2 w-full mt-2" />
         {gasFees.map((item, index: number) => (
           <button
-            onClick={() => props.select(item)}
+            onClick={() => props.select(item, true)}
             className={`focus:outline-none ${props.activeFee===item?'bg-customBlue-200 shadow text-white':'bg-gray-100 hover:bg-gray-200'} rounded py-2 w-full mt-2`}
           >
             {feesDescription[index] + " " + item}

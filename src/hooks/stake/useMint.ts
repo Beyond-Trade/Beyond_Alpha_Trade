@@ -44,8 +44,8 @@ const useMint = () => {
 
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
-  const selectFee = (fee: number) =>
-    setState((prev) => ({ ...prev, fee: fee, isOpen: false }));
+  const selectFee = (fee: number, close:boolean) =>
+    setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
   const mintToken = () => {
     setState((prev) => ({ ...prev, submitting: true }));

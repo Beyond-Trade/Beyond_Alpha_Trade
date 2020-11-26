@@ -20,7 +20,7 @@ import {
 
 import { ERC20Contracts } from "../contracts/constants/contracts";
 import { store } from '../App';
-import { resetWalletsInfoAction, saveWalletsInfoAction, SaveWeb3InfoAction, SetSelectedWalletAction } from '../store/actions/WalletActions';
+import { loadingBalancePending, resetWalletsInfoAction, saveWalletsInfoAction, SaveWeb3InfoAction, SetSelectedWalletAction } from '../store/actions/WalletActions';
 import { Wallet } from '../store/types/WalletState';
 import { getERC20Balance, getETHBalance, updateBalances } from './wallet.service';
 import { ContractLookup } from '../contracts/contracts.lookup';
@@ -32,8 +32,8 @@ import { ContractLookup } from '../contracts/contracts.lookup';
 const web3: Web3 = new Web3();
 
 // @ts-ignore
-export const initializeWeb3 = async (source: web3Sources, callback: Function): Promise<any> => {
-
+export const initializeWeb3 = async (source: web3Sources): Promise<any> => {
+    store.dispatch(loadingBalancePending())
     try {
         switch (source) {
             case web3Sources.Portis:
@@ -87,7 +87,7 @@ export const initializeWeb3 = async (source: web3Sources, callback: Function): P
             }
             if (wallets.length <= 0) { throw new Error('Error while accessing accounts.'); }
             store.dispatch(saveWalletsInfoAction(wallets));
-            callback()
+            
             await updateBalances(); //Update all assets balances
         } else {
             throw new Error('Error while accessing web3 provider.');

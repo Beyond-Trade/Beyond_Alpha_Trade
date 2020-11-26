@@ -1,7 +1,24 @@
-import Dropdown from "../../atomic/stake/Dropdown";
+import Loader from "react-loader-spinner";
 import React from "react";
+import useBurn from "../../../hooks/stake/useBurn";
+import GasFeeModal from "./GasFeeModal";
 
 function Burn() {
+  const {
+    amount,
+    amountVal,
+    burning,
+    isOpen,
+    close,
+    fee,
+    openFeeModal,
+    selectFee,
+    submit,
+    setMax,
+    balance,
+    handleAmountChange,
+  } = useBurn();
+
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="xl:text-lg xxl:text-2xl font-bold">BURN</h3>
@@ -29,7 +46,7 @@ function Burn() {
               Confirm or enter amount to burn:
             </p>
             <div className="flex mt-2">
-              <button className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 xl:text-xxs xxl:text-base xl:h-8 xxl:h-12 text-white rounded">
+              <button onClick={setMax} className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 xl:text-xxs xxl:text-base xl:h-8 xxl:h-12 text-white rounded">
                 Burn Max
               </button>
               <div className="bg-gray-300 py-1 px-3 text-center flex items-center justify-center xl:text-xxs xxl:text-base text-gray-600 font-medium ml-2 xl:h-8 xxl:h-12 rounded w-full">
@@ -39,36 +56,56 @@ function Burn() {
           </div>
           <div className="mt-6 xl:text-xs xxl:text-base">
             <div className="flex justify-between">
-              <p className=" font-medium text-gray-500">$ 0</p>
-              <p className=" font-medium text-gray-500">$ 0</p>
+              <p className=" font-medium text-gray-500">$ {balance}</p>
+              <p className=" font-medium text-gray-500">$ {balance}</p>
             </div>
 
-            <div className="bg-gray-300 mt-2 rounded px-4 py-3 flex items-center">
+            <div className="bg-gray-300 mt-2 rounded px-4 py-2 flex items-center">
               <text className="focus:outline-none text-gray-600 font-medium flex items-center border-r pr-4 border-gray-500">
                 USDb
               </text>
               <input
-                className="bg-gray-300 focus:outline-none ml-2 w-full text-gray-600 font-medium"
+                className="bg-gray-300 focus:outline-none text-sm ml-2 py-1 w-full text-gray-600"
                 type="text"
-                value="0.00"
+                value={amount}
+                onChange={handleAmountChange}
               />
               <button className="focus:outline-none bg-customBlue-200 rounded px-2 py-1 text-white ">
                 Max
               </button>
             </div>
+            <small className="italic text-red-400 text-xs">{amountVal}</small>
           </div>
           <div className="text-center mt-2 xl:text-xxs xxl:text-base text-gray-800 font-normal">
             View transferable BYN
           </div>
 
-          <h6 className="mt-8 text-center xl:text-xs xxl:text-base text-gray-800 font-normal">
-            Ethereum network fee: $0/25 GWEI
-          </h6>
-          <button className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-base w-full rounded py-2 mt-2">
-            BURN NOW
+          <div className="mt-24 text-center xl:text-xs xxl:text-base font-medium">
+            <text>Ethereum network fee: $0/{fee} GWEI</text>
+            <text
+              onClick={openFeeModal}
+              className="text-blue-500 underline ml-1 cursor-pointer"
+            >
+              EDIT
+            </text>
+          </div>
+          <button
+            onClick={submit}
+            className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-base w-full rounded py-2 mt-2"
+          >
+            {!burning && "BURN NOW"}
+            {burning && (
+              <Loader type="Bars" color="#ffffff" height={18} width={20} />
+            )}
           </button>
         </div>
       </div>
+      <GasFeeModal
+        isOpen={isOpen}
+        close={close}
+        activeFee={fee}
+        select={selectFee}
+      />
     </div>
   );
 }
