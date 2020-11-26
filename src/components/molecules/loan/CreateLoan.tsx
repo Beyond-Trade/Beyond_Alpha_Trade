@@ -12,15 +12,11 @@ function CreateLoan() {
 
           <p className="text-gray-600 py-1">Balance : 0</p>
         </div>
-        <div className="rounded-t flex bg-gray-300 text-gray-600 text-xs px-2 py-2 font-medium">
+        <div className="rounded-t flex bg-gray-300 text-gray-600 px-2 py-2 font-medium">
           <h3 className="py-1 mr-10 flex items-center">
             <img
               src="assets/icons/Ethereum.svg"
-              style={{
-                height: "13px",
-                width: "13px",
-                marginRight: "5px",
-              }}
+              className="xl:h-3 xxl:h-5 xl:mr-1 xxl:mr-2"
               alt="img"
             />
             ETH
@@ -31,15 +27,11 @@ function CreateLoan() {
           <h3 className="text-gray-600 py-1">sETH BEING BORROWED</h3>
           <p className="text-gray-600 py-1">Balance : 0</p>
         </div>
-        <div className="rounded-t flex bg-gray-300 text-gray-600 text-xs px-2 py-2 font-medium">
+        <div className="rounded-t flex bg-gray-300 text-gray-600 px-2 py-2 font-medium">
           <h3 className="py-1 mr-10 flex items-center">
             <img
               src="assets/icons/Ethereum.svg"
-              style={{
-                height: "13px",
-                width: "13px",
-                marginRight: "5px",
-              }}
+              className="xl:h-3 xxl:h-5 xl:mr-1 xxl:mr-2"
               alt="img"
             />
             ETH
@@ -69,7 +61,7 @@ function CreateLoan() {
           </p>
         </div>
         <div className="flex mt-3">
-          <button className="bg-customBlue-200 p-1 w-full text-white rounded">
+          <button className="bg-customBlue-200 xl:p-2 xxl:p-4 w-full text-white rounded">
             SUBMIT
           </button>
         </div>

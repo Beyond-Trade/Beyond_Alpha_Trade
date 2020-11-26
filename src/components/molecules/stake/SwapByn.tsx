@@ -82,7 +82,7 @@ function SwapByn(props: IProps) {
           </div>
           <button
             onClick={submit}
-            className="focus:outline-none bg-customBlue-200 text-white text-xs flex justify-center w-full rounded py-2 mt-8"
+            className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-lg flex justify-center w-full rounded py-2 mt-8"
           >
             {!swapping && "SWAP"}
             {swapping && (

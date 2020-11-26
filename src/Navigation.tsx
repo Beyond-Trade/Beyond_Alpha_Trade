@@ -7,6 +7,7 @@ import Footer from "./components/organisms/Footer";
 import Loan from "./screens/Loan";
 import Market from "./screens/Market";
 import Navbar from "./components/organisms/Navbar";
+import NewsAndBlog from "./screens/NewsAndBlog";
 import PrivacyPolicy from "./screens/PrivacyPolicy";
 import React from "react";
 import Stake from "./screens/Stake";
@@ -53,6 +54,9 @@ function Navigation() {
         </Route>
         <Route path="/support">
           <Support />
+        </Route>
+        <Route path="/news_blog">
+          <NewsAndBlog />
         </Route>
       </Switch>
       <Footer />

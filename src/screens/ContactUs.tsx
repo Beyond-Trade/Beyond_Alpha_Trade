@@ -12,8 +12,8 @@ function ContactUs() {
       <ContactUsBanner />
       <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
         <div className="flex-1 xl:mr-8 lg:mr-8">
-          <h1 className="py-3 text-2xl">GET IN TOUCH</h1>
-          <p className="text-xs">
+          <h1 className="py-3 xl:text-2xl xxl:text-3xl">GET IN TOUCH</h1>
+          <p className="xl:text-xs xxl:text-lg">
             if you have any query,feel free to get in touch us.Fill the form
             bellow to send us your query.
           </p>
@@ -79,16 +79,16 @@ function ContactUs() {
               className="h-8 content-end"
             />
             CALL US
-            <p className="text-xs">+94 722 321 911</p>
+            <p className="xl:text-xs xxl:text-lg">+94 722 321 911</p>
           </div>
           <div className="w-64 flex-col border mx-3  p-8 flex items-center justify-center">
             <img
-              src="assets/Icons/plane-black.png"
+              src="assets/Icons/plane@3x.png"
               alt="img"
               className="h-8 content-end"
             />
             EMAIL US
-            <p className="text-xs">suppport@beyond.com</p>
+            <p className="xl:text-xs xxl:text-lg">suppport@beyond.com</p>
           </div>
           <div className="w-64 flex-col border p-8 flex items-center justify-center">
             <img
@@ -97,7 +97,7 @@ function ContactUs() {
               className="h-8 content-end"
             />
             LOCATE US
-            <p className="text-xs">
+            <p className="xl:text-xs xxl:text-lg">
               2591 nort Forsyth Road Suite H,Orlando (32807) Florida United
               States.
             </p>
