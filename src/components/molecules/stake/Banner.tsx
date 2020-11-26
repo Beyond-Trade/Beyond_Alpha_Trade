@@ -3,20 +3,22 @@ import React from "react";
 function Banner() {
   return (
     <div className="flex bg-customGray-100">
-      <div className="w-full ml-8 xl:ml-24 md:ml-16 lg:ml-20">
-        <h1 className="text-3xl font-bold mt-20">
+      <div className="ml-8 xl:ml-24 md:ml-16 lg:ml-20" style={{width: "50%"}}>
+        <h1 className="font-bold" style={{marginTop: '3.5vw', fontSize: '3vw'}}>
           EARN DAILY REWARDS BY STAKING BYN
         </h1>
-        <p className="text-lg">
-          While making return from your synthetic assets investment, also enjoy
+        <p className="text-sm md:text-lg">
+          While making return from your synthetic assets investment,<br/> also enjoy
           your BYN holdings compound on daily basis.
         </p>
       </div>
+
       <img
         src="assets/Images/header-illustrations.png"
         alt="img"
-        className="h-56 sm:h-56 md:h-64 lg:h-94 xl:h-94"
+        style={{width:"50%", height: '30vw'}}
       />
+
     </div>
   );
 }

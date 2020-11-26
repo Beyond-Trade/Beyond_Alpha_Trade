@@ -26,7 +26,7 @@ function MarketCard(props: IProps) {
           {props.change}%
         </text>
       </div>
-      <div className="flex justify-between items-center xl:px-2 xxl:px-4 xl:py-4 xxl:py-6">
+      <div className="flex justify-between items-center p-3 xl:px-2 xxl:px-4 xl:py-4 xxl:py-6">
         <img src={props.image} alt="img" className="xl:h-10 xxl:h-16" />
         <div className="xl:text-xs xxl:text-base font-bold">
           <text>{props.coin}</text>
