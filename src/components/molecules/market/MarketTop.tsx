@@ -32,7 +32,7 @@ function MarketTop({ data }: IProps) {
                   : "bg-red-200 text-red-400"
               } `}
             >
-              {item.change24h.toFixed(2)}%
+              <div className="text-center">{item.change24h.toFixed(2)}%</div>
             </div>
           </td>
         </tr>

@@ -7,7 +7,7 @@ function Burn() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">BURN</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-500 mt-6">
+          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
             Burn sUSD to unlock your staked BYN. This
             <br />
             increases your Collateralization Ratio and

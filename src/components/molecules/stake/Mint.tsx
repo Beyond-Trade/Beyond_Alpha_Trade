@@ -23,7 +23,7 @@ function Mint() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">Mint</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-500 mt-6">
+          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
             Mint USDb by staking your BYN.
             <br />
             You can trade various synthetic assets using

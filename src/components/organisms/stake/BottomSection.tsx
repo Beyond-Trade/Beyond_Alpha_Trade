@@ -59,7 +59,7 @@ const BottomSection = () => {
           </div>
           <div className="flex items-center">
             <img
-              src="assets/Icons/BYN-small.svg"
+              src="assets/Icons/Ethereum.svg"
               alt="img"
               className="xl:h-6 xxl:h-12"
             />
@@ -71,7 +71,7 @@ const BottomSection = () => {
         <div className="xl:mt-2 xxl:mt-5 bg-customGray-100 rounded xl:p-4 xxl:p-8">
           <div className="flex justify-between border-b border-gray-400 pb-2">
             <h6 className="xxl:text-xl xl:text-xs">TOTAL BYN:</h6>
-            <h6 className="xxl:text-xl xl:text-xs font-medium text-blue-300">
+            <h6 className="xxl:text-xl xl:text-xs font-medium text-blue-1000">
               {state.totalBYN} BYN
             </h6>
           </div>
@@ -88,16 +88,12 @@ const BottomSection = () => {
             <div className="w-24 h-4 bg-gray-400"></div>
           </div>
         </div>
-        <div className="flex justify-between bg-customGray-100 rounded xl:mt-2 xxl:mt-5 px-8 xxl:py-5 xl:py-2">
-          <div>
-            <h2 className="font-semibold xxl:text-lg xl:text-sm mb-3">
-              DAILY REWARD
-            </h2>
-            <div className="xxl:text-sm xl:text-xs">Reward from staked BYN</div>
-          </div>
-          <div>
+        {/*  */}
+        <div className="xl:mt-2 xxl:mt-5 bg-customGray-100 rounded xl:p-4 xxl:p-8">
+          <div className="flex justify-between">
+            <h6 className="xxl:text-xl xl:text-xs font-medium">DAILY REWARD</h6>
             <div className="flex items-center">
-              <label className="xxl:text-xl xl:text-xs text-blue-300">
+              <label className="xxl:text-sm xl:text-xxs font-light text-blue-1000">
                 See Details
               </label>
               <img
@@ -107,7 +103,49 @@ const BottomSection = () => {
               />
             </div>
           </div>
+          <div className="flex justify-between items-center mt-3">
+            <h6 className="xxl:text-base xl:text-xs font-light">
+              Reward from staked BYN
+            </h6>
+            <div className="flex items-center">
+              <img
+                src="assets/Icons/trophy.png"
+                className="mr-1 xl:w-3 xxl:w-5"
+                alt="img"
+              />
+              <label className="xxl:text-xl xl:text-xs text-blue-1000">
+                4.55 BYN
+              </label>
+            </div>
+          </div>
         </div>
+        {/*  */}
+        {/* <div className="flex justify-between bg-customGray-100 rounded xl:mt-2 xxl:mt-5 px-8 xxl:py-5 xl:py-2">
+          <div>
+            <h2 className="font-semibold xxl:text-lg xl:text-sm mb-3">
+              DAILY REWARD
+            </h2>
+            <div className="flex justify-between my-5">
+              <h6 className="xxl:text-xl xl:text-xs font-medium">
+                Reward from staked BYN
+              </h6>
+              <h6 className="xxl:text-xl xl:text-xs font-medium">4.55 BYN</h6>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center">
+              <label className="xxl:text-xl xl:text-xs text-blue-1000">
+                See Details
+              </label>
+              <img
+                src="assets/Icons/see details arrow.svg"
+                className="ml-1 w-3"
+                alt="img"
+              />
+            </div>
+            
+          </div>
+        </div> */}
       </div>
       <div className="w-full xl:ml-2 lg:ml-2  whitespace-nowrap  mb-4 overflow-auto">
         <div className="bg-customGray-100 rounded pb-1">
@@ -124,7 +162,7 @@ const BottomSection = () => {
               </td>
             </tr>
             {balances.map((item) => (
-              <tr className="flex bg-gray-100 justify-between py-1 px-8 text-xs font-bold rounded-t">
+              <tr className="flex bg-gray-100 justify-between py-1 px-8 text-xs font-light rounded-t">
                 <td style={{ width: "120px" }}>
                   <div className="flex items-center">
                     <img
@@ -132,18 +170,18 @@ const BottomSection = () => {
                       className="lg:h-4 xl:h-4 xxl:h-8"
                       alt="img"
                     />
-                    <h6 className="xl:ml-2 lg:ml-2 xxl:ml-4 xxl:text-xl xl:text-xs font-medium">
+                    <h6 className="xl:ml-2 lg:ml-2 xxl:ml-4 xxl:text-xl xl:text-xs">
                       {item.short}
                     </h6>
                   </div>
                 </td>
                 <td className="text-center" style={{ width: "90px" }}>
-                  <h6 className="ml-2 xxl:text-xl xl:text-xs font-medium">
+                  <h6 className="ml-2 xxl:text-xl xl:text-xs">
                     {item.cryptoBalance.toFixed(4)}
                   </h6>
                 </td>
                 <td className="text-center" style={{ width: "90px" }}>
-                  <h6 className="ml-2 xxl:text-xl xl:text-xs font-medium">
+                  <h6 className="ml-2 xxl:text-xl xl:text-xs">
                     ${(item.cryptoBalance * item.rate).toFixed(2)}
                   </h6>
                 </td>

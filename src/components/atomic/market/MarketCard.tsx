@@ -9,6 +9,7 @@ interface IProps {
 }
 
 function MarketCard(props: IProps) {
+  console.log(props.change);
   return (
     <div
       className={`bg-customGray-100 rounded mb-4 w-full ${props.marginRight}`}
@@ -17,12 +18,16 @@ function MarketCard(props: IProps) {
         <h5 className="xl:text-xs xxl:text-base font-semibold text-gray-600">
           {props.pair}
         </h5>
-        <text className="text-green-500 font-medium xl:text-sm xxl:text-base">
+        <text
+          className={`font-medium xl:text-sm xxl:text-base ${
+            +props.change >= 0 ? "text-green-500" : "text-red-500"
+          }`}
+        >
           {props.change}%
         </text>
       </div>
-      <div className="flex justify-between items-center px-2 py-4">
-        <img src={props.image} alt="img" style={{ height: "50px" }} />
+      <div className="flex justify-between items-center xl:px-2 xxl:px-4 xl:py-4 xxl:py-6">
+        <img src={props.image} alt="img" className="xl:h-10 xxl:h-16" />
         <div className="xl:text-xs xxl:text-base font-bold">
           <text>{props.coin}</text>
           <text className="text-blue-600 block mt-2">{props.price}</text>
