@@ -5,6 +5,7 @@ import { ContractLookup } from "../contracts/contracts.lookup";
 import { Web3Wrapper } from '@0x/web3-wrapper';
 import BigNumber from 'bignumber.js'
 import {ethers} from "ethers"
+import { updateStackBalances } from "../store/actions/WalletActions";
 let web3: Web3 = new Web3();
 
 export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contracts,*/ gasPrice: any) => {
@@ -41,13 +42,9 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
 
 
 // @ts-ignore
-export const getStackedByn = async (): Promise<any> => {
+export const getStackedByn = async (): Promise<boolean> => {
 
-    let stack = {
-        unstackedBYN: 0,
-        stackedBYN: 0,
-        totalBYN: 0
-    };
+   
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
 
@@ -61,19 +58,20 @@ export const getStackedByn = async (): Promise<any> => {
                 const data = await contract.methods.getBYN(activeAddress).call();
                 let bynContract = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
                 // @ts-ignore
-                stack.unstackedBYN = parseInt(data.unstackedBYN) / Math.pow(10, bynContract.decimal);
+               let unstackedBYN = Number(data.unstackedBYN) / Math.pow(10, bynContract.decimal);
                 // @ts-ignore
-                stack.stackedBYN = parseInt(data.stackedBYN) / Math.pow(10, bynContract.decimal);
+               let stackedBYN = Number(data.stackedBYN) / Math.pow(10, bynContract.decimal);
                 // @ts-ignore
-                stack.totalBYN = parseInt(data.totalBYN) / Math.pow(10, bynContract.decimal);
+                let totalBYN = Number(data.totalBYN) / Math.pow(10, bynContract.decimal);
 
-                return stack;
+                store.dispatch(updateStackBalances(totalBYN,unstackedBYN,stackedBYN));
+                return true;
             } catch (error) {
-                return stack;
+                return false;
             }
         }
     }
-    else return stack;
+    else return false;
 }
 
 // @ts-ignore

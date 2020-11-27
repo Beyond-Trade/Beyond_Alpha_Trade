@@ -46,3 +46,19 @@ export const settleCollateralRatio = async (amount, gas): Promise<number> => {
     }
     else return 0;
 }
+// @ts-ignore
+export const checkUserCollatteral = async (activeAddress): Promise<number> => {
+    web3 = store.getState().wallet.web3;
+
+    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
+    if (web3.currentProvider) {
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+         
+            const tx = await contract.methods.checkUserCollatteral(activeAddress).call();
+            return tx;
+        }
+    }
+    else return 0;
+}

@@ -6,7 +6,7 @@ function FAQChip() {
   return (
     <div className="rounded p-3 bg-white mt-2 shadow">
       <div className="flex justify-between">
-        <h5 className="xl:text-xs xxl:text-lg font-medium">
+        <h5 className="text-xs xxl:text-lg font-medium">
           Lorem Ipsum is simply dummy text of the printing?
         </h5>
         <button className="focus:outline-none" onClick={handleToggle}>
@@ -18,7 +18,7 @@ function FAQChip() {
         </button>
       </div>
       {toggle && (
-        <div className="flex bg-gray-300 p-3 m-3 xl:text-xs xxl:text-sm justify-content">
+        <div className="flex bg-gray-300 p-3 m-3 font-normal text-xs xxl:text-sm justify-content">
           Fusce at nisi eget dolor rhoncus facilisis. Mauris ante nisl,
           consectetur et luctus et, porta ut dolor. Curabitur ultricies ultrices
           nulla. Morbi blandit nec est vitae dictum. Etiam velectetur diam.

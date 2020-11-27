@@ -5,12 +5,12 @@ function History() {
     <div className="px-8 xl:px-24 lg:px-24 mt-8 mb-8">
       <div className="w-full bg-customGray-100 rounded mr-8">
         <div className="bg-gray-300 rounded-t pl-2 pt-2">
-          <h3 className="font-medium xl:text-xs xxl:text-lg text-gray-600">
+          <h3 className="font-medium text-xs xxl:text-lg text-gray-600">
             EXCHANGE HISTORY
           </h3>
         </div>
         <table width="100%">
-          <tr className="bg-gray-300 xl:text-xxs xxl:text-base text-left text-gray-600 font-medium">
+          <tr className="bg-gray-300 text-xxs xxl:text-base text-left text-gray-600 font-medium">
             <td className="w-1/5 pl-2 flex items-center">
               ASSETS
               <img
@@ -56,7 +56,7 @@ function History() {
           <tbody></tbody>
         </table>
         <div className="py-20 flex justify-center items-center">
-          <h6 className="text-gray-600 font-medium xl:text-xxs xxl:text-base">
+          <h6 className="text-gray-600 font-normal text-xs xxl:text-base">
             No exchange history found for associated wallet
           </h6>
         </div>

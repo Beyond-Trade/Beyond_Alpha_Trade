@@ -22,7 +22,7 @@ function WalletSection(props: IProps) {
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="focus:outline-none px-4 py-1 rounded-sm bg-customBlue-200 text-white xl:text-xs xxl:text-lg ml-12 flex items-center"
+          className="focus:outline-none px-4 py-1 rounded-sm bg-customBlue-200 text-white text-xs xxl:text-lg ml-12 flex items-center"
         >
           {loadingBalance && <Loader type="TailSpin" color="#ffffff" height={10} width={10} />}
           {loadingBalance && <text className="ml-2">Processing...</text>}

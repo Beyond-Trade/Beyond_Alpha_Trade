@@ -10,7 +10,7 @@ function MyOrdersTable(props: IProps) {
   return (
     <React.Fragment>
       <table width="100%">
-        <tr className="bg-gray-300 xl:text-xxs xxl:text-sm text-left text-gray-600 font-medium">
+        <tr className="bg-gray-300 text-xxs xxl:text-sm text-left text-gray-600 font-medium">
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	xl:w-20 xxl:w-32">
               DATE | TIME

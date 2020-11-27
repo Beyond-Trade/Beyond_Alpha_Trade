@@ -7,6 +7,7 @@ import { SyntheticCategories } from '../contracts/constants/synthetic.enum';
 import { saveBalanceInfoAction } from '../store/actions/WalletActions';
 import { getCrypto, getForex, getSynthetixPrices } from './axios.service';
 import { BYNTokenValue } from './swap.service';
+import { getStackedByn } from './mint.service';
 
 
 
@@ -135,6 +136,7 @@ export const updateBalances = async () => {
         balances.push(await getPriceObject(assets[i]));
     }
     store.dispatch(saveBalanceInfoAction(balances));
+    await getStackedByn();
 }
 
 export const getETHBalance = async (address: string): Promise<number> => {

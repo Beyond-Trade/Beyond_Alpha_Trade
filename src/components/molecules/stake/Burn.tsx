@@ -11,12 +11,17 @@ function Burn() {
     isOpen,
     close,
     fee,
+    byn,
     openFeeModal,
     selectFee,
     submit,
     setMax,
     balance,
+    checkCollateral,
     handleAmountChange,
+    handleBYNChange,
+    showBYN,
+    showBYNField
   } = useBurn();
 
   return (
@@ -24,7 +29,7 @@ function Burn() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">BURN</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
+          <p className="text-xs font-normal xxl:text-xl font-light text-blue-1000 mt-6">
             Burn sUSD to unlock your staked BYN. This
             <br />
             increases your Collateralization Ratio and
@@ -42,19 +47,19 @@ function Burn() {
         </div>
         <div className="w-full px-6">
           <div className="mt-6">
-            <p className="xl:text-xs xxl:text-base font-normal">
+            <p className="text-xs font-normal xxl:text-base font-normal">
               Confirm or enter amount to burn:
             </p>
             <div className="flex mt-2">
-              <button onClick={setMax} className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 xl:text-xxs xxl:text-base xl:h-8 xxl:h-12 text-white rounded">
+              <button onClick={setMax} className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 text-xxs xxl:text-base xl:h-8 xxl:h-12 text-white rounded">
                 Burn Max
               </button>
-              <div className="bg-gray-300 py-1 px-3 text-center flex items-center justify-center xl:text-xxs xxl:text-base text-gray-600 font-medium ml-2 xl:h-8 xxl:h-12 rounded w-full">
+              <button onClick={checkCollateral} className="focus:outline-none bg-gray-300 py-1 px-3 text-center flex items-center justify-center text-xxs xxl:text-base text-gray-600 font-medium ml-2 xl:h-8 xxl:h-12 rounded w-full">
                 Fix your collateralization Ratio
-              </div>
+              </button>
             </div>
           </div>
-          <div className="mt-6 xl:text-xs xxl:text-base">
+          <div className="mt-6 text-xs xxl:text-base">
             <div className="flex justify-between">
               <p className=" font-medium text-gray-500">$ {balance}</p>
               <p className=" font-medium text-gray-500">$ {balance}</p>
@@ -66,21 +71,31 @@ function Burn() {
               </text>
               <input
                 className="bg-gray-300 focus:outline-none text-sm ml-2 py-1 w-full text-gray-600"
-                type="text"
+                type="number"
                 value={amount}
                 onChange={handleAmountChange}
               />
-              <button className="focus:outline-none bg-customBlue-200 rounded px-2 py-1 text-white ">
-                Max
-              </button>
             </div>
             <small className="italic text-red-400 text-xs">{amountVal}</small>
           </div>
-          <div className="text-center mt-2 xl:text-xxs xxl:text-base text-gray-800 font-normal">
-            View transferable BYN
+          <div onClick={showBYNField} className="text-center mt-2 text-xs xxl:text-base text-blue-500 cursor-pointer font-medium">
+            {!showBYN && 'View transferable BYN'}
+            {showBYN && 'Transferable BYN being unlocked:'}
           </div>
 
-          <div className="mt-24 text-center xl:text-xs xxl:text-base font-medium">
+          {showBYN && <div className="bg-gray-300 text-xs xxl:text-base mt-4 rounded px-4 py-2 flex items-center">
+              <text className="focus:outline-none text-gray-600 font-medium flex items-center border-r pr-4 border-gray-500">
+                BYN
+              </text>
+              <input
+                className="bg-gray-300 focus:outline-none text-sm ml-2 py-1 w-full text-gray-600"
+                type="number"
+                value={byn}
+                onChange={handleBYNChange}
+              />
+            </div>}
+
+          <div className={`mt-${showBYN?'10':'24'} text-center text-xs xxl:text-base font-medium`}>
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
@@ -91,7 +106,7 @@ function Burn() {
           </div>
           <button
             onClick={submit}
-            className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-base w-full rounded py-2 mt-2"
+            className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 mt-2"
           >
             {!burning && "BURN NOW"}
             {burning && (

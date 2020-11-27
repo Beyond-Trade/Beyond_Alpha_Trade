@@ -11,7 +11,7 @@ function WalletBanner(props: IProps) {
       <img
         src="assets/Images/Group 858.png"
         alt="img"
-        className="h-24 sm:h-56 md:h-64 lg:h-94 xl:h-56 xxl:h-94 xxxl:h-94"
+        style={{height: '25vw'}}
       />
       <div className="absolute inset-0 flex justify-center items-center">
         <div className="text-center">

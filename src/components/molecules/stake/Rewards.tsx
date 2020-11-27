@@ -6,7 +6,7 @@ function Rewards() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">REWARDS</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full mb-4">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
+          <p className="text-xs xxl:text-xl font-light text-blue-1000 mt-6 font-normal">
             If you have staked your BYN tokens and
             <br />
             minted USDb, you are eligible to collect BYN

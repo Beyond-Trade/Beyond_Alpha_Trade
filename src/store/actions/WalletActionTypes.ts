@@ -7,7 +7,13 @@ export const SET_Selected_DATA = "SET_Selected_DATA"
 export const SAVE_BALANCE_DATA = "SAVE_BALANCE_DATA"
 export const SAVE_WEB3_DATA = "SAVE_WEB3_DATA";
 export const LOADING_BALANCE_PENDING = "LOADING_BALANCE_PENDING";
-
+export const UPDATE_STACK_BALANCE = "UPDATE_STACK_BALANCE";
+interface updateStackBalances {
+    type: typeof UPDATE_STACK_BALANCE;
+    stackedBYN:number;
+    unstacked:number;
+    totalByn:number;
+}
 interface SaveWeb3Data {
     type: typeof SAVE_WEB3_DATA;
     web3: Web3;
@@ -40,4 +46,4 @@ interface SaveBalanceData {
 }
 
 
-export type GetWalletInfoType = SaveWalletData | LoadingBalancePending | SaveBalanceData | SetSelectedWalletData | resetWalletData | SaveWeb3Data
+export type GetWalletInfoType = SaveWalletData | LoadingBalancePending | SaveBalanceData | SetSelectedWalletData | resetWalletData | SaveWeb3Data | updateStackBalances

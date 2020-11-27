@@ -10,7 +10,7 @@ function AllTradesTable(props: IProps) {
   return (
     <React.Fragment>
       <table width="100%">
-        <tr className="bg-gray-300 xl:text-xxs xxl:text-sm text-left text-gray-600 font-medium">
+        <tr className="bg-gray-300 text-xxs xxl:text-sm text-left text-gray-600 font-medium">
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	w-20">
               DATE | TIME
@@ -47,7 +47,7 @@ function AllTradesTable(props: IProps) {
           </td>
         </tr>
         {props.data.map((item) => (
-          <tr className="xl:text-xs xxl:text-sm text-left text-gray-600 font-extrabold hover:bg-gray-300">
+          <tr className="text-xs xxl:text-sm text-left text-gray-600 font-normal hover:bg-gray-300">
             <td className="py-3 px-3">
               <text>{item.time}</text>
             </td>
@@ -66,7 +66,7 @@ function AllTradesTable(props: IProps) {
         ))}
       </table>
       {props.data.length === 0 && (
-        <div className="h-48 text-blue-500 xl:text-xs xxl:text-sm flex justify-center items-center">
+        <div className="h-48 text-blue-500 text-xs xxl:text-sm flex justify-center items-center">
           No data found
         </div>
       )}

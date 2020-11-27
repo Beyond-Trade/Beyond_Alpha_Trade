@@ -39,41 +39,40 @@ function StatesRow() {
   return (
     <div className="px-8 xl:px-24 lg:px-24 xl:flex lg:flex">
       <div className="bg-customGray-100 rounded mr-8 w-full mt-8">
-        <div className="rounded-t bg-gray-300 text-gray-600 xl:text-xs xxl:text-base px-2 py-1 font-medium">
+        <div className="rounded-t bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>TOTAL SYNTHETIC ASSET VALUE</h5>
         </div>
-        <h3 className="font-medium xl:text-xxs xxl:text-lg text-center my-6 mx-2">
-          {" "}
+        <h3 className="font-medium text-xxs xxl:text-lg text-center my-6 mx-2">
           ${totalSynthValue ? totalSynthValue.toFixed(2) : "0.00"} USD
         </h3>
       </div>
       <div className="bg-customGray-100 rounded mr-8 w-full mt-8">
-        <div className="rounded-t bg-gray-300 text-gray-600 xl:text-xs xxl:text-base px-2 py-1 font-medium">
+        <div className="rounded-t bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>SYNTHETIC ASSET BREAKDOWN</h5>
         </div>
         <div className="flex content-between justify-between px-8">
           <img
             src="assets/Icons/Synthetic asset breakdown.svg"
             alt="img"
-            className="xl:h-12 xxl:h-20 my-2 mr-6"
+            className="h-12 xxl:h-20 my-2 mr-6"
           />
-          <div className="xl:text-xxs xxl:text-lg">
-            <div className="flex items-center text-gray-500 font-medium mt-1">
+          <div className="text-xxs xxl:text-lg">
+            <div className="flex items-center text-xs xxl:text-sm text-gray-500 font-medium mt-1">
               <img
                 src="assets/Icons/Purple.Ellipse.svg"
                 alt="img"
-                className="xl:h-3 xxl:h-4 "
+                className="h-3 xxl:h-4 "
               />
               <h6 className="ml-1 mr-2">BYN</h6>
               <h6>
                 {totalBynPercentage ? totalBynPercentage.toFixed(2) : "00.00"}%
               </h6>
             </div>
-            <div className="flex items-center text-gray-500 font-medium mt-1">
+            <div className="flex items-center text-xs xxl:text-sm text-gray-500 font-medium mt-1">
               <img
                 src="assets/Icons/Purple.Ellipse.svg"
                 alt="img"
-                className="xl:h-3 xxl:h-4 "
+                className="h-3 xxl:h-4 "
               />
               <h6 className="ml-1 mr-2">USDb</h6>
               <h6>
@@ -83,11 +82,11 @@ function StatesRow() {
                 %
               </h6>
             </div>
-            <div className="flex items-center text-gray-500 font-medium mt-1">
+            <div className="flex items-center text-xs xxl:text-sm text-gray-500 font-medium mt-1">
               <img
                 src="assets/Icons/Purple.Ellipse.svg"
                 alt="img"
-                className="xl:h-3 xxl:h-4 "
+                className="h-3 xxl:h-4 "
               />
               <h6 className="ml-1 mr-2">Others</h6>
               <h6>
@@ -99,29 +98,29 @@ function StatesRow() {
         </div>
       </div>
       <div className="bg-customGray-100 rounded mr-8 mt-8 w-full">
-        <div className="rounded-t bg-gray-300 text-gray-600 xl:text-xs xxl:text-base px-2 py-1 font-medium">
+        <div className="rounded-t bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>COLLETERLIZATION RATIO</h5>
         </div>
         <div className="flex ">
           <div className="flex flex-col items-center w-full pt-3">
-            <h2 className="text-orange-400 xl:text-lg xxl:text-xl font-medium">
+            <h2 className="text-orange-400 text-lg xxl:text-xl font-medium">
               0%
             </h2>
-            <p className="font-bold xl:text-xxs  xxl:text-lg">CURRENT</p>
+            <p className="font-bold text-xxs  xxl:text-lg">CURRENT</p>
           </div>
           <div className="flex flex-col items-center w-full pt-3">
-            <h2 className="text-green-400 xl:text-lg xxl:text-xl font-medium">
+            <h2 className="text-green-400 text-lg xxl:text-xl font-medium">
               750%
             </h2>
-            <p className="font-bold xl:text-xxs  xxl:text-lg">TARGET</p>
+            <p className="font-bold text-xxs  xxl:text-lg">TARGET</p>
           </div>
         </div>
       </div>
       <div className="bg-customGray-100 rounded mt-8 w-full">
-        <div className="rounded-t bg-gray-300 text-gray-600 xl:text-xs xxl:text-base px-2 py-1 font-medium">
+        <div className="rounded-t bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>TOTAL WALLET VALUE</h5>
         </div>
-        <h3 className="font-semibold xl:text-xxs xxl:text-lg text-center my-6 mx-2">
+        <h3 className="font-semibold text-xxs xxl:text-lg text-center my-6 mx-2">
           ${totalWalletValue ? totalWalletValue.toFixed(2) : "0.00"} USD
         </h3>
       </div>

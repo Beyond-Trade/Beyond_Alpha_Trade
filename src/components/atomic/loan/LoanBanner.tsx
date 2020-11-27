@@ -26,11 +26,11 @@ function LoanBanner() {
         <img
           src="assets/Images/Group 859.png"
           alt="img"
-          className="h-24 sm:h-56 md:h-64 lg:h-94 xl:h-56 xxl:h-94 xxxl:h-94"
+          style={{height: "25vw"}}
         />
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-center">
-            <h1 className="text-3xl font-bold">LOAN</h1>
+            <h1 className="font-bold" style={{fontSize: '2.6vw'}}>LOAN</h1>
             <small className="text-gray-600">Manage Your Loans Easily.</small>
           </div>
         </div>

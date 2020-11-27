@@ -8,14 +8,14 @@ function WalletData() {
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
       <div className="w-full bg-customGray-100 rounded">
         <div className="bg-gray-300 rounded-t pl-2 pt-2">
-          <h3 className="font-medium xl:text-xs xxl:text-lg text-gray-600">
+          <h3 className="font-medium text-xs xxl:text-lg text-gray-600">
             YOUR SYNTHS
           </h3>
         </div>
         <table width="100%">
-          <tr className="bg-gray-300 xl:text-xxs xxl:text-base text-left text-gray-600 font-medium">
+          <tr className="bg-gray-300 text-xxs xxl:text-base text-left text-gray-600 font-medium">
             <td className="w-1/4 pl-2 flex items-center my-2">
-              ASSETS{" "}
+              ASSETS
               <img
                 src="assets/Icons/up-down-arrow.svg"
                 alt="img"
@@ -24,7 +24,7 @@ function WalletData() {
             </td>
             <td className="w-1/4">
               <div className="flex items-center">
-                RATES{" "}
+                RATES
                 {/* <img
                   src="assets/Icons/up-down-arrow.svg"
                   alt="img"
@@ -34,7 +34,7 @@ function WalletData() {
             </td>
             <td className="w-1/4">
               <div className="flex items-center">
-                TOTAL{" "}
+                TOTAL
                 <img
                   src="assets/Icons/up-down-arrow.svg"
                   alt="img"
@@ -44,7 +44,7 @@ function WalletData() {
             </td>
             <td className="w-1/4">
               <div className="flex items-center">
-                USD VALUE{" "}
+                USD VALUE
                 <img
                   src="assets/Icons/up-down-arrow.svg"
                   alt="img"
@@ -55,7 +55,7 @@ function WalletData() {
           </tr>
           <tbody>
             {balances.map((item) => (
-              <tr className="py-20 xl:text-xxs xxl:text-base text-left text-gray-600 font-bold">
+              <tr className="py-20 text-xs xxl:text-base text-left text-gray-600 font-normal">
                 <td className="w-1/4 pl-2 flex items-center my-2">
                   {item.short}
                 </td>
@@ -76,7 +76,7 @@ function WalletData() {
         </table>
         {balances.length <= 0 && (
           <div className="py-20 flex justify-center items-center">
-            <h6 className="text-blue-700 font-medium text-xxs">
+            <h6 className="text-blue-700 font-medium text-xs">
               No assets associated with this wallet
             </h6>
           </div>

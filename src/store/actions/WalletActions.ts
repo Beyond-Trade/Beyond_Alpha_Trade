@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { Balance, Wallet } from "../types/WalletState";
-import { GetWalletInfoType, LOADING_BALANCE_PENDING, RESET_WALLET_DATA, SAVE_BALANCE_DATA, SAVE_WALLET_DATA, SAVE_WEB3_DATA, SET_Selected_DATA } from "./WalletActionTypes";
+import { GetWalletInfoType, LOADING_BALANCE_PENDING, RESET_WALLET_DATA, SAVE_BALANCE_DATA, SAVE_WALLET_DATA, SAVE_WEB3_DATA, SET_Selected_DATA, UPDATE_STACK_BALANCE } from "./WalletActionTypes";
 
 export const SaveWeb3InfoAction = (source: string,web3:Web3): GetWalletInfoType => {
     return { type: SAVE_WEB3_DATA,web3, source, isConnected: true };
@@ -25,4 +25,8 @@ export const resetWalletsInfoAction = (): GetWalletInfoType => {
 
 export const saveBalanceInfoAction = (balances: Balance[]): GetWalletInfoType => {
     return { type: SAVE_BALANCE_DATA, balances };
+};
+
+export const updateStackBalances = (totalByn:number,unstacked:number,stackedBYN:number): GetWalletInfoType => {
+    return { type: UPDATE_STACK_BALANCE, totalByn,unstacked,stackedBYN };
 };

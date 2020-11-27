@@ -25,6 +25,9 @@ export interface Balance {
 export interface WalletState {
     web3:Web3,
     selected:Wallet,
+    stackedBYN:number,
+    unstacked:number,
+    totalByn:number,
     source: string; //Metamask etc
     wallets: Wallet[];  // Reset balance is new source
     balances: Balance[] //Current source default wallet balances

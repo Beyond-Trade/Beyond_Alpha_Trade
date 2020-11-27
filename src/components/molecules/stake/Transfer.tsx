@@ -30,7 +30,7 @@ function Transfer() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">TRANSFER</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="xl:text-xs xxl:text-xl font-light text-blue-1000 mt-6">
+          <p className="text-xs font-normal xxl:text-xl font-light text-blue-1000 mt-6">
             Transfer your ETH, BYN or other synthetic asset
           </p>
           <img

@@ -3,7 +3,6 @@ import * as React from "react";
 import { Balance } from "../../../store/types/WalletState";
 import { ERC20Contracts } from "../../../contracts/constants/contracts";
 import { RootState } from "../../../store/reducers/Index";
-import { getStackedByn } from "../../../services/mint.service";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
@@ -16,7 +15,7 @@ const BottomSection = () => {
     ethRate: 0,
     bynRate: 0,
   });
-  const { balances } = useSelector((state: RootState) => state.wallet);
+  const { balances, stackedBYN, unstacked, totalByn } = useSelector((state: RootState) => state.wallet);
 
   React.useEffect(() => {
     const ETHObj = balances.find(
@@ -32,28 +31,28 @@ const BottomSection = () => {
       ETHBal: ETHObj?.cryptoBalance || 0,
       bynRate: BYNObj?.rate || 0,
     }));
-
-    getStackedByn().then((data: any) => {
-      setState((prev) => ({
-        ...prev,
-        stackedBYN: data.stackedBYN,
-        unstackedBYN: data.unstackedBYN,
-        totalBYN: data.totalBYN,
-      }));
-    });
   }, [balances]);
+
+  React.useEffect(() => {
+    setState((prev) => ({
+      ...prev,
+      stackedBYN: stackedBYN,
+      unstackedBYN: unstacked,
+      totalBYN: totalByn,
+    }));
+  },[stackedBYN, unstacked, totalByn])
 
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
       <div className="w-full xl:mr-2 lg:mr-2 mb-4">
-        <div className="flex justify-between items-center xl:py-2 xxl:py-5 xl:px-4 xxl:px-8 bg-customGray-100 rounded">
+        <div className="flex justify-between items-center py-2 xxl:py-5 px-4 xxl:px-8 bg-customGray-100 rounded">
           <div className="flex items-center">
             <img
               src="assets/Icons/BYN-small.svg"
               alt="img"
-              className="xl:h-6 xxl:h-12"
+              className="h-6 xxl:h-12"
             />
-            <h6 className="ml-2 xxl:text-xl xl:text-xs font-medium">
+            <h6 className="ml-2 xxl:text-lg text-xs font-medium">
               1 BYN = ${state.bynRate?.toFixed(2)} USD
             </h6>
           </div>
@@ -61,25 +60,25 @@ const BottomSection = () => {
             <img
               src="assets/Icons/Ethereum.svg"
               alt="img"
-              className="xl:h-6 xxl:h-12"
+              className="h-6 xxl:h-12"
             />
-            <h6 className="ml-2 xxl:text-xl xl:text-xs font-medium">
+            <h6 className="ml-2 xxl:text-xl text-xs font-medium">
               1 ETH = ${state.ethRate?.toFixed(2)} USD
             </h6>
           </div>
         </div>
-        <div className="xl:mt-2 xxl:mt-5 bg-customGray-100 rounded xl:p-4 xxl:p-8">
+        <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-8">
           <div className="flex justify-between border-b border-gray-400 pb-3">
-            <h6 className="xxl:text-xl xl:text-xs">TOTAL BYN:</h6>
-            <h6 className="xxl:text-xl xl:text-xs font-medium text-blue-1000">
+            <h6 className="xxl:text-lg text-xs font-normal">TOTAL BYN:</h6>
+            <h6 className="xxl:text-lg text-xs font-medium text-blue-1000">
               {state.totalBYN} BYN
             </h6>
           </div>
           <div className="flex justify-between my-5">
-            <h6 className="xxl:text-xl xl:text-xs font-medium">
+            <h6 className="xxl:text-lg text-xs font-medium">
               Staked: {state.stackedBYN}
             </h6>
-            <h6 className="xxl:text-xl xl:text-xs font-medium">
+            <h6 className="xxl:text-lg text-xs font-medium">
               Not Staked: {state.unstackedBYN}
             </h6>
           </div>
@@ -89,11 +88,11 @@ const BottomSection = () => {
           </div>
         </div>
         {/*  */}
-        <div className="xl:mt-2 xxl:mt-5 bg-customGray-100 rounded xl:p-4 xxl:p-8">
+        <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-8">
           <div className="flex justify-between">
-            <h6 className="xxl:text-xl xl:text-xs font-medium">DAILY REWARD</h6>
+            <h6 className="xxl:text-lg text-xs font-medium">DAILY REWARD</h6>
             <div className="flex items-center">
-              <label className="xxl:text-sm xl:text-xxs font-light text-blue-1000">
+              <label className="xxl:text-sm text-xxs font-normal text-blue-1000">
                 See Details
               </label>
               <img
@@ -104,16 +103,16 @@ const BottomSection = () => {
             </div>
           </div>
           <div className="flex justify-between items-center mt-3">
-            <h6 className="xxl:text-base xl:text-xs font-light">
+            <h6 className="xxl:text-base text-xs font-normal">
               Reward from staked BYN
             </h6>
             <div className="flex items-center">
               <img
                 src="assets/Icons/trophy.png"
-                className="mr-1 xl:w-3 xxl:w-5"
+                className="mr-1 w-3 xxl:w-5"
                 alt="img"
               />
-              <label className="xxl:text-xl xl:text-xs text-blue-1000">
+              <label className="xxl:text-lg text-xs text-blue-1000">
                 4.55 BYN
               </label>
             </div>
@@ -162,7 +161,7 @@ const BottomSection = () => {
               </td>
             </tr>
             {balances.map((item) => (
-              <tr className="flex bg-gray-100 justify-between xl:py-1 xl:py-2 px-8 text-xs font-light rounded-t">
+              <tr className="flex bg-gray-100 justify-between font-normal py-1 py-2 px-8 text-xs font-light rounded-t">
                 <td style={{ width: "120px" }}>
                   <div className="flex items-center">
                     <img

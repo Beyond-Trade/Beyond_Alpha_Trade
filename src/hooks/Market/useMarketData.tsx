@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import { Balance } from "../../store/types/WalletState";
 import { RootState } from "../../store/reducers/Index";
-import { uniq } from "lodash";
 import { useSelector } from "react-redux";
 
 const useMarketData = () => {
@@ -12,7 +11,7 @@ const useMarketData = () => {
     marketIndex: 0,
     marketTopData: init,
     topIndex: 0,
-    topTabs: ["TOP GAINERS", "TOP LOOSERS"],
+    topTabs: ["TOP GAINERS", "TOP LOSERS"],
     activeData: init,
     orgActiveData: init,
     search: "",

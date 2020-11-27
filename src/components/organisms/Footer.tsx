@@ -1,13 +1,12 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
-  const history = useHistory();
   return (
     <div className="bg-customBlue-300 px-20 pt-16 mt-5">
       <div className="xl:flex lg:flex">
-        <div className="w-full xl:text-xxs xxl:text-base">
-          <h1 className="font-bold text-white xl:text-xl xxl:text-4xl">
+        <div className="w-full text-xs xxl:text-base">
+          <h1 className="font-bold text-white text-xl xxl:text-4xl">
             BEYOND
           </h1>
           <p className="text-gray-400 mt-4">
@@ -18,95 +17,86 @@ function Footer() {
           <p className="text-gray-400 mt-4">MON - SUN / 9:00 AM - 8:00 PM</p>
           <p className="text-gray-400 mt-4">support@beyond.com</p>
         </div>
-        <div className="flex flex-col xl:text-xs xxl:text-base items-start pr-20">
-          <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">PRODUCTS</h4>
+        <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
+          <h4 className="text-white text-sm xxl:text-lg font-semibold">PRODUCTS</h4>
           <NavLink to="/stake" className="text-gray-500 mt-4 cursor-pointer">Stake</NavLink>
           <NavLink to="/market" className="text-gray-500 mt-4 cursor-pointer">Market</NavLink>
           <NavLink to="/trade" className="text-gray-500 mt-4 cursor-pointer">Trade</NavLink>
           <NavLink to="/loan" className="text-gray-500 mt-4 cursor-pointer">Loan</NavLink>
         </div>
-        <div className="flex flex-col xl:text-xs xxl:text-base items-start pr-20">
-          <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">
+        <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
+          <h4 className="text-white text-sm xxl:text-lg font-semibold">
             COMPANY
           </h4>
-          <p
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => {
-              history.push("/about_us");
-            }}
+            to="/about_us"
           >
             About Us
-          </p>
-          <p
+          </NavLink>
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => {
-              history.push("/contact_us");
-            }}
+            to="/contact_us"
           >
             Contact Us
-          </p>
-          <p
+          </NavLink>
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => {
-              history.push("/support");
-            }}
+            to="/support"
           >
             Support
-          </p>
-          <p
+          </NavLink>
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => {
-              history.push("/news_blog");
-            }}
+            to="/news_blog"
           >
             News/Blog
-          </p>
+          </NavLink>
         </div>
-        <div className="flex flex-col xl:text-xs xxl:text-base items-start w-64 mr-16">
-          <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">
+        <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start w-64 mr-16">
+          <h4 className="text-white text-sm xxl:text-lg font-semibold">
             TERMS
           </h4>
-          <p
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => history.push("/privacy_policy")}
+            to="/privacy_policy"
           >
-            {" "}
             Privacy Policy
-          </p>
-          <p
+          </NavLink>
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => history.push("/terms_and_conditions")}
+            to="/terms_and_conditions"
           >
             Terms of Usage
-          </p>
-          <p
+          </NavLink>
+          <NavLink
             className="text-gray-500 mt-4 cursor-pointer"
-            onClick={() => history.push("/disclaimer")}
+            to="/disclaimer"
           >
             Disclaimer
-          </p>
+          </NavLink>
         </div>
-        <div className="flex flex-col items-start pr-20">
+        <div className="flex flex-col mt-6 lg:mt-1 items-start pr-20">
           <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">
             SOCIAL
           </h4>
           <div className="flex mt-4">
-            <button className="focus:outline-none mr-4 xl:w-8 xxl:w-10 xl:h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
+            <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
               <img src="assets/Icons/facebook-icon.svg" alt="img" />
             </button>
-            <button className="focus:outline-none mr-4 xl:w-8 xxl:w-10 xl:h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
+            <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
               <img src="assets/Icons/instagram-icon.svg" alt="img" />
             </button>
-            <button className="focus:outline-none mr-4 xl:w-8 xxl:w-10 xl:h-8 xxl:h-10 flex justify-center items-center rounded-full bg-white">
+            <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-white">
               <img src="assets/Icons/linkedin-con.svg" alt="img" />
             </button>
-            <button className="focus:outline-none xl:w-8 xxl:w-10 xl:h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
+            <button className="focus:outline-none w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
               <img src="assets/Icons/pinterest-icon.svg" alt="img" />
             </button>
           </div>
         </div>
       </div>
-      <div className="xl:text-xxs xxl:text-base mt-32 pb-10">
+      <div className="text-xxs xxl:text-base mt-32 pb-10">
         <p className="text-gray-400">
           ©Copyright Beyond 2020. All rights reserved - Design by Coding Pixel.
         </p>

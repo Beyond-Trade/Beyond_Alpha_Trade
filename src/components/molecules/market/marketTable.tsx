@@ -1,8 +1,6 @@
 import * as React from "react";
 
 import MarketSort from "../../atomic/market/MarketSort";
-import { RootState } from "../../../store/reducers/Index";
-import { useSelector } from "react-redux";
 
 interface IProps {
   data: any;
@@ -12,7 +10,7 @@ interface IProps {
 function MarketTable({ data, handleSort, search }: IProps) {
   return (
     <table width="100%">
-      <tr className="bg-gray-300 xl:text-xxs xxl:text-sm text-left text-gray-600 font-bold">
+      <tr className="bg-gray-300 text-xxs xxl:text-sm text-left text-gray-600 font-bold">
         <td className="py-2 px-3">
           <div className="flex items-center">
             ASSET
@@ -58,7 +56,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
           data.short.toLowerCase().includes(search.toLowerCase())
         )
         .map((item: any) => (
-          <tr className="xl:text-xs xxl:text-base text-left text-gray-700 font-medium">
+          <tr className="text-xs xxl:text-base text-left text-gray-700 font-medium">
             <td className="py-3 px-3">
               <div className="flex items-center">
                 <text className="text-black">{item.short}</text>
