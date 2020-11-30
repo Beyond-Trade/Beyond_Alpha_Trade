@@ -47,6 +47,8 @@ function useBurn() {
     const selectFee = (fee: number, close:boolean) => setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
     const checkCollateral = () => {
+        setState(prev=>({...prev, burnType: BurnTypes[1]}))
+        return
         checkUserCollatteral(selected.address).then((data)=>{
             if(!data){
                 throw new Error("No provider");
@@ -83,7 +85,7 @@ function useBurn() {
     }
 
     const settleCollateral = () => {
-        settleCollateralRatio(state.amount, state.fee).then((data)=>{
+        settleCollateralRatio(state.amount, state.fee, selected.address).then((data)=>{
             if(!data){
                 throw new Error("No provider");
             }
