@@ -41,8 +41,6 @@ const loadRates = async () => {
         }),
         getSynthetixPrices()
     ])
-
-
 }
 
 function getForexChange(symbol: any) {
