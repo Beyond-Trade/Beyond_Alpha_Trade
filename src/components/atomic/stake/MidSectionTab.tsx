@@ -10,7 +10,7 @@ function MidSectionTab(props: IProps) {
   return (
     <button
       onClick={() => props.onClick()}
-      className={`focus:outline-none xxl:text-xl xl:text-xs text-xs font-semibold hover:text-blue-1000 relative mx-4 ${
+      className={`focus:outline-none xxl:text-base xl:text-xs text-xs font-semibold hover:text-blue-1000 relative mx-4 ${
         props.active ? "text-blue-1000" : "text-gray-700"
       }`}
     >

@@ -30,7 +30,7 @@ function Transfer() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">TRANSFER</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="text-xs font-normal xxl:text-xl font-light text-blue-1000 mt-6">
+          <p className="text-xs font-normal xxl:text-base font-light text-blue-1000 mt-6">
             Transfer your ETH, BYN or other synthetic asset
           </p>
           <img
@@ -42,17 +42,17 @@ function Transfer() {
         </div>
         <div className="w-full px-6">
           <div className="flex justify-between py-3 px-4 bg-customGray-100 rounded-sm border border-gray-300">
-            <h6 className="xl:text-xs xxl:text-base font-medium">
+            <h6 className="text-xs xxl:text-sm font-medium">
               Transferable amount:
             </h6>
-            <h6 className="xl:text-xs xxl:text-base font-medium text-blue-400">
+            <h6 className="text-xs xxl:text-sm font-medium text-blue-400">
               {balance}.00{" "}
               {dropValues[dropIndex] === "Beyond"
                 ? "BYN"
                 : dropValues[dropIndex]}
             </h6>
           </div>
-          <div className="mt-6 xl:text-xs xxl:text-base">
+          <div className="mt-6 text-xs xxl:text-sm">
             <p className="font-medium">Enter amount:</p>
             <div className="bg-gray-300 mt-2 rounded px-4 py-2 flex items-center">
               <Dropdown
@@ -76,7 +76,7 @@ function Transfer() {
             </div>
             <small className="block text-red-500 italic">{amountVal}</small>
           </div>
-          <div className="mt-6 xl:text-xs xxl:text-base">
+          <div className="mt-6 text-xs xxl:text-sm">
             <p className="font-medium">Enter destination address:</p>
             <div className="bg-gray-300 mt-2 rounded px-4 py-2 flex items-center">
               <input
@@ -90,7 +90,7 @@ function Transfer() {
             </div>
             <small className="block text-red-500 italic">{addressVal}</small>
           </div>
-          <div className="mt-24 text-center xl:text-xs xxl:text-base font-medium">
+          <div className="mt-24 text-center text-xs xxl:text-sm font-medium">
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
@@ -101,7 +101,7 @@ function Transfer() {
           </div>
           <button
             onClick={submit}
-            className="focus:outline-none flex justify-center bg-customBlue-200 text-white xl:text-xs xxl:text-xl w-full rounded xl:py-2 xxl:py-4 mt-2"
+            className="focus:outline-none flex justify-center bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-2"
           >
             {!submitting && "SEND NOW"}
             {submitting && (

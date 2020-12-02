@@ -11,7 +11,7 @@ function SearchTop({ handleSearch, search }: any) {
       <input
         type="text"
         value={search}
-        className="focus:outline-none bg-white w-full py-2 xl:text-xs xxl:text-xl ml-2"
+        className="focus:outline-none bg-white w-full py-2 text-xs xxl:text-sm ml-2"
         placeholder="SEARCH"
         onChange={handleSearch}
       />

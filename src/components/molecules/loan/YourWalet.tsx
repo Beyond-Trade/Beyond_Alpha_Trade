@@ -2,7 +2,7 @@ import React from "react";
 function YourWalet() {
   return (
     <>
-      <div className="bg-customGray-100 rounded mr-8 w-full mt-3 xl:text-xs xxl:text-base">
+      <div className="bg-customGray-100 rounded mr-8 w-full mt-3 text-xs xxl:text-sm">
         <div className="rounded-t flex justify-between items-center bg-gray-300 text-gray-600 px-2 py-3 font-medium">
           <h5>YOUR WALET</h5>
         </div>
