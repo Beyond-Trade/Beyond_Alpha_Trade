@@ -88,9 +88,9 @@ const BottomSection = () => {
           </div>
         </div>
         {/*  */}
-        <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-8">
+        <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-6">
           <div className="flex justify-between">
-            <h6 className="xxl:text-lg text-xs font-medium">DAILY REWARD</h6>
+            <h6 className="xxl:text-sm text-xs font-medium">DAILY REWARD</h6>
             <div className="flex items-center">
               <label className="xxl:text-sm text-xxs font-normal text-blue-1000">
                 See Details
