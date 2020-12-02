@@ -56,7 +56,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
           data.short.toLowerCase().includes(search.toLowerCase())
         )
         .map((item: any) => (
-          <tr className="text-xs xxl:text-base text-left text-gray-700 font-medium">
+          <tr className="text-xs xxl:text-sm text-left text-gray-700 font-medium">
             <td className="py-3 px-3">
               <div className="flex items-center">
                 <text className="text-black">{item.short}</text>

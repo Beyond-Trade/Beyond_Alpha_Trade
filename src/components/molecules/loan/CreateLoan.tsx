@@ -3,10 +3,10 @@ import React from "react";
 function CreateLoan() {
   return (
     <div className="bg-customGray-100 rounded mr-8 w-full">
-      <div className="rounded-t flex justify-between bg-gray-300 text-gray-600 xl:text-xs xxl:text-base px-2 py-2 font-medium">
+      <div className="rounded-t flex justify-between bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
         <h5 className="py-1">CREATE LOAN</h5>
       </div>
-      <div className="p-3 xl:text-xxs xxl:text-base">
+      <div className="p-3 text-xxs xxl:text-sm">
         <div className="flex justify-between">
           <h3 className="text-gray-600 py-1">ETH BEING LOCKED</h3>
 
@@ -16,7 +16,7 @@ function CreateLoan() {
           <h3 className="py-1 mr-10 flex items-center">
             <img
               src="assets/icons/Ethereum.svg"
-              className="xl:h-3 xxl:h-5 xl:mr-1 xxl:mr-2"
+              className="h-3 xxl:h-5 mr-1 xxl:mr-2"
               alt="img"
             />
             ETH
@@ -31,7 +31,7 @@ function CreateLoan() {
           <h3 className="py-1 mr-10 flex items-center">
             <img
               src="assets/icons/Ethereum.svg"
-              className="xl:h-3 xxl:h-5 xl:mr-1 xxl:mr-2"
+              className="h-3 xxl:h-5 xl:mr-1 xxl:mr-2"
               alt="img"
             />
             ETH
@@ -61,7 +61,7 @@ function CreateLoan() {
           </p>
         </div>
         <div className="flex mt-3">
-          <button className="bg-customBlue-200 xl:p-2 xxl:p-4 w-full text-white rounded">
+          <button className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded">
             SUBMIT
           </button>
         </div>

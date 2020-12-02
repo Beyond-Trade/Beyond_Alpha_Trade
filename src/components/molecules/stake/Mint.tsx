@@ -23,7 +23,7 @@ function Mint() {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">Mint</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="text-xs xxl:text-xl font-light text-blue-1000 mt-6 font-normal">
+          <p className="text-xs xxl:text-base font-light text-blue-1000 mt-6 font-normal">
             Mint USDb by staking your BYN.
             <br />
             You can trade various synthetic assets using
@@ -42,11 +42,11 @@ function Mint() {
         <div className="w-full px-6 justify-center items-center">
           <div className="flex flex-col justify-center items-center">
             <div className="mt-8 xl:w-full xxl:w-4/5">
-              <p className="xl:text-xs xxl:text-base font-medium">
+              <p className="text-xs xl:text-xs xxl:text-sm font-medium">
                 Confirm or enter amount to mint:
               </p>
-              <div className="bg-gray-300 mt-2 rounded xl:px-4 xxl:px-6 text-gray-700 xl:text-sm xxl:text-base flex justify-center items-center xl:py-2 xxl:py-2">
-                <text className="focus:outline-none text-gray-600 xl:text-xs xxl:text-base font-medium flex items-center border-r pr-4 border-gray-500">
+              <div className="bg-gray-300 mt-2 rounded px-2 xl:px-4 xxl:px-6 text-gray-700 xl:text-sm xxl:text-sm flex justify-center items-center xl:py-2 xxl:py-2">
+                <text className="focus:outline-none text-gray-600 text-xs xl:text-xs xxl:text-sm font-medium flex items-center border-r pr-4 border-gray-500">
                   USDb
                 </text>
                 <input
@@ -56,20 +56,20 @@ function Mint() {
                   value={amount}
                   onChange={setAmount}
                 />
-                <button className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white xl:text-xs xxl:text-base rounded xl:py-1 xxl:py-2 px-4">
+                <button className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white text-xs xl:text-xs xxl:text-sm rounded py-1 xl:py-1 xxl:py-2 px-4">
                   Max
                 </button>
               </div>
 
               <small className="block text-red-500 italic">{amountVal}</small>
             </div>
-            <div className="flex justify-between xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
+            <div className="flex justify-between text-xxs xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
               <h6>Staking: {BYNStackingAmount} BYN</h6>
               <h6>Estimated C-Ratio: {cRatio}%</h6>
             </div>
           </div>
           {/*  */}
-          <div className="mt-24 text-center  xl:text-xs xxl:text-base font-normal">
+          <div className="mt-24 text-center text-xs xl:text-xs xxl:text-sm font-normal">
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
@@ -81,7 +81,7 @@ function Mint() {
           <div className="flex justify-center items-center">
             <button
               onClick={submit}
-              className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white xl:text-xs xxl:text-base xl:w-full xxl:w-4/5 rounded xl:py-2 xxl:py-4 mt-2"
+              className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white text-xs xxl:text-sm w-full xxl:w-4/5 rounded py-2 xxl:py-3 mt-2"
             >
               {!submitting && "MINT NOW"}
               {submitting && (

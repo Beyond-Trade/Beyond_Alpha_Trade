@@ -17,7 +17,7 @@ function MarketTop({ data }: IProps) {
         <td className="py-2 px-3">CHANGE</td>
       </tr>
       {data.map((item: any) => (
-        <tr className="bg-gray-100 xl:text-xs xxl:text-base text-left text-gray-700 font-medium">
+        <tr className="bg-gray-100 xl:text-xs xxl:text-sm text-left text-gray-700 font-medium">
           <td className="py-3 px-3">
             <div className="flex items-center">
               <text className="text-black">{item.short}</text>

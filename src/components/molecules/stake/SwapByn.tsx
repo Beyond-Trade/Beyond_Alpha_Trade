@@ -20,7 +20,7 @@ function SwapByn(props: IProps) {
       <h3 className="xl:text-lg xxl:text-2xl font-bold">SWAP</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="text-xs font-normal xxl:text-xl font-light text-blue-1000 mt-6">
+          <p className="text-xs font-normal xxl:text-sm font-light text-blue-1000 mt-6">
             Onboard Beyond exchange by swapping your ETH
             <br />
             into BYN.
@@ -35,7 +35,7 @@ function SwapByn(props: IProps) {
           {/* <GeneralTab tabs={["SWAP", "POOL"]} onClick={() => {}} index={0} /> */}
           <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
-              <h6 className="xl:text-xs xxl:text-lg font-medium">From (ETH)</h6>
+              <h6 className="text-xs xxl:text-sm font-medium">From (ETH)</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
                 type="number"
@@ -45,18 +45,18 @@ function SwapByn(props: IProps) {
               />
             </div>
             <div className="text-right">
-              <h6 className="xl:text-xs xxl:text-lg font-medium break-normal">
+              <h6 className="text-xs xxl:text-sm font-medium break-normal">
                 Balance: {balance.toFixed(5)}ETH
               </h6>
               <div className="flex items-center w-16 text-right justify-end mt-2">
                 <button
                   onClick={setMax}
-                  className="focus:outline-none bg-customBlue-100 px-1 xl:text-xs xxl:text-lg text-white mr-4"
+                  className="focus:outline-none bg-customBlue-100 px-1 text-xs xxl:text-sm text-white mr-4"
                 >
                   MAX
                 </button>
                 <img src="assets/Icons/eth-small.svg" className="h-4" />
-                <h4 className="font-medium xl:text-xs xxl:text-lg  ml-1">
+                <h4 className="font-medium text-xs xxl:text-lg  ml-1">
                   ETH
                 </h4>
               </div>
@@ -66,7 +66,7 @@ function SwapByn(props: IProps) {
           <img src="assets/Icons/arrow_down.svg" className="mt-6 m-auto h-4" />
           <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
-              <h6 className="xl:text-xs xxl:text-lg font-medium">To (BYN)</h6>
+              <h6 className="text-xs xxl:text-sm font-medium">To (BYN)</h6>
               <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
                 value={to}
@@ -82,7 +82,7 @@ function SwapByn(props: IProps) {
           </div>
           <button
             onClick={submit}
-            className="focus:outline-none bg-customBlue-200 text-white xl:text-xs xxl:text-lg flex justify-center w-full rounded py-2 mt-8"
+            className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-sm flex justify-center w-full rounded py-2 mt-8"
           >
             {!swapping && "SWAP"}
             {swapping && (
