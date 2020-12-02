@@ -8,15 +8,17 @@ import { saveBalanceInfoAction } from '../store/actions/WalletActions';
 import { getCrypto, getForex, getSynthetixPrices } from './axios.service';
 import { BYNTokenValue } from './swap.service';
 import { getStackedByn } from './mint.service';
-
+import moment from "moment"
 
 
 let cryptoRates: any, forexRates: any, synthetixRates: any, activeAddress: any;
 let web3: Web3 = new Web3();
 
 var curDate = new Date(Date.now());
-var today = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
-var yesterday = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + (curDate.getDate() - 1);
+// var today = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
+// var yesterday = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + (curDate.getDate() - 1);
+var today=moment().format('YYYY-MM-DD')
+var yesterday=moment().add(-1, 'days').format('YYYY-MM-DD')
 
 const loadRates = async () => {
     var cryptoCoinsIds = ContractLookup.reduce(function (filtered: any, option: any) {
@@ -49,7 +51,7 @@ function getForexChange(symbol: any) {
         var startprice = (forexRates[yesterday])[symbol];
         var endprice = (forexRates[today])[symbol];
         var change = (endprice - startprice) / startprice * 100;
-        change = parseFloat(change.toFixed(2))
+        change = parseFloat(change.toFixed(2));
         return change;
     }
     else
