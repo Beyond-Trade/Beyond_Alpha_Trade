@@ -166,10 +166,10 @@ const BottomSection = () => {
                   <div className="flex items-center">
                     <img
                       src={item.icon}
-                      className="lg:h-4 xl:h-4 xxl:h-8"
+                      className="h-4 lg:h-4 xl:h-4 xxl:h-8"
                       alt="img"
                     />
-                    <h6 className="xl:ml-2 lg:ml-2 xxl:ml-4 xxl:text-xl xl:text-xs">
+                    <h6 className="xl:ml-2 ml-2 lg:ml-2 xxl:ml-4 xxl:text-xl xl:text-xs">
                       {item.short}
                     </h6>
                   </div>

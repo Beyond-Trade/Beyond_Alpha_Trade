@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { checkUserReward } from "../../../services/reward.service";
 
 function Rewards() {
+  useEffect(()=>{
+    checkUserReward().then((res)=>console.log("rewards============",res))
+  })
+  
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="xl:text-lg xxl:text-2xl font-bold">REWARDS</h3>
