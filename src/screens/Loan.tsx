@@ -3,10 +3,14 @@ import CreateLoan from "../components/molecules/loan/CreateLoan";
 import EthAsCollateral from "../components/molecules/loan/EthAsCollateral";
 import { Link } from "react-router-dom";
 import LoanBanner from "../components/atomic/loan/LoanBanner";
-import React from "react";
+import React, { useEffect } from "react";
 import YourLoans from "../components/molecules/loan/YourLoans";
 import YourWalet from "../components/molecules/loan/YourWalet";
+import { getLoan, loanDetails } from "../services/loan.service";
 function Loan() {
+  useEffect(()=>{
+    loanDetails().then((res)=>console.log(res))
+  })
   return (
     <div>
       <LoanBanner />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { returnLoan } from "../../../services/loan.service";
 function CloseLoan() {
   return (
     <div className="bg-customGray-100 rounded mr-8 w-full mt-3 text-xxs xxl:text-sm">
@@ -41,7 +42,7 @@ function CloseLoan() {
           </p>
         </div>
         <div className="flex mt-3">
-          <button className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded">
+          <button className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded" onClick={returnLoan}>
             CONFIRM
           </button>
         </div>

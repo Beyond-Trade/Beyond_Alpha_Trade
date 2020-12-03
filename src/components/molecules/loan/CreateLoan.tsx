@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { getLoan } from "../../../services/loan.service";
 function CreateLoan() {
+  const handleSubmit=()=>{
+    getLoan("0.5").then((res)=>console.log(res))
+  }
   return (
     <div className="bg-customGray-100 rounded mr-8 w-full">
       <div className="rounded-t flex justify-between bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
@@ -61,7 +65,7 @@ function CreateLoan() {
           </p>
         </div>
         <div className="flex mt-3">
-          <button className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded">
+          <button className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded" onClick={handleSubmit}>
             SUBMIT
           </button>
         </div>
