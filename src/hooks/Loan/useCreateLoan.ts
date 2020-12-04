@@ -23,7 +23,7 @@ const useCreateLoan = () => {
     USDb: { cryptoBalance: 0, rate: 0 },
     ETHb: { cryptoBalance: 0, rate: 0 },
     ETH: { cryptoBalance: 0, rate: 0 },
-    USDValue:1,
+    USDValue:0,
     fee: gasFees[0],
     loanType: "ETHb",
     rate: 0,
