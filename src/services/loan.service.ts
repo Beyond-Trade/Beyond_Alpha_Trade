@@ -9,7 +9,7 @@ export const loanDetails = async () => {
     let walletInfo = store.getState().wallet;
     let activeAddress = walletInfo.selected.address;
     // @ts-ignore
-    if (web3.currentProvider) {
+    if (web3.currentProvider && activeAddress ) {
         const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
         if (contractInfo) {
             // @ts-ignore
@@ -43,6 +43,34 @@ export const getLoan = async (amount?: string) => {
                 to: contractInfo.contractAddress,
                 value: amount as unknown as string,
                 data: contract.methods.getLoan().encodeABI()
+            })
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+
+export const getLoanUSDb = async (amount?: string) => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+
+    amount = web3.utils.toWei(amount, 'ether');
+
+    if (web3.currentProvider) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+
+            const tx = await web3.eth.sendTransaction({
+                from: activeAddress,
+                to: contractInfo.contractAddress,
+                value: amount as unknown as string,
+                data: contract.methods.getLoanUSDb().encodeABI()
             })
             return tx;
         }

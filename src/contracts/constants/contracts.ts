@@ -10,4 +10,5 @@ export enum ERC20Contracts {
     BEYOND_EXCHANGE = 'BEYOND_EXCHANGE',
     PRICE_FEED='PriceFeed',
     BEYOND_EX_PROX = 'BEYOND_EX_PROX',
+    LOAN="LOAN"
 }

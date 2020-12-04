@@ -5,8 +5,11 @@ import {
   claimUserReward,
 } from "../../../services/reward.service";
 import moment from "moment";
+import Loader from "react-loader-spinner";
+const convertToUSDb = 1000000000000000000;
 function Rewards() {
   const [rewardData, setRewardData] = useState<any>([]);
+  const [rewards, setRewards] = useState<any>([]);
   useEffect(() => {
     currentTime().then((res) => {
       // var myDate = new Date( your epoch date *1000);
@@ -18,20 +21,23 @@ function Rewards() {
     let resCopy = res;
     console.log(res, "==========RES==========");
     const rewardsData: any = [];
+    const Rewards: any = [];
     for (var i = 0; i <= 6; i++) {
       if (resCopy > 0) {
-        resCopy = resCopy - 900;
+        resCopy = resCopy - 300;
         console.log(resCopy, "==========resCopy==========");
 
-        let result = undefined;
+        let result = 0;
         await userRewardDetails(resCopy).then((resData) => {
           console.log(resData);
           result = resData;
         });
         console.log(resCopy);
+        Rewards.push(+result / convertToUSDb);
         rewardsData.push({ time: resCopy, data: result });
       }
     }
+    setRewards([...Rewards]);
     setRewardData([...rewardsData]);
   };
   console.log(rewardData);
@@ -61,25 +67,29 @@ function Rewards() {
               <h4>Distribution Date</h4>
               <h4>BYN Quantity</h4>
             </div>
-            {rewardData
+            {rewardData?.length > 0
               ? rewardData.map((reward: any, index: any) =>
                   index % 2 === 0 ? (
                     <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
                       <h6 className="font-normal">
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
-                      <h6 className="font-normal">${reward.data}</h6>
+                      <h6 className="font-normal">
+                        ${reward.data / convertToUSDb}
+                      </h6>
                     </div>
                   ) : (
                     <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-400">
                       <h6 className="font-normal">
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
-                      <h6 className="font-normal">${reward.data}</h6>
+                      <h6 className="font-normal">
+                        ${reward.data / convertToUSDb}
+                      </h6>
                     </div>
                   )
                 )
-              : null}
+              : <div className="flex justify-center py-6"><Loader type="Bars" color="#5183bf" height={18} width={20} /></div>}
             {/* <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
               <h6 className="font-normal">01 November 2020</h6>
               <h6 className="font-normal">$227.55</h6>
@@ -89,12 +99,14 @@ function Rewards() {
               <h6 className="font-normal">$227.55</h6>
             </div> */}
 
-            <div className="flex justify-between xxl:text-sm text-xxs bg-gray-300 px-8 py-2">
-              <h6 className="font-medium">Total available</h6>
-              <h6 className="font-medium">
-                {rewardData?.length > 0 ? "125.63" : "0"}
-              </h6>
-            </div>
+            {rewardData?.length > 0 && (
+              <div className="flex justify-between xxl:text-sm text-xxs bg-gray-300 px-8 py-2">
+                <h6 className="font-medium">Total available</h6>
+                <h6 className="font-medium">
+                  ${rewards.reduce((a: any, b: any) => a + b, 0)}
+                </h6>
+              </div>
+            )}
           </div>
           <div className="flex">
             <button

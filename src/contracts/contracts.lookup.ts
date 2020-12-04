@@ -14,6 +14,7 @@ import { PriceFeedAbi } from "./abi/priceFeed";
 import * as icons from "../utils/coinIcons";
 import { AbiItem } from 'web3-utils'
 import { USDbAbi } from "./abi/Usdb.abi";
+import { LoanAbi } from "./abi/loan.abi";
 
 
 
@@ -183,7 +184,7 @@ export const ContractLookup:IContractLookup[] = [
     },
     {
         contractName: ERC20Contracts.BEYOND_EXCHANGE,
-        contractAddress: "0x30d62fF7f1bbD3Aa8510f026786eab5798547Bf7",
+        contractAddress: "0x31C8bBEDb7f295B85b66DBbbBe7CB0697cf35ca6",
         marketRateApiID: "",
         oracleRateID: "",
         fullName: "beyondExchange",
@@ -199,12 +200,28 @@ export const ContractLookup:IContractLookup[] = [
     },
     {
         contractName: ERC20Contracts.BEYOND_EX_PROX,
-        contractAddress: "0x0927bcC916E4c158EC023Cc307dE23eC6149FF37",
+        contractAddress: "0x24c57cFb67448743564020AF383b30eaE30FB418",
         marketRateApiID: "",
         oracleRateID: "",
         fullName: "beyondExProx",
         decimal:18,
         contractAbi: BeyondExProxAbi,
+        isSyntheticAsset:false,
+        isNativeToken: false,
+        isMainToken: false, // only for BYN,
+        isFixedRate:false,
+        fixedRateValue:0,
+        syntheticCategory: SyntheticCategories.CRYPTOCURRENCY,
+        icon:icons.iconETH
+    },
+    {
+        contractName: ERC20Contracts.LOAN,
+        contractAddress: "0x5aCB7F471B777678e0f88afaCE1301A8eA2600Cf",
+        marketRateApiID: "",
+        oracleRateID: "",
+        fullName: "loan",
+        decimal:18,
+        contractAbi: LoanAbi,
         isSyntheticAsset:false,
         isNativeToken: false,
         isMainToken: false, // only for BYN,
