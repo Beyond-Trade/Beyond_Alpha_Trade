@@ -106,7 +106,7 @@ function Burn() {
           </div>
           <button
             onClick={submit}
-            className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-sm w-full rounded py-2 mt-2"
+            className="focus:outline-none bg-customBlue-200 text-white flex justify-center text-xs xxl:text-sm w-full rounded py-2 mt-2"
           >
             {!burning && "BURN NOW"}
             {burning && (
