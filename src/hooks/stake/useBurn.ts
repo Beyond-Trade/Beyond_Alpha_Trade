@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useAlert } from 'react-alert';
 import { useSelector } from 'react-redux';
+import { ERC20Contracts } from '../../contracts/constants/contracts';
 import { checkUserCollatteral, releaseCollateralRatio, settleCollateralRatio } from '../../services/burn.service';
 import { getPairPrice } from '../../services/generic.services';
 import { RootState } from '../../store/reducers/Index';
@@ -47,27 +48,29 @@ function useBurn() {
     const selectFee = (fee: number, close:boolean) => setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
     const checkCollateral = () => {
-        setState(prev=>({...prev, burnType: BurnTypes[1]}))
-        return
-        checkUserCollatteral(selected.address).then((data)=>{
-            if(!data){
-                throw new Error("No provider");
-            }
-            console.log('data', data)
-        }).catch((e)=>{
-            console.log('e', e)
-        })
+        settleCollateral()
+        //setState(prev=>({...prev, burnType: BurnTypes[1]}))
+        // const ETHObj = balances.find(
+        //     (bal: Balance) => bal.short == ERC20Contracts.ETH
+        //   );
+        // checkUserCollatteral(selected.address, ETHObj?.rate).then((data)=>{
+        //     if(!data){
+        //         throw new Error("No provider");
+        //     }
+        //     console.log('data', data)
+        // }).catch((e)=>{
+        //     console.log('e', e)
+        // })
     }
     const submit = () => {
         if(!isValidated()){
             return
         }
         setState(prev=>({...prev, burning: true}))
-        if(state.burnType === BurnTypes[0]){
+
             releaseCollateral()
-        } else {
-            settleCollateral()
-        }
+
+        
     }
 
     const releaseCollateral = () => {

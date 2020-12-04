@@ -21,7 +21,7 @@ export const releaseCollateralRatio = async (amount, gas): Promise<number> => {
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             gas = gas * Math.pow(10, 9);
          
-            const tx = await contract.methods.releaseCollatteralRatio(amountToSend).send({ gasPrice: gas });
+            const tx = await contract.methods.releaseCollatteralRatio().send({ gasPrice: gas });
             return tx;
         }
     }
@@ -40,14 +40,14 @@ export const settleCollateralRatio = async (amount, gas, activeAddress): Promise
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             gas = gas * Math.pow(10, 9);
          
-            const tx = await contract.methods.settleCollatteralRation(amountToSend).send({ gasPrice: gas });
+            const tx = await contract.methods.settleCollatteralRatio().send({ gasPrice: gas });
             return tx;
         }
     }
     else return 0;
 }
 // @ts-ignore
-export const checkUserCollatteral = async (activeAddress): Promise<number> => {
+export const checkUserCollatteral = async (activeAddress, rate): Promise<number> => {
     web3 = store.getState().wallet.web3;
 
     const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
@@ -55,8 +55,8 @@ export const checkUserCollatteral = async (activeAddress): Promise<number> => {
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-         
-            const tx = await contract.methods.checkUserCollatteral(activeAddress).call();
+            rate = ethers.utils.parseUnits(rate.toString(), contractInfo.decimal);
+            const tx = await contract.methods.checkUserCollatteralExternal(activeAddress, rate).call();
             return tx;
         }
     }
