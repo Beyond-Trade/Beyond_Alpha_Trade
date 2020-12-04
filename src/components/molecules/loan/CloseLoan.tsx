@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { returnLoan } from "../../../services/loan.service";
-function CloseLoan() {
+import useCreateLoan from "../../../hooks/Loan/useCreateLoan";
+import Loader from "react-loader-spinner";
+function CloseLoan({ loanType }: any) {
+  const { returnLoanAction, isReturning } = useCreateLoan();
   return (
     <div className="bg-customGray-100 rounded mr-8 w-full mt-3 text-xxs xxl:text-sm">
       <div className="rounded-t flex justify-between bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
@@ -42,8 +44,17 @@ function CloseLoan() {
           </p>
         </div>
         <div className="flex mt-3">
-          <button className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded" onClick={returnLoan}>
-            CONFIRM
+          <button
+            className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded"
+            onClick={() => returnLoanAction(loanType)}
+          >
+            {isReturning === false ? (
+              "CONFIRM"
+            ) : (
+              <div className="flex justify-center">
+                <Loader type="Bars" color="#ffffff" height={18} width={20} />
+              </div>
+            )}
           </button>
         </div>
       </div>

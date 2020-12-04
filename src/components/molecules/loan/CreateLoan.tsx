@@ -3,8 +3,19 @@ import React from "react";
 import { getLoan } from "../../../services/loan.service";
 import useCreateLoan from "../../../hooks/Loan/useCreateLoan";
 import { useEffect } from "react";
-function CreateLoan({loanType}:any) {
-  const { handleLockedChange, locked, borrowed,submit,lockedErr, handleBorrowedChange } = useCreateLoan();
+import Loader from "react-loader-spinner";
+function CreateLoan({ loanType }: any) {
+  const {
+    handleLockedChange,
+    locked,
+    borrowed,
+    submit,
+    lockedErr,
+    isSubmitting,
+    USDValue,
+    ETH,
+    handleBorrowedChange,
+  } = useCreateLoan();
 
   // console.log(loanType,"=========(((((LOANTYPE)))))========")
   const handleSubmit = () => {
@@ -19,7 +30,7 @@ function CreateLoan({loanType}:any) {
         <div className="flex justify-between">
           <h3 className="text-gray-600 py-1">ETH BEING LOCKED</h3>
 
-          <p className="text-gray-600 py-1">Balance : 0</p>
+  <p className="text-gray-600 py-1">Balance : {ETH?.cryptoBalance}</p>
         </div>
         <div className="rounded-t flex bg-gray-300 text-gray-600 px-2 py-2 font-medium">
           <h3 className="py-1 mr-10 flex items-center">
@@ -35,7 +46,7 @@ function CreateLoan({loanType}:any) {
             type="number"
             name="locked"
             value={locked}
-            onChange={(e)=>handleLockedChange(e, loanType)}
+            onChange={(e) => handleLockedChange(e, loanType)}
           />
           {/* <h3 className="py-1">0.00</h3> */}
         </div>
@@ -47,7 +58,11 @@ function CreateLoan({loanType}:any) {
         <div className="rounded-t flex bg-gray-300 text-gray-600 px-2 py-2 font-medium">
           <h3 className="py-1 mr-10 flex items-center">
             <img
-              src={`${loanType === "ETHb"?"assets/icons/Ethereum.svg" : "assets/coins/btc.svg"}`}
+              src={`${
+                loanType === "ETHb"
+                  ? "assets/icons/Ethereum.svg"
+                  : "assets/coins/btc.svg"
+              }`}
               className="h-3 xxl:h-5 xl:mr-1 xxl:mr-2"
               alt="img"
             />
@@ -58,13 +73,13 @@ function CreateLoan({loanType}:any) {
             type="number"
             name="borrowed"
             value={borrowed}
-            onChange={(e)=>handleBorrowedChange(e,loanType)}
+            onChange={(e) => handleBorrowedChange(e, loanType)}
           />
           {/* <h3 className="py-1">0.00</h3> */}
         </div>
         <div className="flex justify-between">
-          <h3 className="text-gray-600 py-1">USDb VALUE</h3>
-          <p className="text-gray-600 py-1">$0</p>
+          <h3 className="text-gray-600 py-1">USD VALUE</h3>
+            <p className="text-gray-600 py-1">${USDValue}</p>
         </div>
 
         <div className="flex justify-between">
@@ -85,12 +100,18 @@ function CreateLoan({loanType}:any) {
           </p>
         </div>
         <div className="flex mt-3">
-          <button
-            className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded"
-            onClick={submit}
-          >
-            SUBMIT
-          </button>
+          
+            <button
+              className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded"
+              onClick={() => submit(loanType)}
+            >
+              {isSubmitting === false? 
+              "SUBMIT":
+              <div className="flex justify-center">
+              <Loader type="Bars" color="#ffffff" height={18} width={20} />
+              </div>}
+            </button>
+         
         </div>
       </div>
     </div>

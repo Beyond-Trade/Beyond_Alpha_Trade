@@ -10,7 +10,7 @@ export const loanDetails = async () => {
     let activeAddress = walletInfo.selected.address;
     // @ts-ignore
     if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
@@ -65,7 +65,6 @@ export const getLoanUSDb = async (amount?: string) => {
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-
             const tx = await web3.eth.sendTransaction({
                 from: activeAddress,
                 to: contractInfo.contractAddress,
@@ -99,6 +98,34 @@ export const returnLoan = async () => {
                 to: contractInfo.contractAddress,
                 // value: amount as unknown as string,
                 data: contract.methods.returnLoan().encodeABI()
+            })
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+
+export const returnLoanUSDb = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+
+    // amount = web3.utils.toWei(amount, 'ether');
+
+    if (web3.currentProvider) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+
+            const tx = await web3.eth.sendTransaction({
+                from: activeAddress,
+                to: contractInfo.contractAddress,
+                // value: amount as unknown as string,
+                data: contract.methods.returnLoanUSDb().encodeABI()
             })
             return tx;
         }

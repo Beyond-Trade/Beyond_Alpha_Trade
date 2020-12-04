@@ -28,7 +28,7 @@ function Loan() {
         </div>
         <div className="xl:w-300 lg:w-300 xxl:w-28% xxxl:1/4">
           <CreateLoan loanType={loanType}/>
-          <CloseLoan />
+          <CloseLoan loanType={loanType}/>
         </div>
       </div>
     </div>

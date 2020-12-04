@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
-import { getLoan } from "../../services/loan.service";
+import { getLoan,getLoanUSDb,returnLoan,returnLoanUSDb } from "../../services/loan.service";
 import { addTrade } from "../../services/trade.service";
 import { RootState } from "../../store/reducers/Index";
 import { Balance } from "../../store/types/WalletState";
@@ -18,13 +18,15 @@ const useCreateLoan = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const [state, setState] = useState({
-    submitting: false,
+    isSubmitting: false,
+    isReturning:false,
     USDb: { cryptoBalance: 0, rate: 0 },
     ETHb: { cryptoBalance: 0, rate: 0 },
     ETH: { cryptoBalance: 0, rate: 0 },
+    USDValue:1,
     fee: gasFees[0],
     loanType: "ETHb",
-    rate: 1,
+    rate: 0,
     locked: "",
     lockedErr:"",
     borrowed: "",
@@ -50,7 +52,7 @@ const useCreateLoan = () => {
     console.log(USDbObj, "USDbObj");
     console.log(ETHbObj, "ETHbObj");
   }, [balances]);
-  let loanType: "ETHb";
+  
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
   const closeFeeModal = () =>
     setState((prev) => ({ ...prev, isFeeOpen: false }));
@@ -68,33 +70,87 @@ const useCreateLoan = () => {
         console.log(state.locked,"SUBMIT IS Cancled=========")
       return;
     }
-    setState((prev) => ({ ...prev, submitting: true }));
     // addTradeAction();
     console.log(state.locked,"SUBMIT IS CALLED")
      getLoanAction(isMatchedType,)
   };
 
     const getLoanAction = (type:any) => {
+        debugger
         if(type === "ETHb" ){
+            setState((prev) => ({ ...prev, isSubmitting: true }));
             getLoan(state.locked)
             .then((data) => {
               if (!data) {
                 throw Error("Error");
               }
-              alert.show("Order added", { type: "success" });
-              setState((prev) => ({ ...prev, submitting: false }));
+              alert.show("Loan added", { type: "success" });
+              setState((prev) => ({ ...prev, isSubmitting: false }));
             })
             .catch((e) => {
               console.log("Error!", e);
     
-              alert.show("Unable to add order", { type: "error" });
-              setState((prev) => ({ ...prev, submitting: false }));
+              alert.show("Unable to add loan", { type: "error" });
+              setState((prev) => ({ ...prev, isSubmitting: false }));
+            });
+        }
+        else{
+            setState((prev) => ({ ...prev, isSubmitting: true }));
+            getLoanUSDb(state.locked)
+            .then((data) => {
+              if (!data) {
+                throw Error("Error");
+              }
+              alert.show("Loan", { type: "success" });
+              setState((prev) => ({ ...prev, isSubmitting: false }));
+            })
+            .catch((e) => {
+              console.log("Error!", e);
+    
+              alert.show("Unable", { type: "error" });
+              setState((prev) => ({ ...prev, isSubmitting: false }));
             });
         }
         
     };
+
+    const returnLoanAction=(type:any)=>{
+        if(type === "ETHb" ){
+            setState((prev) => ({ ...prev, isReturning: true }));
+            returnLoan()
+            .then((data) => {
+              if (!data) {
+                throw Error("Error");
+              }
+              alert.show("ETHb Loan returned", { type: "success" });
+              setState((prev) => ({ ...prev, isReturning: false }));
+            })
+            .catch((e) => {
+              console.log("Error!", e);
+    
+              alert.show("Unable return ETHb loan", { type: "error" });
+              setState((prev) => ({ ...prev, isReturning: false }));
+            });
+        }
+        else{
+            setState((prev) => ({ ...prev, isReturning: true }));
+            returnLoanUSDb()
+            .then((data) => {
+              if (!data) {
+                throw Error("Error");
+              }
+              alert.show("USDb Loan returned", { type: "success" });
+              setState((prev) => ({ ...prev, isReturning: false }));
+            })
+            .catch((e) => {
+              console.log("Error!", e);
+    
+              alert.show("Unable return USDb loan", { type: "error" });
+              setState((prev) => ({ ...prev, isReturning: false }));
+            });
+        }
+    }
   const isValidated = () => {
-      debugger
     let validated = true;
     if (state.locked === "") {
         setState((prev) => ({ ...prev, lockedErr: "This Field is required" }));
@@ -119,6 +175,7 @@ const useCreateLoan = () => {
     const { value } = event.target;
     // const price = getPairPrice(state.fromRate, state.toRate);
     let actualLoan = ((value / 100) * 80).toString();
+    let USDValueBorrowed=((value * state.ETH.rate) / 100) * 80
     console.log("before if block", type);
     if (type === "USDb") {
       console.log("in if block ");
@@ -128,6 +185,7 @@ const useCreateLoan = () => {
       ...prev,
       locked: value,
       borrowed: actualLoan,
+      USDValue:USDValueBorrowed
       //   to: (Number(price) * Number(value)).toString(),
     }));
   };
@@ -136,9 +194,12 @@ const useCreateLoan = () => {
     // const price = getPairPrice(state.fromRate, state.toRate);
     // const from = price === 0 ? "0" : (Number(value) / Number(price)).toString();
     let actualLoan = ((value / 100) * 20 + Number(value)).toString();
+    let USDValueBorrowed=value * state.ETH.rate
+    console.log(USDValueBorrowed)
     console.log("before if block", type);
     if (type === "USDb") {
         console.log("in if block ");
+        USDValueBorrowed=value;
         let valueToDeduct=((value / state.ETH.rate) / 100)*20
         console.log(valueToDeduct,"valueToDeduct")
         actualLoan = ((value / state.ETH.rate + valueToDeduct)).toString();
@@ -147,6 +208,7 @@ const useCreateLoan = () => {
       ...prev,
       locked: actualLoan,
       borrowed: value,
+      USDValue:USDValueBorrowed
     }));
   };
   const handleUSDb = () => {
@@ -177,6 +239,7 @@ const useCreateLoan = () => {
     selectFee,
     handleLockedChange,
     handleBorrowedChange,
+    returnLoanAction,
     // handleSelectLoanType,
     handleUSDb,
     handleETHb,
