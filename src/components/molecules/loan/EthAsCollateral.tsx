@@ -81,7 +81,7 @@ function EthAsCollateral({ ETH }: any) {
           <p className="flex">
             view contacts
             <img
-              src="assets/icons/exit.svg"
+              src="assets/Icons/exit.svg"
               alt="img"
               className="h-4 ml-2"
               // style={{ height: "13px", width: "13px", marginLeft: "4px" }}

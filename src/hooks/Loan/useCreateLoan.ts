@@ -25,9 +25,9 @@ const useCreateLoan = () => {
   const [state, setState] = useState({
     isSubmitting: false,
     isReturning: false,
-    USDb: { cryptoBalance: 0, rate: 0 },
-    ETHb: { cryptoBalance: 0, rate: 0 },
-    ETH: { cryptoBalance: 0, rate: 0 },
+    USDb: { cryptoBalance: 0, rate: 0,icon:"" },
+    ETHb: { cryptoBalance: 0, rate: 0,icon:"" },
+    ETH: { cryptoBalance: 0, rate: 0,icon:"" },
     USDValue: 0,
     isFeeOpen: false,
     fee: gasFees[0],
