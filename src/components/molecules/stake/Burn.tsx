@@ -56,14 +56,11 @@ function Burn() {
                 Burn Max
               </button>
               <button onClick={checkCollateral} className={`focus:outline-none ${burnType===1?'bg-customBlue-200 text-white':'bg-gray-300 text-gray-600'} py-1 px-3 text-center flex items-center justify-center text-xxs xxl:text-xs font-medium ml-2 xl:h-8 xxl:h-10 rounded w-full`}>
-                {(!burning || burnType===0)&&'Fix your collateralization Ratio'}
-                {burning && burnType===1 && (
-                  <Loader type="Bars" color="#ffffff" height={18} width={20} />
-                )}
+                Fix your collateralization Ratio
               </button>
             </div>
           </div>
-          <div className="mt-6 text-xs xxl:text-sm">
+          {burnType === 0&&<div className="mt-6 text-xs xxl:text-sm">
             <div className="flex justify-between">
               <p className=" font-medium text-gray-500">$ {balance}</p>
               <p className=" font-medium text-gray-500">$ {balance}</p>
@@ -81,13 +78,13 @@ function Burn() {
               />
             </div>
             <small className="italic text-red-400 text-xs">{amountVal}</small>
-          </div>
-          <div onClick={showBYNField} className="text-center mt-2 text-xs xxl:text-sm text-blue-500 cursor-pointer font-medium">
-            {!showBYN && 'View transferable BYN'}
-            {showBYN && 'Transferable BYN being unlocked:'}
-          </div>
+          </div>}
+        {burnType===0&&<div onClick={showBYNField} className="text-center mt-2 text-xs xxl:text-sm text-blue-500 cursor-pointer font-medium">
+          {!showBYN && 'View transferable BYN'}
+          {showBYN && 'Transferable BYN being unlocked:'}
+        </div>}
 
-          {showBYN && <div className="bg-gray-300 text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center">
+          {showBYN && burnType === 0 && <div className="bg-gray-300 text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center">
               <text className="focus:outline-none text-gray-600 font-medium flex items-center border-r pr-4 border-gray-500">
                 BYN
               </text>
@@ -112,8 +109,8 @@ function Burn() {
             onClick={submit}
             className="focus:outline-none bg-customBlue-200 text-white flex justify-center text-xs xxl:text-sm w-full rounded py-2 mt-2"
           >
-            {(!burning||burnType===1) && "BURN NOW"}
-            {burning && burnType===0&& (
+            {!burning && "BURN NOW"}
+            {burning && (
               <Loader type="Bars" color="#ffffff" height={18} width={20} />
             )}
           </button>

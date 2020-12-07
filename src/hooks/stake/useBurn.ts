@@ -52,8 +52,8 @@ function useBurn() {
         if(state.burning){
             return
         }
-        setState(prev=>({...prev, burning: true, burnType: 1}))
-        settleCollateral()
+        setState(prev=>({...prev, burnType: 1}))
+
         //setState(prev=>({...prev, burnType: BurnTypes[1]}))
         // const ETHObj = balances.find(
         //     (bal: Balance) => bal.short == ERC20Contracts.ETH
@@ -72,7 +72,11 @@ function useBurn() {
             return
         }
         setState(prev=>({...prev, burning: true}))
-        releaseCollateral()
+        if(state.burnType === 0){
+            releaseCollateral()
+        }else{
+            settleCollateral()
+        }
     }
 
     const releaseCollateral = () => {
@@ -91,6 +95,7 @@ function useBurn() {
     }
 
     const settleCollateral = () => {
+        debugger
         settleCollateralRatio(state.amount, state.fee, selected.address).then((data)=>{
             if(!data){
                 throw new Error("No provider");
@@ -107,15 +112,15 @@ function useBurn() {
 
     const isValidated = () => {
         let validated = true
-        if(Number(state.amount) > state.balance) {
+        if(state.burnType===0&&(Number(state.amount) > state.balance)) {
             setState(prev=>({...prev, amountVal: "Not enough balance"}))
             validated=false
         }
-        if(Number(state.amount) <= 0) {
+        if(state.burnType===0&&Number(state.amount) <= 0) {
             setState(prev=>({...prev, amountVal: "Please enter a valid amount"}))
             validated=false
         }
-        if(state.amount === "") {
+        if(state.burnType===0&&state.amount === "") {
             setState(prev=>({...prev, amountVal: "This field is required"}))
             validated=false
         }
