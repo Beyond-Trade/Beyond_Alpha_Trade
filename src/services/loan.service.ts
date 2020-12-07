@@ -22,8 +22,122 @@ export const loanDetails = async () => {
     else
         return null;
 }
+// Interest Fee
+export const loanFeeRatio = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.loanFeeRatio().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+// Loan Collat.ratio
+export const loanCollatteralRatio = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.loanCollatteralRatio().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+// no of open loans
+export const openLoans = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.openLoans().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+// ETHb SUPPLY 
+export const totalETHb = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.totalETHb().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+// AND USDb SUPPLY
+export const totalUSDb = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.totalUSDb().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+//LOCKED ETH
+export const getEthLocked = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.getEthLocked().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
 
-export const getLoan = async (amount?: string) => {
+export const getLoan = async (amount: string,fee:any) => {
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
 
@@ -37,12 +151,14 @@ export const getLoan = async (amount?: string) => {
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-
+            const gas = fee * Math.pow(10, 9);
+            // const tx = await contract.methods.returnLoan().send({ gasPrice: gas });
             const tx = await web3.eth.sendTransaction({
                 from: activeAddress,
                 to: contractInfo.contractAddress,
                 value: amount as unknown as string,
-                data: contract.methods.getLoan().encodeABI()
+                data: contract.methods.getLoan().encodeABI(),
+                gasPrice:gas
             })
             return tx;
         }
@@ -51,7 +167,7 @@ export const getLoan = async (amount?: string) => {
         return null;
 }
 
-export const getLoanUSDb = async (amount?: string) => {
+export const getLoanUSDb = async (amount: string,fee:any) => {
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
 
@@ -64,12 +180,14 @@ export const getLoanUSDb = async (amount?: string) => {
         const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
         if (contractInfo) {
             // @ts-ignore
+            const gas = fee * Math.pow(10, 9);
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             const tx = await web3.eth.sendTransaction({
                 from: activeAddress,
                 to: contractInfo.contractAddress,
                 value: amount as unknown as string,
-                data: contract.methods.getLoanUSDb().encodeABI()
+                data: contract.methods.getLoanUSDb().encodeABI(),
+                gasPrice:gas
             })
             return tx;
         }
@@ -78,7 +196,7 @@ export const getLoanUSDb = async (amount?: string) => {
         return null;
 }
 
-export const returnLoan = async () => {
+export const returnLoan = async (fee:any) => {
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
 
@@ -92,13 +210,15 @@ export const returnLoan = async () => {
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-
-            const tx = await web3.eth.sendTransaction({
-                from: activeAddress,
-                to: contractInfo.contractAddress,
-                // value: amount as unknown as string,
-                data: contract.methods.returnLoan().encodeABI()
-            })
+          const gas = fee * Math.pow(10, 9);
+         
+            const tx = await contract.methods.returnLoan().send({ gasPrice: gas });
+            // const tx = await web3.eth.sendTransaction({
+            //     from: activeAddress,
+            //     to: contractInfo.contractAddress,
+            //     // value: amount as unknown as string,
+            //     data: contract.methods.returnLoan().encodeABI()
+            // })
             return tx;
         }
     }
@@ -106,7 +226,7 @@ export const returnLoan = async () => {
         return null;
 }
 
-export const returnLoanUSDb = async () => {
+export const returnLoanUSDb = async (fee:any) => {
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
 
@@ -120,13 +240,15 @@ export const returnLoanUSDb = async () => {
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-
-            const tx = await web3.eth.sendTransaction({
-                from: activeAddress,
-                to: contractInfo.contractAddress,
-                // value: amount as unknown as string,
-                data: contract.methods.returnLoanUSDb().encodeABI()
-            })
+            const gas = fee * Math.pow(10, 9);
+         
+            const tx = await contract.methods.returnLoanUSDb().send({ gasPrice: gas });
+            // const tx = await web3.eth.sendTransaction({
+            //     from: activeAddress,
+            //     to: contractInfo.contractAddress,
+            //     // value: amount as unknown as string,
+            //     data: contract.methods.returnLoanUSDb().encodeABI()
+            // })
             return tx;
         }
     }

@@ -4,24 +4,33 @@ import { getLoan } from "../../../services/loan.service";
 import useCreateLoan from "../../../hooks/Loan/useCreateLoan";
 import { useEffect } from "react";
 import Loader from "react-loader-spinner";
-function CreateLoan({ loanType }: any) {
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/reducers/Index";
+import GasFeeModal from "../stake/GasFeeModal";
+function CreateLoan() {
+  const { loanType,locked,borrowed,USDValue } = useSelector(
+    (state: RootState) => state.loan
+  );
   const {
     handleLockedChange,
-    locked,
-    borrowed,
     submit,
+    openFeeModal,
     lockedErr,
     isSubmitting,
-    USDValue,
     ETH,
+    ETHb,
+    USDb,
     handleBorrowedChange,
+  isFeeOpen,
+  closeFeeModal,
+     fee,
+    selectFee,
   } = useCreateLoan();
 
   // console.log(loanType,"=========(((((LOANTYPE)))))========")
-  const handleSubmit = () => {
-    getLoan("0.5").then((res) => console.log(res));
-  };
+  
   return (
+    <>
     <div className="bg-customGray-100 rounded mr-8 w-full">
       <div className="rounded-t flex justify-between bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
         <h5 className="py-1">CREATE LOAN</h5>
@@ -46,14 +55,14 @@ function CreateLoan({ loanType }: any) {
             type="number"
             name="locked"
             value={locked}
-            onChange={(e) => handleLockedChange(e, loanType)}
+            onChange={(e) => handleLockedChange(e)}
           />
           {/* <h3 className="py-1">0.00</h3> */}
         </div>
         <small className="italic text-red-500 text-xxs">{lockedErr}</small>
         <div className="flex justify-between">
           <h3 className="text-gray-600 py-1">{loanType} BEING BORROWED</h3>
-          <p className="text-gray-600 py-1">Balance : 0</p>
+          <p className="text-gray-600 py-1">Balance : {loanType === "ETHb" ? ETHb?.cryptoBalance:USDb?.cryptoBalance} </p>
         </div>
         <div className="rounded-t flex bg-gray-300 text-gray-600 px-2 py-2 font-medium">
           <h3 className="py-1 mr-10 flex items-center">
@@ -73,7 +82,7 @@ function CreateLoan({ loanType }: any) {
             type="number"
             name="borrowed"
             value={borrowed}
-            onChange={(e) => handleBorrowedChange(e, loanType)}
+            onChange={(e) => handleBorrowedChange(e)}
           />
           {/* <h3 className="py-1">0.00</h3> */}
         </div>
@@ -84,19 +93,25 @@ function CreateLoan({ loanType }: any) {
 
         <div className="flex justify-between">
           <h3 className="text-gray-600 py-1">FEE ?</h3>
-          <p className="text-gray-600 py-1">$7.29</p>
+          <p className="text-gray-600 py-1">${parseFloat(((21000 * fee) / 1e9).toFixed(8))}</p>
         </div>
         <div className="flex justify-between">
           <h3 className="text-gray-600 py-1">GASS PRICE (GWEI)</h3>
           <p className="text-gray-600 py-1">
-            $35.00{" "}
-            <Link
+            {fee}{" "}
+            <text
+              onClick={openFeeModal}
+              className="text-customBlue-200 ml-1 underline cursor-pointer	"
+            >
+              Edit
+            </text>
+            {/* <Link
               to="#"
               className="text-blue-700"
               style={{ textDecoration: "underline" }}
             >
               EDIT
-            </Link>
+            </Link> */}
           </p>
         </div>
         <div className="flex mt-3">
@@ -115,6 +130,13 @@ function CreateLoan({ loanType }: any) {
         </div>
       </div>
     </div>
+     <GasFeeModal
+     isOpen={isFeeOpen}
+     close={closeFeeModal}
+     activeFee={fee}
+     select={selectFee}
+   />
+   </>
   );
 }
 export default CreateLoan;

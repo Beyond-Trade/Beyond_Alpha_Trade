@@ -9,26 +9,23 @@ import YourWalet from "../components/molecules/loan/YourWalet";
 import { getLoan, loanDetails } from "../services/loan.service";
 import useCreateLoan from "../hooks/Loan/useCreateLoan";
 function Loan() {
-  const { handleUSDb, handleETHb, loanType } = useCreateLoan();
+  const { ETH } = useCreateLoan();
   useEffect(() => {
     loanDetails().then((res) => console.log(res));
   });
+  // console.log(locked,"==============------------------------")
   return (
     <div>
       <LoanBanner />
       <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
         <div className="flex-1 xl:mr-8 xxl:mr-10 lg:mr-8">
-          <EthAsCollateral
-            handleUSDb={handleUSDb}
-            handleETHb={handleETHb}
-            loanType={loanType}
-          />
+          <EthAsCollateral ETH={ETH} />
           <YourWalet />
           <YourLoans />
         </div>
         <div className="xl:w-300 lg:w-300 xxl:w-28% xxxl:1/4">
-          <CreateLoan loanType={loanType}/>
-          <CloseLoan loanType={loanType}/>
+          <CreateLoan />
+          <CloseLoan />
         </div>
       </div>
     </div>
