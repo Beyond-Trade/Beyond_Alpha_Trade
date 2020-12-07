@@ -60,8 +60,9 @@ export const BYNTokenValue = async (): Promise<number> => {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
             try {
+                debugger
                 let value = await contract.methods.tokenValue().call();
-                value = value/Math.pow(10,contractInfo.decimal)
+                //value = value/Math.pow(10,contractInfo.decimal)
                 return Number(value);
             } catch (error) {
                 return 0;

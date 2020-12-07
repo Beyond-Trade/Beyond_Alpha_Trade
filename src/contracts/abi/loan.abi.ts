@@ -173,6 +173,15 @@ export const LoanAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
+    constant: false,
+    inputs: [{ internalType: "address", name: "_address", type: "address" }],
+    name: "setBeyondExchangeAddress",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     constant: true,
     inputs: [{ internalType: "string", name: "source", type: "string" }],
     name: "stringToBytes32",

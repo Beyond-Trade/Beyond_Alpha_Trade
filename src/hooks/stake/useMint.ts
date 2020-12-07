@@ -5,6 +5,7 @@ import { ERC20Contracts } from "../../contracts/constants/contracts";
 import { RootState } from "../../store/reducers/Index";
 import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
+import { updateBalances } from "../../services/wallet.service";
 
 const useMint = () => {
   const { balances } = useSelector(
@@ -54,7 +55,7 @@ const useMint = () => {
         if (!data) {
           throw new Error("no data");
         }
-
+        updateBalances()
         alert.show('Mint successful', {type:'success'})
         setState((prev) => ({ ...prev, submitting: false }));
       })

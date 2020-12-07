@@ -113,14 +113,14 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
     if (asset.isFixedRate) {
         balance.rate = asset.fixedRateValue;
     }
-    // if (asset.isMainToken) {
-    //     const ETHcontractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.ETH)
-    //     let EthPriceObj = cryptoRates.find((x: any) => x.id == ETHcontractInfo?.marketRateApiID)
-    //     let ethRate = EthPriceObj ? EthPriceObj.rate / Math.pow(10, ETHcontractInfo?.decimal || 18) : 0;
-    //     let tokenValue: number = await BYNTokenValue();
+    if (asset.isMainToken) {
+        const ETHcontractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.ETH)
+        let EthPriceObj = cryptoRates.find((x: any) => x.id == ETHcontractInfo?.marketRateApiID)
+        let ethRate = EthPriceObj ? EthPriceObj.current_price : 0;
+        let tokenValue: number = await BYNTokenValue();
 
-    //     balance.rate = ethRate / tokenValue;
-    // }
+        balance.rate = ethRate / tokenValue;
+    }
     return balance;
 }
 

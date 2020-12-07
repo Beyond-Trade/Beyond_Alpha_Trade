@@ -12,6 +12,7 @@ function Burn() {
     close,
     fee,
     byn,
+    burnType,
     openFeeModal,
     selectFee,
     submit,
@@ -51,15 +52,15 @@ function Burn() {
               Confirm or enter amount to burn:
             </p>
             <div className="flex mt-2">
-              <button onClick={setMax} className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 text-white rounded">
+              <button onClick={setMax} className={`focus:outline-none whitespace-no-wrap ${burnType===0?'bg-customBlue-200 text-white':'bg-gray-300 text-gray-600'} py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 rounded`}>
                 Burn Max
               </button>
-              <button onClick={checkCollateral} className="focus:outline-none bg-gray-300 py-1 px-3 text-center flex items-center justify-center text-xxs xxl:text-xs text-gray-600 font-medium ml-2 xl:h-8 xxl:h-10 rounded w-full">
+              <button onClick={checkCollateral} className={`focus:outline-none ${burnType===1?'bg-customBlue-200 text-white':'bg-gray-300 text-gray-600'} py-1 px-3 text-center flex items-center justify-center text-xxs xxl:text-xs font-medium ml-2 xl:h-8 xxl:h-10 rounded w-full`}>
                 Fix your collateralization Ratio
               </button>
             </div>
           </div>
-          <div className="mt-6 text-xs xxl:text-sm">
+          {burnType === 0&&<div className="mt-6 text-xs xxl:text-sm">
             <div className="flex justify-between">
               <p className=" font-medium text-gray-500">$ {balance}</p>
               <p className=" font-medium text-gray-500">$ {balance}</p>
@@ -77,13 +78,13 @@ function Burn() {
               />
             </div>
             <small className="italic text-red-400 text-xs">{amountVal}</small>
-          </div>
-          <div onClick={showBYNField} className="text-center mt-2 text-xs xxl:text-sm text-blue-500 cursor-pointer font-medium">
-            {!showBYN && 'View transferable BYN'}
-            {showBYN && 'Transferable BYN being unlocked:'}
-          </div>
+          </div>}
+        {burnType===0&&<div onClick={showBYNField} className="text-center mt-2 text-xs xxl:text-sm text-blue-500 cursor-pointer font-medium">
+          {!showBYN && 'View transferable BYN'}
+          {showBYN && 'Transferable BYN being unlocked:'}
+        </div>}
 
-          {showBYN && <div className="bg-gray-300 text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center">
+          {showBYN && burnType === 0 && <div className="bg-gray-300 text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center">
               <text className="focus:outline-none text-gray-600 font-medium flex items-center border-r pr-4 border-gray-500">
                 BYN
               </text>

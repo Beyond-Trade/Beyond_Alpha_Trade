@@ -4,6 +4,7 @@ import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
 import { ContractLookup } from "../../contracts/contracts.lookup";
 import { transferERC20, transferEther } from "../../services/transfer.service";
+import { updateBalances } from "../../services/wallet.service";
 import { RootState } from "../../store/reducers/Index";
 
 const useTransfer = () => {
@@ -66,7 +67,7 @@ const useTransfer = () => {
         if (!data) {
           throw new Error("no data");
         }
-
+        updateBalances()
         alert.show('Transfer successful', {type:'success'})
         setState((prev) => ({ ...prev, submitting: false }));
       })
@@ -89,6 +90,7 @@ const useTransfer = () => {
         if (!data) {
           throw new Error("no data");
         }
+        updateBalances()
         alert.show('Transfer successful', {type:'success'})
         setState((prev) => ({ ...prev, submitting: false }));
       })

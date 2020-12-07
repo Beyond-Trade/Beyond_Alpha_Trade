@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { ERC20Contracts } from '../../contracts/constants/contracts';
 import { checkUserCollatteral, releaseCollateralRatio, settleCollateralRatio } from '../../services/burn.service';
 import { getPairPrice } from '../../services/generic.services';
+import { updateBalances } from '../../services/wallet.service';
 import { RootState } from '../../store/reducers/Index';
 import { Balance } from '../../store/types/WalletState';
 
@@ -11,7 +12,7 @@ import { Balance } from '../../store/types/WalletState';
 function useBurn() {
     const { balances, selected } = useSelector((state:RootState)=>state.wallet)
     const gasFees = [17, 23, 34];
-    const BurnTypes = ['MAX', 'FIX']
+
     const alert = useAlert()
     const [state, setState] = React.useState({
         burning: false,
@@ -21,7 +22,7 @@ function useBurn() {
         fee: gasFees[0],
         isOpen: false,
         balance: 0,
-        burnType: BurnTypes[0],
+        burnType: 0,
         collateralFixAmount: 0,
         showBYN: false,
         rate: 0
@@ -43,12 +44,16 @@ function useBurn() {
 
     const close = () => setState((prev) => ({ ...prev, isOpen: false }));
     const showBYNField = () => setState((prev) => ({ ...prev, showBYN: true }));
-    const setMax = () => setState((prev) => ({ ...prev, amount: prev.balance.toString(), burnType: BurnTypes[0] }));
+    const setMax = () => setState((prev) => ({ ...prev, amount: prev.balance.toString(), burnType: 0 }));
     const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
     const selectFee = (fee: number, close:boolean) => setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
     const checkCollateral = () => {
-        settleCollateral()
+        if(state.burning){
+            return
+        }
+        setState(prev=>({...prev, burnType: 1}))
+
         //setState(prev=>({...prev, burnType: BurnTypes[1]}))
         // const ETHObj = balances.find(
         //     (bal: Balance) => bal.short == ERC20Contracts.ETH
@@ -67,10 +72,11 @@ function useBurn() {
             return
         }
         setState(prev=>({...prev, burning: true}))
-
+        if(state.burnType === 0){
             releaseCollateral()
-
-        
+        }else{
+            settleCollateral()
+        }
     }
 
     const releaseCollateral = () => {
@@ -79,6 +85,7 @@ function useBurn() {
                 throw new Error("No provider");
             }
             alert.show('Success!', {type: 'success'})
+            updateBalances()
             setState(prev=>({...prev, burning: false}))
         }).catch((e)=>{
             console.log('e', e)
@@ -88,11 +95,13 @@ function useBurn() {
     }
 
     const settleCollateral = () => {
+        debugger
         settleCollateralRatio(state.amount, state.fee, selected.address).then((data)=>{
             if(!data){
                 throw new Error("No provider");
             }
             alert.show('Success!', {type: 'success'})
+            updateBalances()
             setState(prev=>({...prev, burning: false}))
         }).catch((e)=>{
             console.log('e', e)
@@ -103,15 +112,15 @@ function useBurn() {
 
     const isValidated = () => {
         let validated = true
-        if(Number(state.amount) > state.balance) {
+        if(state.burnType===0&&(Number(state.amount) > state.balance)) {
             setState(prev=>({...prev, amountVal: "Not enough balance"}))
             validated=false
         }
-        if(Number(state.amount) <= 0) {
+        if(state.burnType===0&&Number(state.amount) <= 0) {
             setState(prev=>({...prev, amountVal: "Please enter a valid amount"}))
             validated=false
         }
-        if(state.amount === "") {
+        if(state.burnType===0&&state.amount === "") {
             setState(prev=>({...prev, amountVal: "This field is required"}))
             validated=false
         }
@@ -123,11 +132,11 @@ function useBurn() {
 
     const handleAmountChange = (event:any) => {
         const value = event.target.value
-        setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)*prev.rate).toString()}))
+        setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)/prev.rate).toString()}))
     }
     const handleBYNChange = (event:any) => {
         const value = event.target.value
-        setState(prev=>({...prev, byn: value, amount: (Number(value)/prev.rate).toString() }))
+        setState(prev=>({...prev, byn: value, amount: (Number(value)*prev.rate).toString() }))
     }
 
     return {

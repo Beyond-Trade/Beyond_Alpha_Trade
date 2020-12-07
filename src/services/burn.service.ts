@@ -8,20 +8,20 @@ let web3: Web3 = new Web3();
 // @ts-ignore
 export const releaseCollateralRatio = async (amount, gas): Promise<number> => {
     web3 = store.getState().wallet.web3;
-
+debugger
     const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
     if (web3.currentProvider) {
         let walletInfo = store.getState().wallet;
 
         let activeAddress = walletInfo.selected.address;
         // @ts-ignore
-        var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
+        var amountToSend:any = ethers.utils.parseUnits(amount, contractInfo.decimal);
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             gas = gas * Math.pow(10, 9);
          
-            const tx = await contract.methods.releaseCollatteralRatio().send({ gasPrice: gas });
+            const tx = await contract.methods.releaseCollatteralRatio(amountToSend).send({ gasPrice: gas });
             return tx;
         }
     }
@@ -30,11 +30,11 @@ export const releaseCollateralRatio = async (amount, gas): Promise<number> => {
 // @ts-ignore
 export const settleCollateralRatio = async (amount, gas, activeAddress): Promise<number> => {
     web3 = store.getState().wallet.web3;
-
+    debugger
     const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
     if (web3.currentProvider) {
         // @ts-ignore
-        var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
+        //var amountToSend:any = ethers.utils.parseUnits(amount.toString(), contractInfo.decimal);
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });

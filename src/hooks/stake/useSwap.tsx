@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
-import { buyBYNToken } from "../../services/swap.service";
+import { buyBYNToken, BYNTokenValue } from "../../services/swap.service";
+import { updateBalances } from "../../services/wallet.service";
 import { RootState } from "../../store/reducers/Index";
 import { Balance } from "../../store/types/WalletState";
 
@@ -22,20 +23,22 @@ const useSwap = () => {
   });
 
   useEffect(() => {
-    const BYNObj = balances.find(
-      (bal: Balance) => bal.short == ERC20Contracts.BEYOND
-    );
+    initialize();
+  }, [balances]);
+
+  const initialize = async () => {
     const balance = balances.find((balance) => balance.isEther);
       // @ts-ignore
-    let byninEthPrice =5000;// ((balance?.rate||0) / (BYNObj?.rate||0))  For now its hard coded
+    //let byninEthPrice = ((balance?.rate||0) / (BYNObj?.rate||0))
+    let tokenValue: number = await BYNTokenValue();
     if (balance) {
       setState((prev) => ({
         ...prev,
         balance: balance.cryptoBalance,
-        rate: byninEthPrice,
+        rate: tokenValue,
       }));
     }
-  }, [balances]);
+  }
 
   const submit = () => {
     if (!isValidated()) {
@@ -53,7 +56,7 @@ const useSwap = () => {
           throw new Error("no data");
         }
         alert.show('Swap successful', {type:'success'})
-
+        updateBalances()
         setState((prev) => ({ ...prev, swapping: false, from: "", to: 0 }));
       })
       .catch((e) => {
