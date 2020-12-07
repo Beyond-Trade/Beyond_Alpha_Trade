@@ -1,21 +1,14 @@
-import { stat } from "fs";
-import moment from "moment";
 import { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
 import { getLoan,getLoanUSDb,returnLoan,returnLoanUSDb } from "../../services/loan.service";
-import { addTrade } from "../../services/trade.service";
 import { RootState } from "../../store/reducers/Index";
 import { Balance } from "../../store/types/WalletState";
 
 const useCreateLoan = () => {
   const { balances } = useSelector((state: RootState) => state.wallet);
   const gasFees = [1, 23, 34];
-  const {
-    exchange: { selectedPair },
-  } = useSelector((state: RootState) => state);
-  const dispatch = useDispatch();
   const alert = useAlert();
   const [state, setState] = useState({
     isSubmitting: false,
@@ -35,13 +28,13 @@ const useCreateLoan = () => {
 
   useEffect(() => {
     const USDbObj: any = balances.find(
-      (bal: Balance) => bal.short == ERC20Contracts.USDb
+      (bal: Balance) => bal.short === ERC20Contracts.USDb
     );
     const ETHbObj: any = balances.find(
-      (bal: Balance) => bal.short == ERC20Contracts.ETHb
+      (bal: Balance) => bal.short === ERC20Contracts.ETHb
     );
     const ETHObj: any = balances.find(
-      (bal: Balance) => bal.short == ERC20Contracts.ETH
+      (bal: Balance) => bal.short === ERC20Contracts.ETH
     );
     setState((prev) => ({
       ...prev,
@@ -165,11 +158,11 @@ const useCreateLoan = () => {
     return validated;
   };
 
-  const getPairPrice = (fromRate: number, toRate: number) => {
-    if (fromRate === 0) return 0;
-    let result = (1 / toRate) * fromRate;
-    return result;
-  };
+//   const getPairPrice = (fromRate: number, toRate: number) => {
+//     if (fromRate === 0) return 0;
+//     let result = (1 / toRate) * fromRate;
+//     return result;
+//   };
 
   const handleLockedChange = (event: any, type: String) => {
     const { value } = event.target;
