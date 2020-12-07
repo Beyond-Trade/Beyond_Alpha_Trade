@@ -46,8 +46,8 @@ function CloseLoan() {
             <p className="text-gray-600 py-1">
               Balance :{" "}
               {loanType === "ETHb"
-                ? returnLoanObj.totalValueAfterLoanFeeETHb / toConvert
-                : returnLoanObj.totalValueAfterLoanFeeUSDb / toConvert}
+                ? returnLoanObj?.totalValueAfterLoanFeeETHb / toConvert
+                : returnLoanObj?.totalValueAfterLoanFeeUSDb / toConvert}
             </p>
           </div>
 
@@ -56,8 +56,8 @@ function CloseLoan() {
             <p className="text-gray-600 py-1">
               Balance :{" "}
               {loanType === "ETHb"
-                ? returnLoanObj.loanValueETHb / toConvert
-                : returnLoanObj.loanValueUSDb / toConvert}
+                ? returnLoanObj?.loanValueETHb / toConvert
+                : returnLoanObj?.loanValueUSDb / toConvert}
             </p>
           </div>
 
@@ -66,9 +66,9 @@ function CloseLoan() {
             <p className="text-gray-600 py-1">
               $
               {loanType === "ETHb"
-                ? (returnLoanObj.loanValueETHb / toConvert) * ETH.rate
+                ? (returnLoanObj?.loanValueETHb / toConvert) * ETH?.rate
 
-                : returnLoanObj.loanValueUSDb / toConvert}
+                : returnLoanObj?.loanValueUSDb / toConvert}
             </p>
           </div>
 
