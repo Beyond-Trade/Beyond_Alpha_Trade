@@ -25,7 +25,6 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
             );
 
             const beyonContractInfo = ContractLookup.find(c => c.contractName == ERC20Contracts.BEYOND);
-           
                // @ts-ignore
             var amountToSend:any = ethers.utils.parseUnits(amount.toString(), beyonContractInfo.decimal);
             gasPrice = gasPrice * Math.pow(10, 9);

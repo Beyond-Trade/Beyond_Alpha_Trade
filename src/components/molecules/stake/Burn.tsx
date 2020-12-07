@@ -12,6 +12,7 @@ function Burn() {
     close,
     fee,
     byn,
+    burnType,
     openFeeModal,
     selectFee,
     submit,
@@ -51,11 +52,14 @@ function Burn() {
               Confirm or enter amount to burn:
             </p>
             <div className="flex mt-2">
-              <button onClick={setMax} className="focus:outline-none whitespace-no-wrap bg-customBlue-200 py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 text-white rounded">
+              <button onClick={setMax} className={`focus:outline-none whitespace-no-wrap ${burnType===0?'bg-customBlue-200 text-white':'bg-gray-300 text-gray-600'} py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 rounded`}>
                 Burn Max
               </button>
-              <button onClick={checkCollateral} className="focus:outline-none bg-gray-300 py-1 px-3 text-center flex items-center justify-center text-xxs xxl:text-xs text-gray-600 font-medium ml-2 xl:h-8 xxl:h-10 rounded w-full">
-                Fix your collateralization Ratio
+              <button onClick={checkCollateral} className={`focus:outline-none ${burnType===1?'bg-customBlue-200 text-white':'bg-gray-300 text-gray-600'} py-1 px-3 text-center flex items-center justify-center text-xxs xxl:text-xs font-medium ml-2 xl:h-8 xxl:h-10 rounded w-full`}>
+                {(!burning || burnType===0)&&'Fix your collateralization Ratio'}
+                {burning && burnType===1 && (
+                  <Loader type="Bars" color="#ffffff" height={18} width={20} />
+                )}
               </button>
             </div>
           </div>
@@ -108,8 +112,8 @@ function Burn() {
             onClick={submit}
             className="focus:outline-none bg-customBlue-200 text-white flex justify-center text-xs xxl:text-sm w-full rounded py-2 mt-2"
           >
-            {!burning && "BURN NOW"}
-            {burning && (
+            {(!burning||burnType===1) && "BURN NOW"}
+            {burning && burnType===0&& (
               <Loader type="Bars" color="#ffffff" height={18} width={20} />
             )}
           </button>

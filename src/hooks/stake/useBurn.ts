@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { ERC20Contracts } from '../../contracts/constants/contracts';
 import { checkUserCollatteral, releaseCollateralRatio, settleCollateralRatio } from '../../services/burn.service';
 import { getPairPrice } from '../../services/generic.services';
+import { updateBalances } from '../../services/wallet.service';
 import { RootState } from '../../store/reducers/Index';
 import { Balance } from '../../store/types/WalletState';
 
@@ -11,7 +12,7 @@ import { Balance } from '../../store/types/WalletState';
 function useBurn() {
     const { balances, selected } = useSelector((state:RootState)=>state.wallet)
     const gasFees = [17, 23, 34];
-    const BurnTypes = ['MAX', 'FIX']
+
     const alert = useAlert()
     const [state, setState] = React.useState({
         burning: false,
@@ -21,7 +22,7 @@ function useBurn() {
         fee: gasFees[0],
         isOpen: false,
         balance: 0,
-        burnType: BurnTypes[0],
+        burnType: 0,
         collateralFixAmount: 0,
         showBYN: false,
         rate: 0
@@ -43,11 +44,15 @@ function useBurn() {
 
     const close = () => setState((prev) => ({ ...prev, isOpen: false }));
     const showBYNField = () => setState((prev) => ({ ...prev, showBYN: true }));
-    const setMax = () => setState((prev) => ({ ...prev, amount: prev.balance.toString(), burnType: BurnTypes[0] }));
+    const setMax = () => setState((prev) => ({ ...prev, amount: prev.balance.toString(), burnType: 0 }));
     const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
     const selectFee = (fee: number, close:boolean) => setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
     const checkCollateral = () => {
+        if(state.burning){
+            return
+        }
+        setState(prev=>({...prev, burning: true, burnType: 1}))
         settleCollateral()
         //setState(prev=>({...prev, burnType: BurnTypes[1]}))
         // const ETHObj = balances.find(
@@ -67,10 +72,7 @@ function useBurn() {
             return
         }
         setState(prev=>({...prev, burning: true}))
-
-            releaseCollateral()
-
-        
+        releaseCollateral()
     }
 
     const releaseCollateral = () => {
@@ -79,6 +81,7 @@ function useBurn() {
                 throw new Error("No provider");
             }
             alert.show('Success!', {type: 'success'})
+            updateBalances()
             setState(prev=>({...prev, burning: false}))
         }).catch((e)=>{
             console.log('e', e)
@@ -93,6 +96,7 @@ function useBurn() {
                 throw new Error("No provider");
             }
             alert.show('Success!', {type: 'success'})
+            updateBalances()
             setState(prev=>({...prev, burning: false}))
         }).catch((e)=>{
             console.log('e', e)
@@ -123,11 +127,11 @@ function useBurn() {
 
     const handleAmountChange = (event:any) => {
         const value = event.target.value
-        setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)*prev.rate).toString()}))
+        setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)/prev.rate).toString()}))
     }
     const handleBYNChange = (event:any) => {
         const value = event.target.value
-        setState(prev=>({...prev, byn: value, amount: (Number(value)/prev.rate).toString() }))
+        setState(prev=>({...prev, byn: value, amount: (Number(value)*prev.rate).toString() }))
     }
 
     return {
