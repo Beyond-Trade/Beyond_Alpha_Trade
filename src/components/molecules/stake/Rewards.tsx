@@ -10,6 +10,7 @@ const convertToUSDb = 1000000000000000000;
 function Rewards() {
   const [rewardData, setRewardData] = useState<any>([]);
   const [rewards, setRewards] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     currentTime().then((res) => {
       // var myDate = new Date( your epoch date *1000);
@@ -18,6 +19,7 @@ function Rewards() {
     });
   }, []);
   const getRewardDetails = async (res: any) => {
+    setIsLoading(true);
     let resCopy = res;
     console.log(res, "==========RES==========");
     const rewardsData: any = [];
@@ -39,6 +41,7 @@ function Rewards() {
     }
     setRewards([...Rewards]);
     setRewardData([...rewardsData]);
+    setIsLoading(false);
   };
   console.log(rewardData);
   return (
@@ -67,8 +70,9 @@ function Rewards() {
               <h4>Distribution Date</h4>
               <h4>BYN Quantity</h4>
             </div>
-            {rewardData?.length > 0
-              ? rewardData.map((reward: any, index: any) =>
+            {!isLoading ? (
+              rewardData?.length > 0 ? (
+                rewardData.map((reward: any, index: any) =>
                   index % 2 === 0 ? (
                     <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
                       <h6 className="font-normal">
@@ -89,11 +93,22 @@ function Rewards() {
                     </div>
                   )
                 )
-              : <div className="flex justify-center py-6"><Loader type="Bars" color="#5183bf" height={18} width={20} /></div>}
+              ) : (
+                <div className="flex justify-center xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
+                  <h6 className="font-normal">No Reward Found.</h6>
+                </div>
+              )
+            ) : (
+              <div className="flex justify-center py-6">
+                <Loader type="Bars" color="#5183bf" height={18} width={20} />
+              </div>
+            )}
             {/* <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
               <h6 className="font-normal">01 November 2020</h6>
               <h6 className="font-normal">$227.55</h6>
             </div>
+            <div className="flex justify-center py-6"><Loader type="Bars" color="#5183bf" height={18} width={20} /></div>
+            
             <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-400">
               <h6 className="font-normal">01 November 2020</h6>
               <h6 className="font-normal">$227.55</h6>
