@@ -48,13 +48,14 @@ export const getStackedByn = async (): Promise<boolean> => {
     let walletInfo = store.getState().wallet;
 
     let activeAddress = walletInfo.selected.address;
-    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
+    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
     if (web3.currentProvider) {
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
             try {
-                const data = await contract.methods.getBYN(activeAddress).call();
+                const data = await contract.methods.getBYNDetails(activeAddress).call();
+                console.log(data,"===============DATA===========")
                 let bynContract = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
                 // @ts-ignore
                let unstackedBYN = Number(data.unstackedBYN) / Math.pow(10, bynContract.decimal);

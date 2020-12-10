@@ -14,6 +14,7 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
         type: "address",
       },
       { internalType: "contract IBeyond", name: "_beyond", type: "address" },
+      { internalType: "address", name: "_beyondExchange", type: "address" },
     ],
     payable: false,
     stateMutability: "nonpayable",
@@ -195,12 +196,30 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [],
-    name: "getBeyondTokenValue",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    constant: true,
+    inputs: [
+      { internalType: "address", name: "_beneficiary", type: "address" },
+    ],
+    name: "getBYN",
+    outputs: [
+      { internalType: "uint256", name: "unstackedBYN", type: "uint256" },
+      { internalType: "uint256", name: "stackedBYN", type: "uint256" },
+      { internalType: "uint256", name: "totalBYN", type: "uint256" },
+    ],
     payable: false,
-    stateMutability: "nonpayable",
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: "getExchangeDetails",
+    outputs: [
+      { internalType: "uint256", name: "_currentTime", type: "uint256" },
+      { internalType: "uint256", name: "_collatteralRatio", type: "uint256" },
+    ],
+    payable: false,
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -336,7 +355,7 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
   {
     constant: false,
     inputs: [],
-    name: "startExchange",
+    name: "startExchangeProx",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",

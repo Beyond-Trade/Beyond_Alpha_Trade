@@ -20,18 +20,18 @@ function Rewards() {
   }, []);
   const getRewardDetails = async (res: any) => {
     setIsLoading(true);
-    let resCopy = res;
+    let resCopy = res?._currentTime;
     console.log(res, "==========RES==========");
     const rewardsData: any = [];
     const Rewards: any = [];
     for (var i = 0; i <= 6; i++) {
-      if (resCopy > 0) {
+      if (resCopy - 300 > 0) {
         resCopy = resCopy - 300;
         console.log(resCopy, "==========resCopy==========");
 
         let result = 0;
         await userRewardDetails(resCopy).then((resData) => {
-          console.log(resData);
+          console.log(resData,">>>>>>>>>>>>>>>>>>.");
           result = resData;
         });
         console.log(resCopy);

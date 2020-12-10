@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  loanFeeRatio,
-  openLoans,
-  totalETHb,
-  totalUSDb,
+  getLoanContractDetails,
   getEthLocked,
-  loanCollatteralRatio,
 } from "../../../services/loan.service";
 import { setLoanTypeAction } from "../../../store/actions/LoanTypeAction";
 import { RootState } from "../../../store/reducers/Index";
 function EthAsCollateral({ ETH }: any) {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     OpenLoansNo: "",
     interestFee: "",
@@ -20,38 +16,27 @@ function EthAsCollateral({ ETH }: any) {
     ethLocked: "",
     collatRatio: "",
   });
- const { loanType } = useSelector(
-    (state: RootState) => state.loan
-  );
+  const { loanType } = useSelector((state: RootState) => state.loan);
   useEffect(() => {
-    loanFeeRatio().then((res) => {
-      setState((prev) => ({ ...prev, interestFee: res }));
+    getLoanContractDetails().then((res) => {
+      setState((prev) => ({
+        ...prev,
+        OpenLoansNo: res?._openLoans || "0",
+        interestFee: res?._loanFeeRatio || "0",
+        ETHbSupply: res?._totalETHb || "0",
+        USDbSupply: res?._totalUSDb || "0",
+        collatRatio: res?._loanCollatteralRatio || "0",
+      }));
       console.log(res, "=====================================");
     });
-    openLoans().then((res) => {
-      setState((prev) => ({ ...prev, OpenLoansNo: res }));
-    });
-    if (loanType === "ETHb") {
-      totalETHb().then((res) => {
-        setState((prev) => ({ ...prev, ETHbSupply: res }));
-        console.log(res, "=====================================");
-      });
-    } else {
-      totalUSDb().then((res) => {
-        setState((prev) => ({ ...prev, USDbSupply: res }));
-      });
-    }
     getEthLocked().then((res) => {
-      setState((prev) => ({ ...prev, ethLocked: res }));
-    });
-    loanCollatteralRatio().then((res) => {
-      setState((prev) => ({ ...prev, collatRatio: res }));
+      setState((prev) => ({ ...prev, ethLocked: res || "0" }));
     });
   }, [loanType]);
-  const LoanTypeAction=(type:any)=>{
-    console.log(type,"======TYPE=======")
-    dispatch(setLoanTypeAction(type))
-  }
+  const LoanTypeAction = (type: any) => {
+    console.log(type, "======TYPE=======");
+    dispatch(setLoanTypeAction(type));
+  };
   const toConvert = 1000000000000000000;
   return (
     <>
@@ -60,7 +45,7 @@ function EthAsCollateral({ ETH }: any) {
           <div className="flex items-center ">
             <h5>ETH AS COLLATERAL</h5>
             <div
-              onClick={()=>LoanTypeAction("ETHb")}
+              onClick={() => LoanTypeAction("ETHb")}
               // onClick={handleETHb}
               className={`ml-12 xxl:ml-32 py-1 px-4 mr-4 rounded-sm cursor-pointer ${
                 loanType === "ETHb" ? "bg-gray-400" : "border border-gray-400"
@@ -69,7 +54,7 @@ function EthAsCollateral({ ETH }: any) {
               ETHb
             </div>
             <div
-            onClick={()=>LoanTypeAction("USDb")}
+              onClick={() => LoanTypeAction("USDb")}
               // onClick={handleUSDb}
               className={`py-1 px-4 rounded-sm cursor-pointer ${
                 loanType === "USDb" ? "bg-gray-400" : "border border-gray-400"

@@ -45,7 +45,7 @@ function CreateLoan() {
           <h3 className="py-1 mr-10 flex items-center">
             <img
               // src="assets/icons/Ethereum.svg"
-              src={ETH.icon}
+              src={ETH?.icon}
               className="h-3 xxl:h-5 mr-1 xxl:mr-2"
               alt="img"
             />

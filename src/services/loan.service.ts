@@ -1,3 +1,4 @@
+import { debug } from 'console';
 import Web3 from 'web3';
 import { store } from '../App';
 import { ERC20Contracts } from "../contracts/constants/contracts";
@@ -10,12 +11,13 @@ export const loanDetails = async () => {
     let activeAddress = walletInfo.selected.address;
     // @ts-ignore
     if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
         if (contractInfo) {
             // @ts-ignore
-            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            debugger
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo.contractAddress, { from: activeAddress });
             // @ts-ignore
-            const tx = await contract.methods.loanDetails(activeAddress).call()
+            const tx = await contract.methods.getloanDetails(activeAddress).call()
             return tx;
         }
     }
@@ -23,24 +25,7 @@ export const loanDetails = async () => {
         return null;
 }
 // Interest Fee
-export const loanFeeRatio = async () => {
-    web3 = store.getState().wallet.web3;
-    let walletInfo = store.getState().wallet;
-    let activeAddress = walletInfo.selected.address;
-    // @ts-ignore
-    if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
-        if (contractInfo) {
-            // @ts-ignore
-            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-            // @ts-ignore
-            const tx = await contract.methods.loanFeeRatio().call()
-            return tx;
-        }
-    }
-    else
-        return null;
-}
+
 // Loan Collat.ratio
 export const loanCollatteralRatio = async () => {
     web3 = store.getState().wallet.web3;
@@ -48,7 +33,7 @@ export const loanCollatteralRatio = async () => {
     let activeAddress = walletInfo.selected.address;
     // @ts-ignore
     if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
@@ -61,56 +46,20 @@ export const loanCollatteralRatio = async () => {
         return null;
 }
 // no of open loans
-export const openLoans = async () => {
-    web3 = store.getState().wallet.web3;
-    let walletInfo = store.getState().wallet;
-    let activeAddress = walletInfo.selected.address;
-    // @ts-ignore
-    if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
-        if (contractInfo) {
-            // @ts-ignore
-            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-            // @ts-ignore
-            const tx = await contract.methods.openLoans().call()
-            return tx;
-        }
-    }
-    else
-        return null;
-}
-// ETHb SUPPLY 
-export const totalETHb = async () => {
-    web3 = store.getState().wallet.web3;
-    let walletInfo = store.getState().wallet;
-    let activeAddress = walletInfo.selected.address;
-    // @ts-ignore
-    if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
-        if (contractInfo) {
-            // @ts-ignore
-            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
-            // @ts-ignore
-            const tx = await contract.methods.totalETHb().call()
-            return tx;
-        }
-    }
-    else
-        return null;
-}
+
 // AND USDb SUPPLY
-export const totalUSDb = async () => {
+export const getLoanContractDetails = async () => {
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
     let activeAddress = walletInfo.selected.address;
     // @ts-ignore
     if (web3.currentProvider && activeAddress ) {
-        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.LOAN)
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
         if (contractInfo) {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             // @ts-ignore
-            const tx = await contract.methods.totalUSDb().call()
+            const tx = await contract.methods.getLoanContractDetails().call()
             return tx;
         }
     }
