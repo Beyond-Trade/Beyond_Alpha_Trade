@@ -184,7 +184,7 @@ export const ContractLookup:IContractLookup[] = [
     },
     {
         contractName: ERC20Contracts.BEYOND_EXCHANGE,
-        contractAddress: "0x171a6FE61479652B161F5d2DdfdAa998b9f0F14a",
+        contractAddress: "0xeA32fEEaad04Dc6fcC16f29B3c4CAda9FfB02FC5",
         marketRateApiID: "",
         oracleRateID: "",
         fullName: "beyondExchange",
@@ -200,7 +200,7 @@ export const ContractLookup:IContractLookup[] = [
     },
     {
         contractName: ERC20Contracts.BEYOND_EX_PROX,
-        contractAddress: "0x53dc4031c65956Dc9A8a7B0edDEd54BC5c566C2b",
+        contractAddress: "0x3E1feB20d43D6e68d03A1bCcA83a4F12BCc80077",
         marketRateApiID: "",
         oracleRateID: "",
         fullName: "beyondExProx",
@@ -216,7 +216,7 @@ export const ContractLookup:IContractLookup[] = [
     },
     {
         contractName: ERC20Contracts.LOAN,
-        contractAddress: "0x1d57e85bdF63eCDe98D4284A8682BaFc23690A83",
+        contractAddress: "0x4ee5da8DDF9c3CF1a58155bd867352cbE33282f8",
         marketRateApiID: "",
         oracleRateID: "",
         fullName: "loan",

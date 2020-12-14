@@ -8,16 +8,6 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
         name: "_beyondTokenAddress",
         type: "address",
       },
-      {
-        internalType: "contract IBeyondExProx",
-        name: "_proxContractAddress",
-        type: "address",
-      },
-      {
-        internalType: "contract ILoanProx",
-        name: "_LoanContract",
-        type: "address",
-      },
       { internalType: "address payable", name: "_wallet", type: "address" },
     ],
     payable: false,
