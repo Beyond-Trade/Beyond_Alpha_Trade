@@ -17,6 +17,9 @@ function MidSection() {
     if (location.pathname === "/stake/swap_byn") {
       setTab(0);
     }
+    if (location.pathname === "/stake/rewards") {
+        setTab(2);
+      }
   }, [location]);
   return (
     <div className="px-8 sm:px-16 md:px-20 xl:px-48 lg:px-48 mt-12">
