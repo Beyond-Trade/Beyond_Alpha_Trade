@@ -79,7 +79,7 @@ function ContactUs() {
         <div className="flex justify-center w-full">
           <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium">
             <img
-              src="assets/Icons/phone-black.png"
+              src="/assets/Icons/phone-black.png"
               alt="img"
               className="xl:h-8 xxl:h-12 content-end"
             />
@@ -90,7 +90,7 @@ function ContactUs() {
           </div>
           <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium">
             <img
-              src="assets/Icons/plane@3x.png"
+              src="/assets/Icons/plane@3x.png"
               alt="img"
               className="xl:h-8 xxl:h-12 content-end"
             />
@@ -101,7 +101,7 @@ function ContactUs() {
           </div>
           <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex text-center items-center justify-center  xxl:font-medium">
             <img
-              src="assets/Icons/pin-black.png"
+              src="/assets/Icons/pin-black.png"
               alt="img"
               className="xl:h-8 xxl:h-12 content-end"
             />

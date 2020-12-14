@@ -25,7 +25,7 @@ function SelectWalletModal(props: IProps) {
         onClick={() => props.close()}
         className="focus:outline-none float-right"
       >
-        <img src="assets/Icons/Cross.svg" />
+        <img src="/assets/Icons/Cross.svg" />
       </button>
       {typeIndex === 0 && <SelectWalletType onSelect={() => props.close()} />}
       {typeIndex === 1 && <SelectWallet onBack={() => setType(0)} />}

@@ -9,7 +9,7 @@ function WalletBanner(props: IProps) {
     <div className="bg-customGray-100 relative">
       <div className="w-full"></div>
       <img
-        src="assets/Images/Group 858.png"
+        src="/assets/Images/Group 858.png"
         alt="img"
         style={{height: '25vw'}}
       />

@@ -43,7 +43,6 @@ export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contra
 // @ts-ignore
 export const getStackedByn = async (): Promise<boolean> => {
 
-   
     web3 = store.getState().wallet.web3;
     let walletInfo = store.getState().wallet;
 

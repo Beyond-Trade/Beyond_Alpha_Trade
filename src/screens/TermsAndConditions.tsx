@@ -47,7 +47,7 @@ function TermsAndConditions() {
         <ol>
           <li className="flex items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -55,7 +55,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -64,7 +64,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -72,7 +72,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -81,7 +81,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -90,7 +90,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -100,7 +100,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />
@@ -109,7 +109,7 @@ function TermsAndConditions() {
           </li>
           <li className="items-center my-2 flex">
             <img
-              src="assets/Icons/check.svg"
+              src="/assets/Icons/check.svg"
               alt="img"
               className="xl:h-3 xxl:h-5 xl:mr-2 xxl:mr-3"
             />

@@ -8,31 +8,25 @@ import { setLoanTypeAction } from "../../../store/actions/LoanTypeAction";
 import { RootState } from "../../../store/reducers/Index";
 function EthAsCollateral({ ETH }: any) {
   const dispatch = useDispatch();
-  const [state, setState] = useState({
-    OpenLoansNo: "",
-    interestFee: "",
-    ETHbSupply: "",
-    USDbSupply: "",
-    ethLocked: "",
-    collatRatio: "",
-  });
-  const { loanType } = useSelector((state: RootState) => state.loan);
-  useEffect(() => {
-    getLoanContractDetails().then((res) => {
-      setState((prev) => ({
-        ...prev,
-        OpenLoansNo: res?._openLoans || "0",
-        interestFee: res?._loanFeeRatio || "0",
-        ETHbSupply: res?._totalETHb || "0",
-        USDbSupply: res?._totalUSDb || "0",
-        collatRatio: res?._loanCollatteralRatio || "0",
-      }));
-      console.log(res, "=====================================");
-    });
-    getEthLocked().then((res) => {
-      setState((prev) => ({ ...prev, ethLocked: res || "0" }));
-    });
-  }, [loanType]);
+  // const [state, setState] = useState({
+  //   OpenLoansNo: "",
+  //   interestFee: "",
+  //   ETHbSupply: "",
+  //   USDbSupply: "",
+  //   collatRatio: "",
+  //   ethLocked: "",
+  // });
+  const {
+    loanType,
+    OpenLoansNo,
+    interestFee,
+    ETHbSupply,
+    USDbSupply,
+    collatRatio,
+    ethLocked,
+  } = useSelector((state: RootState) => state.loan);
+  console.log(OpenLoansNo);
+
   const LoanTypeAction = (type: any) => {
     console.log(type, "======TYPE=======");
     dispatch(setLoanTypeAction(type));
@@ -66,7 +60,7 @@ function EthAsCollateral({ ETH }: any) {
           <p className="flex">
             view contacts
             <img
-              src="assets/Icons/exit.svg"
+              src="/assets/Icons/exit.svg"
               alt="img"
               className="h-4 ml-2"
               // style={{ height: "13px", width: "13px", marginLeft: "4px" }}
@@ -87,16 +81,16 @@ function EthAsCollateral({ ETH }: any) {
               </h3>
             </div>
             <div>
-              <h3 className=" py-2">{state.interestFee || 0}%</h3>
+              <h3 className=" py-2">{interestFee || 0}%</h3>
               <h3 className="py-2">0.50%</h3>
-              <h3 className="py-2">{state.OpenLoansNo || "0"}</h3>
+              <h3 className="py-2">{OpenLoansNo || "0"}</h3>
               <h3 className="py-2">
                 {loanType === "ETHb" ? "5,000" : "10,000,000"}
               </h3>
               <h3 className="py-2">
                 {loanType === "ETHb"
-                  ? Number(state.ETHbSupply) / toConvert
-                  : Number(state.USDbSupply) / toConvert}
+                  ? Number(ETHbSupply) / toConvert
+                  : Number(USDbSupply) / toConvert}
               </h3>
             </div>
           </div>
@@ -113,8 +107,8 @@ function EthAsCollateral({ ETH }: any) {
             </div>
             <div>
               <h3 className="py-2">1.0 ETH</h3>
-              <h3 className="py-2">{Number(state.collatRatio) + 100}%</h3>
-              <h3 className="py-2">{Number(state.ethLocked) / toConvert}</h3>
+              <h3 className="py-2">{Number(collatRatio) + 100}%</h3>
+              <h3 className="py-2">{Number(ethLocked) / toConvert}</h3>
               <h3 className="py-2">{ETH?.rate || 0}</h3>
             </div>
           </div>

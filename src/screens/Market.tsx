@@ -47,7 +47,7 @@ function Market() {
           coin="POUND"
           price={GBPRate ? Number(GBPRate.rate).toFixed(2) : "00.00"}
           pair="GBP/ USDb"
-          image="assets/Icons/pound.svg"
+          image="/assets/Icons/pound.svg"
           change={GBPRate ? Number(GBPRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
@@ -55,7 +55,7 @@ function Market() {
           coin="OIL"
           price={OILRate ? Number(OILRate.rate).toFixed(2) : "00.00"}
           pair="OIL/ USDb"
-          image="assets/coins/oil.svg"
+          image="/assets/coins/oil.svg"
           change={OILRate ? Number(OILRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
@@ -63,7 +63,7 @@ function Market() {
           coin="ETHEREUM"
           price={ETHbRate ? Number(ETHbRate.rate).toFixed(2) : "00.00"}
           pair="ETHEREUM/ USDb"
-          image="assets/Icons/Ethereum.svg"
+          image="/assets/Icons/Ethereum.svg"
           change={ETHbRate ? Number(ETHbRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
@@ -71,7 +71,7 @@ function Market() {
           coin="BITCOIN"
           price={BTCRate ? Number(BTCRate.rate).toFixed(2) : "00.00"}
           pair="BTC/ USDb"
-          image="assets/Icons/btc.svg"
+          image="/assets/Icons/btc.svg"
           change={BTCRate ? Number(BTCRate.change24h).toFixed(2) : "00.00"}
           marginRight=""
         />

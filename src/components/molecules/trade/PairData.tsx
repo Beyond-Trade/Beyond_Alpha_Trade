@@ -17,7 +17,7 @@ function PairData(props: IProps) {
         <td className="py-2 px-3">
           <div className="flex items-center justify-end" style={nowrap}>
             LAST PRICE
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
           </div>
         </td>
       </tr>
@@ -36,7 +36,7 @@ function PairData(props: IProps) {
           >
             <td className="py-3 px-3">
               <div className="flex items-center" style={nowrap}>
-                <img src="assets/Icons/star.svg" className="h-3 mr-1" />
+                <img src="/assets/Icons/star.svg" className="h-3 mr-1" />
                 {item.coin + " / " + props.data.marketCoin}
                 {/* <div className="px-2 ml-2 bg-yellow-400 border rounded-sm border-yellow-600 text-yellow-600 text-xxs">10X</div> */}
               </div>

@@ -82,16 +82,16 @@ function Footer() {
           </h4>
           <div className="flex mt-4">
             <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
-              <img src="assets/Icons/facebook-icon.svg" alt="img" />
+              <img src="/assets/Icons/facebook-icon.svg" alt="img" />
             </button>
             <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
-              <img src="assets/Icons/instagram-icon.svg" alt="img" />
+              <img src="/assets/Icons/instagram-icon.svg" alt="img" />
             </button>
             <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-white">
-              <img src="assets/Icons/linkedin-con.svg" alt="img" />
+              <img src="/assets/Icons/linkedin-con.svg" alt="img" />
             </button>
             <button className="focus:outline-none w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full bg-blue-500">
-              <img src="assets/Icons/pinterest-icon.svg" alt="img" />
+              <img src="/assets/Icons/pinterest-icon.svg" alt="img" />
             </button>
           </div>
         </div>

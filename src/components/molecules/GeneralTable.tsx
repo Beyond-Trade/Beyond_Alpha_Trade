@@ -10,13 +10,13 @@ function GeneralTable() {
         <tr className="bg-gray-300 text-xxs text-left text-gray-600 font-medium">
           <td className="w-1/5 pl-2 flex items-center">
             ASSETS
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
           </td>
           <td className="w-1/5">
             <div className="flex items-center">
               DESCRIPTION
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 className="ml-1 h-2"
               />
             </div>
@@ -25,7 +25,7 @@ function GeneralTable() {
             <div className="flex items-center">
               Total
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 className="ml-1 h-2"
               />
             </div>
@@ -34,7 +34,7 @@ function GeneralTable() {
             <div className="flex items-center">
               USD Value
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 className="ml-1 h-2"
               />
             </div>

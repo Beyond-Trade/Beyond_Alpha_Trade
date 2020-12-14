@@ -38,7 +38,7 @@ function MakeOrders() {
           className="focus:outline-none bg-customBlue-200 px-2 xxl:px-4 py-1 flex items-center text-xxs xxl:text-sm text-white"
         >
           Reverse
-          <img src="assets/Icons/reverse.svg" className="ml-1 h-2" />
+          <img src="/assets/Icons/reverse.svg" className="ml-1 h-2" />
         </button>
       </div>
       <div className="px-3 xxl:px-5 pb-3">

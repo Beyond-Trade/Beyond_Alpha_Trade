@@ -17,7 +17,7 @@ function WalletData() {
             <td className="w-1/4 pl-2 flex items-center my-2">
               ASSETS
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />
@@ -26,7 +26,7 @@ function WalletData() {
               <div className="flex items-center">
                 RATES
                 {/* <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  src="/assets/Icons/up-down-arrow.svg"
                   alt="img"
                   className="ml-1 h-2"
                 /> */}
@@ -36,7 +36,7 @@ function WalletData() {
               <div className="flex items-center">
                 TOTAL
                 <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  src="/assets/Icons/up-down-arrow.svg"
                   alt="img"
                   className="ml-1 h-2"
                 />
@@ -46,7 +46,7 @@ function WalletData() {
               <div className="flex items-center">
                 USD VALUE
                 <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  src="/assets/Icons/up-down-arrow.svg"
                   alt="img"
                   className="ml-1 h-2"
                 />

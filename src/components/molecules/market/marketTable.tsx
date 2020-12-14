@@ -44,7 +44,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
         {/* <td className="py-2 px-3">
           <div className="flex items-center">
             24 HOUR TREND
-            <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+            <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
           </div>
         </td> */}
         <td className="py-2 px-3">
@@ -78,7 +78,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <td className="py-3 px-3">${item.high24h.toFixed(2)}</td>
             <td className="py-3 px-3">${item.low24h.toFixed(2)}</td>
             {/* <td className="py-3 px-3">
-            <img src="assets/Images/Up.png" className="h-8" />
+            <img src="/assets/Images/Up.png" className="h-8" />
           </td> */}
             <td className="py-3 px-3">
               <button className="focus:outline-none flex content-center bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white xl:text-xs xxl:text-sm rounded-sm">

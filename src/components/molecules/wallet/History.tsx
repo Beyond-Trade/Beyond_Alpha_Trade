@@ -14,7 +14,7 @@ function History() {
             <td className="w-1/5 pl-2 flex items-center">
               ASSETS
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />
@@ -23,7 +23,7 @@ function History() {
               <div className="flex items-center">
                 DESCRIPTION
                 <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  src="/assets/Icons/up-down-arrow.svg"
                   alt="img"
                   className="ml-1 h-2"
                 />
@@ -33,7 +33,7 @@ function History() {
               <div className="flex items-center">
                 TOTAL
                 <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  src="/assets/Icons/up-down-arrow.svg"
                   alt="img"
                   className="ml-1 h-2"
                 />
@@ -43,7 +43,7 @@ function History() {
               <div className="flex items-center">
                 USD VALUE
                 <img
-                  src="assets/Icons/up-down-arrow.svg"
+                  src="/assets/Icons/up-down-arrow.svg"
                   alt="img"
                   className="ml-1 h-2"
                 />

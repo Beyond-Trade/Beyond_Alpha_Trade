@@ -3,7 +3,9 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
 import {
+  getEthLocked,
   getLoan,
+  getLoanContractDetails,
   getLoanUSDb,
   returnLoan,
   returnLoanUSDb,
@@ -11,6 +13,8 @@ import {
 import { RootState } from "../../store/reducers/Index";
 import { Balance } from "../../store/types/WalletState";
 import {
+  getEthLockedAction,
+  getLoanDetailsAction,
   handleBorrowed,
   handleLocked,
 } from "../../store/actions/LoanTypeAction";
@@ -20,15 +24,15 @@ import { updateBalances } from "../../services/wallet.service";
 const useCreateLoan = () => {
   const dispatch = useDispatch();
   const { balances } = useSelector((state: RootState) => state.wallet);
-  const { loanType,locked } = useSelector((state: RootState) => state.loan);
+  const { loanType, locked } = useSelector((state: RootState) => state.loan);
   const gasFees = [1, 23, 34];
   const alert = useAlert();
   const [state, setState] = useState({
     isSubmitting: false,
     isReturning: false,
-    USDb: { cryptoBalance: 0, rate: 0,icon:"" },
-    ETHb: { cryptoBalance: 0, rate: 0,icon:"" },
-    ETH: { cryptoBalance: 0, rate: 0,icon:"" },
+    USDb: { cryptoBalance: 0, rate: 0, icon: "" },
+    ETHb: { cryptoBalance: 0, rate: 0, icon: "" },
+    ETH: { cryptoBalance: 0, rate: 0, icon: "" },
     USDValue: 0,
     isFeeOpen: false,
     fee: gasFees[0],
@@ -59,6 +63,15 @@ const useCreateLoan = () => {
     console.log(ETHbObj, "ETHbObj");
   }, [balances]);
 
+  useEffect(() => {
+    getLoanContractDetails().then((res) => {
+      getLoanDetailsAction(res);
+    });
+    getEthLocked().then((res) => {
+      getEthLockedAction(res);
+    });
+  }, [loanType]);
+
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
   const closeFeeModal = () =>
     setState((prev) => ({ ...prev, isFeeOpen: false }));
@@ -84,13 +97,19 @@ const useCreateLoan = () => {
   const getLoanAction = (type: any) => {
     if (type === "ETHb") {
       setState((prev) => ({ ...prev, isSubmitting: true }));
-      getLoan(locked,state.fee)
+      getLoan(locked, state.fee)
         .then((data) => {
           if (!data) {
             throw Error("Error");
           }
           alert.show("ETHb Loan added.", { type: "success" });
-          updateBalances()
+          updateBalances();
+          getLoanContractDetails().then((res) => {
+            getLoanDetailsAction(res);
+          });
+          getEthLocked().then((res) => {
+            getEthLockedAction(res);
+          });
           setState((prev) => ({
             ...prev,
             isSubmitting: false,
@@ -107,13 +126,19 @@ const useCreateLoan = () => {
         });
     } else {
       setState((prev) => ({ ...prev, isSubmitting: true }));
-      getLoanUSDb(locked,state.fee)
+      getLoanUSDb(locked, state.fee)
         .then((data) => {
           if (!data) {
             throw Error("Error");
           }
           alert.show("USDb Loan added", { type: "success" });
-          updateBalances()
+          updateBalances();
+          getLoanContractDetails().then((res) => {
+            getLoanDetailsAction(res);
+          });
+          getEthLocked().then((res) => {
+            getEthLockedAction(res);
+          });
           setState((prev) => ({ ...prev, isSubmitting: false }));
         })
         .catch((e) => {
@@ -134,7 +159,13 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("ETHb Loan returned", { type: "success" });
-          updateBalances()
+          updateBalances();
+          getLoanContractDetails().then((res) => {
+            getLoanDetailsAction(res);
+          });
+          getEthLocked().then((res) => {
+            getEthLockedAction(res);
+          });
           setState((prev) => ({ ...prev, isReturning: false }));
         })
         .catch((e) => {
@@ -151,7 +182,13 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("USDb Loan returned", { type: "success" });
-          updateBalances()
+          updateBalances();
+          getLoanContractDetails().then((res) => {
+            getLoanDetailsAction(res);
+          });
+          getEthLocked().then((res) => {
+            getEthLockedAction(res);
+          });
           setState((prev) => ({ ...prev, isReturning: false }));
         })
         .catch((e) => {
@@ -167,14 +204,11 @@ const useCreateLoan = () => {
     if (locked === "") {
       setState((prev) => ({ ...prev, lockedErr: "This Field is required" }));
       validated = false;
-    }
-
-    else if (Number(locked) > state?.ETH?.cryptoBalance) {
+    } else if (Number(locked) > state?.ETH?.cryptoBalance) {
       setState((prev) => ({ ...prev, lockedErr: "Not enough balance" }));
       validated = false;
-    }
-    else{
-        setState((prev) => ({ ...prev, lockedErr: "" }));
+    } else {
+      setState((prev) => ({ ...prev, lockedErr: "" }));
     }
 
     return validated;
@@ -196,8 +230,13 @@ const useCreateLoan = () => {
       console.log("in if block ");
       actualLoan = (((value * state.ETH.rate) / 100) * 80).toString();
     }
-    dispatch(handleLocked({ locked: value, borrowed: actualLoan,USDValue: USDValueBorrowed }));
-   
+    dispatch(
+      handleLocked({
+        locked: value,
+        borrowed: actualLoan,
+        USDValue: USDValueBorrowed,
+      })
+    );
   };
   const handleBorrowedChange = (event: any) => {
     const { value } = event.target;
@@ -214,10 +253,15 @@ const useCreateLoan = () => {
       console.log(valueToDeduct, "valueToDeduct");
       actualLoan = (value / state.ETH.rate + valueToDeduct).toString();
     }
-    dispatch(handleBorrowed({ locked: actualLoan, borrowed: value,USDValue: USDValueBorrowed }));
-   
+    dispatch(
+      handleBorrowed({
+        locked: actualLoan,
+        borrowed: value,
+        USDValue: USDValueBorrowed,
+      })
+    );
   };
- 
+
   return {
     ...state,
     submit,

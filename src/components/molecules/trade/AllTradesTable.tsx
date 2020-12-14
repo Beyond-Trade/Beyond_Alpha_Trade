@@ -15,7 +15,7 @@ function AllTradesTable(props: IProps) {
             <div className="flex items-center whitespace-nowrap	w-20">
               DATE | TIME
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />
@@ -25,7 +25,7 @@ function AllTradesTable(props: IProps) {
             <div className="flex items-center">
               ASSET
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />
@@ -35,7 +35,7 @@ function AllTradesTable(props: IProps) {
             <div className="flex items-center">
               AMOUNT
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />

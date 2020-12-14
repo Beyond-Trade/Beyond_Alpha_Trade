@@ -9,10 +9,10 @@ import { RootState } from "../../../store/reducers/Index";
 function CloseLoan() {
   const toConvert = 1000000000000000000;
   const [returnLoanObj, setReturnLoanObj] = useState({
-    totalValueAfterLoanFeeETHb: 0,
-    totalValueAfterLoanFeeUSDb: 0,
-    loanValueETHb: 0,
-    loanValueUSDb: 0,
+    _totalValueAfterLoanFeeETHb: 0,
+    _totalValueAfterLoanFeeUSDb: 0,
+    _loanValueETHb: 0,
+    _loanValueUSDb: 0,
   });
   const {
     returnLoanAction,
@@ -30,7 +30,7 @@ function CloseLoan() {
       setReturnLoanObj(res);
       console.log(res);
     });
-  }, [loanType]);
+  }, [loanType,isReturning]);
   console.log(returnLoanObj);
   // parseFloat(((21000 * fee) / 1e9).toFixed(8));
   return (
@@ -46,8 +46,8 @@ function CloseLoan() {
             <p className="text-gray-600 py-1">
               Balance :{" "}
               {loanType === "ETHb"
-                ? returnLoanObj?.totalValueAfterLoanFeeETHb / toConvert || 0
-                : returnLoanObj?.totalValueAfterLoanFeeUSDb / toConvert || 0}
+                ? returnLoanObj?._totalValueAfterLoanFeeETHb / toConvert || 0
+                : returnLoanObj?._totalValueAfterLoanFeeUSDb / toConvert || 0}
             </p>
           </div>
 
@@ -56,8 +56,8 @@ function CloseLoan() {
             <p className="text-gray-600 py-1">
               Balance :{" "}
               {loanType === "ETHb"
-                ? returnLoanObj?.loanValueETHb / toConvert || 0
-                : returnLoanObj?.loanValueUSDb / toConvert || 0}
+                ? returnLoanObj?._loanValueETHb / toConvert || 0
+                : returnLoanObj?._loanValueUSDb / toConvert || 0}
             </p>
           </div>
 
@@ -66,9 +66,9 @@ function CloseLoan() {
             <p className="text-gray-600 py-1">
               $
               {loanType === "ETHb"
-                ? (returnLoanObj?.loanValueETHb / toConvert) * ETH?.rate || 0
+                ? (returnLoanObj?._loanValueETHb / toConvert) * ETH?.rate || 0
 
-                : returnLoanObj?.loanValueUSDb / toConvert || 0}
+                : returnLoanObj?._loanValueUSDb / toConvert || 0}
             </p>
           </div>
 

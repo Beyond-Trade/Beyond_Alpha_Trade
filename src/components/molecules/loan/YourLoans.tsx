@@ -14,7 +14,7 @@ function YourLoans() {
             <div className="flex items-center " style={{ width: "130px" }}>
               AMOUNT BORROWED{" "}
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />
@@ -24,7 +24,7 @@ function YourLoans() {
             <div className="flex items-center" style={{ width: "90px" }}>
               COLLATERAL{" "}
               <img
-                src="assets/Icons/up-down-arrow.svg"
+                src="/assets/Icons/up-down-arrow.svg"
                 alt="img"
                 className="ml-1 h-2"
               />
@@ -33,31 +33,31 @@ function YourLoans() {
           <td className="w-1/7">
             <div className="flex items-center" style={{ width: "70px" }}>
               C-RATIO{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
             <div className="flex items-center" style={{ width: "100px" }}>
               TIME OPENED{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
             <div className="flex items-center" style={{ width: "130px" }}>
               CURRENT.INST.FEE{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
             <div className="flex items-center" style={{ width: "70px" }}>
               STATUS{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="w-1/7">
             <div className="flex items-center" style={{ width: "70px" }}>
               VERIFY{" "}
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
         </tr>

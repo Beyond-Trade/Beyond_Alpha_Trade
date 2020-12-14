@@ -52,7 +52,7 @@ function SelectWallet(props: IProps) {
               <a target="_blank" href={EtherscanBrowsUrl + item.address}>
                 {" "}
                 <img
-                  src="assets/Icons/etherscan-logo-circle.svg"
+                  src="/assets/Icons/etherscan-logo-circle.svg"
                   className="h-4"
                 />
               </a>

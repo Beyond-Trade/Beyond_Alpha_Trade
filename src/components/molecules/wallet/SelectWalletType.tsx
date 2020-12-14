@@ -14,31 +14,31 @@ function SelectWalletType(props: IProps) {
       <WalletOption
         onConnected={props.onSelect}
         text="Metamask"
-        image="assets/Icons/Metamask.svg"
+        image="/assets/Icons/Metamask.svg"
         type={web3Sources.Metamask}
       />
       <WalletOption
         onConnected={props.onSelect}
         text="WalletConnect"
-        image="assets/Icons/WalletConnect.svg"
+        image="/assets/Icons/WalletConnect.svg"
         type={web3Sources.WalletConnect}
       />
       <WalletOption
         onConnected={props.onSelect}
         text="Portis"
-        image="assets/Icons/Portis.svg"
+        image="/assets/Icons/Portis.svg"
         type={web3Sources.Portis}
       />
       <WalletOption
         onConnected={props.onSelect}
         text="Coinbase Wallet"
-        image="assets/Icons/Coinbase Wallet.svg"
+        image="/assets/Icons/Coinbase Wallet.svg"
         type={web3Sources.Coinbase}
       />
       <WalletOption
         onConnected={props.onSelect}
         text="Formatic"
-        image="assets/Icons/Formatic.svg"
+        image="/assets/Icons/Formatic.svg"
         type={web3Sources.Fortmatic}
       />
     </div>

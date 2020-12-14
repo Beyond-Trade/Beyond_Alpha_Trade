@@ -13,7 +13,7 @@ function NewsAndBlog() {
             <div className="flex-col flex items-center justify-center">
               <div className="w-full xl:h-48 xxl:h-64 flex-col flex items-center justify-center">
                 <img
-                  src="assets/Images/samplepost.png"
+                  src="/assets/Images/samplepost.png"
                   alt="img"
                   className="w-full h-full content-end"
                 />
@@ -27,7 +27,7 @@ function NewsAndBlog() {
             <div className="flex-col flex items-center justify-center">
               <div className="w-full xl:h-48 xxl:h-64 flex-col flex items-center justify-center">
                 <img
-                  src="assets/Images/samplepost.png"
+                  src="/assets/Images/samplepost.png"
                   alt="img"
                   className="w-full h-full content-end"
                 />
@@ -41,7 +41,7 @@ function NewsAndBlog() {
             <div className="flex-col flex items-center justify-center">
               <div className="w-full xl:h-48 xxl:h-64 flex-col flex items-center justify-center">
                 <img
-                  src="assets/Images/samplepost.png"
+                  src="/assets/Images/samplepost.png"
                   alt="img"
                   className="w-full h-full content-end"
                 />
@@ -55,7 +55,7 @@ function NewsAndBlog() {
             <div className="flex-col flex items-center justify-center">
               <div className="w-full xl:h-48 xxl:h-64 flex-col flex items-center justify-center">
                 <img
-                  src="assets/Images/samplepost.png"
+                  src="/assets/Images/samplepost.png"
                   alt="img"
                   className="w-full h-full content-end"
                 />
@@ -69,7 +69,7 @@ function NewsAndBlog() {
             <div className="flex-col flex items-center justify-center">
               <div className="w-full xl:h-48 xxl:h-64 flex-col flex items-center justify-center">
                 <img
-                  src="assets/Images/samplepost.png"
+                  src="/assets/Images/samplepost.png"
                   alt="img"
                   className="w-full h-full content-end"
                 />
@@ -83,7 +83,7 @@ function NewsAndBlog() {
             <div className="flex-col flex items-center justify-center">
               <div className="w-full xl:h-48 xxl:h-64 flex-col flex items-center justify-center">
                 <img
-                  src="assets/Images/samplepost.png"
+                  src="/assets/Images/samplepost.png"
                   alt="img"
                   className="w-full h-full content-end"
                 />

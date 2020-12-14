@@ -52,14 +52,14 @@ function StatesRow() {
         </div>
         <div className="flex content-between justify-between px-8">
           <img
-            src="assets/Icons/Synthetic asset breakdown.svg"
+            src="/assets/Icons/Synthetic asset breakdown.svg"
             alt="img"
             className="h-12 xxl:h-20 my-2 mr-6"
           />
           <div className="text-xxs xxl:text-lg">
             <div className="flex items-center text-xs xxl:text-sm text-gray-500 font-medium mt-1">
               <img
-                src="assets/Icons/Purple.Ellipse.svg"
+                src="/assets/Icons/Purple.Ellipse.svg"
                 alt="img"
                 className="h-3 xxl:h-4 "
               />
@@ -70,7 +70,7 @@ function StatesRow() {
             </div>
             <div className="flex items-center text-xs xxl:text-sm text-gray-500 font-medium mt-1">
               <img
-                src="assets/Icons/Purple.Ellipse.svg"
+                src="/assets/Icons/Purple.Ellipse.svg"
                 alt="img"
                 className="h-3 xxl:h-4 "
               />
@@ -84,7 +84,7 @@ function StatesRow() {
             </div>
             <div className="flex items-center text-xs xxl:text-sm text-gray-500 font-medium mt-1">
               <img
-                src="assets/Icons/Purple.Ellipse.svg"
+                src="/assets/Icons/Purple.Ellipse.svg"
                 alt="img"
                 className="h-3 xxl:h-4 "
               />

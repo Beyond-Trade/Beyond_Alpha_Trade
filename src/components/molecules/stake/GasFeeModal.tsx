@@ -16,7 +16,7 @@ function GasFeeModal(props: IProps) {
       <div className="flex justify-between items-center border-b border-gray-400 pb-2">
         <h2 className="font-medium">Gas Fee</h2>
         <button onClick={() => props.close()} className="focus:outline-none">
-          <img src="assets/Icons/Cross.svg" />
+          <img src="/assets/Icons/Cross.svg" />
         </button>
       </div>
       <div>

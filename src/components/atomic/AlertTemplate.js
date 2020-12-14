@@ -24,12 +24,12 @@ const buttonStyle = {
 const AlertTemplate = ({ message, options, style, close }) => {
   return (
     <div style={{ ...alertStyle, ...style }}>
-      {options.type === 'info' && <img src="assets/Icons/info.png" className="w-6 mr-2" />}
-      {options.type === 'success' && <img src="assets/Icons/success.png" className="w-6 mr-2" />}
-      {options.type === 'error' && <img src="assets/Icons/error.png" className="w-6 mr-2" />}
+      {options.type === 'info' && <img src="/assets/Icons/info.png" className="w-6 mr-2" />}
+      {options.type === 'success' && <img src="/assets/Icons/success.png" className="w-6 mr-2" />}
+      {options.type === 'error' && <img src="/assets/Icons/error.png" className="w-6 mr-2" />}
       <span style={{ flex: 2 }}>{message}</span>
       <button onClick={close} style={buttonStyle}>
-      <img src="assets/Icons/Cross.svg" className="w-3" />
+      <img src="/assets/Icons/Cross.svg" className="w-3" />
       </button>
     </div>
   )

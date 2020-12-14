@@ -4,7 +4,7 @@ function SearchTop({ handleSearch, search }: any) {
   return (
     <div className="flex border border-gray-500 mb-4 px-2">
       <img
-        src="assets/Icons/searching.svg"
+        src="/assets/Icons/searching.svg"
         alt="img"
         className="xl:w-4 xxl:w-6"
       />

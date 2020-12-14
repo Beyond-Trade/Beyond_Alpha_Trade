@@ -6,10 +6,12 @@ import { RootState } from "../../../store/reducers/Index";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import useRewards from "../../../hooks/stake/useRewards";
 
 const BottomSection = () => {
-  const history=useHistory()
+  const history = useHistory();
   const [state, setState] = useState({
+    stackedBYNPercent: 10,
     stackedBYN: 0,
     unstackedBYN: 0,
     totalBYN: 0,
@@ -17,8 +19,10 @@ const BottomSection = () => {
     ethRate: 0,
     bynRate: 0,
   });
-  const { balances, stackedBYN, unstacked, totalByn } = useSelector((state: RootState) => state.wallet);
-
+  const { balances, stackedBYN, unstacked, totalByn } = useSelector(
+    (state: RootState) => state.wallet
+  );
+  const { rewards } = useRewards();
   React.useEffect(() => {
     const ETHObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.ETH
@@ -26,7 +30,6 @@ const BottomSection = () => {
     const BYNObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
-
     setState((prev) => ({
       ...prev,
       ethRate: ETHObj?.rate || 0,
@@ -34,15 +37,16 @@ const BottomSection = () => {
       bynRate: BYNObj?.rate || 0,
     }));
   }, [balances]);
-console.log(balances,",,,,,,,,,,,,,,,,,,,,,")
   React.useEffect(() => {
+    let stackedPerc = (stackedBYN * 100) / totalByn;
     setState((prev) => ({
       ...prev,
       stackedBYN: stackedBYN,
       unstackedBYN: unstacked,
       totalBYN: totalByn,
+      stackedBYNPercent: stackedPerc,
     }));
-  },[stackedBYN, unstacked, totalByn])
+  }, [stackedBYN, unstacked, totalByn]);
 
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
@@ -84,16 +88,25 @@ console.log(balances,",,,,,,,,,,,,,,,,,,,,,")
               Not Staked: {state.unstackedBYN}
             </h6>
           </div>
-          <div className="flex mt-1 pb-2">
-            <div className="w-full h-4 bg-gray-300"></div>
-            <div className="w-24 h-4 bg-gray-400"></div>
+          <div
+            className="w-full flex mt-1 pb-2 bg-gray-300"
+            style={{ padding: "0px" }}
+          >
+            <div
+              className="h-4 bg-gray-400"
+              style={{ width: `${state.stackedBYNPercent}%` }}
+            ></div>
+            {/* <div className="h-4 bg-gray-300"></div> */}
           </div>
         </div>
         {/*  */}
         <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-6">
           <div className="flex justify-between">
             <h6 className="xxl:text-sm text-xs font-medium">DAILY REWARD</h6>
-            <div className="flex items-center cursor-pointer" onClick={()=>history.push("/stake/rewards")}>
+            <div
+              className="flex items-center cursor-pointer"
+              onClick={() => history.push("/stake/rewards")}
+            >
               <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
                 See Details
               </label>
@@ -115,7 +128,7 @@ console.log(balances,",,,,,,,,,,,,,,,,,,,,,")
                 alt="img"
               />
               <label className="xxl:text-lg text-xs text-blue-1000">
-                4.55 BYN
+                {rewards.reduce((a: any, b: any) => a + b, 0)} BYN
               </label>
             </div>
           </div>
@@ -166,11 +179,7 @@ console.log(balances,",,,,,,,,,,,,,,,,,,,,,")
               <tr className="flex bg-gray-100 justify-between font-normal py-1 py-2 px-8 text-xs font-light rounded-t">
                 <td style={{ width: "120px" }}>
                   <div className="flex items-center">
-                    <img
-                      src={item.icon}
-                      className="h-4 xxl:h-8"
-                      alt="img"
-                    />
+                    <img src={item.icon} className="h-4 xxl:h-8" alt="img" />
                     <h6 className="ml-2 lg:ml-2 xxl:ml-4 xxl:text-xl text-xs">
                       {item.short}
                     </h6>

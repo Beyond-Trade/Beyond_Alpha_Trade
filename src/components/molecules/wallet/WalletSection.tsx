@@ -27,7 +27,7 @@ function WalletSection(props: IProps) {
           {loadingBalance && <Loader type="TailSpin" color="#ffffff" height={10} width={10} />}
           {loadingBalance && <text className="ml-2">Processing...</text>}
           {!loadingBalance&&<img
-            src="assets/Icons/wallet-icon.svg"
+            src="/assets/Icons/wallet-icon.svg"
             alt="img"
             className="mr-2 h-3"
           />}

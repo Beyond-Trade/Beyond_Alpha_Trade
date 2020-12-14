@@ -14,43 +14,43 @@ function MyOrdersTable(props: IProps) {
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	xl:w-20 xxl:w-32">
               DATE | TIME
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="py-2 px-3">
             <div className="flex items-center">
               PAIR
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="py-2 px-3">
             <div className="flex items-center">
               BUYING
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="py-2 px-3">
             <div className="flex items-center">
               SELLING
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="py-2 px-3">
             <div className="flex items-center">
               PRICE
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           {/* <td className="py-2 px-3">
             <div className="flex items-center">
               TOTAL
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td> */}
           <td className="py-2 px-3">
             <div className="flex items-center">
               STATUS
-              <img src="assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
+              <img src="/assets/Icons/up-down-arrow.svg" className="ml-1 h-2" />
             </div>
           </td>
           <td className="py-2 px-3">
