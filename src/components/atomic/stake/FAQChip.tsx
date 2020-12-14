@@ -11,9 +11,9 @@ function FAQChip() {
         </h5>
         <button className="focus:outline-none" onClick={handleToggle}>
           {toggle ? (
-            <img src="assets/Icons/collapsible-minus.svg" alt="img" />
+            <img src="/assets/Icons/collapsible-minus.svg" alt="img" />
           ) : (
-            <img src="assets/Icons/collapsible-plus.svg" alt="img" />
+            <img src="/assets/Icons/collapsible-plus.svg" alt="img" />
           )}
         </button>
       </div>

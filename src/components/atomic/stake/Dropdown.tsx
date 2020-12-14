@@ -19,7 +19,7 @@ function Dropdown(props: IProps) {
         {props.fields[props.index] === "Beyond"
           ? "BYN"
           : props.fields[props.index]}
-        <img src="assets/Icons/arrow-down.svg" className="ml-1 w-2" />
+        <img src="/assets/Icons/arrow-down.svg" className="ml-1 w-2" />
       </button>
       {visible && (
         <div className="absolute text-gray-600 xl:text-xs xxl:text-base font-medium bg-white shadow">

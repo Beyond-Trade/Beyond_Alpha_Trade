@@ -1,10 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import NavTab from "../atomic/NavTab";
 import WalletSection from "../molecules/wallet/WalletSection";
 import { updateBalances } from "../../services/wallet.service";
 
 function Navbar() {
+  const history=useHistory();
   updateBalances();
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
@@ -60,13 +61,13 @@ function Navbar() {
             </button>
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex-shrink-0 flex items-center">
-              <img src="assets/Images/Logo.png" className="h-8 xxl:h-12" />
+            <div className="flex-shrink-0 flex items-center cursor-pointer">
+              <img src="assets/Images/Logo.png" className="h-8 xxl:h-12" onClick={()=>history.push("/")} />
             </div>
             <div className="hidden sm:block md:ml-6">
               <div className="flex space-x-4">
                 <NavTab
-                  path="/stake"
+                  path="/stake/swap_byn"
                   text="STAKE"
                   active={location.pathname === "/stake"}
                 />

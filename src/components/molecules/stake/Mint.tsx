@@ -33,7 +33,7 @@ function Mint() {
             your staked BYN
           </p>
           <img
-            src="assets/Icons/mint-illustration.svg"
+            src="/assets/Icons/mint-illustration.svg"
             style={{ height: "150px" }}
             alt="img"
             className="m-auto mt-10"

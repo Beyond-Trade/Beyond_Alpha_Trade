@@ -15,6 +15,7 @@ import {
   handleLocked,
 } from "../../store/actions/LoanTypeAction";
 import { stat } from "fs";
+import { updateBalances } from "../../services/wallet.service";
 
 const useCreateLoan = () => {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("ETHb Loan added.", { type: "success" });
+          updateBalances()
           setState((prev) => ({
             ...prev,
             isSubmitting: false,
@@ -111,6 +113,7 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("USDb Loan added", { type: "success" });
+          updateBalances()
           setState((prev) => ({ ...prev, isSubmitting: false }));
         })
         .catch((e) => {
@@ -131,6 +134,7 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("ETHb Loan returned", { type: "success" });
+          updateBalances()
           setState((prev) => ({ ...prev, isReturning: false }));
         })
         .catch((e) => {
@@ -147,6 +151,7 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("USDb Loan returned", { type: "success" });
+          updateBalances()
           setState((prev) => ({ ...prev, isReturning: false }));
         })
         .catch((e) => {

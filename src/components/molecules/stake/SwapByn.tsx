@@ -29,7 +29,7 @@ function SwapByn(props: IProps) {
             <br />
             Everything starts from here.
           </p>
-          <img src="assets/Icons/swap.svg" className="h-24 m-auto mt-10" />
+          <img src="/assets/Icons/swap.svg" className="h-24 m-auto mt-10" />
         </div>
         <div className="w-full px-6">
           {/* <GeneralTab tabs={["SWAP", "POOL"]} onClick={() => {}} index={0} /> */}
@@ -55,7 +55,7 @@ function SwapByn(props: IProps) {
                 >
                   MAX
                 </button>
-                <img src="assets/Icons/eth-small.svg" className="h-4" />
+                <img src="/assets/Icons/eth-small.svg" className="h-4" />
                 <h4 className="font-medium text-xs xxl:text-lg  ml-1">
                   ETH
                 </h4>
@@ -63,7 +63,7 @@ function SwapByn(props: IProps) {
             </div>
           </div>
           <small className="text-red-500 italic block">{fromVal}</small>
-          <img src="assets/Icons/arrow_down.svg" className="mt-6 m-auto h-4" />
+          <img src="/assets/Icons/arrow_down.svg" className="mt-6 m-auto h-4" />
           <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
               <h6 className="text-xs xxl:text-sm font-medium">To (BYN)</h6>
@@ -76,7 +76,7 @@ function SwapByn(props: IProps) {
               <h6 className="text-xxs font-medium">-</h6>
               {/* <div className="flex items-center w-24 mt-3 bg-blue-300 justify-center text-white">
                         <h4 className="text-xxs">Select a token</h4>
-                        <img src="assets/Icons/arrow-dropdown.svg" className="w-2 ml-1" />
+                        <img src="/assets/Icons/arrow-dropdown.svg" className="w-2 ml-1" />
                     </div> */}
             </div>
           </div>

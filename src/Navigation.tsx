@@ -24,7 +24,7 @@ function Navigation() {
         <Route exact path="/">
           <Wallet />
         </Route>
-        <Route path="/stake">
+        <Route path="/stake/:id">
           <Stake />
         </Route>
         <Route path="/market">

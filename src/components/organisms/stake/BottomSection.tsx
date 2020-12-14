@@ -5,8 +5,10 @@ import { ERC20Contracts } from "../../../contracts/constants/contracts";
 import { RootState } from "../../../store/reducers/Index";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const BottomSection = () => {
+  const history=useHistory()
   const [state, setState] = useState({
     stackedBYN: 0,
     unstackedBYN: 0,
@@ -32,7 +34,7 @@ const BottomSection = () => {
       bynRate: BYNObj?.rate || 0,
     }));
   }, [balances]);
-
+console.log(balances,",,,,,,,,,,,,,,,,,,,,,")
   React.useEffect(() => {
     setState((prev) => ({
       ...prev,
@@ -48,7 +50,7 @@ const BottomSection = () => {
         <div className="flex justify-between items-center py-2 xxl:py-3 px-4 xxl:px-6 bg-customGray-100 rounded">
           <div className="flex items-center">
             <img
-              src="assets/Icons/BYN-small.svg"
+              src="/assets/Icons/BYN-small.svg"
               alt="img"
               className="h-6 xxl:h-8"
             />
@@ -58,7 +60,7 @@ const BottomSection = () => {
           </div>
           <div className="flex items-center">
             <img
-              src="assets/Icons/Ethereum.svg"
+              src="/assets/Icons/Ethereum.svg"
               alt="img"
               className="h-6 xxl:h-8"
             />
@@ -91,12 +93,12 @@ const BottomSection = () => {
         <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-6">
           <div className="flex justify-between">
             <h6 className="xxl:text-sm text-xs font-medium">DAILY REWARD</h6>
-            <div className="flex items-center">
-              <label className="xxl:text-sm text-xxs font-normal text-blue-1000">
+            <div className="flex items-center cursor-pointer" onClick={()=>history.push("/stake/rewards")}>
+              <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
                 See Details
               </label>
               <img
-                src="assets/Icons/see details arrow.svg"
+                src="/assets/Icons/see details arrow.svg"
                 className="ml-1 w-3"
                 alt="img"
               />
@@ -108,7 +110,7 @@ const BottomSection = () => {
             </h6>
             <div className="flex items-center">
               <img
-                src="assets/Icons/trophy.png"
+                src="/assets/Icons/trophy.png"
                 className="mr-1 w-3 xxl:w-5"
                 alt="img"
               />
@@ -137,7 +139,7 @@ const BottomSection = () => {
                 See Details
               </label>
               <img
-                src="assets/Icons/see details arrow.svg"
+                src="/assets/Icons/see details arrow.svg"
                 className="ml-1 w-3"
                 alt="img"
               />

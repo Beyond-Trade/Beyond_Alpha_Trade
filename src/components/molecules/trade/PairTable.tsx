@@ -5,6 +5,7 @@ import PairData from "./PairData";
 
 function PairTable() {
   const { marketTab, tabs, setMarketTab, marketData, setSelectedPair, search } = usePairSelection()
+  console.log(marketData,"=======>>>>>>>>>>")
   return (
     <div className="mt-4">
       <GenericTab

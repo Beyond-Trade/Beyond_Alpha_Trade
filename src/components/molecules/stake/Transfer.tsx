@@ -34,7 +34,7 @@ function Transfer() {
             Transfer your ETH, BYN or other synthetic asset
           </p>
           <img
-            src="assets/Icons/transfer.svg"
+            src="/assets/Icons/transfer.svg"
             style={{ height: "150px" }}
             alt="img"
             className="m-auto mt-10"

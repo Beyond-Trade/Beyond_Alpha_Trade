@@ -40,7 +40,7 @@ function Burn() {
             your non-escrowed BYN.
           </p>
           <img
-            src="assets/Icons/burn.svg"
+            src="/assets/Icons/burn.svg"
             style={{ height: "150px" }}
             alt="img"
             className="m-auto mt-10"

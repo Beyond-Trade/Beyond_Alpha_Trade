@@ -14,7 +14,7 @@ function Banner() {
       </div>
 
       <img
-        src="assets/Images/header-illustrations.png"
+        src="/assets/Images/header-illustrations.png"
         alt="img"
         style={{width:"50%", height: '30vw'}}
       />

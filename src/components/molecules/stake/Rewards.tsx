@@ -36,7 +36,10 @@ function Rewards() {
         });
         console.log(resCopy);
         Rewards.push(+result / convertToUSDb);
-        rewardsData.push({ time: resCopy, data: result });
+        if(result > 0){
+          rewardsData.push({ time: resCopy, data: result });
+        }
+        // rewardsData.push({ time: resCopy, data: result });
       }
     }
     setRewards([...Rewards]);
@@ -59,7 +62,7 @@ function Rewards() {
             on a daily basis.
           </p>
           <img
-            src="assets/Icons/Rewards.svg"
+            src="/assets/Icons/Rewards.svg"
             alt="img"
             className="h-24 m-auto mt-10"
           />
@@ -130,9 +133,9 @@ function Rewards() {
             >
               CLAIM
             </button>
-            <button className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8">
+            {/* <button className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8">
               STAKE & MINT
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
