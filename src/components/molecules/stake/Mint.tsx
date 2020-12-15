@@ -17,6 +17,10 @@ function Mint() {
     isOpen,
     cRatio,
     BYNStackingAmount,
+    BynBalance,
+    usdbBalance,
+    burnableByns,
+    graphPercent
   } = useMint();
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
@@ -68,8 +72,29 @@ function Mint() {
               <h6>Estimated C-Ratio: {cRatio}%</h6>
             </div>
           </div>
-          {/*  */}
-          <div className="mt-24 text-center text-xs xl:text-xs xxl:text-sm font-normal">
+          <div className="text-xxs xl:text-xxs xxl:text-sm m-auto xl:w-full xxl:w-4/5 font-medium mt-8">
+            <h5 className="text-right font-medium text-xs">Total Available</h5>
+            <div className="flex items-center">
+              <div>
+                <div className="border border-blue-800 text-blue-800 rounded text-center px-1">BYN</div>
+                {/* <img src="assets/Icons/see details arrow.svg" /> */}
+                <div className="border border-blue-800 text-blue-800 rounded px-1 mt-6">USDb</div>
+              </div>
+                <div className="flex h-6 border-2 border-blue-800 bg-blue-700 w-full" style={{ width: `${graphPercent}%`}}></div>
+              <div className="w-full">
+                <div className="w-full flex justify-between">
+                  <text>{burnableByns}</text>
+                  <text>{BynBalance}</text>
+                </div>
+              <div className="flex h-6 border-2 border-blue-800 border-l-0"></div>
+              <div className="w-full flex justify-between">
+                  <text>{amount}</text>
+                  <text>{usdbBalance}</text>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center text-xs xl:text-xs xxl:text-sm font-normal">
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}

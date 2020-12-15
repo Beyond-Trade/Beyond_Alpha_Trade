@@ -8,10 +8,8 @@ import { useAlert } from "react-alert";
 import { updateBalances } from "../../services/wallet.service";
 
 const useMint = () => {
-  const { balances } = useSelector(
-    (state: RootState) => state.wallet
-  );
-  const alert = useAlert()
+  const { balances } = useSelector((state: RootState) => state.wallet);
+  const alert = useAlert();
   const gasFees = [1, 23, 34];
 
   const [state, setState] = useState({
@@ -22,8 +20,11 @@ const useMint = () => {
     isOpen: false,
     cRatio: 0,
     BYNStackingAmount: 0,
+    usdbBalance: 0,
     BynRate: 0,
-    BynBalance: 0
+    BynBalance: 0,
+    burnableByns: 0,
+    graphPercent: 0,
   });
 
   const submit = () => {
@@ -36,16 +37,25 @@ const useMint = () => {
   useEffect(() => {
     collatteralRatio().then((c) => {
       setState((prev) => ({ ...prev, cRatio: c }));
-    })
+    });
     const BYNObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
-    setState((prev) => ({ ...prev, BynRate: BYNObj?.rate || 0, BynBalance: BYNObj?.cryptoBalance||0 }));
-  }, [balances])
+    const UsdbObj = balances.find(
+      (bal: Balance) => bal.short == ERC20Contracts.USDb
+    );
+    setState((prev) => ({
+      ...prev,
+      BynRate: BYNObj?.rate || 0,
+      BynBalance: BYNObj?.cryptoBalance || 0,
+      amountVal: "",
+      usdbBalance: UsdbObj?.cryptoBalance || 0,
+    }));
+  }, [balances]);
 
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
-  const selectFee = (fee: number, close:boolean) =>
+  const selectFee = (fee: number, close: boolean) =>
     setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
   const mintToken = () => {
@@ -55,16 +65,17 @@ const useMint = () => {
         if (!data) {
           throw new Error("no data");
         }
-        updateBalances()
-        alert.show('Mint successful', {type:'success'})
+        updateBalances();
+        alert.show("Mint successful", { type: "success" });
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        console.log('e', e)
-        alert.show('Error while minting', {type:'error'})
+        console.log("e", e);
+        alert.show("Error while minting", { type: "error" });
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };
+
   const isValidated = () => {
     let validated = true;
     if (state.amount === "") {
@@ -75,20 +86,29 @@ const useMint = () => {
       setState((prev) => ({ ...prev, amountVal: "Amount is not valid" }));
       validated = false;
     }
-    if (state.BYNStackingAmount > state.BynBalance||state.BynBalance===0) {
+    if (state.BYNStackingAmount > state.BynBalance || state.BynBalance === 0) {
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;
     }
-    if(state.submitting){
-      validated = false
+    if (state.submitting) {
+      validated = false;
     }
     return validated;
   };
 
   const setAmount = (event: any) => {
     const value = event.target.value;
-    let stacking = ((value * (state.cRatio/100)) / state.BynRate);
-    setState((prev) => ({ ...prev, amount: value, amountVal: "",BYNStackingAmount:state.BynRate===0?0: stacking }));
+    let stacking = ((value * (state.cRatio / 100)) / state.BynRate).toFixed(4);
+    const burnable = Number(((1/state.BynRate)*value).toFixed(4))
+    const percent = (burnable*100)/state.BynBalance
+    setState((prev) => ({
+      ...prev,
+      amount: value,
+      amountVal: "",
+      BYNStackingAmount: state.BynRate === 0 ? 0 : Number(stacking),
+      burnableByns: burnable,
+      graphPercent: percent
+    }));
   };
 
   return {
