@@ -292,24 +292,6 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: false,
-    inputs: [{ internalType: "address", name: "_address", type: "address" }],
-    name: "setBeyondExchangeAddressInLoan",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "address", name: "_address", type: "address" }],
-    name: "setBeyondExchangeAddressInProx",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
     inputs: [
       { internalType: "contract ILoanProx", name: "_address", type: "address" },
     ],
