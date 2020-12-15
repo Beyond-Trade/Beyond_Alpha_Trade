@@ -85,30 +85,27 @@ function Mint() {
                 </div>
               </div>
               <div
-            className="w-full flex flex h-6 border-2 border-blue-800"
+            className="w-full flex flex h-6 items-center"
             style={{ padding: "0px" }}
           >
             <div
-              className="h-5 bg-blue-700 "
+              className="h-5 bg-blue-700 border-2 border-blue-800"
               style={{ width: `${graphPercent}%` }}
             ></div>
-            {/* <div className="h-4 bg-gray-300"></div> */}
-          </div>
-              {/* <div
-                className="flex h-6 border-2 border-blue-800 bg-blue-700 w-full"
-                style={{ width: `${graphPercent}%` }}
-              ></div> */}
-              <div className="w-full">
+
+<div className="w-full">
                 <div className="w-full flex justify-between">
                   <text>{burnableByns}</text>
                   <text>{BynBalance}</text>
                 </div>
-                <div className="flex h-6 border-2 border-blue-800 border-l-0"></div>
+                <div className="flex h-5 border-2 border-blue-800 border-l-0"></div>
                 <div className="w-full flex justify-between">
                   <text>{amount}</text>
                   <text>{usdbBalance}</text>
                 </div>
               </div>
+          </div>
+              
             </div>
           </div>
           <div className="mt-8 text-center text-xs xl:text-xs xxl:text-sm font-normal">

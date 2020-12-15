@@ -41,9 +41,7 @@ const useMint = () => {
     const BYNObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
-    const UsdbObj = balances.find(
-      (bal: Balance) => bal.short == ERC20Contracts.USDb
-    );
+
     setState((prev) => ({
       ...prev,
       BynRate: BYNObj?.rate || 0,
@@ -102,7 +100,7 @@ const useMint = () => {
     let stacking = ((value * (state.cRatio / 100)) / state.BynRate).toFixed(4);
     const burnable = Number(((value * (state.cRatio / 100)) / state.BynRate).toFixed(4));
     const percent = (burnable*100)/state.BynBalance
-    console.log(percent,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+    
     setState((prev) => ({
       ...prev,
       amount: value,
