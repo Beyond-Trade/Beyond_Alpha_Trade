@@ -21,7 +21,7 @@ function CloseLoan() {
     isFeeOpen,
     closeFeeModal,
     fee,
-    selectFee,
+    selectFee, 
     ETH
   } = useCreateLoan();
   const { loanType } = useSelector((state: RootState) => state.loan);
@@ -31,7 +31,6 @@ function CloseLoan() {
       console.log(res);
     });
   }, [loanType,isReturning]);
-  console.log(returnLoanObj);
   // parseFloat(((21000 * fee) / 1e9).toFixed(8));
   return (
     <>

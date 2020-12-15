@@ -65,10 +65,10 @@ const useCreateLoan = () => {
 
   useEffect(() => {
     getLoanContractDetails().then((res) => {
-      getLoanDetailsAction(res);
+      dispatch(getLoanDetailsAction(res));
     });
     getEthLocked().then((res) => {
-      getEthLockedAction(res);
+      dispatch(getEthLockedAction(res));
     });
   }, [loanType]);
 
@@ -105,10 +105,10 @@ const useCreateLoan = () => {
           alert.show("ETHb Loan added.", { type: "success" });
           updateBalances();
           getLoanContractDetails().then((res) => {
-            getLoanDetailsAction(res);
+            dispatch(getLoanDetailsAction(res));
           });
           getEthLocked().then((res) => {
-            getEthLockedAction(res);
+            dispatch(getEthLockedAction(res));
           });
           setState((prev) => ({
             ...prev,
@@ -134,10 +134,10 @@ const useCreateLoan = () => {
           alert.show("USDb Loan added", { type: "success" });
           updateBalances();
           getLoanContractDetails().then((res) => {
-            getLoanDetailsAction(res);
+            dispatch(getLoanDetailsAction(res));
           });
           getEthLocked().then((res) => {
-            getEthLockedAction(res);
+            dispatch(getEthLockedAction(res));
           });
           setState((prev) => ({ ...prev, isSubmitting: false }));
         })
@@ -161,10 +161,10 @@ const useCreateLoan = () => {
           alert.show("ETHb Loan returned", { type: "success" });
           updateBalances();
           getLoanContractDetails().then((res) => {
-            getLoanDetailsAction(res);
+            dispatch(getLoanDetailsAction(res));
           });
           getEthLocked().then((res) => {
-            getEthLockedAction(res);
+            dispatch(getEthLockedAction(res));
           });
           setState((prev) => ({ ...prev, isReturning: false }));
         })
@@ -184,10 +184,10 @@ const useCreateLoan = () => {
           alert.show("USDb Loan returned", { type: "success" });
           updateBalances();
           getLoanContractDetails().then((res) => {
-            getLoanDetailsAction(res);
+            dispatch(getLoanDetailsAction(res));
           });
           getEthLocked().then((res) => {
-            getEthLockedAction(res);
+            dispatch(getEthLockedAction(res));
           });
           setState((prev) => ({ ...prev, isReturning: false }));
         })

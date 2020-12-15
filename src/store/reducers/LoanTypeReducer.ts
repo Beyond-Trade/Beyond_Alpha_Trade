@@ -47,6 +47,7 @@ export function LoanTypeReducer(state = initialState, action: any) {
         USDValue: action.payload.USDValue,
       };
     case GET_LOAN_DETAILS:
+      debugger
       return {
         ...state,
         OpenLoansNo: action.payload._openLoans || "0",
