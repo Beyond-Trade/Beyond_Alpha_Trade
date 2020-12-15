@@ -14,7 +14,6 @@ export const loanDetails = async () => {
         const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
         if (contractInfo) {
             // @ts-ignore
-            debugger
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo.contractAddress, { from: activeAddress });
             // @ts-ignore
             const tx = await contract.methods.getloanDetails(activeAddress).call()

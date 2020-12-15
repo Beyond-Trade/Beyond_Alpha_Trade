@@ -10,9 +10,9 @@ import { getLoan, loanDetails } from "../services/loan.service";
 import useCreateLoan from "../hooks/Loan/useCreateLoan";
 function Loan() {
   const { ETH } = useCreateLoan();
-  useEffect(() => {
-    loanDetails().then((res) => console.log(res));
-  });
+  // useEffect(() => {
+  //   loanDetails().then((res) => console.log(res));
+  // });
   // console.log(locked,"==============------------------------")
   return (
     <div>

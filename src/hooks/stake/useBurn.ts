@@ -95,7 +95,6 @@ function useBurn() {
     }
 
     const settleCollateral = () => {
-        debugger
         settleCollateralRatio(state.amount, state.fee, selected.address).then((data)=>{
             if(!data){
                 throw new Error("No provider");

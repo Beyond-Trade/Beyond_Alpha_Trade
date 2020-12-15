@@ -8,7 +8,6 @@ let web3: Web3 = new Web3();
 // @ts-ignore
 export const releaseCollateralRatio = async (amount, gas): Promise<number> => {
     web3 = store.getState().wallet.web3;
-debugger
     const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
     if (web3.currentProvider) {
         let walletInfo = store.getState().wallet;
@@ -30,7 +29,6 @@ debugger
 // @ts-ignore
 export const settleCollateralRatio = async (amount, gas, activeAddress): Promise<number> => {
     web3 = store.getState().wallet.web3;
-    debugger
     const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
     if (web3.currentProvider) {
         // @ts-ignore
