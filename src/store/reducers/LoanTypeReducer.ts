@@ -47,14 +47,13 @@ export function LoanTypeReducer(state = initialState, action: any) {
         USDValue: action.payload.USDValue,
       };
     case GET_LOAN_DETAILS:
-      debugger
       return {
         ...state,
-        OpenLoansNo: action.payload._openLoans || "0",
-        interestFee: action.payload._loanFeeRatio || "0",
-        ETHbSupply: action.payload._totalETHb || "0",
-        USDbSupply: action.payload._totalUSDb || "0",
-        collatRatio: action.payload._loanCollatteralRatio || "0",
+        OpenLoansNo: action.payload?._openLoans || "0",
+        interestFee: action.payload?._loanFeeRatio || "0",
+        ETHbSupply: action.payload?._totalETHb || "0",
+        USDbSupply: action.payload?._totalUSDb || "0",
+        collatRatio: action.payload?._loanCollatteralRatio || "0",
       };
     case GET_ETH_LOCKED:
       return {

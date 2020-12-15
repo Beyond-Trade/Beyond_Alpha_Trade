@@ -24,13 +24,13 @@ function CloseLoan() {
     selectFee, 
     ETH
   } = useCreateLoan();
-  const { loanType } = useSelector((state: RootState) => state.loan);
+  const { loanType,OpenLoansNo } = useSelector((state: RootState) => state.loan);
   useEffect(() => {
     loanDetails().then((res) => {
       setReturnLoanObj(res);
       console.log(res);
     });
-  }, [loanType,isReturning]);
+  }, [loanType,isReturning,OpenLoansNo]);
   // parseFloat(((21000 * fee) / 1e9).toFixed(8));
   return (
     <>

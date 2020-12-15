@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { loanDetails } from "../../../services/loan.service";
+import { RootState } from "../../../store/reducers/Index";
 
 function YourLoans() {
+  const toConvert = 1000000000000000000;
+  const [returnLoanObj, setReturnLoanObj] = useState({
+    _collatteralETHb: 0,
+    _collatteralUSDb: 0,
+    _totalValueAfterLoanFeeETHb: 0,
+    _totalValueAfterLoanFeeUSDb: 0,
+    _loanValueETHb: 0,
+    _loanValueUSDb: 0,
+  });
+  const { loanType, OpenLoansNo, interestFee, collatRatio } = useSelector(
+    (state: RootState) => state.loan
+  );
+  useEffect(() => {
+    loanDetails().then((res) => {
+      setReturnLoanObj(res);
+      console.log(res);
+    });
+  }, [loanType, , OpenLoansNo]);
   return (
     <div className="w-full bg-customGray-100 whitespace-nowrap  mb-4 overflow-auto rounded mr-8 mt-3">
       <div className="bg-gray-300 w-auto rounded-t pl-2 pt-2">
@@ -61,13 +82,70 @@ function YourLoans() {
             </div>
           </td>
         </tr>
-        <tbody></tbody>
+        
+          {loanType === "ETHb" ? (
+            returnLoanObj?._loanValueETHb > 0 ? (
+              <tr className="text-xs xxl:text-sm text-left text-gray-700 font-medium h-64 align-top" >
+                <td className="py-3 px-3">
+                  {loanType === "ETHb"
+                    ? returnLoanObj?._loanValueETHb / toConvert || 0
+                    : returnLoanObj?._loanValueUSDb / toConvert || 0}{" "}
+                  ETHb
+                </td>
+                <td className="py-3 px-3">
+                  {loanType === "ETHb"
+                    ? returnLoanObj?._collatteralETHb / toConvert || 0
+                    : returnLoanObj?._collatteralUSDb / toConvert || 0}{" "}
+                  ETHb
+                </td>
+                <td className="py-3 px-3">{Number(collatRatio) + 100}%</td>
+                <td className="py-3 px-3"></td>
+                <td className="py-3 px-3">{interestFee}%</td>
+                <td className="py-3 px-3">opened</td>
+                <td className="py-3 px-3"></td>
+              </tr>
+            ) : (
+              null
+            )
+          ) : returnLoanObj?._loanValueUSDb > 0 ? (
+            <tr className="text-xs xxl:text-sm text-left text-gray-700 font-medium h-64 align-top">
+              <td className="py-3 px-3">
+                {loanType === "ETHb"
+                  ? returnLoanObj?._loanValueETHb / toConvert || 0
+                  : returnLoanObj?._loanValueUSDb / toConvert || 0}{" "}
+                ETHb
+              </td>
+              <td className="py-3 px-3">
+                {loanType === "ETHb"
+                  ? returnLoanObj?._collatteralETHb / toConvert || 0
+                  : returnLoanObj?._collatteralUSDb / toConvert || 0}{" "}
+                ETHb
+              </td>
+              <td className="py-3 px-3">{Number(collatRatio) + 100}%</td>
+              <td className="py-3 px-3"></td>
+              <td className="py-3 px-3">{interestFee}%</td>
+              <td className="py-3 px-3">opened</td>
+              <td className="py-3 px-3"></td>
+            </tr>
+          ) : (
+            null
+          )}
       </table>
-      <div className="h-64 p-5">
-        <h6 className="text-blue-700 font-medium text-xxs xxl:text-sm">
-          No assets associated with this wallet
-        </h6>
-      </div>
+      {loanType === "ETHb" ? (
+        returnLoanObj?._loanValueETHb > 0 ? null : (
+          <div className="h-64 p-5">
+            <h6 className="text-blue-700 font-medium text-xxs xxl:text-sm">
+              No assets associated with this wallet
+            </h6>
+          </div>
+        )
+      ) : returnLoanObj?._loanValueUSDb > 0 ? null : (
+        <div className="h-64 p-5">
+          <h6 className="text-blue-700 font-medium text-xxs xxl:text-sm">
+            No assets associated with this wallet
+          </h6>
+        </div>
+      )}
     </div>
   );
 }
