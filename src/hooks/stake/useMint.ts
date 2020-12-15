@@ -49,7 +49,8 @@ const useMint = () => {
       BynRate: BYNObj?.rate || 0,
       BynBalance: BYNObj?.cryptoBalance || 0,
       amountVal: "",
-      usdbBalance: UsdbObj?.cryptoBalance || 0,
+      usdbBalance: Number(((BYNObj!.cryptoBalance / (state.cRatio / 100)) * state.BynRate).toFixed(4)) || 0,
+      // ((BYNObj?.cryptoBalance * (state.cRatio / 100)) / state.BynRate).toFixed(4)
     }));
   }, [balances]);
 
@@ -99,8 +100,9 @@ const useMint = () => {
   const setAmount = (event: any) => {
     const value = event.target.value;
     let stacking = ((value * (state.cRatio / 100)) / state.BynRate).toFixed(4);
-    const burnable = Number(((1/state.BynRate)*value).toFixed(4))
+    const burnable = Number(((value * (state.cRatio / 100)) / state.BynRate).toFixed(4));
     const percent = (burnable*100)/state.BynBalance
+    console.log(percent,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
     setState((prev) => ({
       ...prev,
       amount: value,

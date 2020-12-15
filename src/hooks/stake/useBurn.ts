@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { ERC20Contracts } from '../../contracts/constants/contracts';
 import { checkUserCollatteral, releaseCollateralRatio, settleCollateralRatio } from '../../services/burn.service';
 import { getPairPrice } from '../../services/generic.services';
+import { collatteralRatio } from '../../services/mint.service';
 import { updateBalances } from '../../services/wallet.service';
 import { RootState } from '../../store/reducers/Index';
 import { Balance } from '../../store/types/WalletState';
@@ -23,6 +24,7 @@ function useBurn() {
         isOpen: false,
         balance: 0,
         burnType: 0,
+        cRatio:0,
         collateralFixAmount: 0,
         showBYN: false,
         rate: 0
@@ -34,6 +36,9 @@ function useBurn() {
             const rate = getRate(balance)
             setState((prev) => ({ ...prev, balance: balance.cryptoBalance, rate }));
         }
+        collatteralRatio().then((c) => {
+            setState((prev) => ({ ...prev, cRatio: c }));
+          });
     }, [balances]);
     
     const getRate = (marketBalance:Balance)=>{
@@ -131,11 +136,12 @@ function useBurn() {
 
     const handleAmountChange = (event:any) => {
         const value = event.target.value
-        setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)/prev.rate).toString()}))
+        setState(prev=>({...prev, amount: value, amountVal: "", byn: ((value * (prev.cRatio / 100)) / prev.rate).toFixed(4).toString()}))
+        // setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)/prev.rate).toString()}))
     }
     const handleBYNChange = (event:any) => {
         const value = event.target.value
-        setState(prev=>({...prev, byn: value, amount: (Number(value)*prev.rate).toString() }))
+        setState(prev=>({...prev, byn: value, amount: ((value / (prev.cRatio / 100)) * prev.rate).toFixed(4).toString() }))
     }
 
     return {
