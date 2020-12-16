@@ -62,7 +62,7 @@ function Navbar() {
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center cursor-pointer">
-              <img src="/assets/Images/Logo.png" className="h-8 xxl:h-12" onClick={()=>history.push("/")} />
+              <img src="/assets/Images/Logo.png" className="h-8 xxl:h-12" onClick={()=>history.push("/market")} />
             </div>
             <div className="hidden sm:block md:ml-6">
               <div className="flex space-x-4">

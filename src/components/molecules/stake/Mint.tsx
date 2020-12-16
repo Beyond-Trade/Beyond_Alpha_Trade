@@ -76,36 +76,64 @@ function Mint() {
             <h5 className="text-right font-medium text-xs">Total Available</h5>
             <div className="flex items-center">
               <div>
-                <div className="border border-blue-800 text-blue-800 rounded text-center px-1">
+                <div className="border-2 border-blue-800 text-blue-800 rounded text-center px-1">
                   BYN
                 </div>
                 {/* <img src="assets/Icons/see details arrow.svg" /> */}
-                <div className="border border-blue-800 text-blue-800 rounded px-1 mt-6">
+                <div className="border-2 border-blue-800 text-blue-800 rounded px-1 mt-6">
                   USDb
                 </div>
               </div>
-              <div
-            className="w-full flex flex h-6 items-center"
+              {/* <div
+            className="w-full flex pb-2 bg-gray-300 border-2 border-blue-800"
             style={{ padding: "0px" }}
           >
             <div
-              className="h-5 bg-blue-700 border-2 border-blue-800"
+              className="h-5 bg-blue-700"
               style={{ width: `${graphPercent}%` }}
             ></div>
-
-<div className="w-full">
-                <div className="w-full flex justify-between">
-                  <text>{burnableByns}</text>
-                  <text>{BynBalance}</text>
+          </div>
+          <div>
+                <div className="px-1">
+                {BynBalance}
                 </div>
-                <div className="flex h-5 border-2 border-blue-800 border-l-0"></div>
-                <div className="w-full flex justify-between">
-                  <text>{amount}</text>
-                  <text>{usdbBalance}</text>
+                <div className=" px-1 mt-6">
+                {usdbBalance}
+                </div>
+              </div> */}
+              <div
+                className="w-full flex flex h-6 items-center"
+                style={{ padding: "0px" }}
+              >
+                {/* <div
+                  className="h-5 bg-blue-700 border-2 border-blue-800"
+                  style={{ width: `${graphPercent}%` }}
+                ></div> */}
+
+                <div className="w-full">
+                  <div className="w-full flex justify-between">
+                  <text></text>
+                    <text>{burnableByns}</text>
+                    <text>{BynBalance}</text>
+                  </div>
+                  <div
+            className="w-full flex pb-2 bg-gray-300 border-2 border-blue-800"
+            style={{ padding: "0px" }}
+          >
+            <div
+              className="h-5 bg-blue-700"
+              style={{ width: `${graphPercent}%` }}
+            ></div>
+          </div>
+                  {/* <div className="flex h-5 border-2 border-blue-800 border-l-0"></div> */}
+                  <div className="w-full flex justify-between">
+                  <text></text>
+                    <text>{amount}</text>
+                    <text>{usdbBalance}</text>
+                  </div>
                 </div>
               </div>
-          </div>
-              
+
             </div>
           </div>
           <div className="mt-8 text-center text-xs xl:text-xs xxl:text-sm font-normal">
