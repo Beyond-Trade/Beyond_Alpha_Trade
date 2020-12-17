@@ -21,7 +21,13 @@ function Mint() {
     usdbBalance,
     burnableByns,
     graphPercent,
+    setMax,
   } = useMint();
+  const maxLengthCheck = (e: any) => {
+    if (e.target.value.length > e.target.maxLength) {
+      e.target.value = e.target.value.slice(0, e.target.maxLength);
+    }
+  };
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="xl:text-lg xxl:text-2xl font-bold">Mint</h3>
@@ -55,12 +61,19 @@ function Mint() {
                 </text>
                 <input
                   className="bg-gray-300 focus:outline-none ml-2 py-2 w-full"
-                  type="text"
+                  type="number"
                   name="amount"
                   value={amount}
+                  maxLength={25}
+                  min="0"
+                  step="0"
+                  onInput={maxLengthCheck}
                   onChange={setAmount}
                 />
-                <button className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white text-xs xl:text-xs xxl:text-sm rounded py-1 xl:py-1 xxl:py-2 px-4">
+                <button
+                  onClick={setMax}
+                  className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white text-xs xl:text-xs xxl:text-sm rounded py-1 xl:py-1 xxl:py-2 px-4 ml-2"
+                >
                   Max
                 </button>
               </div>
@@ -69,71 +82,71 @@ function Mint() {
             </div>
             <div className="flex justify-between text-xxs xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
               <h6>Staking: {BYNStackingAmount} BYN</h6>
-              <h6>Estimated C-Ratio: {cRatio}%</h6>
+
+              <h6 className="flex">
+                Estimated C-Ratio: {cRatio}%
+                <p className="tooltip">
+                  <img src="/assets/Icons/info.png" className="w-4 ml-2" />
+                  <span className="tooltip-text bg-blue-200 p-3 mt-1 mr-10 rounded">
+                    To Mint Synths on Beyond, user has to deposit 300%
+                    collateral of the value of synths being minted. This ensures
+                    Synths are backed by sufficient collateral to absorb large
+                    price shocks.
+                  </span>
+                </p>
+              </h6>
             </div>
           </div>
+          <div className="text-xs xl:text-xs xxl:text-sm mt-4">
+            <h6>
+              <b>Max BYN : </b>
+              {BynBalance}
+            </h6>
+          </div>
+          <div className="text-xs xl:text-xs xxl:text-sm ">
+            <h6>
+              <b>Max USDb : </b>${usdbBalance}
+            </h6>
+          </div>
           <div className="text-xxs xl:text-xxs xxl:text-sm m-auto xl:w-full xxl:w-4/5 font-medium mt-8">
-            <h5 className="text-right font-medium text-xs">Total Available</h5>
             <div className="flex items-center">
               <div>
                 <div className="border-2 border-blue-800 text-blue-800 rounded text-center px-1">
                   BYN
                 </div>
-                {/* <img src="assets/Icons/see details arrow.svg" /> */}
+
                 <div className="border-2 border-blue-800 text-blue-800 rounded px-1 mt-6">
                   USDb
                 </div>
               </div>
-              {/* <div
-            className="w-full flex pb-2 bg-gray-300 border-2 border-blue-800"
-            style={{ padding: "0px" }}
-          >
-            <div
-              className="h-5 bg-blue-700"
-              style={{ width: `${graphPercent}%` }}
-            ></div>
-          </div>
-          <div>
-                <div className="px-1">
-                {BynBalance}
-                </div>
-                <div className=" px-1 mt-6">
-                {usdbBalance}
-                </div>
-              </div> */}
+
               <div
                 className="w-full flex flex h-6 items-center"
                 style={{ padding: "0px" }}
               >
-                {/* <div
-                  className="h-5 bg-blue-700 border-2 border-blue-800"
-                  style={{ width: `${graphPercent}%` }}
-                ></div> */}
-
                 <div className="w-full">
                   <div className="w-full flex justify-between">
-                  <text></text>
+                    <text></text>
                     <text>{burnableByns}</text>
-                    <text>{BynBalance}</text>
+                    <text></text>
                   </div>
                   <div
-            className="w-full flex pb-2 bg-gray-300 border-2 border-blue-800"
-            style={{ padding: "0px" }}
-          >
-            <div
-              className="h-5 bg-blue-700"
-              style={{ width: `${graphPercent}%` }}
-            ></div>
-          </div>
-                  {/* <div className="flex h-5 border-2 border-blue-800 border-l-0"></div> */}
+                    className="w-full flex pb-2 bg-gray-300 border-2 border-blue-800"
+                    style={{ padding: "0px" }}
+                  >
+                    <div
+                      className="h-5 bg-blue-700"
+                      style={{ width: `${graphPercent}%` }}
+                    ></div>
+                  </div>
+
                   <div className="w-full flex justify-between">
-                  <text></text>
-                    <text>{amount}</text>
-                    <text>{usdbBalance}</text>
+                    <text></text>
+                    <text>${amount || 0}</text>
+                    <text></text>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
           <div className="mt-8 text-center text-xs xl:text-xs xxl:text-sm font-normal">

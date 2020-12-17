@@ -56,6 +56,8 @@ function CreateLoan() {
             type="number"
             name="locked"
             value={locked}
+            min="0" 
+            step="0"
             onChange={(e) => handleLockedChange(e)}
           />
           {/* <h3 className="py-1">0.00</h3> */}
@@ -82,6 +84,8 @@ function CreateLoan() {
             className="bg-gray-300 focus:outline-none ml-2 w-full appearance-none"
             type="number"
             name="borrowed"
+            min="0" 
+            step="0"
             value={borrowed}
             onChange={(e) => handleBorrowedChange(e)}
           />

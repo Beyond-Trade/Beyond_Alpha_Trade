@@ -75,9 +75,11 @@ const useMakeOrders = () => {
   };
 
   const setPercentage = (percent: number) => {
-    let amount = (state.fromBalance * (percent / 100)).toFixed(5);
+    let amount = (state.fromBalance * (percent / 100));
+    const price = getPairPrice(state.fromRate, state.toRate);
     const result = percent == 100 ? state.fromBalance : amount;
-    setInputs((prev) => ({ ...prev, from: result.toString() }));
+    setInputs((prev) => ({ ...prev, from: result.toString(),to:(Number(price) * Number(amount)).toString() }));
+    setState((prev) => ({ ...prev, usdValue: Number(amount) * prev.fromRate }));  
   };
 
   const submit = () => {

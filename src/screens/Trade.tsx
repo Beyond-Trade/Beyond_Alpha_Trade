@@ -9,7 +9,7 @@ import { RootState } from "../store/reducers/Index";
 
 function Trade() {
   const { selectedPair } = useSelector((state:RootState) => state.exchange)
-
+console.log(selectedPair,"==========SELECTED PAIR=========")
   return (
     <div className="px-8 xl:px-20 lg:px-20 md:px-12">
       <div className="xl:flex lg:flex mt-8">

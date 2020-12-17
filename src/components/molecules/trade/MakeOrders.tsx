@@ -59,6 +59,8 @@ function MakeOrders() {
             type="number"
             name="from"
             value={inputs.from}
+            min="0" 
+            step="0"
             onChange={handleFromChange}
           />
         </div>
@@ -79,6 +81,8 @@ function MakeOrders() {
             className="bg-gray-300 focus:outline-none ml-2 w-full appearance-none"
             type="number"
             name="to"
+            min="0" 
+            step="0"
             value={inputs.to}
             onChange={handleToChange}
           />

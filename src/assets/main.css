@@ -474,8 +474,28 @@ img {
   border-style: solid;
 }
 
+.tooltip .tooltip-text {
+  visibility: hidden;
+  text-align: center;
+  padding: 2px 6px;
+  position: absolute;
+  z-index: 100;
+}
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
 textarea {
   resize: vertical;
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 input::placeholder,

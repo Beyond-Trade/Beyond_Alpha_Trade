@@ -69,7 +69,7 @@ const useTransfer = () => {
         }
         updateBalances()
         alert.show('Transfer successful', {type:'success'})
-        setState((prev) => ({ ...prev, submitting: false }));
+        setState((prev) => ({ ...prev, submitting: false,amount:"",address:"" }));
       })
       .catch((e) => {
         console.log("transfer ether error", e);
@@ -92,7 +92,7 @@ const useTransfer = () => {
         }
         updateBalances()
         alert.show('Transfer successful', {type:'success'})
-        setState((prev) => ({ ...prev, submitting: false }));
+        setState((prev) => ({ ...prev, submitting: false,amount:"",address:"" }));
       })
       .catch((e) => {
         console.log('e', e)

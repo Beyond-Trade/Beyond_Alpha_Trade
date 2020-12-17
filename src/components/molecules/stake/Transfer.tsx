@@ -24,7 +24,7 @@ function Transfer() {
     onCoinSelect,
     dropIndex,
   } = useTransfer();
-  
+
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
       <h3 className="xl:text-lg xxl:text-2xl font-bold">TRANSFER</h3>
@@ -62,8 +62,10 @@ function Transfer() {
               />
               <input
                 className="bg-gray-300 focus:outline-none ml-2 py-1 w-full text-gray-600 font-medium"
-                type="text"
+                type="number"
                 name="amount"
+                min="0"
+                step="0"
                 value={amount}
                 onChange={handleInputChange}
               />

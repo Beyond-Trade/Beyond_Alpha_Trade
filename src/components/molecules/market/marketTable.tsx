@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useHistory } from "react-router-dom";
 
 import MarketSort from "../../atomic/market/MarketSort";
 
@@ -8,6 +9,7 @@ interface IProps {
   search: any;
 }
 function MarketTable({ data, handleSort, search }: IProps) {
+  const history = useHistory();
   return (
     <table width="100%">
       <tr className="bg-gray-300 text-xxs xxl:text-sm text-left text-gray-600 font-bold">
@@ -81,7 +83,10 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <img src="/assets/Images/Up.png" className="h-8" />
           </td> */}
             <td className="py-3 px-3">
-              <button className="focus:outline-none flex content-center bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white xl:text-xs xxl:text-sm rounded-sm">
+              <button
+                onClick={() => history.push("/trade")}
+                className="focus:outline-none flex content-center bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white xl:text-xs xxl:text-sm rounded-sm"
+              >
                 TRADE
               </button>
             </td>

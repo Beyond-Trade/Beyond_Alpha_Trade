@@ -47,17 +47,18 @@ const useMint = () => {
       BynRate: BYNObj?.rate || 0,
       BynBalance: BYNObj?.cryptoBalance || 0,
       amountVal: "",
-      usdbBalance: Number(((BYNObj!.cryptoBalance / (state.cRatio / 100)) * state.BynRate).toFixed(4)) || 0,
+      usdbBalance: Number((((BYNObj!.cryptoBalance * state.BynRate) / (state.cRatio / 100)))) || 0,
       // ((BYNObj?.cryptoBalance * (state.cRatio / 100)) / state.BynRate).toFixed(4)
     }));
   }, [balances]);
-
+console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
   const selectFee = (fee: number, close: boolean) =>
     setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
   const mintToken = () => {
+    console.log(Number(state.amount), state.fee)
     setState((prev) => ({ ...prev, submitting: true }));
     mintERC20(Number(state.amount), state.fee)
       .then((data) => {
@@ -66,7 +67,7 @@ const useMint = () => {
         }
         updateBalances();
         alert.show("Mint successful", { type: "success" });
-        setState((prev) => ({ ...prev, submitting: false }));
+        setState((prev) => ({ ...prev, submitting: false,amount:"",graphPercent:0,burnableByns:0 }));
       })
       .catch((e) => {
         console.log("e", e);
@@ -97,8 +98,8 @@ const useMint = () => {
 
   const setAmount = (event: any) => {
     const value = event.target.value;
-    let stacking = ((value * (state.cRatio / 100)) / state.BynRate).toFixed(4);
-    const burnable = Number(((value * (state.cRatio / 100)) / state.BynRate).toFixed(4));
+    let stacking = ((value / state.BynRate * (state.cRatio / 100)) );
+    const burnable = Number(((value  / state.BynRate * (state.cRatio / 100))));
     const percent = (burnable*100)/state.BynBalance
     
     setState((prev) => ({
@@ -111,9 +112,25 @@ const useMint = () => {
     }));
   };
 
+  const setMax = () => {
+    let stacking = ((state.usdbBalance / state.BynRate * (state.cRatio / 100)));
+    const burnable = Number(((state.usdbBalance / state.BynRate * (state.cRatio / 100))));
+    const percent = (burnable*100)/state.BynBalance
+    
+    setState((prev) => ({
+      ...prev,
+      amount: String(state.usdbBalance),
+      amountVal: "",
+      BYNStackingAmount: state.BynRate === 0 ? 0 : Number(stacking),
+      burnableByns: burnable,
+      graphPercent: percent
+    }));
+  };
+
   return {
     ...state,
     submit,
+    setMax,
     setAmount,
     close,
     selectFee,

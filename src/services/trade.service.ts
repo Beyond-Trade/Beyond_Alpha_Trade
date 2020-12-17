@@ -66,10 +66,10 @@ export const TradePairsLookup = [
         coin: ERC20Contracts.BTCb,
         rate: 0,
       },
-      {
-        coin: ERC20Contracts.BEYOND,
-        rate: 0,
-      },
+      // {
+      //   coin: ERC20Contracts.BEYOND,
+      //   rate: 0,
+      // },
       {
         coin: ERC20Contracts.EURb,
         rate: 0,

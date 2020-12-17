@@ -40,6 +40,8 @@ function SwapByn(props: IProps) {
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
                 type="number"
                 name="from"
+                min="0"
+                step="0"
                 value={from}
                 onChange={handleInputChange}
               />
@@ -56,9 +58,7 @@ function SwapByn(props: IProps) {
                   MAX
                 </button>
                 <img src="/assets/Icons/eth-small.svg" className="h-4" />
-                <h4 className="font-medium text-xs xxl:text-lg  ml-1">
-                  ETH
-                </h4>
+                <h4 className="font-medium text-xs xxl:text-lg  ml-1">ETH</h4>
               </div>
             </div>
           </div>
