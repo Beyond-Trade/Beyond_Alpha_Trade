@@ -5,6 +5,7 @@ import {
   SELECT_ASSET_PAIR,
   SET_MARKET_DATA,
   SET_MY_ORDER,
+  UPDATE_MY_LAST_ORDER,
 } from "../actions/ExchangeActionTypes";
 import { ExchangeState } from "../types/ExchangeState";
 
@@ -21,11 +22,11 @@ const initialState: ExchangeState = {
     rate: 0,
     change24h: 0,
     high24h: 0,
-    low24h: 0
+    low24h: 0,
   },
   marketData: TradePairsLookup,
   search: "",
-  myOrders: []
+  myOrders: [],
 };
 
 export function exchangeReducer(
@@ -48,7 +49,7 @@ export function exchangeReducer(
           rate: action.rate,
           change24h: action.change24h,
           high24h: action.high24h,
-          low24h: action.low24h
+          low24h: action.low24h,
         },
       };
     case SET_MARKET_DATA:
@@ -60,12 +61,21 @@ export function exchangeReducer(
       return {
         ...state,
         search: action.search,
-      }
+      };
     case SET_MY_ORDER:
       return {
         ...state,
-        myOrders: [...state.myOrders, action.order]
-      }
+        myOrders: [...state.myOrders, action.order],
+      };
+    case UPDATE_MY_LAST_ORDER:
+      const newArray = [...state.myOrders]; //making a new array
+      newArray[state.myOrders.length - 1].date = action.payload.date;
+      newArray[state.myOrders.length - 1].status = action.payload.status; //changing value in the new array
+      newArray[state.myOrders.length - 1].infoURL = action.payload.infoURL;
+      return {
+        ...state,
+        myOrders: newArray,
+      };
     default:
       return state;
   }

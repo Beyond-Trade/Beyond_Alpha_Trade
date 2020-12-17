@@ -3,6 +3,7 @@ import { RootState } from "../reducers/Index";
 import { MarketPairs, Order } from "../types/ExchangeState";
 import {
   GetExchangeInfoType,
+  UPDATE_MY_LAST_ORDER,
   SEARCH_ASSETS,
   SELECT_ASSET_PAIR,
   SET_MARKET_DATA,
@@ -45,6 +46,10 @@ export const setMarketData = (data: MarketPairs[]): GetExchangeInfoType => {
 
 export const setMyOrder = (order: Order): GetExchangeInfoType => {
   return { type: SET_MY_ORDER, order };
+};
+
+export const updateMyLastOrder = (payload:any): any => {
+  return { type: UPDATE_MY_LAST_ORDER, payload };
 };
 
 export const searchAsset = (search: string): GetExchangeInfoType => {

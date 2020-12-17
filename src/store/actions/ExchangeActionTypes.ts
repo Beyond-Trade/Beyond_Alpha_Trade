@@ -4,7 +4,7 @@ export const SELECT_ASSET_PAIR = 'SELECT_ASSET_PAIR';
 export const SET_MARKET_DATA = 'SET_MARKET_DATA';
 export const SEARCH_ASSETS = 'SEARCH_ASSETS';
 export const SET_MY_ORDER = 'SET_MY_ORDER';
-
+export const UPDATE_MY_LAST_ORDER='UPDATE_MY_LAST_ORDER'
 
 interface SelectAssetPair {
     type: typeof SELECT_ASSET_PAIR;
@@ -31,10 +31,13 @@ interface SetMyOrder {
     type: typeof SET_MY_ORDER;
     order: Order
 }
-
+interface UpdateOrder {
+    type: typeof UPDATE_MY_LAST_ORDER;
+    payload: any
+}
 interface SearchAssets {
     type: typeof SEARCH_ASSETS;
     search: string
 }
 
-export type GetExchangeInfoType = SelectAssetPair | SetMarketData | SearchAssets | SetMyOrder
+export type GetExchangeInfoType = SelectAssetPair | SetMarketData | SearchAssets | SetMyOrder | UpdateOrder

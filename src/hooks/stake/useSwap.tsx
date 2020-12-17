@@ -11,7 +11,7 @@ const useSwap = () => {
   const { balances, selected } = useSelector(
     (state: RootState) => state.wallet
   );
-  const alert = useAlert()
+  const alert = useAlert();
 
   const [state, setState] = useState({
     swapping: false,
@@ -28,7 +28,7 @@ const useSwap = () => {
 
   const initialize = async () => {
     const balance = balances.find((balance) => balance.isEther);
-      // @ts-ignore
+    // @ts-ignore
     //let byninEthPrice = ((balance?.rate||0) / (BYNObj?.rate||0))
     let tokenValue: number = await BYNTokenValue();
     if (balance) {
@@ -38,7 +38,7 @@ const useSwap = () => {
         rate: tokenValue,
       }));
     }
-  }
+  };
 
   const submit = () => {
     if (!isValidated()) {
@@ -55,13 +55,13 @@ const useSwap = () => {
         if (!data) {
           throw new Error("no data");
         }
-        alert.show('Swap successful', {type:'success'})
-        updateBalances()
+        alert.show("Swap successful", { type: "success" });
+        updateBalances();
         setState((prev) => ({ ...prev, swapping: false, from: "", to: 0 }));
       })
       .catch((e) => {
-        console.log('e',e)
-        alert.show('Unable to swap', {type:'error'})
+        console.log("e", e);
+        alert.show("Unable to swap", { type: "error" });
         setState((prev) => ({ ...prev, swapping: false }));
       });
   };
@@ -83,13 +83,17 @@ const useSwap = () => {
       }));
       validated = false;
     }
-    if(state.swapping){
-      validated = false
+    if (state.swapping) {
+      validated = false;
     }
     return validated;
   };
   const setMax = () =>
-    setState((prev) => ({ ...prev, from: state.balance.toString() }));
+    setState((prev) => ({
+      ...prev,
+      from: state.balance.toString(),
+      to: state.balance * prev.rate,
+    }));
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;

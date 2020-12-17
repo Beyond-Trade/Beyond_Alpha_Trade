@@ -70,7 +70,7 @@ function MyOrdersTable(props: IProps) {
             <td className="py-3 px-3">{item.status}</td>
             <td className="py-3 px-3">
               <a
-                href={item.infoURL}
+                href={item.infoURL ? item.infoURL : "#"}
                 target="_blank"
                 className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm"
               >

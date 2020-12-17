@@ -3,13 +3,16 @@ import { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { addTrade } from "../../services/trade.service";
-import { setMyOrder } from "../../store/actions/ExchangeActions";
+import {
+  setMyOrder,
+  updateMyLastOrder,
+} from "../../store/actions/ExchangeActions";
 import { RootState } from "../../store/reducers/Index";
 
 const useMakeOrders = () => {
   const gasFees = [1, 23, 34];
   const {
-    exchange: { selectedPair },
+    exchange: { myOrders, selectedPair },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -50,8 +53,10 @@ const useMakeOrders = () => {
   }, [selectedPair]);
 
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
-  const closeFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: false }));
-  const selectFee = (fee: number, close:boolean) => setState((prev) => ({ ...prev, fee: fee, isFeeOpen: !close }));
+  const closeFeeModal = () =>
+    setState((prev) => ({ ...prev, isFeeOpen: false }));
+  const selectFee = (fee: number, close: boolean) =>
+    setState((prev) => ({ ...prev, fee: fee, isFeeOpen: !close }));
 
   const toggleBuySell = () => {
     setState((prev) => ({
@@ -75,11 +80,15 @@ const useMakeOrders = () => {
   };
 
   const setPercentage = (percent: number) => {
-    let amount = (state.fromBalance * (percent / 100));
+    let amount = state.fromBalance * (percent / 100);
     const price = getPairPrice(state.fromRate, state.toRate);
     const result = percent == 100 ? state.fromBalance : amount;
-    setInputs((prev) => ({ ...prev, from: result.toString(),to:(Number(price) * Number(amount)).toString() }));
-    setState((prev) => ({ ...prev, usdValue: Number(amount) * prev.fromRate }));  
+    setInputs((prev) => ({
+      ...prev,
+      from: result.toString(),
+      to: (Number(price) * Number(amount)).toString(),
+    }));
+    setState((prev) => ({ ...prev, usdValue: Number(amount) * prev.fromRate }));
   };
 
   const submit = () => {
@@ -91,31 +100,46 @@ const useMakeOrders = () => {
   };
 
   const addTradeAction = () => {
+    const price = getPairPrice(state.fromRate, state.toRate);
+    dispatch(
+      setMyOrder({
+        date: moment().format("MMM Do YY") + " | " + moment().format("TL"),
+        pair: state.to + "/" + state.from,
+        buying: inputs.to + " " + state.to,
+        selling: inputs.from + " " + inputs.to,
+        price: price,
+        status: "pending",
+        infoURL: "",
+      })
+    );
     addTrade(state.from, state.to, Number(inputs.from), state.fee)
       .then((data) => {
         if (!data) {
           throw Error("Error");
         }
-
-        const price = getPairPrice(state.fromRate, state.toRate);
+        console.log(data, "=========in then block");
         dispatch(
-          setMyOrder({
-            date: moment().format("MMM Do YY") + "|" + moment().format("TL"),
-            pair: state.to + "/" + state.from,
-            buying: inputs.to + " " + state.to,
-            selling: inputs.from + " " + inputs.to,
-            price: price,
-            status: "pending",
+          updateMyLastOrder({
+            date: moment().format("MMM Do YY") + " | " + moment().format("TL"),
+            status: data?.status ? "Success" : "Failed",
             infoURL: "https://rinkeby.etherscan.io/tx/" + data.transactionHash,
           })
         );
 
-        alert.show("Order added", { type: "success" });
+        data?.status
+          ? alert.show("Order added", { type: "success" })
+          : alert.show("Unable to add order", { type: "error" });
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
         console.log("Error!", e);
-
+        dispatch(
+          updateMyLastOrder({
+            date: moment().format("MMM Do YY") + " | " + moment().format("TL"),
+            status: "cancelled",
+            infoURL: "",
+          })
+        );
         alert.show("Unable to add order", { type: "error" });
         setState((prev) => ({ ...prev, submitting: false }));
       });
