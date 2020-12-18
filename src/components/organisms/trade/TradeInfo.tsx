@@ -14,8 +14,8 @@ function TradeInfo() {
     myTrades,
     loadingTrades,
     getTradeData,
-  } = useOrdersHistory();
-  
+  } = useOrdersHistory(); 
+  const myTradesData:any = myOrders.filter((item) => item.status === "Success" )
   return (
     <div className="w-full mt-4 mr-4 bg-customGray-100 rounded overflow-auto">
       <div className="w-94">
@@ -26,8 +26,8 @@ function TradeInfo() {
         />
       </div>
       {tabIndex === 0 && <MyOrdersTable data={myOrders} />}
-      {tabIndex === 1 && <AllTradesTable data={myTrades} />}
-      {tabIndex === 2 && <AllTradesTable data={trades} />}
+      {tabIndex === 1 && <AllTradesTable data={myTradesData} />}
+      {tabIndex === 2 && <AllTradesTable data={myOrders} />}
     </div>
   );
 }

@@ -134,6 +134,26 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: true,
+    inputs: [
+      { internalType: "address", name: "_beneficiary", type: "address" },
+    ],
+    name: "getCollateralDetailsFromProx",
+    outputs: [
+      { internalType: "uint256", name: "_bUSDValue", type: "uint256" },
+      { internalType: "uint256", name: "_USDbValueinBYN", type: "uint256" },
+      { internalType: "uint256", name: "_collatteralValue", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "_currentCollatteralRatio",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
     inputs: [],
     name: "getEthLocked",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
@@ -292,6 +312,35 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: false,
+    inputs: [{ internalType: "uint256", name: "_ratio", type: "uint256" }],
+    name: "setCollatteralRatioInProx",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [
+      { internalType: "uint256", name: "_collatteralRatio", type: "uint256" },
+    ],
+    name: "setLoanCollatteralRatioInLoan",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [{ internalType: "uint256", name: "_fee", type: "uint256" }],
+    name: "setLoanFeeRationInLoan",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
     inputs: [
       { internalType: "contract ILoanProx", name: "_address", type: "address" },
     ],
@@ -312,6 +361,15 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
       },
     ],
     name: "setSynthAddressInProx",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [{ internalType: "uint256", name: "_fee", type: "uint256" }],
+    name: "setTradeFeeInProx",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",

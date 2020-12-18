@@ -192,6 +192,26 @@ export const LoanAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
+    constant: false,
+    inputs: [
+      { internalType: "uint256", name: "_collatteralRatio", type: "uint256" },
+    ],
+    name: "setLoanCollatteralRatio",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [{ internalType: "uint256", name: "_fee", type: "uint256" }],
+    name: "setLoanFeeRation",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     constant: true,
     inputs: [{ internalType: "string", name: "source", type: "string" }],
     name: "stringToBytes32",

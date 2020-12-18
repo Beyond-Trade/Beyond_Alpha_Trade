@@ -32,14 +32,14 @@ function Chart({ selectedPair }) {
   console.log(records,"==========IN CHART==========")
   return (
     <div className="mt-4 w-full xl:h-chartH xxl:h-chartHXXL">
-      {/* <TradingViewWidget
+      <TradingViewWidget
         symbol={`${assetChartNames[selectedPair.counter]}${
           assetChartNames[selectedPair.base]
         }`}
         autosize
-      /> */}
+      />
       {/* <div id="myTradeChart" className="w-full h-full"></div> */}
-      <LineChart
+      {/* <LineChart
         width={500}
         height={300}
         data={data}
@@ -54,7 +54,7 @@ function Chart({ selectedPair }) {
         <Legend />
         <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
+      </LineChart> */}
       
     </div>
   );

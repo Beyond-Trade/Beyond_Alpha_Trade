@@ -19,10 +19,13 @@ const useOrdersHistory = () => {
 
     const getTradeData = () => {
         setState(prev=>({...prev, loadingTrades: true}))
+        console.log(selectedPair ,"==================CALLED")
         const contract = ContractLookup.find((item) => item.contractName === selectedPair.base)
         if(!contract) return
         getContractTransactions(contract.contractAddress).then((data: Trade[])=>{
-            const myTrades = data.filter((item)=>item.fromAddress === selected.address)
+            console.log(data,"========================ALL TRADES DATA============================",selected.address)
+            let myTrades = data.filter((item)=> item.fromAddress.toLowerCase() === selected.address.toLowerCase())
+            console.log(myTrades,"=========MY TRADES======")
             setState(prev=>({...prev, loadingTrades: false, trades: data, myTrades: myTrades }))
         }).catch((e)=>{
             console.log('error',e)
@@ -32,7 +35,7 @@ const useOrdersHistory = () => {
     }
     useEffect(()=>{
         getTradeData()
-    },[])
+    },[selectedPair])
 
     return {
         ...state,

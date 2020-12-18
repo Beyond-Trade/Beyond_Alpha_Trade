@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { addTrade } from "../../services/trade.service";
+import { updateBalances } from "../../services/wallet.service";
 import {
   setMyOrder,
   updateMyLastOrder,
@@ -103,10 +104,10 @@ const useMakeOrders = () => {
     const price = getPairPrice(state.fromRate, state.toRate);
     dispatch(
       setMyOrder({
-        date: moment().format("MMM Do YY") + " | " + moment().format("TL"),
+        date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
         pair: state.to + "/" + state.from,
         buying: inputs.to + " " + state.to,
-        selling: inputs.from + " " + inputs.to,
+        selling: inputs.from + " " + state.from,
         price: price,
         status: "pending",
         infoURL: "",
@@ -117,10 +118,11 @@ const useMakeOrders = () => {
         if (!data) {
           throw Error("Error");
         }
+        updateBalances()
         console.log(data, "=========in then block");
         dispatch(
           updateMyLastOrder({
-            date: moment().format("MMM Do YY") + " | " + moment().format("TL"),
+            date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
             status: data?.status ? "Success" : "Failed",
             infoURL: "https://rinkeby.etherscan.io/tx/" + data.transactionHash,
           })
@@ -129,13 +131,19 @@ const useMakeOrders = () => {
         data?.status
           ? alert.show("Order added", { type: "success" })
           : alert.show("Unable to add order", { type: "error" });
+          setInputs({
+            to: "",
+            from: "",
+            toVal: "",
+            fromVal: "",
+          })
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
         console.log("Error!", e);
         dispatch(
           updateMyLastOrder({
-            date: moment().format("MMM Do YY") + " | " + moment().format("TL"),
+            date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
             status: "cancelled",
             infoURL: "",
           })

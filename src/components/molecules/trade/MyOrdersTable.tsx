@@ -7,6 +7,9 @@ interface IProps {
 }
 
 function MyOrdersTable(props: IProps) {
+  const myOrderData:any = props.data.filter((item) => item.status === "cancelled" || item.status === "Failed" || item.status === "pending")
+  console.log(myOrderData)
+  console.log(props.data,"<<<<<<<>>>>>>")
   return (
     <React.Fragment>
       <table width="100%">
@@ -57,7 +60,7 @@ function MyOrdersTable(props: IProps) {
             <div className="flex items-center">VERIFY</div>
           </td>
         </tr>
-        {props.data.map((item) => (
+        {myOrderData?.map((item:any) => (
           <tr className="text-xs text-left text-gray-600 font-medium hover:bg-gray-300">
             <td className="py-3 px-3">
               <text>{item.date}</text>
@@ -71,6 +74,7 @@ function MyOrdersTable(props: IProps) {
             <td className="py-3 px-3">
               <a
                 href={item.infoURL ? item.infoURL : "#"}
+                style={item.infoURL === "" ? {pointerEvents:"none",cursor:"default",color:"gray"}:{}}
                 target="_blank"
                 className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm"
               >
@@ -80,7 +84,7 @@ function MyOrdersTable(props: IProps) {
           </tr>
         ))}
       </table>
-      {props.data.length === 0 && (
+      {myOrderData.length === 0 && (
         <div className="h-48 text-blue-500 xl:text-xs xxl:text-sm flex justify-center items-center">
           No data found
         </div>

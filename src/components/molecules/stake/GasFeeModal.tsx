@@ -29,6 +29,12 @@ function GasFeeModal(props: IProps) {
             {feesDescription[index] + " " + item}
           </button>
         ))}
+        <button
+            onClick={() => props.close()}
+            className={`focus:outline-none ${'bg-customBlue-200 shadow text-white'} rounded py-2 w-full mt-2`}
+          >
+           Done
+          </button>
       </div>
     </Modal>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import moment from "moment"
 import { useSelector } from "react-redux";
 import Chart from "../components/molecules/trade/Chart";
 import MakeOrders from "../components/molecules/trade/MakeOrders";
@@ -11,7 +11,7 @@ import { RootState } from "../store/reducers/Index";
 
 function Trade() {
   const { selectedPair } = useSelector((state: RootState) => state.exchange);
-  console.log(selectedPair, "==========SELECTED PAIR=========");
+  console.log(moment().format("LT"), "==========TIME=========");
   // useEffect(()=>{
   //   getRates();
   // },[])

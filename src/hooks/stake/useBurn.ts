@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
 import {
   checkUserCollatteral,
+  getCollateralDetailsFromProx,
   releaseCollateralRatio,
   settleCollateralRatio,
 } from "../../services/burn.service";
@@ -33,10 +34,16 @@ function useBurn() {
     collateralFixAmount: 0,
     showBYN: false,
     rate: 0,
+    maxBurn:""
   });
 
   React.useEffect(() => {
     const balance = balances.find((balance) => balance.short === "USDb");
+   
+    getCollateralDetailsFromProx().then((maxBurn)=>{
+      const burnMaxBYN=maxBurn._bUSDValue/ 1000000000000000000
+      setState((prev) => ({ ...prev, maxBurn: burnMaxBYN.toString() }));
+      console.log("maxBurn>>>>>>>>>>>",maxBurn)})
     if (balance) {
       const rate = getRate(balance);
       setState((prev) => ({ ...prev, balance: balance.cryptoBalance, rate }));
@@ -61,8 +68,8 @@ function useBurn() {
   const setMax = () =>
     setState((prev) => ({
       ...prev,
-      amount: prev.balance.toString(),
-      byn: ((prev.balance * (prev.cRatio / 100)) / prev.rate).toFixed(4).toString(),
+      amount: prev.maxBurn,
+      byn: ((Number(prev.maxBurn) * (prev.cRatio / 100)) / prev.rate).toFixed(4).toString(),
       burnType: 0,
     }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));

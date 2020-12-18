@@ -212,6 +212,26 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: true,
+    inputs: [
+      { internalType: "address", name: "_beneficiary", type: "address" },
+    ],
+    name: "getCollateralDetails",
+    outputs: [
+      { internalType: "uint256", name: "_bUSDValue", type: "uint256" },
+      { internalType: "uint256", name: "_USDbValueinBYN", type: "uint256" },
+      { internalType: "uint256", name: "_collatteralValue", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "_currentCollatteralRatio",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
     inputs: [],
     name: "getExchangeDetails",
     outputs: [
@@ -329,6 +349,15 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: false,
+    inputs: [{ internalType: "uint256", name: "_ratio", type: "uint256" }],
+    name: "setCollatteralRatio",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
     inputs: [
       { internalType: "string", name: "_synth", type: "string" },
       {
@@ -338,6 +367,15 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
       },
     ],
     name: "setSynthAddress",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [{ internalType: "uint256", name: "_fee", type: "uint256" }],
+    name: "setTradeFee",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",

@@ -60,3 +60,21 @@ export const checkUserCollatteral = async (activeAddress, rate): Promise<number>
     }
     else return 0;
 }
+export const getCollateralDetailsFromProx = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider && activeAddress ) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            const tx = await contract.methods.getCollateralDetailsFromProx(activeAddress).call()
+            return tx;
+        }
+    }
+    else
+        return null;
+  }

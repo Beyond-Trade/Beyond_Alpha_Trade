@@ -53,7 +53,7 @@ export async function getSynthetixPrices() {
 
 
 export const getContractTransactions = async (contractAddress: any) => {
-    const url = 'https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&contractaddress=' + contractAddress + '&page=1&offset=1000&sort=asc&apikey=GIX8SDXWGSK2Q3JFXBQIIZIT3TKIXKHGMH';
+    const url = 'https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&contractaddress=' + contractAddress + '&page=1&offset=2000&sort=asc&apikey=GIX8SDXWGSK2Q3JFXBQIIZIT3TKIXKHGMH';
     var response = await axios.get(url);
     let result = response.data.result;
 

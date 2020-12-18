@@ -87,7 +87,7 @@ function Mint() {
                 Estimated C-Ratio: {cRatio}%
                 <p className="tooltip">
                   <img src="/assets/Icons/info.png" className="w-4 ml-2" />
-                  <span className="tooltip-text bg-blue-200 p-3 mt-1 mr-10 rounded">
+                  <span className="tooltiptext">
                     To Mint Synths on Beyond, user has to deposit 300%
                     collateral of the value of synths being minted. This ensures
                     Synths are backed by sufficient collateral to absorb large
