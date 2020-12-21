@@ -97,16 +97,18 @@ function Mint() {
               </h6>
             </div>
           </div>
+          <div className="Xl:w-full font-medium xxl:w-4/5 m-auto">
           <div className="text-xs xl:text-xs xxl:text-sm mt-4">
             <h6>
-              <b>Max BYN : </b>
+              <text>Max BYN : </text>
               {BynBalance}
             </h6>
           </div>
-          <div className="text-xs xl:text-xs xxl:text-sm ">
+          <div className="text-xs xl:text-xs xxl:text-sm">
             <h6>
-              <b>Max USDb : </b>${usdbBalance}
+              <text>Max USDb : </text>${usdbBalance}
             </h6>
+          </div>
           </div>
           <div className="text-xxs xl:text-xxs xxl:text-sm m-auto xl:w-full xxl:w-4/5 font-medium mt-8">
             <div className="flex items-center">
