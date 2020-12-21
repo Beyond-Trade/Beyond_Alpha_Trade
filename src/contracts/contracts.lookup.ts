@@ -61,7 +61,7 @@ export const ContractLookup:IContractLookup[] = [
         fullName: "Beyond",
         decimal:18,
         contractAbi: BeyondAbi,
-        isSyntheticAsset:false,
+        isSyntheticAsset:true,
         isNativeToken: false,
         isMainToken: true, // only for BYN,
         isFixedRate:true,

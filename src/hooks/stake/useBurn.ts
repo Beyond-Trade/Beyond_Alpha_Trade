@@ -41,9 +41,12 @@ function useBurn() {
     const balance = balances.find((balance) => balance.short === "USDb");
    
     getCollateralDetailsFromProx().then((maxBurn)=>{
-      const burnMaxBYN=maxBurn._bUSDValue/ 1000000000000000000
-      setState((prev) => ({ ...prev, maxBurn: burnMaxBYN.toString() }));
-      console.log("maxBurn>>>>>>>>>>>",maxBurn)})
+      if(maxBurn){
+        const burnMaxBYN=maxBurn._bUSDValue/ 1000000000000000000
+        setState((prev) => ({ ...prev, maxBurn: burnMaxBYN.toString() }));
+        console.log("maxBurn>>>>>>>>>>>",maxBurn)
+      }
+    })
     if (balance) {
       const rate = getRate(balance);
       setState((prev) => ({ ...prev, balance: balance.cryptoBalance, rate }));

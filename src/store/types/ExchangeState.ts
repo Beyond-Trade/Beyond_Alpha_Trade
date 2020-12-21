@@ -48,7 +48,9 @@ export interface Trade {
 
 export interface ExchangeState {
     selectedPair: AssetPair;
+    refresh:boolean;
     marketData: MarketPairs[];
     search: string;
     myOrders: Order[];
+    updatedSelectedPair:any
 }

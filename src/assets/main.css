@@ -477,6 +477,7 @@ img {
 textarea {
   resize: vertical;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -529,6 +530,7 @@ textarea::placeholder {
   visibility: visible;
   opacity: 1;
 }
+
 
 button,
 [role="button"] {

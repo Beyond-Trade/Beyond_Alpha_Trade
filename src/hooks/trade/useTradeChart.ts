@@ -7,33 +7,70 @@ import { TradePairsLookup } from "../../services/trade.service";
 import {
   selectAssetPairAction,
   setMarketData,
+  updateSelectAssetPair,
 } from "../../store/actions/ExchangeActions";
 import { RootState } from "../../store/reducers/Index";
 import { getRates } from "../../services/synthetix.service";
 import { timeStamp } from "console";
+import { fetchSynthRateUpdates } from "../../services/rates/rates";
 
 const useTradeChart = () => {
+  const dispatch = useDispatch();
+  const { selectedPair,refresh } = useSelector((state: RootState) => state.exchange);
   const [records, setRecords] = useState<any>([]);
+  const [activePeriod, setActivePeriod] = useState(24);
+  const PERIOD_LABELS_MAP = [
+    {
+      value: "1H",
+      valueHours: 1,
+    },
+    {
+      value: "4H",
+      valueHours: 4,
+    },
+    {
+      value: "1D",
+      valueHours: 24,
+    },
+    {
+      value: "1W",
+      valueHours: 168,
+    },
+    {
+      value: "1M",
+      valueHours: 672,
+    },
+  ];
   useEffect(() => {
-    return () => {
-      const chartDiv = document.getElementById("myTradeChart");
-      //   if (chartDiv) chartDiv.innerHTML = "";
-      //   dispatch(resetSelectedPair())
-    };
-  }, []);
-  useEffect(() => {
-    getRates().then((res) => {
-      setRecords([...res])
-    });
-  }, []);
-
+    console.log(selectedPair, "selectedPair");
+    fetchSynthRateUpdates(selectedPair.counter, selectedPair.base, activePeriod).then(
+      (res: any) => {
+        console.log(res, "BBBBBBBBBBBBBBBBBB");
+        dispatch(updateSelectAssetPair(res))
+        if (res) setRecords([...res.rates]);
+      }
+    );
+  }, [selectedPair]);
+  const setSelectedPeriod = (period: any) => {
+    setActivePeriod(period);
+    console.log(selectedPair, "selectedPair");
+    fetchSynthRateUpdates(selectedPair.counter, selectedPair.base, period).then(
+      (res: any) => {
+        console.log(res, "BBBBBBBBBBBBBBBBBB");
+        dispatch(updateSelectAssetPair(res))
+        if (res) setRecords([...res.rates]);
+      }
+    );
+  };
   return {
     records,
+    PERIOD_LABELS_MAP,
+    activePeriod,
+    setSelectedPeriod,
   };
 };
 
 export default useTradeChart;
-
 
 // console.log(res, "==========orignal data==========");
 //       const graphData: any = [];

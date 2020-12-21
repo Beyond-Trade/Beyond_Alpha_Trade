@@ -8,6 +8,7 @@ import {
   SELECT_ASSET_PAIR,
   SET_MARKET_DATA,
   SET_MY_ORDER,
+  UPDATE_SELECT_ASSET_PAIR,
 } from "./ExchangeActionTypes";
 
 export const selectAssetPair = (
@@ -39,6 +40,9 @@ export const selectAssetPair = (
     high24h,
     low24h,
   };
+};
+export const updateSelectAssetPair = (payload:any) => {
+  return { type: UPDATE_SELECT_ASSET_PAIR, payload };
 };
 export const setMarketData = (data: MarketPairs[]): GetExchangeInfoType => {
   return { type: SET_MARKET_DATA, data };

@@ -25,7 +25,7 @@ function Market() {
     setTopIndex,
     setIndex,
   } = useMarketData();
-
+  const myOrderData:any = activeData.filter((item:any) => item.short != "Beyond")
   let GBPRate = balances.filter(function (obj: any) {
     return obj.short == ERC20Contracts.GBPb;
   })[0];
@@ -84,7 +84,7 @@ function Market() {
             tabs={marketTabs}
           />
           <MarketTable
-            data={activeData}
+            data={myOrderData}
             handleSort={handleSort}
             search={search}
           />

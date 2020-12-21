@@ -1,3 +1,4 @@
+import { FmPayloadMethod } from "fortmatic";
 import { TradePairsLookup } from "../../services/trade.service";
 import {
   GetExchangeInfoType,
@@ -6,6 +7,7 @@ import {
   SET_MARKET_DATA,
   SET_MY_ORDER,
   UPDATE_MY_LAST_ORDER,
+  UPDATE_SELECT_ASSET_PAIR
 } from "../actions/ExchangeActionTypes";
 import { ExchangeState } from "../types/ExchangeState";
 
@@ -27,6 +29,12 @@ const initialState: ExchangeState = {
   marketData: TradePairsLookup,
   search: "",
   myOrders: [],
+  refresh:false,
+  updatedSelectedPair:{
+    change24h: 0,
+    high24h: 0,
+    low24h: 0,
+  },
 };
 
 export function exchangeReducer(
@@ -50,6 +58,16 @@ export function exchangeReducer(
           change24h: action.change24h,
           high24h: action.high24h,
           low24h: action.low24h,
+        },
+      };
+      case UPDATE_SELECT_ASSET_PAIR:
+      return {
+        ...state,
+        updatedSelectedPair: {
+          ...state.selectedPair,
+          change24h: action.payload.change,
+          high24h: action.payload.high,
+          low24h: action.payload.low,
         },
       };
     case SET_MARKET_DATA:

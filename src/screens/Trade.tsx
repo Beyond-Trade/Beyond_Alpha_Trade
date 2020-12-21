@@ -10,7 +10,7 @@ import { getRates } from "../services/synthetix.service";
 import { RootState } from "../store/reducers/Index";
 
 function Trade() {
-  const { selectedPair } = useSelector((state: RootState) => state.exchange);
+  const { selectedPair,updatedSelectedPair } = useSelector((state: RootState) => state.exchange);
   console.log(moment().format("LT"), "==========TIME=========");
   // useEffect(()=>{
   //   getRates();
@@ -19,13 +19,13 @@ function Trade() {
     <div className="px-8 xl:px-20 lg:px-20 md:px-12">
       <div className="xl:flex lg:flex mt-8">
         <PairSelection />
-        <div className="w-full xl:ml-4 lg:ml-4">
+        <div className="w-full xl:ml-4 lg:ml-4" style={{width:"80%"}}>
           <h3 className="font-bold text-2xl ml-4">
             {selectedPair.counter + " / " + selectedPair.base}
           </h3>
-          <MarketData selectedPair={selectedPair} />
+          <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />
           <div className="xl:flex lg:flex md:flex">
-            <Chart selectedPair={selectedPair} />
+            <Chart/>
             <MakeOrders />
           </div>
         </div>

@@ -19,7 +19,6 @@ export const handleLocked = (payload: any) => {
 };
 export const getLoanDetailsAction=(payload: any) => {
   console.log(payload, "==================getLoanContractDetails in ACTION===================");
-  debugger
 return { type: GET_LOAN_DETAILS, payload };
 };
 export const getEthLockedAction=(payload: any) => {
