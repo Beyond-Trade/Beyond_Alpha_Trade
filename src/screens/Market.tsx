@@ -25,7 +25,9 @@ function Market() {
     setTopIndex,
     setIndex,
   } = useMarketData();
-  const myOrderData:any = activeData.filter((item:any) => item.short != "Beyond")
+  const myOrderData: any = activeData.filter(
+    (item: any) => item.short != "Beyond"
+  );
   let GBPRate = balances.filter(function (obj: any) {
     return obj.short == ERC20Contracts.GBPb;
   })[0];
@@ -38,8 +40,9 @@ function Market() {
   let BTCRate = balances.filter(function (obj: any) {
     return obj.short == ERC20Contracts.BTCb;
   })[0];
-
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div className="px-8 xl:px-24 lg:px-24 md:px-24">
       <div className="mt-12 xl:flex lg:flex">

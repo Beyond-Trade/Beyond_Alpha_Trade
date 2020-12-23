@@ -28,7 +28,7 @@ const usePairSelection = () => {
         }
         const marketBalance = balances.find((b)=>b.short === TradePairsLookup[0].marketCoin)
         const counterBalance = balances.find((b)=>b.short === TradePairsLookup[0].pairs[0].coin)
-        let rate = Number(getPairPrice(marketBalance?.rate||0, counterBalance?.rate||0).toFixed(4))
+        let rate = Number(getPairPrice(marketBalance?.rate||0, counterBalance?.rate||0))
         selectAssetPairAction(TradePairsLookup[0].marketCoin, TradePairsLookup[0].pairs[0].coin, rate)
     },[balances])
 
@@ -38,7 +38,7 @@ const usePairSelection = () => {
             const marketBalance = balances.find((b)=>b.short === item.marketCoin)
             item.pairs.forEach((item2, index2)=>{
                 const counterBalance = balances.find((b)=>b.short === item2.coin)
-                newData[index].pairs[index2].rate = Number(getPairPrice(marketBalance?.rate||1, counterBalance?.rate||1).toFixed(4))
+                newData[index].pairs[index2].rate = Number(getPairPrice(marketBalance?.rate||1, counterBalance?.rate||1))
             })
         })
         dispatch(setMarketData(newData))

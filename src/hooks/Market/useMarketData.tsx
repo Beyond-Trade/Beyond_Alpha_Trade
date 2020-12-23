@@ -23,7 +23,7 @@ const useMarketData = () => {
     let marketTop: any = [];
     balances.forEach((item) => {
       categorys.push(item.category);
-      if (item.change24h >= 0) {
+      if (item.change24h >= 0 && item.short != "Beyond") {
         marketTop.push(item);
       }
     });
@@ -85,11 +85,11 @@ const useMarketData = () => {
 
     balances.forEach((item: Balance) => {
       if (state.topTabs[index] === state.topTabs[0]) {
-        if (item.change24h >= 0) {
+        if (item.change24h >= 0 && item.short != "Beyond") {
           data.push(item);
         }
       } else {
-        if (item.change24h < 0) {
+        if (item.change24h < 0 && item.short != "Beyond") {
           data.push(item);
         }
       }

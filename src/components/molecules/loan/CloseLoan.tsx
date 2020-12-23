@@ -21,17 +21,27 @@ function CloseLoan() {
     isFeeOpen,
     closeFeeModal,
     fee,
-    selectFee, 
-    ETH
+    selectFee,
+    ETH,
   } = useCreateLoan();
-  const { loanType,OpenLoansNo } = useSelector((state: RootState) => state.loan);
+  const { loanType, OpenLoansNo } = useSelector(
+    (state: RootState) => state.loan
+  );
   useEffect(() => {
     loanDetails().then((res) => {
       setReturnLoanObj(res);
       console.log(res);
     });
-  }, [loanType,isReturning,OpenLoansNo]);
+  }, [loanType, isReturning, OpenLoansNo]);
   // parseFloat(((21000 * fee) / 1e9).toFixed(8));
+  const isDisabled = () =>
+    loanType === "ETHb"
+      ? Number(returnLoanObj?._loanValueETHb) === 0
+        ? true
+        : false
+      : Number(returnLoanObj?._loanValueUSDb) === 0
+      ? true
+      : false;
   return (
     <>
       <div className="bg-customGray-100 rounded mr-8 w-full mt-3 text-xxs xxl:text-sm">
@@ -51,7 +61,9 @@ function CloseLoan() {
           </div>
 
           <div className="font-normal">
-            <h3 className="text-gray-600 py-1">{loanType === "ETHb"? "ETHb" : "USDb"} BEING UNBORROWED</h3>
+            <h3 className="text-gray-600 py-1">
+              {loanType === "ETHb" ? "ETHb" : "USDb"} BEING UNBORROWED
+            </h3>
             <p className="text-gray-600 py-1">
               Balance :{" "}
               {loanType === "ETHb"
@@ -66,7 +78,6 @@ function CloseLoan() {
               $
               {loanType === "ETHb"
                 ? (returnLoanObj?._loanValueETHb / toConvert) * ETH?.rate || 0
-
                 : returnLoanObj?._loanValueUSDb / toConvert || 0}
             </p>
           </div>
@@ -91,8 +102,13 @@ function CloseLoan() {
           </div>
           <div className="flex mt-3">
             <button
-              className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded"
+              className={`p-2 xxl:p-3 w-full text-white rounded ${
+                isDisabled()
+                  ? "cursor-not-allowed bg-customBlue-100"
+                  : "bg-customBlue-200"
+              }`}
               onClick={() => returnLoanAction()}
+              disabled={isDisabled()}
             >
               {isReturning === false ? (
                 "CONFIRM"

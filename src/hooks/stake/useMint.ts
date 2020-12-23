@@ -47,7 +47,8 @@ const useMint = () => {
       BynRate: BYNObj?.rate || 0,
       BynBalance: BYNObj?.cryptoBalance || 0,
       amountVal: "",
-      usdbBalance: Number((((BYNObj!.cryptoBalance * state.BynRate) / (state.cRatio / 100)))) || 0,
+      // @ts-ignore
+      usdbBalance: Number((((BYNObj?.cryptoBalance * state.BynRate) / (state.cRatio / 100)))) || 0,
       // ((BYNObj?.cryptoBalance * (state.cRatio / 100)) / state.BynRate).toFixed(4)
     }));
   }, [balances]);
@@ -67,7 +68,7 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
         }
         updateBalances();
         alert.show("Mint successful", { type: "success" });
-        setState((prev) => ({ ...prev, submitting: false,amount:"",graphPercent:0,burnableByns:0 }));
+        setState((prev) => ({ ...prev, submitting: false,amount:"",graphPercent:0,burnableByns:0,BYNStackingAmount:0 }));
       })
       .catch((e) => {
         console.log("e", e);

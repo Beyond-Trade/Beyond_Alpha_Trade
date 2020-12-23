@@ -1,6 +1,15 @@
 import Web3 from "web3";
 import { Balance, Wallet } from "../types/WalletState";
-import { GetWalletInfoType, LOADING_BALANCE_PENDING, RESET_WALLET_DATA, SAVE_BALANCE_DATA, SAVE_WALLET_DATA, SAVE_WEB3_DATA, SET_Selected_DATA, UPDATE_STACK_BALANCE } from "./WalletActionTypes";
+import {SAVE_C_RATIO,SAVE_TARGET_C_RATIO, GetWalletInfoType, LOADING_BALANCE_PENDING, RESET_WALLET_DATA, SAVE_BALANCE_DATA, SAVE_WALLET_DATA, SAVE_WEB3_DATA, SET_Selected_DATA, UPDATE_STACK_BALANCE } from "./WalletActionTypes";
+
+export const SetCurrentCRatioAction = (payload:any) => {
+    console.log(payload,"LLLLLLLLLLLLLLLLLLLLL")
+    return { type: SAVE_C_RATIO,payload };
+};
+export const SetTargetCRatioAction = (payload:any) => {
+    console.log(payload)
+    return { type: SAVE_TARGET_C_RATIO,payload };
+};
 
 export const SaveWeb3InfoAction = (source: string,web3:Web3): GetWalletInfoType => {
     return { type: SAVE_WEB3_DATA,web3, source, isConnected: true };

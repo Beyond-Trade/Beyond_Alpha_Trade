@@ -17,6 +17,7 @@ import {
   getLoanDetailsAction,
   handleBorrowed,
   handleLocked,
+  setLoanTypeAction,
 } from "../../store/actions/LoanTypeAction";
 import { stat } from "fs";
 import { updateBalances } from "../../services/wallet.service";
@@ -24,7 +25,7 @@ import { updateBalances } from "../../services/wallet.service";
 const useCreateLoan = () => {
   const dispatch = useDispatch();
   const { balances } = useSelector((state: RootState) => state.wallet);
-  const { loanType, locked } = useSelector((state: RootState) => state.loan);
+  const { loanType, locked, } = useSelector((state: RootState) => state.loan);
   const gasFees = [1, 23, 34];
   const alert = useAlert();
   const [state, setState] = useState({
@@ -103,6 +104,7 @@ const useCreateLoan = () => {
             throw Error("Error");
           }
           alert.show("ETHb Loan added.", { type: "success" });
+          dispatch(setLoanTypeAction(loanType))
           updateBalances();
           getLoanContractDetails().then((res) => {
             dispatch(getLoanDetailsAction(res));

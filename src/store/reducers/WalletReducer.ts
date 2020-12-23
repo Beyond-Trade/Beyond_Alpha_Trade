@@ -8,7 +8,9 @@ import {
   SAVE_WALLET_DATA,
   SAVE_WEB3_DATA,
   SET_Selected_DATA,
-  UPDATE_STACK_BALANCE
+  UPDATE_STACK_BALANCE,
+  SAVE_C_RATIO,
+  SAVE_TARGET_C_RATIO
 } from "../actions/WalletActionTypes";
 import { WalletState, Wallet } from "../types/WalletState";
 
@@ -17,7 +19,8 @@ const initialState: WalletState = {
   unstacked:0,
   totalByn:0,
   web3: new Web3(),
-
+  currentCRatio:0,
+  targetCRatio:0,
   source: "",
   selected: { BYNBalance: 0, EthBalance: 0, USDbBalance: 0, address: "" },
   wallets: [],
@@ -31,6 +34,16 @@ export function walletReducer(
   action: GetWalletInfoType
 ): WalletState {
   switch (action.type) {
+    case SAVE_C_RATIO:
+      return{
+        ...state,
+        currentCRatio:action.payload | 0
+      }
+      case SAVE_TARGET_C_RATIO:
+      return{
+        ...state,
+        targetCRatio:action.payload | 0
+      }
     case UPDATE_STACK_BALANCE:
       return {
         ...state,

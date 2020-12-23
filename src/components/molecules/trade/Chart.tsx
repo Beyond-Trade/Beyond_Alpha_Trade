@@ -79,7 +79,7 @@ function Chart() {
 		return null;
 	};
   return (
-    <div className="mt-4 w-full xl:h-chartH xxl:h-chartHXXL">
+    <div className="mt-4 xl:h-chartH xxl:h-chartHXXL" style={{width:"100%"}}>
       
       <Periodlabels PERIOD_LABELS_MAP={PERIOD_LABELS_MAP} setSelectedPeriod={setSelectedPeriod} active={activePeriod}/>
     <ChartContainer>
@@ -87,7 +87,7 @@ function Chart() {
       <ResponsiveContainer width="100%" height={300}>
     <AreaChart
       data={records}
-      // margin={{ top: 0, right: -6, left: 10, bottom: 0 }}
+      margin={{ top: 0, right: -6, left: 10, bottom: 0 }}
     >
       <defs>
         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -178,7 +178,6 @@ const LabelStyle = styled(ItemStyle)`
         autosize
       />
       <div id="myTradeChart" className="w-full h-full"></div>
-
       
       <LineChart
         width={500}

@@ -6,14 +6,14 @@ function WalletData() {
   const { balances } = useSelector((state: RootState) => state.wallet);
   return (
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
-      <div className="w-full bg-customGray-100 rounded">
-        <div className="bg-gray-300 rounded-t pl-2 pt-2">
-          <h3 className="font-medium text-xs xxl:text-lg text-gray-600">
+      <div className="w-full rounded">
+        {/* <div className="bg-gray-300 rounded-t pl-2 pt-2"> */}
+          {/* <h3 className="font-medium text-xs xxl:text-lg text-gray-600">
             YOUR SYNTHS
-          </h3>
-        </div>
+          </h3> */}
+        {/* </div> */}
         <table width="100%">
-          <tr className="bg-gray-300 text-xxs xxl:text-base text-left text-gray-600 font-medium">
+          <tr className="text-xxs xxl:text-base border-b-2 text-left text-gray-600 font-medium">
             <td className="w-1/4 pl-2 flex items-center my-2">
               ASSETS
               <img
@@ -54,8 +54,8 @@ function WalletData() {
             </td>
           </tr>
           <tbody>
-            {balances.map((item) => (
-              <tr className="py-20 text-xs xxl:text-base text-left text-gray-600 font-normal">
+            {balances.filter((item)=>item.short != "Beyond").map((item) => (
+              <tr className="py-20 text-xs xxl:text-base border-b-2 text-left font-normal">
                 <td className="w-1/4 pl-2 flex items-center my-2">
                   {item.short}
                 </td>

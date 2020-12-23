@@ -1,7 +1,10 @@
 import NewsAndBlogBanner from "../components/atomic/NewsAndBolg/NewsAndBolgBanner";
-import React from "react";
+import React, { useEffect } from "react";
 
 function NewsAndBlog() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div>
       <NewsAndBlogBanner />
@@ -20,7 +23,7 @@ function NewsAndBlog() {
               </div>
               <div className="w-full xl:h-16 xxl:h-24 flex flex-col items-center justify-center">
                 <p className="xl:text-xs xxl:text-lg mb-1">Aug 05, 2020</p>
-                <h1 className="xxl:text-3xl font-bold">YOU GONNA BE RICH</h1>
+                <h1 className="xxl:text-3xl font-bold text-customBlue-500">YOU GONNA BE RICH</h1>
               </div>
             </div>
             {/* 2 */}
@@ -34,7 +37,7 @@ function NewsAndBlog() {
               </div>
               <div className="w-full xl:h-16 xxl:h-24 flex flex-col items-center justify-center">
                 <p className="xl:text-xs xxl:text-lg mb-1">Aug 05, 2020</p>
-                <h1 className="xxl:text-3xl font-bold">YOU GONNA BE RICH</h1>
+                <h1 className="xxl:text-3xl font-bold text-customBlue-500">YOU GONNA BE RICH</h1>
               </div>
             </div>
             {/* 3 */}
@@ -48,7 +51,7 @@ function NewsAndBlog() {
               </div>
               <div className="w-full xl:h-16 xxl:h-24 flex flex-col items-center justify-center">
                 <p className="xl:text-xs xxl:text-lg mb-1">Aug 05, 2020</p>
-                <h1 className="xxl:text-3xl font-bold">YOU GONNA BE RICH</h1>
+                <h1 className="xxl:text-3xl font-bold text-customBlue-500">YOU GONNA BE RICH</h1>
               </div>
             </div>
             {/* 4 */}
@@ -62,7 +65,7 @@ function NewsAndBlog() {
               </div>
               <div className="w-full xl:h-16 xxl:h-24 flex flex-col items-center justify-center">
                 <p className="xl:text-xs xxl:text-lg mb-1">Aug 05, 2020</p>
-                <h1 className="xxl:text-3xl font-bold">YOU GONNA BE RICH</h1>
+                <h1 className="xxl:text-3xl font-bold text-customBlue-500">YOU GONNA BE RICH</h1>
               </div>
             </div>
             {/* 5 */}
@@ -76,7 +79,7 @@ function NewsAndBlog() {
               </div>
               <div className="w-full xl:h-16 xxl:h-24 flex flex-col items-center justify-center">
                 <p className="xl:text-xs xxl:text-lg mb-1">Aug 05, 2020</p>
-                <h1 className="xxl:text-3xl font-bold">YOU GONNA BE RICH</h1>
+                <h1 className="xxl:text-3xl font-bold text-customBlue-500">YOU GONNA BE RICH</h1>
               </div>
             </div>
             {/* 6 */}
@@ -90,7 +93,7 @@ function NewsAndBlog() {
               </div>
               <div className="w-full xl:h-16 xxl:h-24 flex flex-col items-center justify-center">
                 <p className="xl:text-xs xxl:text-lg mb-1">Aug 05, 2020</p>
-                <h1 className="xxl:text-3xl font-bold">YOU GONNA BE RICH</h1>
+                <h1 className="xxl:text-3xl font-bold text-customBlue-500">YOU GONNA BE RICH</h1>
               </div>
             </div>
           </div>

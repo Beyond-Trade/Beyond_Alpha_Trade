@@ -30,17 +30,16 @@ function Mint() {
   };
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
-      <h3 className="xl:text-lg xxl:text-2xl font-bold">Mint</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">Invest</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
           <p className="text-xs xxl:text-base font-light text-blue-1000 mt-6 font-normal">
-            Mint USDb by staking your BYN.
+            Invest into USDb,by staking your BYN.
             <br />
-            You can trade various synthetic assets using
+            You can trade various synthetic assets using USDb
             <br />
-            USDb as well as earn staking reward daily from
+             as well as earn staking reward daily from your staked BYN
             <br />
-            your staked BYN
           </p>
           <img
             src="/assets/Icons/mint-illustration.svg"
@@ -81,7 +80,7 @@ function Mint() {
               <small className="block text-red-500 italic">{amountVal}</small>
             </div>
             <div className="flex justify-between text-xxs xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
-              <h6>Staking: {BYNStackingAmount} BYN</h6>
+              <h6>Staking: {BYNStackingAmount.toFixed(4)} BYN</h6>
 
               <h6 className="flex">
                 Estimated C-Ratio: {cRatio}%
@@ -101,12 +100,12 @@ function Mint() {
           <div className="text-xs xl:text-xs xxl:text-sm mt-4">
             <h6>
               <text>Max BYN : </text>
-              {BynBalance}
+              {BynBalance.toFixed(4)}
             </h6>
           </div>
           <div className="text-xs xl:text-xs xxl:text-sm">
             <h6>
-              <text>Max USDb : </text>${usdbBalance}
+              <text>Max USDb : </text>${usdbBalance.toFixed(4)}
             </h6>
           </div>
           </div>
@@ -129,7 +128,7 @@ function Mint() {
                 <div className="w-full">
                   <div className="w-full flex justify-between">
                     <text></text>
-                    <text>{burnableByns}</text>
+                    <text>{burnableByns.toLocaleString('fullwide', { useGrouping: false })}</text>
                     <text></text>
                   </div>
                   <div
@@ -144,7 +143,7 @@ function Mint() {
 
                   <div className="w-full flex justify-between">
                     <text></text>
-                    <text>${amount || 0}</text>
+                    <text>${Number(amount).toLocaleString('fullwide', { useGrouping: false }) || 0}</text>
                     <text></text>
                   </div>
                 </div>

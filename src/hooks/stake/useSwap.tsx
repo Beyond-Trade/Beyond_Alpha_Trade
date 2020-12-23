@@ -16,7 +16,7 @@ const useSwap = () => {
   const [state, setState] = useState({
     swapping: false,
     from: "",
-    to: 0,
+    to: "",
     fromVal: "",
     balance: 0,
     rate: 0,
@@ -57,7 +57,7 @@ const useSwap = () => {
         }
         alert.show("Swap successful", { type: "success" });
         updateBalances();
-        setState((prev) => ({ ...prev, swapping: false, from: "", to: 0 }));
+        setState((prev) => ({ ...prev, swapping: false, from: "", to: "" }));
       })
       .catch((e) => {
         console.log("e", e);
@@ -92,7 +92,7 @@ const useSwap = () => {
     setState((prev) => ({
       ...prev,
       from: state.balance.toString(),
-      to: state.balance * prev.rate,
+      to: String(state.balance * prev.rate),
     }));
 
   const handleInputChange = (event: any) => {
@@ -101,7 +101,7 @@ const useSwap = () => {
       ...prev,
       [name]: value,
       [name + "Val"]: "",
-      to: Number(value) * prev.rate,
+      to: String(Number(value) * prev.rate),
     }));
   };
 

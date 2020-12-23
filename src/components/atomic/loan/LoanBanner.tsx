@@ -24,14 +24,14 @@ function LoanBanner() {
       <div className="bg-customGray-100 relative">
         <div className="w-full"></div>
         <img
-          src="/assets/Images/Group 859.png"
+          src="/assets/Images/header2.png"
           alt="img"
-          style={{height: "25vw"}}
+          style={{height: "25vw",width:"100%"}}
         />
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-center">
-            <h1 className="font-bold" style={{fontSize: '2.6vw'}}>LOAN</h1>
-            <small className="text-gray-600">Manage Your Loans Easily.</small>
+            <h1 className="font-bold text-white" style={{fontSize: '2.6vw'}}>LOAN</h1>
+            <small className="text-white">Manage Your Loans Easily.</small>
           </div>
         </div>
       </div>

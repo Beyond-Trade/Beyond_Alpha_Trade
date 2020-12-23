@@ -17,9 +17,9 @@ function Trade() {
   // },[])
   return (
     <div className="px-8 xl:px-20 lg:px-20 md:px-12">
-      <div className="xl:flex lg:flex mt-8">
+      <div className="xl:flex lg:flex mt-8 w-full">
         <PairSelection />
-        <div className="w-full xl:ml-4 lg:ml-4" style={{width:"80%"}}>
+        <div className="xl:ml-4 lg:ml-4" style={{width:"80%"}}>
           <h3 className="font-bold text-2xl ml-4">
             {selectedPair.counter + " / " + selectedPair.base}
           </h3>

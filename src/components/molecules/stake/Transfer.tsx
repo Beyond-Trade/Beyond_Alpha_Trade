@@ -27,7 +27,7 @@ function Transfer() {
 
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
-      <h3 className="xl:text-lg xxl:text-2xl font-bold">TRANSFER</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">TRANSFER</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
           <p className="text-xs font-normal xxl:text-base font-light text-blue-1000 mt-6">

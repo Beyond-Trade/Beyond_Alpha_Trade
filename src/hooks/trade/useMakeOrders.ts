@@ -163,6 +163,10 @@ const useMakeOrders = () => {
       setInputs((prev) => ({ ...prev, fromVal: "This Field is required" }));
       validated = false;
     }
+    if (inputs.to.length > 0 && inputs.from.length > 0) {
+      setInputs((prev) => ({ ...prev, toVal: "", fromVal: ""  }));
+      
+    }
     if (Number(inputs.from) > state.fromBalance) {
       setInputs((prev) => ({ ...prev, fromVal: "Not enough balance" }));
       validated = false;

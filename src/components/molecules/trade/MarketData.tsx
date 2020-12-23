@@ -8,7 +8,7 @@ interface IProps {
 function MarketData(props:any) {
   
   return (
-    <div className="bg-customGray-100 rounded py-2 px-6 flex justify-between whitespace-nowrap overflow-auto mt-4">
+    <div className="bg-customGray-100 rounded py-2 px-6 flex justify-between whitespace-nowrap overflow-auto mt-4 w-full">
       <div>
         <h5 className="text-gray-600 text-xxs font-normal xl:text-xxs lg:text-xxs">Price</h5>
         <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">{props.selectedPair.rate} USD</h2>

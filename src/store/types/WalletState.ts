@@ -33,4 +33,6 @@ export interface WalletState {
     balances: Balance[] //Current source default wallet balances
     isConnected: boolean;
     loadingBalance: boolean;
+    currentCRatio:any;
+    targetCRatio:any;
 }

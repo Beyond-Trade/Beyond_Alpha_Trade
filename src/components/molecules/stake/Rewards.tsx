@@ -12,13 +12,13 @@ function Rewards() {
   const {rewardData,rewards,isLoading}=useRewards()
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
-      <h3 className="xl:text-lg xxl:text-2xl font-bold">REWARDS</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">REWARDS</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full mb-4">
           <p className="text-xs xxl:text-base font-light text-blue-1000 mt-6 font-normal">
             If you have staked your BYN tokens and
             <br />
-            minted USDb, you are eligible to collect BYN
+            Invested USDb, you are eligible to collect BYN
             <br />
             staking rewards, Rewards will be distributed
             <br />

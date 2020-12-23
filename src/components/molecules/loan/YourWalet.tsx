@@ -36,7 +36,7 @@ function YourWalet() {
               <h3 className="py-2">ETHb BALANCE</h3>
             </div>
             <div>
-  <h3 className="py-2">{state.ETHbBal}</h3>
+  <h3 className="py-2">{state.ETHbBal.toLocaleString('fullwide', { useGrouping: false })}</h3>
             </div>
           </div>
           <div className="flex justify-between w-full items-center ">

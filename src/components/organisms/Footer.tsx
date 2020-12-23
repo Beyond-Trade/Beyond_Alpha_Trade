@@ -3,51 +3,51 @@ import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="bg-customBlue-300 px-20 pt-16 mt-5">
+    <div className="bg-customBlue-400 px-20 pt-16 mt-5 text-white">
       <div className="xl:flex lg:flex">
         <div className="w-full text-xs xxl:text-base">
-          <h1 className="font-bold text-white text-xl xxl:text-4xl">
+          <h1 className="font-bold text-xl xxl:text-4xl">
             BEYOND
           </h1>
-          <p className="text-gray-400 mt-4">
+          <p className=" mt-4">
             Lorem ipsum dolor sit amet, consetetur sadipscing <br /> elitr, sed
             diam nonumy eirmod.
           </p>
-          <p className="text-gray-400 mt-4">+94 722 321 911</p>
-          <p className="text-gray-400 mt-4">MON - SUN / 9:00 AM - 8:00 PM</p>
-          <p className="text-gray-400 mt-4">support@beyond.com</p>
+          <p className=" mt-4">+94 722 321 911</p>
+          <p className=" mt-4">MON - SUN / 9:00 AM - 8:00 PM</p>
+          <p className=" mt-4">support@beyond.com</p>
         </div>
         <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
           <h4 className="text-white text-sm xxl:text-lg font-semibold">PRODUCTS</h4>
-          <NavLink to="/stake" className="text-gray-500 mt-4 cursor-pointer">Stake</NavLink>
-          <NavLink to="/market" className="text-gray-500 mt-4 cursor-pointer">Market</NavLink>
-          <NavLink to="/trade" className="text-gray-500 mt-4 cursor-pointer">Trade</NavLink>
-          <NavLink to="/loan" className="text-gray-500 mt-4 cursor-pointer">Loan</NavLink>
+          <NavLink to="/stake/swap_byn" className="mt-4 cursor-pointer">Stake</NavLink>
+          <NavLink to="/market" className="mt-4 cursor-pointer">Market</NavLink>
+          <NavLink to="/trade" className="mt-4 cursor-pointer">Trade</NavLink>
+          <NavLink to="/loan" className="mt-4 cursor-pointer">Loan</NavLink>
         </div>
         <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
           <h4 className="text-white text-sm xxl:text-lg font-semibold">
             COMPANY
           </h4>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/about_us"
           >
             About Us
           </NavLink>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/contact_us"
           >
             Contact Us
           </NavLink>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/support"
           >
             Support
           </NavLink>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/news_blog"
           >
             News/Blog
@@ -58,19 +58,19 @@ function Footer() {
             TERMS
           </h4>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/privacy_policy"
           >
             Privacy Policy
           </NavLink>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/terms_and_conditions"
           >
             Terms of Usage
           </NavLink>
           <NavLink
-            className="text-gray-500 mt-4 cursor-pointer"
+            className="mt-4 cursor-pointer"
             to="/disclaimer"
           >
             Disclaimer
@@ -97,7 +97,7 @@ function Footer() {
         </div>
       </div>
       <div className="text-xxs xxl:text-base mt-32 pb-10">
-        <p className="text-gray-400">
+        <p className="">
           ©Copyright Beyond 2020. All rights reserved - Design by Coding Pixel.
         </p>
       </div>

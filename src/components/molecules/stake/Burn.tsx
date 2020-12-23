@@ -5,6 +5,7 @@ import GasFeeModal from "./GasFeeModal";
 
 function Burn() {
   const {
+    maxBurn,
     amount,
     amountVal,
     burning,
@@ -27,17 +28,13 @@ function Burn() {
 
   return (
     <div className="bg-customGray-100 mt-6 py-10 px-10">
-      <h3 className="xl:text-lg xxl:text-2xl font-bold">BURN</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">Redeem</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
           <p className="text-xs font-normal xxl:text-base font-light text-blue-1000 mt-6">
-            Burn sUSD to unlock your staked BYN. This
-            <br />
-            increases your Collateralization Ratio and
-            <br />
-            reduces your debt, allowing you to transfer
-            <br />
-            your non-escrowed BYN.
+          Redeem USDb to unlock your staked BYN,
+            <br /> allowing you to freely transfer
+            your non-stacked BYN.
           </p>
           <img
             src="/assets/Icons/burn.svg"
@@ -77,8 +74,8 @@ function Burn() {
           {burnType === 0 && (
             <div className="mt-6 text-xs xxl:text-sm">
               <div className="flex justify-between">
-                <p className=" font-medium text-gray-500">$ {balance}</p>
-                <p className=" font-medium text-gray-500">$ {balance}</p>
+                <p className=" font-medium text-gray-500">Minted USD: ${maxBurn || "0.00"}</p>
+                <p className=" font-medium text-gray-500">Available USD: ${balance  || "0.00"}</p>
               </div>
 
               <div className="bg-gray-300 mt-2 rounded px-4 py-2 flex items-center">

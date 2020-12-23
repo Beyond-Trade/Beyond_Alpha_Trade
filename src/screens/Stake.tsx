@@ -6,6 +6,9 @@ import FAQ from "../components/organisms/stake/FAQ";
 import MidSection from "../components/organisms/stake/MidSection";
 
 function Stake() {
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div>
       <Banner />

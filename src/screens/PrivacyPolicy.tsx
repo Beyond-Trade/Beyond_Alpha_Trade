@@ -1,11 +1,14 @@
 import PrivacyPolicyBanner from "../components/atomic/privacyPolicy/PrivacyPolicyBanner";
-import React from "react";
+import React, { useEffect } from "react";
 function PrivacyPolicy() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div>
       <PrivacyPolicyBanner />
       <div className=" px-8 md:px-16 xl:px-24 lg:px-24 mt-8 xl:text-xs xxl:text-lg">
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           BEYOND PRIVACY POLICY
         </h1>
         <p className="items-center text-center justify-center">
@@ -27,7 +30,7 @@ function PrivacyPolicy() {
           than this website.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           PERSONAL INFORMATION
         </h1>
         <p className="items-center text-center justify-center">
@@ -47,7 +50,7 @@ function PrivacyPolicy() {
           Privacy Policy Generator and the Free Privacy Policy Generator.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           Consent
         </h1>
         <p className="items-center text-center justify-center">
@@ -56,7 +59,7 @@ function PrivacyPolicy() {
           Terms & Conditions Generator.
         </p>
 
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           Information we collect
         </h1>
         <p className="items-center text-center justify-center">
@@ -75,7 +78,7 @@ function PrivacyPolicy() {
           information, including items such as name, company name, address,
           email address, and telephone number.
         </p>
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           How we use your information
         </h1>
         <p className="items-center justify-center my-3">
@@ -105,7 +108,7 @@ function PrivacyPolicy() {
             Find and prevent fraud
           </li>
         </ol>
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           Log Files
         </h1>
         <p className="items-center text-center justify-center">
@@ -121,7 +124,7 @@ function PrivacyPolicy() {
           information.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           COOKIES AND WEB BEACONS
         </h1>
         <p className="items-center text-center justify-center">
@@ -134,7 +137,7 @@ function PrivacyPolicy() {
           "What Are Cookies" from Cookie Consent.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           GOOGLE DOUBLECLICK DART COOKIE
         </h1>
         <p className="items-center text-center justify-center">
@@ -146,7 +149,7 @@ function PrivacyPolicy() {
           at the following URL – https://policies.google.com/technologies/ads
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           Advertising Partners Privacy Policies
         </h1>
         <p className="items-center text-center justify-center">
@@ -167,7 +170,7 @@ function PrivacyPolicy() {
           cookies that are used by third-party advertisers.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           Third Party Privacy Policies
         </h1>
         <p className="items-center text-center justify-center">
@@ -184,7 +187,7 @@ function PrivacyPolicy() {
           respective websites.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           CCPA Privacy Rights (Do Not Sell My Personal Information)
         </h1>
         <p className="items-center text-center justify-center">
@@ -210,7 +213,7 @@ function PrivacyPolicy() {
         </p>
 
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           GDPR Data Protection Rights
         </h1>
         <p className="items-center text-center justify-center">
@@ -250,7 +253,7 @@ function PrivacyPolicy() {
           would like to exercise any of these rights, please contact us.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           Children's Information
         </h1>
         <p className="items-center text-center justify-center">

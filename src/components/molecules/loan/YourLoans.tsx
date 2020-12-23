@@ -113,13 +113,13 @@ function YourLoans() {
                 {loanType === "ETHb"
                   ? returnLoanObj?._loanValueETHb / toConvert || 0
                   : returnLoanObj?._loanValueUSDb / toConvert || 0}{" "}
-                ETHb
+                USDb
               </td>
               <td className="py-3 px-3">
                 {loanType === "ETHb"
                   ? returnLoanObj?._collatteralETHb / toConvert || 0
                   : returnLoanObj?._collatteralUSDb / toConvert || 0}{" "}
-                ETHb
+                USDb
               </td>
               <td className="py-3 px-3">{Number(collatRatio) + 100}%</td>
               <td className="py-3 px-3"></td>

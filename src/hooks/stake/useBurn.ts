@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
+import {ethers} from "ethers"
 import { ERC20Contracts } from "../../contracts/constants/contracts";
 import {
   checkUserCollatteral,
@@ -13,6 +14,7 @@ import { collatteralRatio } from "../../services/mint.service";
 import { updateBalances } from "../../services/wallet.service";
 import { RootState } from "../../store/reducers/Index";
 import { Balance } from "../../store/types/WalletState";
+import Web3 from "web3";
 
 function useBurn() {
   const { balances, selected } = useSelector(
@@ -23,6 +25,7 @@ function useBurn() {
   const alert = useAlert();
   const [state, setState] = React.useState({
     burning: false,
+    orignalVal:"",
     amount: "",
     amountVal: "",
     byn: "",
@@ -42,9 +45,9 @@ function useBurn() {
    
     getCollateralDetailsFromProx().then((maxBurn)=>{
       if(maxBurn){
-        const burnMaxBYN=maxBurn._bUSDValue/ 1000000000000000000
-        setState((prev) => ({ ...prev, maxBurn: burnMaxBYN.toString() }));
-        console.log("maxBurn>>>>>>>>>>>",maxBurn)
+        const burnMaxBYN = Web3.utils.fromWei(maxBurn._bUSDValue, 'ether');
+        setState((prev) => ({ ...prev, maxBurn: String(burnMaxBYN)}));
+        console.log("maxBurn>>>>>>>>>>>",burnMaxBYN)
       }
     })
     if (balance) {
@@ -59,9 +62,7 @@ function useBurn() {
   const getRate = (marketBalance: Balance) => {
     const counterBalance = balances.find((b) => b.short === "Beyond");
     let rate = Number(
-      getPairPrice(marketBalance?.rate || 0, counterBalance?.rate || 0).toFixed(
-        4
-      )
+      getPairPrice(marketBalance?.rate || 0, counterBalance?.rate || 0)
     );
     return rate;
   };
@@ -72,7 +73,7 @@ function useBurn() {
     setState((prev) => ({
       ...prev,
       amount: prev.maxBurn,
-      byn: ((Number(prev.maxBurn) * (prev.cRatio / 100)) / prev.rate).toFixed(4).toString(),
+      byn: ((Number(prev.maxBurn) * (prev.cRatio / 100)) / prev.rate).toString(),
       burnType: 0,
     }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
@@ -175,7 +176,7 @@ function useBurn() {
       ...prev,
       amount: value,
       amountVal: "",
-      byn: ((value * (prev.cRatio / 100)) / prev.rate).toFixed(4).toString(),
+      byn: ((value * (prev.cRatio / 100)) / prev.rate).toString(),
     }));
     // setState(prev=>({...prev, amount: value, amountVal: "", byn: (Number(value)/prev.rate).toString()}))
   };
@@ -184,7 +185,7 @@ function useBurn() {
     setState((prev) => ({
       ...prev,
       byn: value,
-      amount: ((value / (prev.cRatio / 100)) * prev.rate).toFixed(4).toString(),
+      amount: ((value / (prev.cRatio / 100)) * prev.rate).toString(),
     }));
   };
 

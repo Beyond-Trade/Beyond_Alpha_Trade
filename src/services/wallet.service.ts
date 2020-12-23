@@ -119,7 +119,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
         let ethRate = EthPriceObj ? EthPriceObj.current_price : 0;
         let tokenValue: number = await BYNTokenValue();
 
-        balance.rate = ethRate / tokenValue;
+        balance.rate = ethRate / tokenValue || 0;
     }
     return balance;
 }
@@ -193,7 +193,44 @@ export const getPriceFeed = async (contractName: any, decimal: number): Promise<
     else return 0;
 }
 
-
+export const checkUserCollateralProx = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            debugger
+            const tx = await contract.methods.checkUserCollateralProx(activeAddress).call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
+export const getExchangeProxDetails = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+    let activeAddress = walletInfo.selected.address;
+    // @ts-ignore
+    if (web3.currentProvider) {
+        const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EXCHANGE)
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
+            // @ts-ignore
+            debugger
+            const tx = await contract.methods.getExchangeProxDetails().call()
+            return tx;
+        }
+    }
+    else
+        return null;
+}
 
 // export const getByondRate = async () => {
 //     web3 = store.getState().wallet.web3;

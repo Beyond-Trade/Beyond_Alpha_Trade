@@ -17,14 +17,26 @@ function MidSection() {
     if (location.pathname === "/stake/swap_byn") {
       setTab(0);
     }
+    if (location.pathname === "/stake/mint") {
+      setTab(1);
+    }
     if (location.pathname === "/stake/rewards") {
         setTab(2);
+      }
+      if (location.pathname === "/stake/transfer") {
+        setTab(3);
+      }
+      if (location.pathname === "/stake/burn") {
+        setTab(4);
       }
   }, [location]);
   return (
     <div className="px-8 sm:px-16 md:px-20 xl:px-48 lg:px-48 mt-12">
       <div className="flex justify-center">
         <MidSectionTab
+        notActiveString="text-customBlue-50"
+        activeString="text-customBlue-500"
+        activeBorder="border-customBlue-500"
           text="Swap BYN"
           onClick={() => {
             setTab(0);
@@ -33,7 +45,10 @@ function MidSection() {
           active={tabIndex === 0}
         />
         <MidSectionTab
-          text="Mint"
+        notActiveString="text-customBlue-50"
+        activeString="text-customBlue-500"
+        activeBorder="border-customBlue-500"
+          text="Invest Synth"
           onClick={() => {
             setTab(1);
             history.push("/stake/mint");
@@ -41,6 +56,9 @@ function MidSection() {
           active={tabIndex === 1}
         />
         <MidSectionTab
+        notActiveString="text-customBlue-50"
+        activeString="text-customBlue-500"
+        activeBorder="border-customBlue-500"
           text="Rewards"
           onClick={() => {
             setTab(2);
@@ -49,6 +67,9 @@ function MidSection() {
           active={tabIndex === 2}
         />
         <MidSectionTab
+        notActiveString="text-customBlue-50"
+        activeString="text-customBlue-500"
+        activeBorder="border-customBlue-500"
           text="Transfer"
           onClick={() => {
             setTab(3);
@@ -57,7 +78,10 @@ function MidSection() {
           active={tabIndex === 3}
         />
         <MidSectionTab
-          text="Burn"
+        notActiveString="text-customBlue-50"
+        activeString="text-customBlue-500"
+        activeBorder="border-customBlue-500"
+          text="Redeem"
           onClick={() => {
             setTab(4);
             history.push("/stake/burn");

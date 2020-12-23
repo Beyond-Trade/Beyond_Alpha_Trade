@@ -1,6 +1,9 @@
 import DisclaimerBanner from "../components/atomic/disclaimer/DisclaimerBanner";
-import React from "react";
+import React, { useEffect } from "react";
 function Disclaimer() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div>
       <DisclaimerBanner />
@@ -30,14 +33,14 @@ function Disclaimer() {
           as well as their "Terms of Service" before engaging in any business or
           uploading any information.
         </p>
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           CONSENT
         </h1>
         <p className="xl:text-xs xxl:text-lg items-center text-center justify-center">
           By using our website, you hereby consent to our disclaimer and agree
           to its terms.
         </p>
-        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center">
+        <h1 className="xl:text-2xl xxl:text-3xl flex  p-8 items-center text-center justify-center text-customBlue-500">
           UPDATE
         </h1>
         <p className="xl:text-xs xxl:text-lg items-center text-center justify-center">

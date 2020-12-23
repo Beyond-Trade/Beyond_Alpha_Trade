@@ -3,17 +3,20 @@ import ContactUsBanner from "../components/atomic/contactUs/ContactUsBanner";
 import CreateLoan from "../components/molecules/loan/CreateLoan";
 import EthAsCollateral from "../components/molecules/loan/EthAsCollateral";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import YourLoans from "../components/molecules/loan/YourLoans";
 import YourWalet from "../components/molecules/loan/YourWalet";
 function ContactUs() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div>
       <ContactUsBanner />
       <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
         <div className="flex-1 xl:mr-8 lg:mr-8">
-          <h1 className="py-3 xl:text-2xl xxl:text-3xl">GET IN TOUCH</h1>
-          <p className="xl:text-xs xxl:text-lg">
+          <h1 className="py-3 xl:text-2xl xxl:text-3xl text-customBlue-500">GET IN TOUCH</h1>
+          <p className="xl:text-xs xxl:text-lg text-customBlue-500">
             if you have any query,feel free to get in touch us.Fill the form
             bellow to send us your query.
           </p>

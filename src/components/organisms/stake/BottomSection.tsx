@@ -11,7 +11,7 @@ import useRewards from "../../../hooks/stake/useRewards";
 const BottomSection = () => {
   const history = useHistory();
   const [state, setState] = useState({
-    stackedBYNPercent: 10,
+    stackedBYNPercent: 0,
     stackedBYN: 0,
     unstackedBYN: 0,
     totalBYN: 0,
@@ -47,7 +47,7 @@ const BottomSection = () => {
       stackedBYNPercent: stackedPerc,
     }));
   }, [stackedBYN, unstacked, totalByn]);
-
+console.log("bottom section ",balances)
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
       <div className="w-full xl:mr-2 lg:mr-2 mb-4">
@@ -89,11 +89,11 @@ const BottomSection = () => {
             </h6>
           </div>
           <div
-            className="w-full flex mt-1 pb-2 bg-gray-300"
+            className="w-full flex mt-1 pb-2 bg-customBlue-50"
             style={{ padding: "0px" }}
           >
             <div
-              className="h-4 bg-gray-400"
+              className="h-4 bg-customBlue-500"
               style={{ width: `${state.stackedBYNPercent}%` }}
             ></div>
             {/* <div className="h-4 bg-gray-300"></div> */}
@@ -108,7 +108,7 @@ const BottomSection = () => {
               onClick={() => history.push("/stake/rewards")}
             >
               <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
-                See Details
+                Go to "Rewards" section
               </label>
               <img
                 src="/assets/Icons/see details arrow.svg"
@@ -192,7 +192,7 @@ const BottomSection = () => {
                 </td>
                 <td className="text-center" style={{ width: "90px" }}>
                   <h6 className="ml-2 xxl:text-xl text-xs">
-                    ${(item.cryptoBalance * item.rate).toFixed(2)}
+                    ${(item.cryptoBalance * item.rate || 0).toFixed(2)}
                   </h6>
                 </td>
               </tr>

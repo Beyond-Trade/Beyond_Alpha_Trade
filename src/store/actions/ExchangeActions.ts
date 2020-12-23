@@ -1,6 +1,6 @@
 import { store } from "../../App";
 import { RootState } from "../reducers/Index";
-import { MarketPairs, Order } from "../types/ExchangeState";
+import { MarketPairs, Order, Trade } from "../types/ExchangeState";
 import {
   GetExchangeInfoType,
   UPDATE_MY_LAST_ORDER,
@@ -9,6 +9,7 @@ import {
   SET_MARKET_DATA,
   SET_MY_ORDER,
   UPDATE_SELECT_ASSET_PAIR,
+  SET_TRANSATIONS
 } from "./ExchangeActionTypes";
 
 export const selectAssetPair = (
@@ -59,6 +60,11 @@ export const updateMyLastOrder = (payload:any): any => {
 export const searchAsset = (search: string): GetExchangeInfoType => {
   return { type: SEARCH_ASSETS, search };
 };
+
+export const setTransations=(payload:Trade[])=>{
+  console.log("<<<<<<<<<<<<<<<<<<<<in SET TRANSATIONS ACTION >>>>>>>>>>>>>",payload)
+  return {type:SET_TRANSATIONS,payload}
+}
 
 export const selectAssetPairAction = (from: string, to: string, rate:number) => {
   const state: RootState = store.getState();
