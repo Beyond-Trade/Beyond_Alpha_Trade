@@ -200,7 +200,7 @@ export const ContractLookup:IContractLookup[] = [
     },
     {
         contractName: ERC20Contracts.BEYOND_EX_PROX,
-        contractAddress: "0x3f1414E43939f61437CBEAcAd32d2E96A738a353",
+        contractAddress: "0x9341b5A91216Bfd47A265629e64301e30422fc85",
         marketRateApiID: "",
         oracleRateID: "",
         fullName: "beyondExProx",

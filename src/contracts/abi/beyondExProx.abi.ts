@@ -211,6 +211,15 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
+    constant: false,
+    inputs: [],
+    name: "getBeyondTokenValue",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     constant: true,
     inputs: [
       { internalType: "address", name: "_beneficiary", type: "address" },

@@ -164,7 +164,7 @@ function Mint() {
               onClick={submit}
               className="focus:outline-none bg-customBlue-200 flex justify-center items-center text-white text-xs xxl:text-sm w-full xxl:w-4/5 rounded py-2 xxl:py-3 mt-2"
             >
-              {!submitting && "MINT NOW"}
+              {!submitting && "INVEST NOW"}
               {submitting && (
                 <Loader type="Bars" color="#ffffff" height={18} width={20} />
               )}

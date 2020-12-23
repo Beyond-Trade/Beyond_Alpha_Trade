@@ -57,7 +57,7 @@ function EthAsCollateral({ ETH }: any) {
               USDb
             </div>
           </div>
-          <p className="flex">
+          <a className="flex" href="https://rinkeby.etherscan.io/address/0xb441A09C3a11c1e9B4B657AA4f1Fdb804B1d5A57">
             view contacts
             <img
               src="/assets/Icons/exit.svg"
@@ -65,7 +65,7 @@ function EthAsCollateral({ ETH }: any) {
               className="h-4 ml-2"
               // style={{ height: "13px", width: "13px", marginLeft: "4px" }}
             />
-          </p>
+          </a>
         </div>
         <div className="flex justify-between p-4">
           <div className="flex justify-between text-xs xxl:text-sm w-full">
