@@ -4,6 +4,7 @@ import React from "react";
 import { RootState } from "../../../store/reducers/Index";
 import { useSelector } from "react-redux";
 import UseWalletOverView from "../../../hooks/wallet/useWalletOverView";
+import { couldStartTrivia } from "typescript";
 
 function StatesRow() {
   UseWalletOverView();
@@ -27,9 +28,9 @@ function StatesRow() {
     return obj.short == ERC20Contracts.USDb;
   });
   // @ts-ignore
-  let bynBalanceData=bynBalance?.cryptoBalance * bynBalance?.rate ;
+  let bynBalanceData=bynBalance?.cryptoBalance * bynBalance?.rate || 0 ;
   // @ts-ignore
-  let USDbBalanceData=USDbBalance?.cryptoBalance * USDbBalance?.rate;
+  let USDbBalanceData=USDbBalance?.cryptoBalance * USDbBalance?.rate || 0;
   let totalBynPercentage = bynBalance
     ? ((bynBalance?.cryptoBalance * bynBalance?.rate) / totalSynthValue) * 100
     : 0;
@@ -38,11 +39,9 @@ function StatesRow() {
     ? ((USDbBalance?.cryptoBalance * USDbBalance?.rate) / totalSynthValue) * 100
     : 0;
 
-  let othersBalPercentage =
-    totalUSDbBalancePercentage && totalBynPercentage
-      ? ((totalSynthValue-(bynBalanceData + USDbBalanceData)) / totalSynthValue) *
+  let othersBalPercentage = ((totalSynthValue-(bynBalanceData + USDbBalanceData)) / totalSynthValue) *
         100
-      : 0;
+      console.log(othersBalPercentage)
   return (
     <div className="px-8 xl:px-24 lg:px-24 xl:flex lg:flex">
       <div className="border-2 rounded mr-8 w-full mt-8">
