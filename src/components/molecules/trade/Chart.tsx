@@ -135,6 +135,8 @@ function Chart() {
     </AreaChart>
     </ResponsiveContainer>:"no record found"}
     </ChartContainer>
+    <small className="text-xs">Note: Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources.</small>
+    {/* Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources. */}
     </div>
   );
 }
@@ -143,7 +145,7 @@ export default Chart;
 
 const ChartContainer = styled.div`
 	width: 100%;
-	height: 310px;
+	height: 290px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
