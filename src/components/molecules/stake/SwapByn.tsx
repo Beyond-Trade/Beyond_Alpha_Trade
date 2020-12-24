@@ -1,6 +1,7 @@
 import Loader from "react-loader-spinner";
 import React from "react";
 import useSwap from "../../../hooks/stake/useSwap";
+import GeneralButton from "../../atomic/GeneralButton";
 
 interface IProps {}
 function SwapByn(props: IProps) {
@@ -16,11 +17,11 @@ function SwapByn(props: IProps) {
   } = useSwap();
 
   return (
-    <div className="bg-customGray-100 mt-6 py-10 px-10">
+    <div className="border border-gray-400 mt-6 py-10 px-10"  style={{backgroundColor:"#EBEDF0"}}> 
       <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">SWAP</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
-          <p className="text-xs font-normal xxl:text-sm font-light text-blue-1000 mt-6">
+          <p className="text-xs font-normal xxl:text-sm font-light text-black mt-6">
             Onboard Beyond exchange by swapping your ETH
             <br />
             into BYN.
@@ -29,15 +30,15 @@ function SwapByn(props: IProps) {
             <br />
             Everything starts from here.
           </p>
-          <img src="/assets/Icons/swap.svg" className="h-24 m-auto mt-10" />
+          <img src="/assets/Images/swap.png" className="h-24 m-auto mt-10" />
         </div>
         <div className="w-full px-6">
           {/* <GeneralTab tabs={["SWAP", "POOL"]} onClick={() => {}} index={0} /> */}
-          <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
+          <div className="flex bg-white rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
-              <h6 className="text-xs xxl:text-sm font-medium">From (ETH)</h6>
+              <h6 className="text-xs xxl:text-sm text-customGray-300 font-medium">From (ETH)</h6>
               <input
-                className="focus:outline-none mt-2 bg-customGray-100 font-medium"
+                className="focus:outline-none text-customBlue-500 border-none hover:border-customBlue-400 mt-2 font-medium"
                 type="number"
                 name="from"
                 min="0"
@@ -48,7 +49,7 @@ function SwapByn(props: IProps) {
             </div>
             <div className="text-right">
               <h6 className="text-xs xxl:text-sm font-medium break-normal">
-                Balance: {balance.toFixed(5)}ETH
+                Balance: {balance.toFixed(2)}ETH
               </h6>
               <div className="flex items-center w-16 text-right justify-end mt-2">
                 <button
@@ -64,13 +65,14 @@ function SwapByn(props: IProps) {
           </div>
           <small className="text-red-500 italic block">{fromVal}</small>
           <img src="/assets/Icons/arrow_down.svg" className="mt-6 m-auto h-4" />
-          <div className="flex border border-blue-600 rounded-sm py-1 px-2 mt-6">
+          <div className="flex bg-white rounded-sm py-1 px-2 mt-6">
             <div className="w-full">
-              <h6 className="text-xs xxl:text-sm font-medium">To (BYN)</h6>
-              <input
+              <h6 className="text-xs xxl:text-sm font-medium text-customGray-300">To (BYN)</h6>
+              <h6 className="text-lg xxl:text-xl text-customBlue-500 font-medium">{to}</h6>
+              {/* <input
                 className="focus:outline-none mt-2 bg-customGray-100 font-medium"
                 value={to}
-              />
+              /> */}
             </div>
             <div className="text-right">
               <h6 className="text-xxs font-medium">-</h6>
@@ -80,7 +82,13 @@ function SwapByn(props: IProps) {
                     </div> */}
             </div>
           </div>
-          <button
+          <GeneralButton
+              submitting={swapping}
+              submit={submit}
+              textValue={"SWAP"}
+              otherClasses={"bg-customBlue-400 text-xs xxl:text-sm py-2 mt-8  w-full"}
+            />
+          {/* <button
             onClick={submit}
             className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-sm flex justify-center w-full rounded py-2 mt-8"
           >
@@ -88,7 +96,7 @@ function SwapByn(props: IProps) {
             {swapping && (
               <Loader type="Bars" color="#ffffff" height={18} width={20} />
             )}
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

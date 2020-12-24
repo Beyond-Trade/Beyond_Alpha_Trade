@@ -79,7 +79,7 @@ function Chart() {
 		return null;
 	};
   return (
-    <div className="mt-4 xl:h-chartH xxl:h-chartHXXL" style={{width:"100%"}}>
+    <div className="xl:h-chartH xxl:h-chartHXXL" >
       
       <Periodlabels PERIOD_LABELS_MAP={PERIOD_LABELS_MAP} setSelectedPeriod={setSelectedPeriod} active={activePeriod}/>
     <ChartContainer>

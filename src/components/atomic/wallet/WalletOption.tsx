@@ -21,12 +21,12 @@ function WalletOption(props: IProps) {
   };
   return (
     <button
-      className="focus:outline-none flex border border-blue-300 bg-blue-300 rounded w-full mt-3"
+      className="focus:outline-none flex border border border-gray-400  rounded w-full mt-3"
       onClick={() => {
         connectToWallet(props.type);
       }}
     >
-      <div className="py-4 w-24 flex justify-center rounded-l">
+      <div className="py-4 w-24 flex justify-center rounded-l bg-black">
         <img src={props.image} className="h-8" />
       </div>
       <div

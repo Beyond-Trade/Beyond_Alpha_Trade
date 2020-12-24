@@ -35,7 +35,7 @@ function MidSection() {
       <div className="flex justify-center">
         <MidSectionTab
         notActiveString="text-customBlue-50"
-        activeString="text-customBlue-500"
+        activeString="text-customBlue-400"
         activeBorder="border-customBlue-500"
           text="Swap BYN"
           onClick={() => {
@@ -57,7 +57,7 @@ function MidSection() {
         />
         <MidSectionTab
         notActiveString="text-customBlue-50"
-        activeString="text-customBlue-500"
+        activeString="text-customBlue-400"
         activeBorder="border-customBlue-500"
           text="Rewards"
           onClick={() => {
@@ -68,7 +68,7 @@ function MidSection() {
         />
         <MidSectionTab
         notActiveString="text-customBlue-50"
-        activeString="text-customBlue-500"
+        activeString="text-customBlue-400"
         activeBorder="border-customBlue-500"
           text="Transfer"
           onClick={() => {
@@ -79,7 +79,7 @@ function MidSection() {
         />
         <MidSectionTab
         notActiveString="text-customBlue-50"
-        activeString="text-customBlue-500"
+        activeString="text-customBlue-400"
         activeBorder="border-customBlue-500"
           text="Redeem"
           onClick={() => {

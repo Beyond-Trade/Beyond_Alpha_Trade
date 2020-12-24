@@ -6,6 +6,7 @@ import GasFeeModal from "../stake/GasFeeModal";
 import { loanDetails } from "../../../services/loan.service";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/reducers/Index";
+import GeneralButton from "../../atomic/GeneralButton";
 function CloseLoan() {
   const toConvert = 1000000000000000000;
   const [returnLoanObj, setReturnLoanObj] = useState({
@@ -44,8 +45,8 @@ function CloseLoan() {
       : false;
   return (
     <>
-      <div className="bg-customGray-100 rounded mr-8 w-full mt-3 text-xxs xxl:text-sm">
-        <div className="rounded-t flex justify-between bg-gray-300 text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
+      <div className="border border-gray-400 rounded mr-8 w-full mt-3 px-2 text-xxs xxl:text-sm" style={{backgroundColor:"#EBEDF0"}}>
+        <div className="border-b border-gray-400 rounded-t flex justify-between text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
           <h5 className="py-1">CLOSE LOAN</h5>
         </div>
         <div className="p-3">
@@ -101,7 +102,18 @@ function CloseLoan() {
             </p>
           </div>
           <div className="flex mt-3">
-            <button
+          <GeneralButton
+              submitting={isReturning}
+              submit={() => returnLoanAction()}
+              textValue={"SUBMIT"}
+              isDisabled={isDisabled()}
+              otherClasses={`p-2 xxl:p-3 w-full text-white rounded ${
+                isDisabled()
+                  ? "cursor-not-allowed bg-customBlue-50"
+                  : "bg-customBlue-400"
+              }`}
+            />
+            {/* <button
               className={`p-2 xxl:p-3 w-full text-white rounded ${
                 isDisabled()
                   ? "cursor-not-allowed bg-customBlue-100"
@@ -117,7 +129,7 @@ function CloseLoan() {
                   <Loader type="Bars" color="#ffffff" height={18} width={20} />
                 </div>
               )}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

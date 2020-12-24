@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/reducers/Index";
 import { Trade } from "../../../store/types/ExchangeState";
 import { setTransations } from "../../../store/actions/ExchangeActions";
+import { toLower } from "lodash";
 function History() {
   const { balances, selected } = useSelector(
     (state: RootState) => state.wallet
@@ -31,15 +32,16 @@ function History() {
   console.log("AFTER USEEFFECT >>>>>>>>.",transationsHistory)
   return (
     <div className="px-8 xl:px-24 lg:px-24 mt-8 mb-8">
-      <div className="w-full bg-customGray-100 rounded mr-8">
-        <div className="bg-gray-300 rounded-t pl-2 pt-2">
-          <h3 className="font-medium text-xs xxl:text-lg text-gray-600">
+      <div className="w-full rounded mr-8">
+        <div className=" rounded-t pl-2 pt-2">
+          <h3 className="font-medium text-xs xxl:text-lg mb-3 text-gray-600">
             HISTORY
           </h3>
         </div>
+        <div className="nobar"  style={{height:"300px"}}>
         <table width="100%">
-          <tr className="bg-gray-300 text-xxs xxl:text-base text-left text-gray-600 font-medium">
-            <td className="w-1/5 pl-2 flex items-center">
+          <tr className="border-b text-xxs xxl:text-base text-left text-gray-600 font-medium">
+            <td className="w-1/6 pl-2 flex items-center">
               ASSETS
               <img
                 src="/assets/Icons/up-down-arrow.svg"
@@ -47,7 +49,7 @@ function History() {
                 className="ml-1 h-2"
               />
             </td>
-            <td className="w-1/5">
+            <td className="w-1/6">
               <div className="flex items-center">
                 AMOUNT
                 <img
@@ -57,7 +59,7 @@ function History() {
                 />
               </div>
             </td>
-            <td className="w-1/5">
+            <td className="w-1/6">
               <div className="flex items-center">
                 DATE
                 <img
@@ -67,7 +69,7 @@ function History() {
                 />
               </div>
             </td>
-            <td className="w-1/5">
+            <td className="w-1/6">
               <div className="flex items-center">
                CONFIRMATIONS
                 <img
@@ -77,26 +79,32 @@ function History() {
                 />
               </div>
             </td>
-            <td className="w-1/5">
+            <td className="w-1/6">
+              <div className="flex items-center">STATUS</div>
+            </td>
+            <td className="w-1/6">
               <div className="flex items-center">ACTION</div>
             </td>
           </tr>
           <tbody>
             {transationsHistory.map((item) => (
-              <tr className="py-20 text-xs xxl:text-base border-b-2 text-left font-normal">
-                <td className="w-1/5 pl-2 flex items-center my-2">
+              <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
+                <td className="w-1/6 pl-2 flex items-center my-2">
                   {item.tokenSymbol}
                 </td>
-                <td className="w-1/5">
+                <td className="w-1/6">
                   {item.amount} {item.tokenSymbol}
                 </td>
-                <td className="w-1/5">
+                <td className="w-1/6">
                   {item.time}
                 </td>
-                <td className="w-1/5">
+                <td className="w-1/6">
                   {item.confirmations}
                 </td>
-                <td className="w-1/5">
+                <td className="w-1/6">
+                  {toLower(selected.address) === toLower(item.fromAddress) ? "Sent":"Recived"}
+                </td>
+                <td className="w-1/6">
                 <a
                 href={item.infoURL ? item.infoURL : "#"}
                 style={item.infoURL === "" ? {pointerEvents:"none",cursor:"default",color:"gray"}:{}}
@@ -110,11 +118,13 @@ function History() {
             ))}
           </tbody>
         </table>
-       {transationsHistory.length === 0 && <div className="py-20 flex justify-center items-center">
+        {transationsHistory.length === 0 && <div className="py-20 flex justify-center items-center">
           <h6 className="text-gray-600 font-normal text-xs xxl:text-base">
             No exchange history found for associated wallet
           </h6>
         </div>} 
+        </div>
+       
       </div>
     </div>
   );

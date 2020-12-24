@@ -17,7 +17,7 @@ function TradeInfo() {
   } = useOrdersHistory(); 
   const myTradesData:any = myOrders.filter((item) => item.status === "Success" )
   return (
-    <div className="w-full mt-4 mr-4 bg-customGray-100 rounded overflow-auto">
+    <div className="w-full mt-4 mr-4 rounded overflow-auto border px-2">
       <div className="w-94">
         <GenericTab
           index={tabIndex}

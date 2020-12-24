@@ -7,15 +7,21 @@ import {
 import moment from "moment";
 import Loader from "react-loader-spinner";
 import useRewards from "../../../hooks/stake/useRewards";
+import GeneralButton from "../../atomic/GeneralButton";
 const convertToUSDb = 1000000000000000000;
 function Rewards() {
-  const {rewardData,rewards,isLoading}=useRewards()
+  const { rewardData, rewards, isLoading } = useRewards();
   return (
-    <div className="bg-customGray-100 mt-6 py-10 px-10">
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">REWARDS</h3>
+    <div
+      className="border border-gray-400 mt-6 py-10 px-10"
+      style={{ backgroundColor: "#EBEDF0" }}
+    >
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">
+        REWARDS
+      </h3>
       <div className="xl:flex lg:flex">
         <div className="w-full mb-4">
-          <p className="text-xs xxl:text-base font-light text-blue-1000 mt-6 font-normal">
+          <p className="text-xs xxl:text-base font-light text-black mt-6 font-normal">
             If you have staked your BYN tokens and
             <br />
             Invested USDb, you are eligible to collect BYN
@@ -25,14 +31,14 @@ function Rewards() {
             on a daily basis.
           </p>
           <img
-            src="/assets/Icons/Rewards.svg"
+            src="/assets/Images/rewards.png"
             alt="img"
             className="h-24 m-auto mt-10"
           />
         </div>
-        <div className="w-full px-6">
-          <div className="bg-customGray-100 rounded pb-1">
-            <div className="bg-customBlue-200 flex justify-between text-white py-1 px-8 xxl:text-base text-xs font-medium rounded-t">
+        <div className="w-full px-10">
+          <div className="rounded pb-1">
+            <div className="flex justify-between text-customGray-400 py-1 xxl:text-base text-xs font-medium rounded-t">
               <h4>Distribution Date</h4>
               <h4>BYN Quantity</h4>
             </div>
@@ -40,7 +46,7 @@ function Rewards() {
               rewardData?.length > 0 ? (
                 rewardData.map((reward: any, index: any) =>
                   index % 2 === 0 ? (
-                    <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
+                    <div className="flex justify-between text-white xxl:text-sm text-xxs px-4 py-2 bg-customBlue-500">
                       <h6 className="font-normal">
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
@@ -49,7 +55,7 @@ function Rewards() {
                       </h6>
                     </div>
                   ) : (
-                    <div className="flex justify-between xxl:text-sm text-xxs px-8 py-2 bg-gray-400">
+                    <div className="flex justify-between xxl:text-sm text-xxs px-4 py-2 bg-customBlue-550">
                       <h6 className="font-normal">
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
@@ -60,9 +66,11 @@ function Rewards() {
                   )
                 )
               ) : (
-                <div className="flex justify-center xxl:text-sm text-xxs px-8 py-2 bg-gray-300">
-                  <h6 className="font-normal">No Reward Found.</h6>
-                </div>
+                <>
+                  <div className="flex justify-center xxl:text-sm text-xxs px-8 py-2 bg-white">
+                    <h6 className="font-normal">No Reward Found.</h6>
+                  </div>
+                </>
               )
             ) : (
               <div className="flex justify-center py-6">
@@ -90,12 +98,18 @@ function Rewards() {
             )}
           </div>
           <div className="flex">
-            <button
+          <GeneralButton
+              submitting={false}
+              submit={claimUserReward}
+              textValue={"CLAIM"}
+              otherClasses={"bg-customBlue-400 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8"}
+            />
+            {/* <button
               onClick={claimUserReward}
-              className="focus:outline-none bg-customBlue-200 text-white mr-2 text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8"
+              className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8"
             >
               CLAIM
-            </button>
+            </button> */}
             {/* <button className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8">
               STAKE & MINT
             </button> */}

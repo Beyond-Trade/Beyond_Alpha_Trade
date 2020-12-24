@@ -23,14 +23,14 @@ function YourLoans() {
     });
   }, [loanType, , OpenLoansNo]);
   return (
-    <div className="w-full bg-customGray-100 whitespace-nowrap  mb-4 overflow-auto rounded mr-8 mt-3">
-      <div className="bg-gray-300 w-auto rounded-t pl-2 pt-2">
-        <h3 className="font-medium text-xs xxl:text-base text-gray-600">
+    <div className="border border-gray-400 w-full whitespace-nowrap px-2 mb-4 overflow-auto rounded mr-8 mt-3" style={{backgroundColor:"#EBEDF0"}}>
+      <div className=" w-auto rounded-t pl-2 pt-2">
+        <h3 className="font-medium text-xs xxl:text-base  text-gray-600">
           YOUR LOANS
         </h3>
       </div>
       <table width="100%">
-        <tr className="bg-gray-300 text-xxs xxl:text-xs text-left text-gray-600 font-medium">
+        <tr className="border-b border-gray-400 px-2 text-xxs xxl:text-xs text-left text-gray-600 font-medium">
           <td className="w-1/7 ">
             <div className="flex items-center " style={{ width: "130px" }}>
               AMOUNT BORROWED{" "}
@@ -88,14 +88,14 @@ function YourLoans() {
               <tr className="text-xs xxl:text-sm text-left text-gray-700 font-medium h-64 align-top" >
                 <td className="py-3 px-3">
                   {loanType === "ETHb"
-                    ? returnLoanObj?._loanValueETHb / toConvert || 0
-                    : returnLoanObj?._loanValueUSDb / toConvert || 0}{" "}
+                    ? (returnLoanObj?._loanValueETHb / toConvert).toFixed(2) || 0
+                    : (returnLoanObj?._loanValueUSDb / toConvert).toFixed(2) || 0}{" "}
                   ETHb
                 </td>
                 <td className="py-3 px-3">
                   {loanType === "ETHb"
-                    ? returnLoanObj?._collatteralETHb / toConvert || 0
-                    : returnLoanObj?._collatteralUSDb / toConvert || 0}{" "}
+                    ? (returnLoanObj?._collatteralETHb / toConvert).toFixed(2) || 0
+                    : (returnLoanObj?._collatteralUSDb / toConvert).toFixed(2) || 0}{" "}
                   ETHb
                 </td>
                 <td className="py-3 px-3">{Number(collatRatio) + 100}%</td>

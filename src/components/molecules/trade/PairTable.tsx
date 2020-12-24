@@ -7,7 +7,7 @@ function PairTable() {
   const { marketTab, tabs, setMarketTab, marketData, setSelectedPair, search } = usePairSelection()
   console.log(marketData,"=======>>>>>>>>>>")
   return (
-    <div className="mt-4 bg-customGray-100 overflow-auto" style={{height: '410px'}}>
+    <div className="mt-4 border  overflow-auto px-2" style={{height: '439px'}}>
       <GenericTab
         index={marketTab}
         onSelect={setMarketTab}

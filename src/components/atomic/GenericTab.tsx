@@ -8,13 +8,13 @@ interface IProps {
 
 function GenericTab(props: IProps) {
   return (
-    <div className="rounded flex justify-between">
+    <div className="rounded flex justify-between py-2 px-2">
       {props.tabs.map((item, index) => (
         <button
-          className={`focus:outline-none py-2 w-full text-center hover:bg-gray-300 hover:text-gray-600 text-xs xxl:text-sm font-medium ${
+          className={`focus:outline-none py-1 w-full text-center hover:bg-gray-200 hover:text-black text-xs xxl:text-sm font-medium ${
             index === props.index
-              ? "bg-gray-300 text-gray-600"
-              : "bg-customGray-100 text-gray-600"
+              ? "bg-gray-200 text-black"
+              : " text-gray-500"
           }`}
           onClick={() => props.onSelect(index)}
           style={{

@@ -34,7 +34,7 @@ const useTransfer = () => {
   useEffect(() => {
     let coins: any = [];
     ContractLookup.forEach((item) => {
-      if (item.isSyntheticAsset) {
+      if (item.isSyntheticAsset && (item.contractName === "Beyond" || item.contractName === "ETH")) {
         coins.push(item.contractName);
       }
     });

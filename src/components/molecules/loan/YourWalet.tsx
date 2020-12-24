@@ -26,17 +26,17 @@ function YourWalet() {
   }, [balances]);
   return (
     <>
-      <div className="bg-customGray-100 rounded mr-8 w-full mt-3 text-xs xxl:text-sm">
-        <div className="rounded-t flex justify-between items-center bg-gray-300 text-gray-600 px-2 py-3 font-medium">
+      <div className="border-gray-400 border px-2 rounded mr-8 w-full mt-3 text-xs xxl:text-sm" style={{backgroundColor:"#EBEDF0"}}>
+        <div className="border-gray-400 border-b rounded-t flex justify-between items-center text-gray-600 px-2 py-3 font-medium">
           <h5>YOUR WALET</h5>
         </div>
-        <div className="flex justify-between p-4">
+        <div className="flex justify-between py-4">
           <div className="flex justify-between w-full">
             <div>
               <h3 className="py-2">ETHb BALANCE</h3>
             </div>
             <div>
-  <h3 className="py-2">{state.ETHbBal.toLocaleString('fullwide', { useGrouping: false })}</h3>
+  <h3 className="py-2">{state.ETHbBal.toFixed(2)}</h3>
             </div>
           </div>
           <div className="flex justify-between w-full items-center ">
@@ -48,7 +48,7 @@ function YourWalet() {
               <h3 className="py-2">ETH BALANCE</h3>
             </div>
             <div>
-              <h3 className="py-2">{state.ETHBal}</h3>
+              <h3 className="py-2">{state.ETHBal.toFixed(2)}</h3>
             </div>
           </div>
         </div>

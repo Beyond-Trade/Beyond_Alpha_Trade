@@ -51,8 +51,8 @@ console.log("bottom section ",balances)
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
       <div className="w-full xl:mr-2 lg:mr-2 mb-4">
-        <div className="flex justify-between items-center py-2 xxl:py-3 px-4 xxl:px-6 bg-customGray-100 rounded">
-          <div className="flex items-center">
+        <div className="border border-gray-400 flex justify-between items-center py-2 xxl:py-3 px-4 xxl:px-6 rounded" style={{backgroundColor:"#EBEDF0"}}>
+          <div className="flex items-center" >
             <img
               src="/assets/Icons/BYN-small.svg"
               alt="img"
@@ -73,7 +73,7 @@ console.log("bottom section ",balances)
             </h6>
           </div>
         </div>
-        <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-6">
+        <div className="mt-2 xxl:mt-5 border border-gray-400 rounded p-4 xxl:p-6" style={{backgroundColor:"#EBEDF0"}}>
           <div className="flex justify-between border-b border-gray-400 pb-3">
             <h6 className="xxl:text-sm text-xs font-normal">TOTAL BYN:</h6>
             <h6 className="xxl:text-sm text-xs font-medium text-blue-1000">
@@ -82,10 +82,10 @@ console.log("bottom section ",balances)
           </div>
           <div className="flex justify-between my-5">
             <h6 className="xxl:text-sm text-xs font-medium">
-              Staked: {state.stackedBYN}
+              Staked: {state.stackedBYN.toFixed(2)}
             </h6>
             <h6 className="xxl:text-sm text-xs font-medium">
-              Not Staked: {state.unstackedBYN}
+              Not Staked: {state.unstackedBYN.toFixed(2)}
             </h6>
           </div>
           <div
@@ -100,8 +100,8 @@ console.log("bottom section ",balances)
           </div>
         </div>
         {/*  */}
-        <div className="mt-2 xxl:mt-5 bg-customGray-100 rounded p-4 xxl:p-6">
-          <div className="flex justify-between">
+        <div className="mt-2 xxl:mt-5 border border-gray-400 rounded p-4 xxl:p-6" style={{backgroundColor:"#EBEDF0"}}>
+          <div className="flex justify-between border-b border-gray-400">
             <h6 className="xxl:text-sm text-xs font-medium">DAILY REWARD</h6>
             <div
               className="flex items-center cursor-pointer"
@@ -162,9 +162,9 @@ console.log("bottom section ",balances)
         </div> */}
       </div>
       <div className="w-full xl:ml-2 lg:ml-2  whitespace-nowrap  mb-4 overflow-auto">
-        <div className="bg-customGray-100 rounded pb-1">
+        <div className="border border-gray-400 rounded pb-1 px-2" style={{backgroundColor:"#EBEDF0"}}>
           <table width="100%">
-            <tr className="bg-gray-400 flex justify-between py-2 xxl:py-5 px-8 text-xs font-bold rounded-t">
+            <tr className="flex border-b border-gray-400 justify-between py-2 xxl:py-5 px-8 text-xs font-bold rounded-t">
               <td className="items-center w-44 mr-8 xxl:mr-0">
                 <h4 className="xxl:text-lg text-xs">Asset Summary</h4>
               </td>
@@ -176,7 +176,7 @@ console.log("bottom section ",balances)
               </td>
             </tr>
             {balances.map((item) => (
-              <tr className="flex bg-gray-100 justify-between font-normal py-1 py-2 px-8 text-xs font-light rounded-t">
+              <tr className="flex border-b border-gray-400 justify-between font-normal py-1 py-2 px-8 text-xs font-light rounded-t">
                 <td style={{ width: "120px" }}>
                   <div className="flex items-center">
                     <img src={item.icon} className="h-4 xxl:h-8" alt="img" />

@@ -66,6 +66,7 @@ const customStyle = {
     alignItems: "center",
   },
   content: {
+    borderRadius:"20px",
     padding: "10px",
     backgroundColor: "#ffffff",
     width: getWidth(),

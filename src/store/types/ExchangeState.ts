@@ -28,7 +28,7 @@ export interface Order {
   pair: string;
   buying: string;
   selling: string;
-  price: number;
+  price: any;
   status: string;
   infoURL: string;
 }

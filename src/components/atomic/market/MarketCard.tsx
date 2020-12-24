@@ -12,9 +12,9 @@ function MarketCard(props: IProps) {
 
   return (
     <div
-      className={`bg-customGray-100 rounded mb-4 w-full ${props.marginRight}`}
+      className={`border border-gray-400 rounded mb-4 w-full ${props.marginRight}`}
     >
-      <div className="bg-gray-300 py-1 px-2 flex justify-between rounded-t">
+      <div className="border-b border-gray-400 py-1 px-2 flex justify-between rounded-t">
         <h5 className="text-xs xxl:text-sm font-semibold text-gray-600">
           {props.pair}
         </h5>
@@ -30,7 +30,7 @@ function MarketCard(props: IProps) {
         <img src={props.image} alt="img" className="h-10 xxl:h-16" />
         <div className="text-xs xxl:text-base font-bold">
           <text>{props.coin}</text>
-          <text className="text-blue-600 block mt-2">{props.price}</text>
+          <text className=" block mt-2">{Number(props.price).toFixed(2)}</text>
         </div>
       </div>
     </div>

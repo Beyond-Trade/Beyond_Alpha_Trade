@@ -120,15 +120,6 @@ export const ETHbAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [],
-    name: "beyondExchangeProx",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: false,
     inputs: [
       { internalType: "uint256", name: "_value", type: "uint256" },
@@ -174,15 +165,6 @@ export const ETHbAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [],
-    name: "loanContract",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: false,
     inputs: [
       { internalType: "uint256", name: "_value", type: "uint256" },
@@ -210,24 +192,6 @@ export const ETHbAbi: AbiItem | AbiItem[] = [
     outputs: [{ internalType: "address", name: "", type: "address" }],
     payable: false,
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "address", name: "_address", type: "address" }],
-    name: "setExchangeContract",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "address", name: "_address", type: "address" }],
-    name: "setLoanContract",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
     type: "function",
   },
   {

@@ -65,8 +65,9 @@ function AllTradesTable(props:any) {
           </tr>
         ))}
       </table> */}
+      <div className="nobar"  style={{height:"200px"}}>
        <table width="100%">
-        <tr className="bg-gray-300 text-xxs xxl:text-sm text-left text-gray-600 font-medium">
+        <tr className="text-xxs xxl:text-sm text-left text-gray-600 font-medium border-b border-t">
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	xl:w-20 xxl:w-32">
               DATE | TIME
@@ -114,7 +115,7 @@ function AllTradesTable(props:any) {
           </td>
         </tr>
         {props.data.map((item:any) => (
-          <tr className="text-xs text-left text-gray-600 font-medium hover:bg-gray-300">
+          <tr className="text-xs text-left text-black font-medium hover:bg-gray-200  border-b">
             <td className="py-3 px-3">
               <text>{item.date}</text>
             </td>
@@ -129,7 +130,7 @@ function AllTradesTable(props:any) {
                 href={item.infoURL ? item.infoURL : "#"}
                 style={item.infoURL === "" ? {pointerEvents:"none",cursor:"default",color:"gray"}:{}}
                 target="_blank"
-                className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm"
+                className="focus:outline-none cursor-pointer text-customBlue-500 underline px-2 py-1 font-bold text-xs rounded-sm"
               >
                 VIEW
               </a>
@@ -138,10 +139,12 @@ function AllTradesTable(props:any) {
         ))}
       </table>
       {props.data.length === 0 && (
-        <div className="h-48 text-blue-500 text-xs xxl:text-sm flex justify-center items-center">
+        <div className="h-full text-blue-500 text-xs xxl:text-sm flex justify-center items-center">
           No data found
         </div>
       )}
+      </div>
+     
     </React.Fragment>
   );
 }

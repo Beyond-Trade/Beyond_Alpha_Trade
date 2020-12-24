@@ -106,9 +106,9 @@ const useMakeOrders = () => {
       setMyOrder({
         date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
         pair: state.to + "/" + state.from,
-        buying: inputs.to + " " + state.to,
-        selling: inputs.from + " " + state.from,
-        price: price,
+        buying: Number(inputs.to).toFixed(2) + " " + state.to,
+        selling: Number(inputs.from).toFixed(2) + " " + state.from,
+        price: Number(price).toFixed(2),
         status: "pending",
         infoURL: "",
       })

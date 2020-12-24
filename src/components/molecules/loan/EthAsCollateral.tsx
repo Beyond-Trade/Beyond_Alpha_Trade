@@ -34,15 +34,15 @@ function EthAsCollateral({ ETH }: any) {
   const toConvert = 1000000000000000000;
   return (
     <>
-      <div className="bg-customGray-100 rounded mr-8 w-full">
-        <div className="rounded-t flex justify-between items-center bg-gray-300 text-gray-600 text-xs xxl:text-sm px-2 py-2 font-medium">
+      <div className="border border-gray-400 rounded mr-8 px-2 w-full" style={{backgroundColor:"#EBEDF0"}}>
+        <div className="rounded-t flex justify-between items-center border-gray-400 border-b text-gray-600 text-xs xxl:text-sm px-2 py-2 font-medium">
           <div className="flex items-center ">
             <h5>ETH AS COLLATERAL</h5>
             <div
               onClick={() => LoanTypeAction("ETHb")}
               // onClick={handleETHb}
               className={`ml-12 xxl:ml-32 py-1 px-4 mr-4 rounded-sm cursor-pointer ${
-                loanType === "ETHb" ? "bg-gray-400" : "border border-gray-400"
+                loanType === "ETHb" ? "bg-white" : "border bg-gray-300"
               }`}
             >
               ETHb
@@ -51,7 +51,7 @@ function EthAsCollateral({ ETH }: any) {
               onClick={() => LoanTypeAction("USDb")}
               // onClick={handleUSDb}
               className={`py-1 px-4 rounded-sm cursor-pointer ${
-                loanType === "USDb" ? "bg-gray-400" : "border border-gray-400"
+                loanType === "USDb" ? "bg-white" : "border bg-gray-300"
               }`}
             >
               USDb
@@ -67,7 +67,7 @@ function EthAsCollateral({ ETH }: any) {
             />
           </a>
         </div>
-        <div className="flex justify-between p-4">
+        <div className="flex justify-between p-2">
           <div className="flex justify-between text-xs xxl:text-sm w-full">
             <div>
               <h3 className="text-gray-600 py-2">INTEREST FEE</h3>
@@ -109,7 +109,7 @@ function EthAsCollateral({ ETH }: any) {
               <h3 className="py-2">1.0 ETH</h3>
               <h3 className="py-2">{Number(collatRatio) + 100}%</h3>
               <h3 className="py-2">{Number(ethLocked) / toConvert}</h3>
-              <h3 className="py-2">{ETH?.rate || 0}</h3>
+              <h3 className="py-2">{Number(ETH?.rate).toFixed(2) || 0}</h3>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ function FAQChip() {
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => setToggle((prev) => !prev);
   return (
-    <div className="rounded p-3 bg-white mt-2 shadow">
+    <div className="rounded p-3 bg-white mt-2 shadow border hover:border-customBlue-500">
       <div className="flex justify-between">
         <h5 className="text-xs xxl:text-lg font-medium">
           Lorem Ipsum is simply dummy text of the printing?

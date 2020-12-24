@@ -120,15 +120,6 @@ export const OILbAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
-    constant: true,
-    inputs: [],
-    name: "beyondExchangeProx",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     constant: false,
     inputs: [
       { internalType: "uint256", name: "_value", type: "uint256" },
@@ -201,15 +192,6 @@ export const OILbAbi: AbiItem | AbiItem[] = [
     outputs: [{ internalType: "address", name: "", type: "address" }],
     payable: false,
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [{ internalType: "address", name: "_address", type: "address" }],
-    name: "setBeyondExchangeAddressProx",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
     type: "function",
   },
   {

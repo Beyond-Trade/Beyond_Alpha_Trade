@@ -80,7 +80,7 @@ function Market() {
         />
       </div>
       <div className="xl:flex lg:flex">
-        <div className="w-full mb-4 mr-4 bg-customGray-100 rounded overflow-auto">
+        <div className="w-full mb-4 mr-4 rounded overflow-auto border border-gray-400 px-2">
           <GenericTab
             index={marketIndex}
             onSelect={setIndex}
@@ -92,10 +92,12 @@ function Market() {
             search={search}
           />
         </div>
-        <div className="xl:w-chartH lg:w-chartH">
+        <div className="xl:w-chartH lg:w-chartH ">
           <SearchTop handleSearch={handleSearch} search={search} />
+          <div className="border rounded border-gray-400 px-2">
           <GenericTab index={topIndex} onSelect={setTopIndex} tabs={topTabs} />
           <MarketTop data={marketTopData} />
+          </div>
         </div>
       </div>
     </div>

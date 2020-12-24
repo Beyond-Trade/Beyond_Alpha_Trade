@@ -13,7 +13,7 @@ function WalletData() {
           </h3> */}
         {/* </div> */}
         <table width="100%">
-          <tr className="text-xxs xxl:text-base border-b-2 text-left text-gray-600 font-medium">
+          <tr className="text-xxs xxl:text-base border-b text-left text-gray-600 font-medium">
             <td className="w-1/4 pl-2 flex items-center my-2">
               ASSETS
               <img
@@ -54,8 +54,8 @@ function WalletData() {
             </td>
           </tr>
           <tbody>
-            {balances.filter((item)=>item.short != "Beyond").map((item) => (
-              <tr className="py-20 text-xs xxl:text-base border-b-2 text-left font-normal">
+            {balances.map((item) => (
+              <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
                 <td className="w-1/4 pl-2 flex items-center my-2">
                   {item.short}
                 </td>

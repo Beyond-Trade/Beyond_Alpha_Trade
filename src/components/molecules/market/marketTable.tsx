@@ -12,7 +12,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
   const history = useHistory();
   return (
     <table width="100%">
-      <tr className="bg-gray-300 text-xxs xxl:text-sm text-left text-gray-600 font-bold">
+      <tr className="border-b border-t border-gray-400 text-xxs xxl:text-sm text-left text-gray-600 font-bold">
         <td className="py-2 px-3">
           <div className="flex items-center">
             ASSET
@@ -58,7 +58,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
           data.short.toLowerCase().includes(search.toLowerCase())
         )
         .map((item: any) => (
-          <tr className="text-xs xxl:text-sm text-left text-gray-700 font-medium">
+          <tr className="text-xs xxl:text-sm text-left text-gray-700 border-b border-gray-400 font-medium">
             <td className="py-3 px-3">
               <div className="flex items-center">
                 <text className="text-black">{item.short}</text>

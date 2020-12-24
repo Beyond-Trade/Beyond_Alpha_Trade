@@ -11,13 +11,13 @@ function MarketTop({ data }: IProps) {
   console.log(balances);
   return (
     <table width="100%">
-      <tr className="bg-gray-300 xl:text-xxs xxl:text-sm text-left text-gray-600 font-medium">
+      <tr className="border-b border-t border-gray-400 xl:text-xxs xxl:text-sm text-left text-gray-600 font-medium">
         <td className="py-2 px-3">ASSETS</td>
         <td className="py-2 px-3">RATE</td>
         <td className="py-2 px-3">CHANGE</td>
       </tr>
       {data.map((item: any) => (
-        <tr className="bg-gray-100 xl:text-xs xxl:text-sm text-left text-gray-700 font-medium">
+        <tr className="border-b border-gray-400 xl:text-xs xxl:text-sm text-left text-gray-700 font-medium">
           <td className="py-3 px-3">
             <div className="flex items-center">
               <text className="text-black">{item.short}</text>

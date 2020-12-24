@@ -20,12 +20,15 @@ function Trade() {
       <div className="xl:flex lg:flex mt-8 w-full">
         <PairSelection />
         <div className="xl:ml-4 lg:ml-4" style={{width:"80%"}}>
-          <h3 className="font-bold text-2xl ml-4">
+          <h3 className="font-bold text-customBlue-500 text-2xl ml-4">
             {selectedPair.counter + " / " + selectedPair.base}
           </h3>
           <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />
           <div className="xl:flex lg:flex md:flex">
+            <div className="mt-4" style={{width:"90%"}}>
             <Chart/>
+            </div>
+            {/* <Chart/> */}
             <MakeOrders />
           </div>
         </div>
