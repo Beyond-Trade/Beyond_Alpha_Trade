@@ -7,7 +7,7 @@ interface IProps {
 }
 function SelectWalletType(props: IProps) {
   return (
-    <div className="px-16 pb-8">
+    <div className="px-12 pb-8 flex-col items-center">
       <div className="text-center font-medium w-full text-customBlue-500 font-bold mt-8">
         Connect your wallet
       </div>

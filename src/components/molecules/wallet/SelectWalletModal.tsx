@@ -23,7 +23,8 @@ function SelectWalletModal(props: IProps) {
     <Modal isOpen={props.isOpen} style={customStyle}>
       <button
         onClick={() => props.close()}
-        className="focus:outline-none float-right"
+        className="focus:outline-none float-right absolute"
+        style={{top: "20px", right: "20px"}}
       >
         <img src="/assets/Icons/Cross.svg" />
       </button>
@@ -40,20 +41,24 @@ export default SelectWalletModal;
 
 const getWidth = () => {
   const width = window.innerWidth
-  if(width > 1000){
+  console.log('width', width)
+  if(width > 1300){
+    return "25%"
+  }
+  if(width > 1000&& width<1300){
     return "30%"
   }
   if(width < 1000 && width > 800){
-    return "50%"
+    return "40%"
   }
   if(width < 800 && width > 600){
-    return "60%"
+    return "50%"
   }
   if(width < 600 && width > 400){
-    return "80%"
+    return "70%"
   }
   if(width < 400){
-    return "80%"
+    return "70%"
   }
 }
 

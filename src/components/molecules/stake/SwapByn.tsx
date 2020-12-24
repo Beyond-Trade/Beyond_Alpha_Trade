@@ -38,7 +38,7 @@ function SwapByn(props: IProps) {
             <div className="w-full">
               <h6 className="text-xs xxl:text-sm text-customGray-300 font-medium">From (ETH)</h6>
               <input
-                className="focus:outline-none text-customBlue-500 border-none hover:border-customBlue-400 mt-2 font-medium"
+                className="focus:outline-none border mt-4 border-white text-sm p-1 text-customBlue-500 border-rounded w-2/3 focus:border-customBlue-400 hover:border-customBlue-400 mt-2 font-medium"
                 type="number"
                 name="from"
                 min="0"
