@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { feesDescription } from "../../../utils/constants";
+import GeneralButton from "../../atomic/GeneralButton";
 
 interface IProps {
   isOpen: boolean;
@@ -22,19 +23,19 @@ function GasFeeModal(props: IProps) {
       <div>
         <input placeholder="CUSTOM" onChange={(event)=>props.select(event.target.value, false)} className="focus:outline-none border border-gray-300 px-3 rounded py-2 w-full mt-2" />
         {gasFees.map((item, index: number) => (
-          <button
-            onClick={() => props.select(item, true)}
-            className={`focus:outline-none ${props.activeFee===item?'bg-customBlue-200 shadow text-white':'bg-gray-100 hover:bg-gray-200'} rounded py-2 w-full mt-2`}
-          >
-            {feesDescription[index] + " " + item}
-          </button>
+          <GeneralButton
+          submitting={false}
+          submit={() => props.select(item, true)}
+          textValue={feesDescription[index] + " " + item}
+          otherClasses={`${props.activeFee===item?'bg-customBlue-400 text-white':'bg-customBlue-50'} py-2 w-full mt-2`}
+        />
         ))}
-        <button
-            onClick={() => props.close()}
-            className={`focus:outline-none ${'bg-customBlue-200 shadow text-white'} rounded py-2 w-full mt-2`}
-          >
-           Done
-          </button>
+        <GeneralButton
+          submitting={false}
+          submit={() => props.close()}
+          textValue={"Done"}
+          otherClasses={`bg-customBlue-400 py-2 w-full mt-2`}
+        />
       </div>
     </Modal>
   );
