@@ -74,6 +74,39 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   {
     constant: true,
     inputs: [
+      { internalType: "address", name: "_beneficiary", type: "address" },
+    ],
+    name: "checkUserCollateralProx",
+    outputs: [
+      { internalType: "uint256", name: "bUSDAmountInBYN", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "collatteralValueInBYN",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "additionalBYNValueForCollateral",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "additionalCollatteralValueInUSDb",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "collatteralRatioUpdated",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
       { internalType: "uint256", name: "_time", type: "uint256" },
       { internalType: "address", name: "_beneficiary", type: "address" },
     ],

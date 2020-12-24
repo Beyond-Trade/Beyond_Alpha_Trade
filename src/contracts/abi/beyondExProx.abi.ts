@@ -90,7 +90,7 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
-    constant: false,
+    constant: true,
     inputs: [
       { internalType: "address", name: "_beneficiary", type: "address" },
     ],
@@ -119,7 +119,7 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
       },
     ],
     payable: false,
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -208,6 +208,15 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
     ],
     payable: false,
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: false,
+    inputs: [],
+    name: "getBeyondTokenValue",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    payable: false,
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
