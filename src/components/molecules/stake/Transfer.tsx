@@ -25,11 +25,28 @@ function Transfer() {
     onCoinSelect,
     dropIndex,
   } = useTransfer();
-
+  let firstInput: any = React.useRef(null);
+  let firstDiv: any = React.useRef(null);
+  let secondInput: any = React.useRef(null);
+  let secondDiv: any = React.useRef(null);
+  React.useEffect(() => {
+    window.onclick = function (event: any) {
+      if (firstInput.current === document.activeElement) {
+        firstDiv.current.classList.add("border-customBlack-550");
+      } else {
+        firstDiv?.current?.classList?.remove("border-customBlack-550");
+      }
+      if (secondInput.current === document.activeElement) {
+        secondDiv?.current?.classList?.add("border-customBlack-550");
+      } else {
+        secondDiv?.current?.classList?.remove("border-customBlack-550");
+      }
+    };
+  }, []);
   return (
     <div className="border border-gray-400 mt-6 py-10 px-10"
     style={{ backgroundColor: "#EBEDF0" }}>
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">TRANSFER</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">TRANSFER</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
           <p className="text-xs font-normal xxl:text-base font-light text-black mt-6">
@@ -47,7 +64,7 @@ function Transfer() {
             <h6 className="text-xs xxl:text-sm font-medium text-black">
               Transferable amount:
             </h6>
-            <h6 className="text-xs xxl:text-sm font-bold text-customBlue-500">
+            <h6 className="text-xs xxl:text-sm font-bold text-customBlack-500">
               {balance.toFixed(2)}{" "}
               {dropValues[dropIndex] === "Beyond"
                 ? "BYN"
@@ -56,14 +73,15 @@ function Transfer() {
           </div>
           <div className="mt-6 text-xs xxl:text-sm">
             <p className="font-medium">Enter amount:</p>
-            <div className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center">
+            <div ref={firstDiv} className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
               <Dropdown
                 fields={dropValues}
                 index={dropIndex}
                 onSelect={onCoinSelect}
               />
               <input
-                className="focus:outline-none ml-2 py-1 w-full text-customBlue-500 font-medium"
+              ref={firstInput}
+                className="focus:outline-none ml-2 py-1 w-full text-customBlack-500 font-medium"
                 type="number"
                 name="amount"
                 min="0"
@@ -75,7 +93,7 @@ function Transfer() {
               submitting={false}
               submit={setMax}
               textValue={"Max"}
-              otherClasses={"bg-customBlue-400 px-2 py-1 "}
+              otherClasses={"bg-customBlack-500 px-2 py-1 "}
             />
               {/* <button
                 onClick={setMax}
@@ -88,8 +106,9 @@ function Transfer() {
           </div>
           <div className="mt-6 text-xs xxl:text-sm">
             <p className="font-medium">Enter destination address:</p>
-            <div className="border border-gray-400 bg-white  mt-2 rounded px-4 py-2 flex items-center">
+            <div ref={secondDiv} className="border border-gray-400  hover:shadow-custom hover:border-customBlack-550 bg-white  mt-2 rounded px-4 py-2 flex items-center">
               <input
+              ref={secondInput}
                 className="focus:outline-none ml-2 py-1 w-full text-gray-600 font-medium"
                 type="text"
                 placeholder="eg 0XB8B...8F6BA"
@@ -104,7 +123,7 @@ function Transfer() {
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
-              className="text-blue-500 underline ml-1 cursor-pointer"
+              className="text-customBlack-500 underline ml-1 cursor-pointer"
             >
               EDIT
             </text>
@@ -113,7 +132,7 @@ function Transfer() {
               submitting={submitting}
               submit={submit}
               textValue={"SEND NOW"}
-              otherClasses={"bg-customBlue-400 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-2"}
+              otherClasses={"bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-2"}
             />
           {/* <button
             onClick={submit}

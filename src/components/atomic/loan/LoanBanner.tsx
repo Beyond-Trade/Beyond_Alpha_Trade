@@ -24,7 +24,7 @@ function LoanBanner() {
       <div className="bg-customGray-100 relative">
         <div className="w-full"></div>
         <img
-          src="/assets/Images/header2.png"
+          src="/assets/Images/header2.jpg"
           alt="img"
           style={{height: "25vw",width:"100%"}}
         />

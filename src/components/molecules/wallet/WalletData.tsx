@@ -57,17 +57,17 @@ function WalletData() {
             {balances.map((item) => (
               <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
                 <td className="w-1/4 pl-2 flex items-center my-2">
-                  {item.short}
+                  {item.short  === "Beyond" ? "BYN":item.short}
                 </td>
-                <td className="w-1/4">{item.rate}</td>
+                <td className="w-1/4">{item.rate === Infinity ? "0.00" : item.rate.toFixed(2)}</td>
                 <td className="w-1/4">
                   <div className="flex items-center">
-                    {item.cryptoBalance.toFixed(4)} {item.short}
+                    {item.cryptoBalance.toFixed(2)} {item.short  === "Beyond" ? "BYN":item.short}
                   </div>
                 </td>
                 <td className="w-1/4">
                   <div className="flex items-center">
-                    ${(item.cryptoBalance * item.rate).toFixed(2)}
+                    ${item.cryptoBalance * item.rate > 0 ? (item.cryptoBalance * item.rate).toFixed(2) : "0.00"}
                   </div>
                 </td>
               </tr>

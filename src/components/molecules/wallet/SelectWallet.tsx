@@ -16,7 +16,7 @@ function SelectWallet(props: IProps) {
   const changeSelectedWallet = async (wallet: any): Promise<any> => {
     dispatch(SetSelectedWalletAction(wallet));
   };
-  console.log(wallets);
+  console.log(wallets,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
   return (
     <div className="px-6 pb-2">
       <div className="text-center font-medium w-full text-green-400 mt-8">
@@ -52,9 +52,9 @@ function SelectWallet(props: IProps) {
               <td className="px-2">
                 {item.address.slice(0, 5) + "..." + item.address.slice(-5)}
               </td>
-              <td className="px-2">{item.BYNBalance}</td>
-              <td className="px-2">{item.USDbBalance}</td>
-              <td className="px-2">{item.EthBalance.toFixed(4)}</td>
+              <td className="px-2">{item.BYNBalance.toFixed(2)}</td>
+              <td className="px-2">{item.USDbBalance.toFixed(2)}</td>
+              <td className="px-2">{item.EthBalance.toFixed(2)}</td>
               <td className="px-2"><a target="_blank" href={EtherscanBrowsUrl + item.address}>
                 {" "}
                 <img

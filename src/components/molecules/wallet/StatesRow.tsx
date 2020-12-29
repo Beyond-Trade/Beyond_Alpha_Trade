@@ -64,7 +64,7 @@ function StatesRow() {
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <text>TOTAL SYNTHETIC ASSET VALUE</text>
         </div>
-        <h3 className="font-extrabold text-lg xxl:text-xl text-customBlue-500 text-center my-6 mx-2">
+        <h3 className="font-extrabold text-lg xxl:text-xl text-customBlack-500 text-center my-6 mx-2">
           ${totalSynthValue ? totalSynthValue.toFixed(2) : "0.00"} USD
         </h3>
       </div>
@@ -154,7 +154,7 @@ function StatesRow() {
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>TOTAL WALLET VALUE</h5>
         </div>
-        <h3 className="font-extrabold text-lg xxl:text-xl text-customBlue-500 text-center my-6 mx-2">
+        <h3 className="font-extrabold text-lg xxl:text-xl text-customBlack-500 text-center my-6 mx-2">
           ${totalWalletValue ? totalWalletValue.toFixed(2) : "0.00"} USD
         </h3>
       </div>

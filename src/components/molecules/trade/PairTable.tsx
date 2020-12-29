@@ -7,11 +7,11 @@ function PairTable() {
   const { marketTab, tabs, setMarketTab, marketData, setSelectedPair, search } = usePairSelection()
   console.log(marketData,"=======>>>>>>>>>>")
   return (
-    <div className="mt-4 border  overflow-auto px-2" style={{height: '439px'}}>
+    <div className="mt-4 border  overflow-auto px-2" style={{height: '525px'}}>
       <GenericTab
         index={marketTab}
         onSelect={setMarketTab}
-        tabs={tabs}
+        tabs={["USDb"]}
       />
       <PairData data={marketData[marketTab]} search={search} onSelect={setSelectedPair} />
     </div>

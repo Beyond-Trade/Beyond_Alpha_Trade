@@ -12,6 +12,9 @@ import { RootState } from "../store/reducers/Index";
 function Trade() {
   const { selectedPair,updatedSelectedPair } = useSelector((state: RootState) => state.exchange);
   console.log(moment().format("LT"), "==========TIME=========");
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   // useEffect(()=>{
   //   getRates();
   // },[])
@@ -20,13 +23,13 @@ function Trade() {
       <div className="xl:flex lg:flex mt-8 w-full">
         <PairSelection />
         <div className="xl:ml-4 lg:ml-4" style={{width:"80%"}}>
-          <h3 className="font-bold text-customBlue-500 text-2xl ml-4">
+          <h3 className="font-normal text-customBlack-500 text-2xl ml-4" style={{fontFamily:""}}>
             {selectedPair.counter + " / " + selectedPair.base}
           </h3>
-          <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />
+          {/* <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} /> */}
           <div className="xl:flex lg:flex md:flex">
             <div className="mt-4" style={{width:"90%"}}>
-            <Chart/>
+            <Chart selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair}/>
             </div>
             {/* <Chart/> */}
             <MakeOrders />

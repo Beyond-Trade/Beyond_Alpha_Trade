@@ -58,7 +58,7 @@ function EthAsCollateral({ ETH }: any) {
             </div>
           </div>
           <a className="flex" href="https://rinkeby.etherscan.io/address/0xb441A09C3a11c1e9B4B657AA4f1Fdb804B1d5A57">
-            view contacts
+            View contract
             <img
               src="/assets/Icons/exit.svg"
               alt="img"

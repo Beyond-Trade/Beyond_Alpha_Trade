@@ -9,7 +9,7 @@ function WalletBanner(props: IProps) {
     <div className="bg-customGray-100 relative">
       <div className="w-full"></div>
       <img
-        src="/assets/Images/header3.png"
+        src="/assets/Images/header3.jpg"
         alt="img"
         style={{height: '25vw',width:"100%"}}
       />
@@ -29,6 +29,9 @@ function WalletBanner(props: IProps) {
             activeString="text-white"
             activeBorder="border-wihte"
               text="Overview"
+              from=""
+          to=""
+          subText=""
               onClick={() => props.setTab(0)}
               active={props.tab === 0}
             />
@@ -37,6 +40,9 @@ function WalletBanner(props: IProps) {
             activeString="text-white"
             activeBorder="border-wihte"
               text="History"
+              from=""
+          to=""
+          subText=""
               onClick={() => props.setTab(1)}
               active={props.tab === 1}
             />

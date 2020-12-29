@@ -34,8 +34,9 @@ const BottomSection = () => {
       ...prev,
       ethRate: ETHObj?.rate || 0,
       ETHBal: ETHObj?.cryptoBalance || 0,
-      bynRate: BYNObj?.rate || 0,
+      bynRate: BYNObj?.rate === Infinity ? 0 : BYNObj?.rate || 0,
     }));
+    console.log(BYNObj?.rate,"FFFFFFFFFFFFFFFFFFFFFFFF")
   }, [balances]);
   React.useEffect(() => {
     let stackedPerc = (stackedBYN * 100) / totalByn;
@@ -59,7 +60,7 @@ console.log("bottom section ",balances)
               className="h-6 xxl:h-8"
             />
             <h6 className="ml-2 xxl:text-sm text-xs font-medium">
-              1 BYN = ${state.bynRate?.toFixed(2)} USD
+              1 BYN = ${state.bynRate?.toFixed(2) || 0} USD
             </h6>
           </div>
           <div className="flex items-center">
@@ -89,11 +90,11 @@ console.log("bottom section ",balances)
             </h6>
           </div>
           <div
-            className="w-full flex mt-1 pb-2 bg-customBlue-50"
+            className="w-full flex mt-1 pb-2 bg-customBlack-50"
             style={{ padding: "0px" }}
           >
             <div
-              className="h-4 bg-customBlue-500"
+              className="h-4 bg-customBlack-500"
               style={{ width: `${state.stackedBYNPercent}%` }}
             ></div>
             {/* <div className="h-4 bg-gray-300"></div> */}
@@ -181,13 +182,13 @@ console.log("bottom section ",balances)
                   <div className="flex items-center">
                     <img src={item.icon} className="h-4 xxl:h-8" alt="img" />
                     <h6 className="ml-2 lg:ml-2 xxl:ml-4 xxl:text-xl text-xs">
-                      {item.short}
+                      {item.short === "Beyond"? "BYN":item.short }
                     </h6>
                   </div>
                 </td>
                 <td className="text-center" style={{ width: "90px" }}>
                   <h6 className="ml-2 xxl:text-xl text-xs">
-                    {item.cryptoBalance.toFixed(4)}
+                    {item.cryptoBalance.toFixed(2)}
                   </h6>
                 </td>
                 <td className="text-center" style={{ width: "90px" }}>

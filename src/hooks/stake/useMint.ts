@@ -67,12 +67,12 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
           throw new Error("no data");
         }
         updateBalances();
-        alert.show("Mint successful", { type: "success" });
+        alert.show("Invest successful", { type: "success" });
         setState((prev) => ({ ...prev, submitting: false,amount:"",graphPercent:0,burnableByns:0,BYNStackingAmount:0 }));
       })
       .catch((e) => {
         console.log("e", e);
-        alert.show("Error while minting", { type: "error" });
+        alert.show("Error while Investing", { type: "error" });
         setState((prev) => ({ ...prev, submitting: false }));
       });
   };

@@ -8,7 +8,7 @@ function TermsAndConditions() {
     <div>
       <TermsAndConditionsBanner />
       <div className=" px-8 md:px-16 xl:px-24 lg:px-24 mt-8 xl:text-xs xxl:text-lg">
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           INTRODUCTION
         </h1>
         <p className="items-center text-center justify-center">
@@ -31,7 +31,7 @@ function TermsAndConditions() {
         >
           https://beyond.learn786.com/
         </a>
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           INTELLECTUAL PROPERTY RIGHTS
         </h1>
         <p className="items-center text-center justify-center">
@@ -41,7 +41,7 @@ function TermsAndConditions() {
           only for purposes of viewing the material contained on this Website.
         </p>
 
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           RESTRICTIONS
         </h1>
         <p className="items-center justify-center my-3">
@@ -126,7 +126,7 @@ function TermsAndConditions() {
           password you may have for this Website are confidential and you must
           maintain confidentiality as well.
         </p>
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           YOUR CONTENT
         </h1>
         <p className="items-center text-center justify-center">
@@ -141,7 +141,7 @@ function TermsAndConditions() {
           notice.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           NO WARRANTIES
         </h1>
         <p className="items-center text-center justify-center">
@@ -152,7 +152,7 @@ function TermsAndConditions() {
         </p>
 
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           LIMITATION OF LIABILITY
         </h1>
         <p className="items-center text-center justify-center">
@@ -166,7 +166,7 @@ function TermsAndConditions() {
         </p>
 
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           INDEMNIFICATION
         </h1>
         <p className="items-center text-center justify-center">
@@ -177,7 +177,7 @@ function TermsAndConditions() {
         </p>
 
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           SEVERABILITY
         </h1>
         <p className="items-center text-center justify-center">
@@ -187,7 +187,7 @@ function TermsAndConditions() {
         </p>
 
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           VARIATION OF TERMS
         </h1>
         <p className="items-center text-center justify-center">
@@ -196,7 +196,7 @@ function TermsAndConditions() {
           Terms on a regular basis.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           ASSIGNMENT
         </h1>
         <p className="items-center text-center justify-center">
@@ -206,7 +206,7 @@ function TermsAndConditions() {
           subcontract any of your rights and/or obligations under these Terms.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           ENTIRE AGREEMENT
         </h1>
         <p className="items-center text-center justify-center">
@@ -215,7 +215,7 @@ function TermsAndConditions() {
           prior agreements and understandings.
         </p>
         {/*  */}
-        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlue-500">
+        <h1 className="xl:text-2xl xxl:text-3xlflex  p-8 items-center text-center justify-cente text-customBlack-500">
           GOVERNING LAW & JURISDICTION
         </h1>
         <p className="items-center text-center justify-center">

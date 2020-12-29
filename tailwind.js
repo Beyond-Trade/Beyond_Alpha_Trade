@@ -49,8 +49,14 @@ module.exports = {
         400: "#1c39ca",
         500: "#0D2075",
         550: "#0D2BAD",
+        551: "#0D2BAD",
         50:"#9CA9FF",
         active: "#28272D",
+      },
+      customBlack: {
+        500: "#00020D",
+        550: "#111A4B",
+        50:"#919191",
       },
       red: {
         100: "#fff5f5",
@@ -239,6 +245,7 @@ module.exports = {
       8: "8px",
     },
     boxShadow: {
+      custom:"3px 3px 19px -3px #111A4B",
       xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
       sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
       default:
@@ -286,6 +293,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        "Panton Black Caps",
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",

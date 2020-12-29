@@ -29,17 +29,28 @@ function Mint() {
       e.target.value = e.target.value.slice(0, e.target.maxLength);
     }
   };
+  let firstInput: any = React.useRef(null);
+  let firstDiv: any = React.useRef(null);
+  React.useEffect(() => {
+    window.onclick = function (event: any) {
+      if (firstInput.current === document.activeElement) {
+        firstDiv.current.classList.add("border-customBlack-550");
+      } else {
+        firstDiv?.current?.classList?.remove("border-customBlack-550");
+      }
+    };
+  }, []);
   return (
     <div className="border border-gray-400 mt-6 py-10 px-10" style={{backgroundColor:"#EBEDF0"}}>
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlue-500">INVEST</h3>
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">INVEST</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
           <p className="text-xs xxl:text-base font-light text-black mt-6 font-normal">
-            Invest into USDb,by staking your BYN.
+          Get USDb, by staking your BYN.
             <br />
             You can trade various synthetic assets using USDb
             <br />
-             as well as earn staking reward daily from your staked BYN
+            as well as earn daily staking reward from your staked BYN.
             <br />
           </p>
           <img
@@ -53,14 +64,15 @@ function Mint() {
           <div className="flex flex-col justify-center items-center">
             <div className="mt-8 xl:w-full xxl:w-4/5">
               <p className="text-xs xl:text-xs xxl:text-sm font-medium">
-                Confirm or enter amount to mint:
+                Enter amount to invest USDb:
               </p>
-              <div className="bg-white mt-2 rounded px-2 xl:px-4 xxl:px-6 text-gray-700 xl:text-sm xxl:text-sm flex justify-center items-center xl:py-2 xxl:py-2">
+              <div ref={firstDiv} className="bg-white mt-2 rounded border border-white px-2 xl:px-4 xxl:px-6 hover:shadow-custom hover:border-customBlack-550 text-gray-700 xl:text-sm xxl:text-sm flex justify-center items-center xl:py-2 xxl:py-2">
                 <text className="focus:outline-none text-gray-600 text-xs xl:text-xs xxl:text-sm font-medium flex items-center border-r pr-4 border-gray-500">
                   USDb
                 </text>
                 <input
-                  className="text-customBlue-500 focus:outline-none ml-2 py-2 w-full"
+                ref={firstInput}
+                  className="text-customBlack-500 focus:outline-none ml-2 py-2 w-full"
                   type="number"
                   name="amount"
                   value={amount}
@@ -74,7 +86,7 @@ function Mint() {
               submitting={false}
               submit={setMax}
               textValue={"Max"}
-              otherClasses={"bg-customBlue-400  text-xs xl:text-xs xxl:text-sm py-1 xl:py-1 xxl:py-2 px-4 ml-2"}
+              otherClasses={"bg-customBlack-500  text-xs xl:text-xs xxl:text-sm py-1 xl:py-1 xxl:py-2 px-4 ml-2"}
             />
                 {/* <button
                   onClick={setMax}
@@ -94,7 +106,7 @@ function Mint() {
                 <p className="tooltip">
                   <img src="/assets/Icons/info.png" className="w-4 ml-2" />
                   <span className="tooltiptext">
-                    To Mint Synths on Beyond, user has to deposit 300%
+                    To Invest Synths on Beyond, user has to deposit 300%
                     collateral of the value of synths being minted. This ensures
                     Synths are backed by sufficient collateral to absorb large
                     price shocks.
@@ -161,7 +173,7 @@ function Mint() {
             <text className="text-customGray-400">Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
-              className="text-blue-500 underline ml-1 cursor-pointer"
+              className="text-customBlack-500 underline ml-1 cursor-pointer"
             >
               EDIT
             </text>
@@ -171,7 +183,7 @@ function Mint() {
               submitting={submitting}
               submit={submit}
               textValue={"INVEST NOW"}
-              otherClasses={"bg-customBlue-400 text-xs xxl:text-sm w-full xxl:w-4/5 rounded py-2 xxl:py-3 mt-2"}
+              otherClasses={"bg-customBlack-500 text-xs xxl:text-sm w-full xxl:w-4/5 rounded py-2 xxl:py-3 mt-2"}
             />
             {/* <button
               onClick={submit}

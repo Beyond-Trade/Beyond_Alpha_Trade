@@ -17,31 +17,32 @@ const useOrdersHistory = () => {
 
     const setTab = (index:number) => setState(prev=>({...prev, tabIndex: index}))
 
-    const getTradeData = () => {
-        setState(prev=>({...prev, loadingTrades: true}))
-        console.log(selectedPair ,"==================CALLED")
-        const contract = ContractLookup.find((item) => item.contractName === selectedPair.base)
-        if(!contract) return
-        getContractTransactions(contract.contractAddress).then((data: Trade[])=>{
-            console.log(data,"========================ALL TRADES DATA============================",selected.address)
-            let myTrades = data.filter((item)=> item.fromAddress.toLowerCase() === selected.address.toLowerCase())
-            console.log(myTrades,"=========MY TRADES======")
-            setState(prev=>({...prev, loadingTrades: false, trades: data, myTrades: myTrades }))
-        }).catch((e)=>{
-            console.log('error',e)
+    // const getTradeData = () => {
+    //     setState(prev=>({...prev, loadingTrades: true}))
+    //     console.log(selectedPair ,"==================CALLED")
+    //     const contract = ContractLookup.find((item) => item.contractName === selectedPair.base)
+    //     if(!contract) return
+    //     getContractTransactions(contract.contractAddress).then((data: Trade[])=>{
+    //         console.log(data,"========================ALL TRADES DATA============================",selected.address)
+    //         let myTrades = data.filter((item)=> item.fromAddress.toLowerCase() === selected.address.toLowerCase())
+    //         console.log(myTrades,"=========MY TRADES======")
+    //         setState(prev=>({...prev, loadingTrades: false, trades: data, myTrades: myTrades }))
+    //     }).catch((e)=>{
+    //         console.log('error',e)
             
-            setState(prev=>({...prev, loadingTrades: false}))
-        })
-    }
-    useEffect(()=>{
-        getTradeData()
-    },[selectedPair])
+    //         setState(prev=>({...prev, loadingTrades: false}))
+    //     })
+    // }
+    // useEffect(()=>{
+    //     getTradeData()
+    // },[selectedPair])
 
     return {
         ...state,
         setTab,
         myOrders,
-        getTradeData,
+        selectedPair
+        // getTradeData,
     }
 }
 

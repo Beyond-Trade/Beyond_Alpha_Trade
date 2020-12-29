@@ -5,7 +5,7 @@ function AboutUsBanner() {
       <div className="bg-customGray-100 relative flex">
         <div className="w-full"></div>
         <img
-          src="/assets/Images/header1.png"
+          src="/assets/Images/header1.jpg"
           alt="img"
           style={{height: "25vw",width:"100%"}}
         />

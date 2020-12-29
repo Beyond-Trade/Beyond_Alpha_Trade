@@ -11,7 +11,7 @@ function Navbar() {
   const [collapsed, setCollapsed] = useState(false);
   const toggle = () => setCollapsed((prev) => !prev);
   return (
-    <nav className="bg-customBlue-400">
+    <nav className="bg-customBlack-500">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 xxl:py-4">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -66,7 +66,7 @@ function Navbar() {
             <div className="hidden sm:block md:ml-6">
               <div className="flex space-x-4">
                 <NavTab
-                  path="/stake/swap_byn"
+                  path="/stake/get_byn"
                   text="STAKE"
                   active={location.pathname.split('/')[1] === "stake"}
                 />

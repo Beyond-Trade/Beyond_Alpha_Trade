@@ -6,82 +6,93 @@ import { PeriodLabel, PERIOD_IN_HOURS } from '../../../constants/period';
 import format from 'date-fns/format';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { assetChartNames } from '../../../utils/constants';
+import TradingViewWidget from 'react-tradingview-widget';
 import { formatCurrencyWithSign } from '../../../utils/formatters';
 import useTradeChart from "../../../hooks/trade/useTradeChart";
 import Periodlabels from "../../atomic/trade/PeriodLabels";
-export type HistoricalTrade = {
-	block: number;
-	date: Date;
-	feesInUSD: number;
-	fromAddress: string;
-	fromAmount: number;
-	fromAmountInUSD: number;
-	fromCurrencyKey: CurrencyKey;
-	fromCurrencyKeyBytes: string;
-	gasPrice: number;
-	hash: string;
-	timestamp: number;
-	toAddress: string;
-	toAmount: number;
-	toAmountInUSD: number;
-	toCurrencyKey: CurrencyKey;
-	toCurrencyKeyBytes: string;
-	price: number;
-	amount: number;
-	isSettled: boolean;
-	reclaim: number;
-	rebate: number;
-	settledPrice: number;
-};
-function Chart() {
-  const { t } = useTranslation();
-  // const { colors } = React.useContext(ThemeContext);
-  const {PERIOD_LABELS_MAP,setSelectedPeriod,records,activePeriod}= useTradeChart()
-  console.log(records,"==========IN CHART==========")
+import MarketData from "./MarketData";
+// export type HistoricalTrade = {
+// 	block: number;
+// 	date: Date;
+// 	feesInUSD: number;
+// 	fromAddress: string;
+// 	fromAmount: number;
+// 	fromAmountInUSD: number;
+// 	fromCurrencyKey: CurrencyKey;
+// 	fromCurrencyKeyBytes: string;
+// 	gasPrice: number;
+// 	hash: string;
+// 	timestamp: number;
+// 	toAddress: string;
+// 	toAmount: number;
+// 	toAmountInUSD: number;
+// 	toCurrencyKey: CurrencyKey;
+// 	toCurrencyKeyBytes: string;
+// 	price: number;
+// 	amount: number;
+// 	isSettled: boolean;
+// 	reclaim: number;
+// 	rebate: number;
+// 	settledPrice: number;
+// };
+function Chart({updatedSelectedPair,selectedPair}) {
+  // const { t } = useTranslation();
+  // // const { colors } = React.useContext(ThemeContext);
+  // const {PERIOD_LABELS_MAP,setSelectedPeriod,records,activePeriod}= useTradeChart()
+  // console.log(records,"==========IN CHART==========")
   
-  const CustomTooltip = ({
-		active,
-		label,
-		payload,
-	}: {
-		active: boolean;
-		payload: [
-			{
-				value: number;
-				payload: {
-					trade?: HistoricalTrade;
-				};
-			}
-		];
-		label: Date;
-	}) => {
-		if (active) {
-			if(payload){
-        const { value, payload: innerPayload } = payload[0];
-			return (
-				<TooltipContentStyle>
-					<LabelStyle>{format(label, 'do MMM yy | HH:mm')}</LabelStyle>
-					<ItemStyle>{`Price:  ${formatCurrencyWithSign(
-						"$",
-						value
-					)}`}</ItemStyle>
-					{(innerPayload.trade?.fromAmount ?? 0) > 0 ? (
-						<ItemStyle>{`${formatCurrencyWithSign(
-							"$",
-							(innerPayload.trade as HistoricalTrade).fromAmountInUSD
-						)}`}</ItemStyle>
-					) : null}
-				</TooltipContentStyle>
-			);
-      }
-		}
+  // const CustomTooltip = ({
+	// 	active,
+	// 	label,
+	// 	payload,
+	// }: {
+	// 	active: boolean;
+	// 	payload: [
+	// 		{
+	// 			value: number;
+	// 			payload: {
+	// 				trade?: HistoricalTrade;
+	// 			};
+	// 		}
+	// 	];
+	// 	label: Date;
+	// }) => {
+	// 	if (active) {
+	// 		if(payload){
+  //       const { value, payload: innerPayload } = payload[0];
+	// 		return (
+	// 			<TooltipContentStyle>
+	// 				<LabelStyle>{format(label, 'do MMM yy | HH:mm')}</LabelStyle>
+	// 				<ItemStyle>{`Price:  ${formatCurrencyWithSign(
+	// 					"$",
+	// 					value
+	// 				)}`}</ItemStyle>
+	// 				{(innerPayload.trade?.fromAmount ?? 0) > 0 ? (
+	// 					<ItemStyle>{`${formatCurrencyWithSign(
+	// 						"$",
+	// 						(innerPayload.trade as HistoricalTrade).fromAmountInUSD
+	// 					)}`}</ItemStyle>
+	// 				) : null}
+	// 			</TooltipContentStyle>
+	// 		);
+  //     }
+	// 	}
 
-		return null;
-	};
+	// 	return null;
+	// };
   return (
+    <div>
+      <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />
+    
     <div className="xl:h-chartH xxl:h-chartHXXL" >
-      
-      <Periodlabels PERIOD_LABELS_MAP={PERIOD_LABELS_MAP} setSelectedPeriod={setSelectedPeriod} active={activePeriod}/>
+      <TradingViewWidget
+        symbol={`${assetChartNames[selectedPair.counter]}${
+          assetChartNames[selectedPair.base]
+        }`}
+        autosize
+      />
+      {/* <Periodlabels PERIOD_LABELS_MAP={PERIOD_LABELS_MAP} setSelectedPeriod={setSelectedPeriod} active={activePeriod}/>
     <ChartContainer>
     {records?.length > 0 ?
       <ResponsiveContainer width="100%" height={300}>
@@ -123,8 +134,6 @@ function Chart() {
         stroke={"#A08AFF"}
         fillOpacity={0.5}
         fill="url(#colorUv)"
-        // @ts-ignore
-        // dot={<CustomizedDot />}
       />
       <Tooltip
         content={
@@ -134,9 +143,9 @@ function Chart() {
       />
     </AreaChart>
     </ResponsiveContainer>:"no record found"}
-    </ChartContainer>
-    <small className="text-xs">Note: Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources.</small>
-    {/* Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources. */}
+    </ChartContainer> */}
+    {/* <small className="text-xs">Note: Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources.</small> */}
+    </div>
     </div>
   );
 }

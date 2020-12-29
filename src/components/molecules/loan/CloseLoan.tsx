@@ -95,7 +95,7 @@ function CloseLoan() {
               {fee}{" "}
               <text
                 onClick={openFeeModal}
-                className="text-customBlue-200 ml-1 underline cursor-pointer	"
+                className="text-customBlack-500 ml-1 underline cursor-pointer	"
               >
                 Edit
               </text>
@@ -109,8 +109,8 @@ function CloseLoan() {
               isDisabled={isDisabled()}
               otherClasses={`p-2 xxl:p-3 w-full text-white rounded ${
                 isDisabled()
-                  ? "cursor-not-allowed bg-customBlue-50"
-                  : "bg-customBlue-400"
+                  ? "cursor-not-allowed bg-customBlack-50"
+                  : "bg-customBlack-500"
               }`}
             />
             {/* <button

@@ -11,7 +11,7 @@ function Periodlabels({PERIOD_LABELS_MAP,setSelectedPeriod,active}:any) {
         submitting={false}
         submit={() => setSelectedPeriod(period.valueHours)}
         textValue={period.value}
-        otherClasses={`ml-3 p-1  text-xs xxl:text-base ${active === period.valueHours?"bg-customBlue-400":"bg-customBlue-50"}`}
+        otherClasses={`ml-3 p-1  text-xs xxl:text-base ${active === period.valueHours?"bg-customBlack-500":"bg-customBlack-50"}`}
         />
         // <button
         //   key={period.value}

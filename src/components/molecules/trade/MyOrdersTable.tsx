@@ -77,7 +77,7 @@ function MyOrdersTable(props: IProps) {
                 href={item.infoURL ? item.infoURL : "#"}
                 style={item.infoURL === "" ? {pointerEvents:"none",cursor:"default",color:"gray"}:{}}
                 target="_blank"
-                className="focus:outline-none cursor-pointer text-customBlue-500 underline px-2 py-1 font-bold text-xs rounded-sm"
+                className="focus:outline-none cursor-pointer text-customBlack-500 underline px-2 py-1 font-bold text-xs rounded-sm"
               >
                 VIEW
               </a>

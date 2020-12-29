@@ -34,14 +34,14 @@ function MakeOrders() {
   React.useEffect(() => {
     window.onclick = function (event: any) {
       if (firstInput.current === document.activeElement) {
-        firstDiv.current.classList.add("border-customBlue-550");
+        firstDiv.current.classList.add("border-customBlack-550");
       } else {
-        firstDiv?.current?.classList?.remove("border-customBlue-550");
+        firstDiv?.current?.classList?.remove("border-customBlack-550");
       }
       if (secondInput.current === document.activeElement) {
-        secondDiv?.current?.classList?.add("border-customBlue-550");
+        secondDiv?.current?.classList?.add("border-customBlack-550");
       } else {
-        secondDiv?.current?.classList?.remove("border-customBlue-550");
+        secondDiv?.current?.classList?.remove("border-customBlack-550");
       }
     };
   }, []);
@@ -55,7 +55,7 @@ function MakeOrders() {
           submitting={false}
           submit={toggleBuySell}
           textValue={"Reverse"}
-          otherClasses="px-3 py-2 text-xxs xxl:text-sm bg-customBlue-400 "
+          otherClasses="px-3 py-2 text-xxs xxl:text-sm bg-customBlack-500"
         >
           <img src="/assets/Icons/reverse.svg" className="ml-1 h-2" />
         </GeneralButton>
@@ -76,7 +76,7 @@ function MakeOrders() {
         </div>
         <div
           ref={firstDiv}
-          className="border mt-2 rounded-sm py-2 hover:border-customBlue-550 font-medium text-xs xxl:text-base text-gray-600 px-2 xxl:py-3 flex items-center"
+          className="border mt-2 rounded-sm py-2 hover:shadow-custom hover:border-customBlack-550 font-medium text-xs xxl:text-base text-gray-600 px-2 xxl:py-3 flex items-center"
         >
           <img
             src={fromImage}
@@ -103,7 +103,7 @@ function MakeOrders() {
         </div>
         <div
           ref={secondDiv}
-          className="border mt-2 rounded-sm py-2 hover:border-customBlue-550 font-medium text-xs xxl:text-base text-gray-600 px-2 xxl:py-3 flex items-center"
+          className="border mt-2 rounded-sm py-2 hover:shadow-custom hover:border-customBlack-550 font-medium text-xs xxl:text-base text-gray-600 px-2 xxl:py-3 flex items-center"
         >
           <img
             src={toImage}
@@ -131,25 +131,25 @@ function MakeOrders() {
             submitting={false}
             submit={() => setPercentage(25)}
             textValue={"25%"}
-            otherClasses={"py-1 xxl:py-2 px-2 mr-2 w-full bg-customBlue-50"}
+            otherClasses={"py-1 xxl:py-2 px-2 mr-2 w-full bg-customBlack-50"}
           />
           <GeneralButton
             submitting={false}
             submit={() => setPercentage(50)}
             textValue={"50%"}
-            otherClasses={"py-1 xxl:py-2 px-2 mr-2 w-full bg-customBlue-50"}
+            otherClasses={"py-1 xxl:py-2 px-2 mr-2 w-full bg-customBlack-50"}
           />
           <GeneralButton
             submitting={false}
             submit={() => setPercentage(75)}
             textValue={"75%"}
-            otherClasses={"py-1 xxl:py-2 px-2 mr-2 w-full bg-customBlue-50"}
+            otherClasses={"py-1 xxl:py-2 px-2 mr-2 w-full bg-customBlack-50"}
           />
           <GeneralButton
             submitting={false}
             submit={() => setPercentage(100)}
             textValue={"100%"}
-            otherClasses={"py-1 xxl:py-2 px-2 w-full bg-customBlue-50"}
+            otherClasses={"py-1 xxl:py-2 px-2 w-full bg-customBlack-50"}
           />
         </div>
         <div className="flex justify-between font-medium text-xxs xxl:text-sm text-gray-700 mt-2">
@@ -166,7 +166,7 @@ function MakeOrders() {
             <text>${fee}</text>
             <text
               onClick={openFeeModal}
-              className="text-customBlue-200 ml-1 underline cursor-pointer	"
+              className="text-customBlack-200 ml-1 underline cursor-pointer	"
             >
               Edit
             </text>
@@ -177,7 +177,7 @@ function MakeOrders() {
           submit={submit}
           textValue={"CONFIRM TRADE NOW"}
           otherClasses={
-            "py-2 w-full bg-customBlue-400  mt-3 text-xs xxl:text-base"
+            "py-2 w-full bg-customBlack-500 mt-3 text-xs xxl:text-base"
           }
         />
         {/* <button

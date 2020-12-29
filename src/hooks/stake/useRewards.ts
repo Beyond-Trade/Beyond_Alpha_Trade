@@ -20,10 +20,9 @@ const useRewards = () => {
       const rewardsData: any = [];
       const Rewards: any = [];
       for (var i = 0; i <= 6; i++) {
-        if (resCopy - 86400000 > 0) {
-          resCopy = resCopy - 86400000;
+        if (resCopy - 86400 > 0) {
+          resCopy = resCopy - 86400;
           console.log(resCopy, "==========resCopy==========");
-  
           let result = 0;
           await userRewardDetails(resCopy).then((resData) => {
             console.log(resData,">>>>>>>>>>>>>>>>>>.");

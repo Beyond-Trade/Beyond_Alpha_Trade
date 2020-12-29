@@ -156,6 +156,7 @@ export const getETHBalance = async (address: string): Promise<number> => {
 
 // @ts-ignore
 export const getERC20Balance = async (contractInfo: any, address: string): Promise<number> => {
+    console.log(contractInfo,"SSSSSSSSSSSSSSSSs")
     web3 = store.getState().wallet.web3;
     if (web3.currentProvider) {
         if (contractInfo) {

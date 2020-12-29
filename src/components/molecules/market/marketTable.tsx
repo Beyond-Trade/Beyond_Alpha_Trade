@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
+import GeneralButton from "../../atomic/GeneralButton";
 
 import MarketSort from "../../atomic/market/MarketSort";
 
@@ -83,12 +84,18 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <img src="/assets/Images/Up.png" className="h-8" />
           </td> */}
             <td className="py-3 px-3">
-              <button
+            <GeneralButton
+              submitting={false}
+              submit={() => history.push("/trade")}
+              textValue={"TRADE"}
+              otherClasses={"bg-customBlack-50 px-2 py-1 text-white xl:text-xs xxl:text-sm"}
+            />
+              {/* <button
                 onClick={() => history.push("/trade")}
                 className="focus:outline-none flex content-center bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white xl:text-xs xxl:text-sm rounded-sm"
               >
                 TRADE
-              </button>
+              </button> */}
             </td>
           </tr>
         ))}

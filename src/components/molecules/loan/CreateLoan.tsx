@@ -27,9 +27,27 @@ function CreateLoan() {
     fee,
     selectFee,
   } = useCreateLoan();
-
+  let firstInput: any = React.useRef(null);
+  let firstDiv: any = React.useRef(null);
+  let secondInput: any = React.useRef(null);
+  let secondDiv: any = React.useRef(null);
+  useEffect(() => {
+    window.onclick = function (event: any) {
+      if (firstInput.current === document.activeElement) {
+        firstDiv.current.classList.add("border-customBlack-550");
+      } else {
+        firstDiv?.current?.classList?.remove("border-customBlack-550");
+      }
+      if (secondInput.current === document.activeElement) {
+        secondDiv?.current?.classList?.add("border-customBlack-550");
+      } else {
+        secondDiv?.current?.classList?.remove("border-customBlack-550");
+      }
+    };
+  }, []);
   // console.log(loanType,"=========(((((LOANTYPE)))))========")
-
+  const [hovered, setHovered] = React.useState(false);
+  const toggleHover = () => setHovered(!hovered);
   return (
     <>
       <div
@@ -47,7 +65,12 @@ function CreateLoan() {
               Balance : {ETH?.cryptoBalance.toFixed(2)}
             </p>
           </div>
-          <div className="rounde flex border border-gray-400 hover:border-customBlue-550 text-gray-600 px-2 py-2 font-medium">
+          <div
+            ref={firstDiv}
+        onMouseEnter={toggleHover}
+        onMouseLeave={toggleHover}
+            className={`rounded flex border border-gray-400 hover:shadow-custom hover:border-customBlack-550 text-gray-600 px-2 py-2 font-medium`}
+          >
             <h3 className="py-1 mr-10 flex items-center">
               <img
                 // src="/assets/icons/Ethereum.svg"
@@ -58,6 +81,7 @@ function CreateLoan() {
               ETH
             </h3>
             <input
+              ref={firstInput}
               className="focus:outline-none ml-2 w-full appearance-none"
               style={{ backgroundColor: "#EBEDF0" }}
               type="number"
@@ -81,7 +105,10 @@ function CreateLoan() {
                 : Number(USDb?.cryptoBalance).toFixed(2)}{" "}
             </p>
           </div>
-          <div className="border border-gray-400 hover:border-customBlue-550 rounded flex text-gray-600 px-2 py-2 font-medium">
+          <div
+            ref={secondDiv}
+            className="border border-gray-400 hover:shadow-custom hover:border-customBlack-550  rounded flex text-gray-600 px-2 py-2 font-medium"
+          >
             <h3 className="py-1 mr-10 flex items-center">
               <img
                 src={`${loanType === "ETHb" ? ETHb?.icon : USDb?.icon}`}
@@ -91,6 +118,7 @@ function CreateLoan() {
               {loanType}
             </h3>
             <input
+              ref={secondInput}
               className="focus:outline-none ml-2 w-full appearance-none"
               type="number"
               style={{ backgroundColor: "#EBEDF0" }}
@@ -119,7 +147,7 @@ function CreateLoan() {
               {fee}{" "}
               <text
                 onClick={openFeeModal}
-                className="text-customBlue-200 ml-1 underline cursor-pointer	"
+                className="text-customBlack-500 ml-1 underline cursor-pointer	"
               >
                 Edit
               </text>
@@ -137,7 +165,7 @@ function CreateLoan() {
               submitting={isSubmitting}
               submit={() => submit(loanType)}
               textValue={"SUBMIT"}
-              otherClasses={"bg-customBlue-400 p-2 xxl:p-3 w-full"}
+              otherClasses={"bg-customBlack-500 p-2 xxl:p-3 w-full"}
             />
             {/* <button
               className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded"

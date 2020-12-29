@@ -118,13 +118,13 @@ function useBurn() {
         if (!data) {
           throw new Error("No provider");
         }
-        alert.show("Success!", { type: "success" });
+        alert.show("Redeem Successfully!", { type: "success" });
         updateBalances();
         setState((prev) => ({ ...prev, burning: false, amount: "", byn: "" }));
       })
       .catch((e) => {
         console.log("e", e);
-        alert.show("Error!", { type: "error" });
+        alert.show("Error while Redeem!", { type: "error" });
         setState((prev) => ({ ...prev, burning: false }));
       });
   };

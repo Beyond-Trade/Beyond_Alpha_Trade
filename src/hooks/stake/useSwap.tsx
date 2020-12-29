@@ -55,13 +55,13 @@ const useSwap = () => {
         if (!data) {
           throw new Error("no data");
         }
-        alert.show("Swap successful", { type: "success" });
+        alert.show("Get BYN successful", { type: "success" });
         updateBalances();
         setState((prev) => ({ ...prev, swapping: false, from: "", to: "" }));
       })
       .catch((e) => {
         console.log("e", e);
-        alert.show("Unable to swap", { type: "error" });
+        alert.show("Unable to Get BYN", { type: "error" });
         setState((prev) => ({ ...prev, swapping: false }));
       });
   };

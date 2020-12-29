@@ -15,8 +15,8 @@ function ContactUs() {
       <ContactUsBanner />
       <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
         <div className="flex-1 xl:mr-8 lg:mr-8">
-          <h1 className="py-3 xl:text-2xl xxl:text-3xl text-customBlue-500">GET IN TOUCH</h1>
-          <p className="xl:text-xs xxl:text-lg text-customBlue-500">
+          <h1 className="py-3 xl:text-2xl xxl:text-3xl text-customBlack-500">GET IN TOUCH</h1>
+          <p className="xl:text-xs xxl:text-lg text-customBlack-500">
             if you have any query,feel free to get in touch us.Fill the form
             bellow to send us your query.
           </p>
@@ -24,7 +24,7 @@ function ContactUs() {
             <div className="w-full py-3 mr-3">
               <p className="py-2">Name</p>
               <input
-                className="focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3 border border-white  focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550"
                 type="text"
                 style={{ backgroundColor: "#fcfcfc" }}
                 value=""
@@ -33,7 +33,7 @@ function ContactUs() {
             <div className="w-full py-3">
               <p className="py-2">Email</p>
               <input
-                className="focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3 border border-white  focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550"
                 type="text"
                 style={{ backgroundColor: "#fcfcfc" }}
                 value=""
@@ -44,7 +44,7 @@ function ContactUs() {
             <div className="w-full py-3 mr-3">
               <p className="py-2">Phone</p>
               <input
-                className="focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3 border border-white  focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550"
                 type="text"
                 style={{ backgroundColor: "#fcfcfc" }}
                 value=""
@@ -53,7 +53,7 @@ function ContactUs() {
             <div className="w-full py-3">
               <p className="py-2">Website</p>
               <input
-                className="focus:outline-none w-full p-3"
+                className="focus:outline-none w-full p-3 border border-white  focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550"
                 type="text"
                 style={{ backgroundColor: "#fcfcfc" }}
                 value=""
@@ -64,14 +64,14 @@ function ContactUs() {
             <div className="w-full py-3">
               <p className="py-2">Message</p>
               <textarea
-                className=" focus:outline-none w-full p-3"
+                className=" focus:outline-none w-full p-3 border border-white  focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550"
                 style={{ backgroundColor: "#fcfcfc" }}
                 value=""
               />
             </div>
           </div>
           <div className="flex" style={{ justifyContent: "flex-end" }}>
-            <button className="bg-customBlue-200 p-3 content-end xl:text-sm text-white rounded">
+            <button className="bg-customBlack-500 p-3 content-end xl:text-sm text-white rounded">
               SEND MESSAGE
             </button>
           </div>
@@ -80,7 +80,7 @@ function ContactUs() {
       </div>
       <div className=" lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8 xl:h-48 xxl:h-64">
         <div className="flex justify-center w-full">
-          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium">
+          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550">
             <img
               src="/assets/Icons/phone-black.png"
               alt="img"
@@ -91,7 +91,7 @@ function ContactUs() {
               +94 722 321 911
             </p>
           </div>
-          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium">
+          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex items-center justify-center  xxl:font-medium focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550">
             <img
               src="/assets/Icons/plane@3x.png"
               alt="img"
@@ -102,7 +102,7 @@ function ContactUs() {
               suppport@beyond.com
             </p>
           </div>
-          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex text-center items-center justify-center  xxl:font-medium">
+          <div className="w-1/4 flex-col border mx-3 xl:text-xl xxl:text-3xl  p-8 flex text-center items-center justify-center  xxl:font-medium focus:border-customBlack-550 hover:shadow-custom hover:border-customBlack-550">
             <img
               src="/assets/Icons/pin-black.png"
               alt="img"
