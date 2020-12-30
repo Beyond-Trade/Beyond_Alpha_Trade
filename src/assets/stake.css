@@ -126,7 +126,10 @@ textarea::placeholder {
   border-top-right-radius: 4px;
   display: none!important;
 }
-/* @font-face {
-  font-family: 'Panton Black Caps';
-  src: local('Panton Black Caps'), url(./fonts/Rajdhani/Rajdhani-Regular.ttf) format('truetype');
-} */
+@font-face {
+  font-family: 'PantonBlackCaps';
+  src: url(./Panton-BlackCaps.otf);
+}
+.boldText{
+  font-family: 'PantonBlackCaps';
+}

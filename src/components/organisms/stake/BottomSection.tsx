@@ -109,7 +109,7 @@ console.log("bottom section ",balances)
               onClick={() => history.push("/stake/rewards")}
             >
               <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
-                Go to "Rewards" section
+                Go to Rewards
               </label>
               <img
                 src="/assets/Icons/see details arrow.svg"
@@ -129,7 +129,7 @@ console.log("bottom section ",balances)
                 alt="img"
               />
               <label className="xxl:text-lg text-xs text-blue-1000">
-                {rewards.reduce((a: any, b: any) => a + b, 0)} BYN
+                ${rewards[0] || 0.00}
               </label>
             </div>
           </div>

@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  currentTime,
-  userRewardDetails,
-  claimUserReward,
-} from "../../../services/reward.service";
 import moment from "moment";
 import Loader from "react-loader-spinner";
 import useRewards from "../../../hooks/stake/useRewards";
 import GeneralButton from "../../atomic/GeneralButton";
 const convertToUSDb = 1000000000000000000;
 function Rewards() {
-  const { rewardData, rewards, isLoading } = useRewards();
-  const claimUserRewardAction=()=>{
-    try {
-      claimUserReward()
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const { rewardData, rewards, isLoading,submit,claiming } = useRewards();
   return (
     <div
       className="border border-gray-400 mt-6 py-10 px-10"
@@ -43,7 +31,7 @@ function Rewards() {
           <div className="rounded pb-1">
             <div className="flex justify-between text-customGray-400 py-1 xxl:text-base text-xs font-medium rounded-t">
               <h4>Distribution Date</h4>
-              <h4>BYN Quantity</h4>
+              <h4>Rewards Quantity</h4>
             </div>
             {!isLoading ? (
               rewardData?.length > 0 ? (
@@ -54,16 +42,16 @@ function Rewards() {
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
                       <h6 className="font-normal">
-                        ${reward.data / convertToUSDb}
+                        ${Number(reward.data / convertToUSDb).toFixed(2)}
                       </h6>
                     </div>
                   ) : (
-                    <div className="flex justify-between xxl:text-sm text-xxs px-4 py-2 bg-customBlack-550">
+                    <div className="flex justify-between xxl:text-sm text-xxs px-4 py-2 bg-customBlack-50 text-white">
                       <h6 className="font-normal">
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
                       <h6 className="font-normal">
-                        ${reward.data / convertToUSDb}
+                        ${Number(reward.data / convertToUSDb).toFixed(2)}
                       </h6>
                     </div>
                   )
@@ -92,18 +80,19 @@ function Rewards() {
             </div> */}
 
             {rewardData?.length > 0 && (
-              <div className="flex justify-between xxl:text-sm text-xxs bg-gray-300 px-8 py-2">
+              <div className="flex justify-between xxl:text-sm text-xxs bg-white px-4 py-2">
                 <h6 className="font-medium">Total available</h6>
                 <h6 className="font-medium">
-                  {rewards.reduce((a: any, b: any) => a + b, 0)} BYN
+                ${Number(rewards[0]).toFixed(2)}
+                  {/* {Number(rewards.reduce((a: any, b: any) => a + b, 0)).toFixed(2)} BYN */}
                 </h6>
               </div>
             )}
           </div>
           <div className="flex">
           <GeneralButton
-              submitting={false}
-              submit={claimUserReward}
+              submitting={claiming}
+              submit={submit}
               textValue={"CLAIM"}
               otherClasses={"bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8"}
             />

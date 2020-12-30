@@ -87,9 +87,8 @@ function Chart({updatedSelectedPair,selectedPair}) {
     
     <div className="xl:h-chartH xxl:h-chartHXXL" >
       <TradingViewWidget
-        symbol={`${assetChartNames[selectedPair.counter]}${
-          assetChartNames[selectedPair.base]
-        }`}
+        // symbol={`${assetChartNames[selectedPair.counter]}${assetChartNames[selectedPair.base] }`}
+        symbol={`${assetChartNames[selectedPair.counter] === "OIL"? "USOIL":assetChartNames[selectedPair.counter]+assetChartNames[selectedPair.base]}`}
         autosize
       />
       {/* <Periodlabels PERIOD_LABELS_MAP={PERIOD_LABELS_MAP} setSelectedPeriod={setSelectedPeriod} active={activePeriod}/>

@@ -73,6 +73,9 @@ function StatesRow() {
           <h5>SYNTHETIC ASSET BREAKDOWN</h5>
         </div>
         <div className="flex content-between justify-between px-8">
+          {
+            !totalBynPercentage && !totalUSDbBalancePercentage && !othersBalPercentage ? "No data":null
+          }
           {/* <img
             src="/assets/Icons/Synthetic asset breakdown.svg"
             alt="img"

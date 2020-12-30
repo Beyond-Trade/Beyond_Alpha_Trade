@@ -9,7 +9,7 @@ function PairSearch() {
       <img src="/assets/Icons/searching.svg" />
       <input
         type="text"
-        className="focus:outline-none text-gray-500 text-xs w-full ml-2"
+        className="focus:outline-none text-gray-500 text-xs boldText w-full ml-2"
         placeholder="SEARCH"
         onChange={(event) => {
           const value = event.target.value

@@ -211,15 +211,6 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [],
-    name: "getBeyondTokenValue",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     constant: true,
     inputs: [
       { internalType: "address", name: "_beneficiary", type: "address" },
@@ -493,9 +484,7 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
       { internalType: "uint256", name: "_time", type: "uint256" },
     ],
     name: "userRewardDetails",
-    outputs: [
-      { internalType: "uint256", name: "_cycleReward", type: "uint256" },
-    ],
+    outputs: [{ internalType: "uint256", name: "reward", type: "uint256" }],
     payable: false,
     stateMutability: "view",
     type: "function",

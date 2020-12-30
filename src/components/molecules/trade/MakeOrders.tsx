@@ -152,15 +152,15 @@ function MakeOrders() {
             otherClasses={"py-1 xxl:py-2 px-2 w-full bg-customBlack-50"}
           />
         </div>
-        <div className="flex justify-between font-medium text-xxs xxl:text-sm text-gray-700 mt-2">
+        <div className="flex justify-between font-medium text-xxs xxl:text-sm text-gray-700 mt-4">
           <text>USD Value</text>
           <text>${usdValue.toFixed(2)}</text>
         </div>
-        <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-1">
+        <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-4">
           <text>FEE ?</text>
           <text>$7.29</text>
         </div>
-        <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-1">
+        <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-4">
           <text>GAS PRICE(GWE)</text>
           <div>
             <text>${fee}</text>
@@ -177,7 +177,7 @@ function MakeOrders() {
           submit={submit}
           textValue={"CONFIRM TRADE NOW"}
           otherClasses={
-            "py-2 w-full bg-customBlack-500 mt-3 text-xs xxl:text-base"
+            "py-2 w-full bg-customBlack-500 mt-4 text-xs xxl:text-base"
           }
         />
         {/* <button
