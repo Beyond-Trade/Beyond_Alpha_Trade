@@ -74,7 +74,11 @@ function StatesRow() {
         </div>
         <div className="flex content-between justify-between px-8">
           {
-            !totalBynPercentage && !totalUSDbBalancePercentage && !othersBalPercentage ? "No data":null
+            !totalBynPercentage && !totalUSDbBalancePercentage && !othersBalPercentage ? <img
+            src="/assets/Icons/black circle.png"
+            alt="img"
+            className="h-12 xxl:h-20 my-2"
+          />:null
           }
           {/* <img
             src="/assets/Icons/Synthetic asset breakdown.svg"
