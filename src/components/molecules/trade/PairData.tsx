@@ -42,7 +42,7 @@ function PairData(props: IProps) {
               </div>
             </td>
             <td className={`py-2 px-3 text-right`} style={nowrap}>
-              {item.rate.toFixed(2)} {assetChartNames[props.data.marketCoin]}
+              {item.rate.toFixed(2)} {assetChartNames[props.data.marketCoin]+"b"}
             </td>
           </tr>
         ))}

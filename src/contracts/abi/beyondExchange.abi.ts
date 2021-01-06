@@ -127,6 +127,15 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: false,
+    inputs: [],
+    name: "collectUserReward",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
     inputs: [
       { internalType: "string", name: "_synth1", type: "string" },
       { internalType: "string", name: "_synth2", type: "string" },
@@ -201,6 +210,7 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
     outputs: [
       { internalType: "uint256", name: "_currentTime", type: "uint256" },
       { internalType: "uint256", name: "_collatteralRatio", type: "uint256" },
+      { internalType: "uint256", name: "_APY", type: "uint256" },
     ],
     payable: false,
     stateMutability: "view",
@@ -330,6 +340,15 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: false,
+    inputs: [{ internalType: "uint256", name: "_APY", type: "uint256" }],
+    name: "setAPY",
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    constant: false,
     inputs: [
       {
         internalType: "contract IBeyondExProx",
@@ -401,8 +420,11 @@ export const BeyondExchangeAbi: AbiItem | AbiItem[] = [
   },
   {
     constant: false,
-    inputs: [{ internalType: "uint256", name: "_fee", type: "uint256" }],
-    name: "setTradeFeeInProx",
+    inputs: [
+      { internalType: "uint256", name: "_fee", type: "uint256" },
+      { internalType: "uint256", name: "_APY", type: "uint256" },
+    ],
+    name: "setTradeFeeAndAPYInProx",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",

@@ -145,6 +145,7 @@ function Chart({updatedSelectedPair,selectedPair}) {
     </ChartContainer> */}
     {/* <small className="text-xs">Note: Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources.</small> */}
     </div>
+    <small className="text-xs">Note: </small><small className="text-xxs">Slight price discrepancy between this chart and actual  synthetic asset might occur due to different pricing sources.</small>
     </div>
   );
 }

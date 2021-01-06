@@ -22,7 +22,7 @@ const BottomSection = () => {
   const { balances, stackedBYN, unstacked, totalByn } = useSelector(
     (state: RootState) => state.wallet
   );
-  const { rewards } = useRewards();
+  const { APY,rewards } = useRewards();
   React.useEffect(() => {
     const ETHObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.ETH
@@ -78,7 +78,7 @@ console.log("bottom section ",balances)
           <div className="flex justify-between border-b border-gray-400 pb-3">
             <h6 className="xxl:text-sm text-xs font-normal">TOTAL BYN:</h6>
             <h6 className="xxl:text-sm text-xs font-medium text-blue-1000">
-              {state.totalBYN} BYN
+              {state.totalBYN.toFixed(2)} BYN
             </h6>
           </div>
           <div className="flex justify-between my-5">
@@ -129,7 +129,17 @@ console.log("bottom section ",balances)
                 alt="img"
               />
               <label className="xxl:text-lg text-xs text-blue-1000">
-                ${rewards[0] || 0.00}
+                ${rewards[0] ? Number(rewards[0]).toFixed(2) : "0.00"}
+              </label>
+            </div>
+          </div>
+          <div className="flex justify-between items-center mt-3">
+            <h6 className="xxl:text-base text-xs font-normal">
+            APY
+            </h6>
+            <div className="flex items-center">
+              <label className="xxl:text-lg text-xs text-blue-1000">
+                {Number(APY).toFixed(2)}%
               </label>
             </div>
           </div>

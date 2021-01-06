@@ -46,12 +46,12 @@ function FAQ() {
               otherClasses={"bg-customBlack-500 mt-4 px-4 py-2 xxl:text-lg text-xs"}
             />
 </div>
-<div> <img
+{/* <div> <img
             src="/assets/Images/chatIllustration.svg"
             style={{ height: "270px" }}
             alt="img"
             className="m-auto ml-20 mt-10"
-          /></div>
+          /></div> */}
       </div>
      
     </div>

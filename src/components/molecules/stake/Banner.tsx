@@ -12,8 +12,8 @@ function Banner() {
         <div className="absolute inset-0 flex items-center px-20">
           <div className="">
             <h1 className="font-bold text-white" style={{fontSize: '2.6vw'}}>EARN DAILY REWARDS BY STAKING BYN</h1>
-            <small className="text-white">While making return from your synthetic assets investment, also enjoy<br/>
-          your BYN holdings compound on daily basis.</small>
+            <small className="text-white"> while making return from your synthetic asset investments,<br/>
+            also enjoy your BYN holdings compound on a daily basis.</small>
           </div>
         </div>
       </div>

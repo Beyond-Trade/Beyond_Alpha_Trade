@@ -3,9 +3,21 @@ import moment from "moment";
 import Loader from "react-loader-spinner";
 import useRewards from "../../../hooks/stake/useRewards";
 import GeneralButton from "../../atomic/GeneralButton";
+import ClaimRewardModal from "./ClaimRewardModal";
 const convertToUSDb = 1000000000000000000;
 function Rewards() {
-  const { rewardData, rewards, isLoading,submit,claiming } = useRewards();
+  const {
+    rewardData,
+    rewards,
+    isLoading,
+    submit,
+    claiming,
+    handleClaim,
+    handleClose,
+    isOpen,
+    collecting,
+    handleCollect,
+  } = useRewards();
   return (
     <div
       className="border border-gray-400 mt-6 py-10 px-10"
@@ -17,7 +29,7 @@ function Rewards() {
       <div className="xl:flex lg:flex">
         <div className="w-full mb-4">
           <p className="text-xs xxl:text-base font-light text-black mt-6 font-normal">
-          If you have staked your BYN tokens,
+            If you have staked your BYN tokens,
             <br />
             you are eligible to collect BYN staking rewards
           </p>
@@ -83,28 +95,34 @@ function Rewards() {
               <div className="flex justify-between xxl:text-sm text-xxs bg-white px-4 py-2">
                 <h6 className="font-medium">Total available</h6>
                 <h6 className="font-medium">
-                ${Number(rewards[0]).toFixed(2)}
+                  ${Number(rewards[0]).toFixed(2)}
                   {/* {Number(rewards.reduce((a: any, b: any) => a + b, 0)).toFixed(2)} BYN */}
                 </h6>
               </div>
             )}
           </div>
           <div className="flex">
-          <GeneralButton
+            <GeneralButton
               submitting={claiming}
-              submit={submit}
+              submit={handleClaim}
               textValue={"CLAIM"}
-              otherClasses={"bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8"}
+              otherClasses={
+                "bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8 mr-1"
+              }
             />
-            {/* <button
-              onClick={claimUserReward}
-              className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8"
-            >
-              CLAIM
-            </button> */}
-            {/* <button className="focus:outline-none bg-customBlue-200 text-white text-xs xxl:text-base w-full rounded py-2 xxl:py-3 mt-8">
-              STAKE & MINT
-            </button> */}
+            <GeneralButton
+              submitting={collecting}
+              submit={handleCollect}
+              textValue={"COLLECT"}
+              otherClasses={
+                "bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8 ml-1"
+              }
+            />
+            <ClaimRewardModal
+              isOpen={isOpen}
+              close={handleClose}
+              submit={submit}
+            />
           </div>
         </div>
       </div>

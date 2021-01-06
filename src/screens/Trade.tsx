@@ -23,7 +23,7 @@ function Trade() {
       <div className="xl:flex lg:flex mt-8 w-full">
         <PairSelection />
         <div className="xl:ml-4 lg:ml-4" style={{width:"80%"}}>
-          <h3 className="boldText text-customBlack-500 text-2xl ml-4" style={{fontFamily:""}}>
+          <h3 className="boldText text-customBlack-500 text-2xl ml-4">
             {selectedPair.counter + " / " + selectedPair.base}
           </h3>
           {/* <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} /> */}

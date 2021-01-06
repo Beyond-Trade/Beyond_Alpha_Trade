@@ -16,13 +16,15 @@ function MidSectionTab(props: IProps) {
   return (
     <button
       onClick={() => props.onClick()}
-      className={`focus:outline-none xxl:text-base xl:text-xs text-xs font-bold hover:text-blue-1000 relative mx-4 ${
+      className={`focus:outline-none hover:text-blue-1000 relative mx-4 ${
         props.active ? props.activeString: props.notActiveString
       }`}
     >
+      <div className="boldText xxl:text-base xl:text-base text-base">
       {props.text}
-      {props.from && props.to && <div className="flex xxl:xs text-sm font-normal ">({props.from} <img src="/assets/Icons/see details arrow.svg" className="mx-2 " alt="img"></img> {props.to})</div>}
-      {props.subText && <div className="flex xxl:xs text-sm font-bold-normal ">({props.subText})</div>}
+        </div>
+      {props.from && props.to && <div className="flex xxl:sm xl:text-xs text-xs ">({props.from} <img src="/assets/Icons/see details arrow.svg" className="mx-2 " alt="img"></img> {props.to})</div>}
+      {props.subText && <div className="flex xxl:sm xl:text-xs text-xs">({props.subText})</div>}
       {props.active && (
         <div className={`absolute border-b-2 w-8 ${props.activeBorder}`}></div>
       )}

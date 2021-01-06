@@ -153,7 +153,7 @@ function MakeOrders() {
           />
         </div>
         <div className="flex justify-between font-medium text-xxs xxl:text-sm text-gray-700 mt-4">
-          <text>USD Value</text>
+          <text>USDb Value</text>
           <text>${usdValue.toFixed(2)}</text>
         </div>
         <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-4">

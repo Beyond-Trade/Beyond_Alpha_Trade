@@ -75,7 +75,7 @@ function StatesRow() {
         <div className="flex content-between justify-between px-8">
           {
             !totalBynPercentage && !totalUSDbBalancePercentage && !othersBalPercentage ? <img
-            src="/assets/Icons/black circle.png"
+            src="/assets/Icons/chart.svg"
             alt="img"
             className="h-12 xxl:h-20 my-2"
           />:null
