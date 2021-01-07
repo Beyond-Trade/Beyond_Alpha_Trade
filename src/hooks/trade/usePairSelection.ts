@@ -26,10 +26,11 @@ const usePairSelection = () => {
         if(balances.length>0){
             getPrices()
         }
-        const marketBalance = balances.find((b)=>b.short === TradePairsLookup[0].marketCoin)
-        const counterBalance = balances.find((b)=>b.short === TradePairsLookup[0].pairs[0].coin)
+        console.log("render test", selectedPair)
+        const marketBalance = balances.find((b)=>b.short === selectedPair.base)
+        const counterBalance = balances.find((b)=>b.short === selectedPair.counter)
         let rate = Number(getPairPrice(marketBalance?.rate||0, counterBalance?.rate||0))
-        selectAssetPairAction(TradePairsLookup[0].marketCoin, TradePairsLookup[0].pairs[0].coin, rate)
+        selectAssetPairAction(selectedPair.base, selectedPair.counter, rate)
     },[balances])
 
     const getPrices = () => {

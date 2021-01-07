@@ -83,7 +83,7 @@ function SwapByn(props: IProps) {
           <GeneralButton
               submitting={swapping}
               submit={submit}
-              textValue={"SWAP"}
+              textValue={"Get BYN"}
               otherClasses={"bg-customBlack-500 text-xs xxl:text-sm py-2 mt-8  w-full"}
             />
           {/* <button

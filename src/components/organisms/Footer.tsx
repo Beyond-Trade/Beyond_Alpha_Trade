@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Modal from "react-modal";
+import { useAlert } from "react-alert";
 
 function Footer() {
+  const [isOpen,setIsopen]=useState(false)
+  const alert = useAlert();
   return (
     <div className="bg-customBlack-500 px-20 pt-16 mt-5 text-white">
       <div className="xl:flex lg:flex">
@@ -10,12 +14,11 @@ function Footer() {
             BEYOND
           </h1>
           <p className=" mt-4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing <br /> elitr, sed
-            diam nonumy eirmod.
+          A decentralized platform for creating and trading synthetic financial products <br/>
+designed to suit the needs of the investors of various asset classes
+
           </p>
-          <p className=" mt-4">+94 722 321 911</p>
-          <p className=" mt-4">MON - SUN / 9:00 AM - 8:00 PM</p>
-          <p className=" mt-4">support@beyond.com</p>
+          <p className=" mt-4">contact@beyondfinance.io</p>
         </div>
         <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
           <h4 className="text-white text-sm xxl:text-lg font-semibold">PRODUCTS</h4>
@@ -28,32 +31,50 @@ function Footer() {
           <h4 className="text-white text-sm xxl:text-lg font-semibold">
             COMPANY
           </h4>
-          <NavLink
+          <a  className="mt-4 cursor-pointer" href="http://beyondfinance.io/" target = "_blank" rel="noopener noreferrer">Homepage</a>
+          {/* <NavLink
+            className="mt-4 cursor-pointer"
+            to="/"
+          >
+            Homepage
+          </NavLink> */}
+          <a  className="mt-4 cursor-pointer" href="http://beyondfinance.io/about" target = "_blank" rel="noopener noreferrer" >About</a>
+          {/* <NavLink
             className="mt-4 cursor-pointer"
             to="/about_us"
           >
-            About Us
-          </NavLink>
-          <NavLink
+            About
+          </NavLink> */}
+          <button
+            className="mt-4 cursor-pointer focus:outline-none"
+            onClick={()=>alert.show(" Under Preparation", { type: "info" })}
+          >
+            Blog
+          </button>
+          {/* <NavLink
             className="mt-4 cursor-pointer"
             to="/contact_us"
           >
             Contact Us
-          </NavLink>
-          <NavLink
-            className="mt-4 cursor-pointer"
-            to="/support"
-          >
-            Support
-          </NavLink>
-          <NavLink
-            className="mt-4 cursor-pointer"
-            to="/news_blog"
-          >
-            News/Blog
-          </NavLink>
+          </NavLink> */}
+          <a  className="mt-4 cursor-pointer" href="mailto:contact@beyondfinance.io" target = "_blank" rel="noopener noreferrer">Contact us</a>
+          
         </div>
-        <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start w-64 mr-16">
+        <Modal isOpen={isOpen} style={customStyle} >
+      <div className="flex justify-end items-center pb-2">
+        <button onClick={() => setIsopen(false)} className="focus:outline-none">
+        {/* <button className="focus:outline-none"> */}
+          <img src="/assets/Icons/Cross.svg" />
+        </button>
+      </div>
+      <div className="flex text-center items-center  pb-2 text-red-600 font-bold">
+      </div>
+      <div className="flex-col text-center items-center content-center pt-2">
+      Under Preparation
+      </div>
+      
+    </Modal>
+        {/* <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start w-64 mr-16">
           <h4 className="text-white text-sm xxl:text-lg font-semibold">
             TERMS
           </h4>
@@ -75,23 +96,23 @@ function Footer() {
           >
             Disclaimer
           </NavLink>
-        </div>
+        </div> */}
         <div className="flex flex-col mt-6 lg:mt-1 items-start pr-20">
           <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">
             SOCIAL
           </h4>
           <div className="flex mt-4">
             <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full ">
-              <img src="/assets/Images/facebook.svg" alt="img" />
+              <img src="/assets/Icons/telegram.svg" className="h-full" alt="img" />
             </button>
             <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
-              <img src="/assets/Images/instagram.svg" alt="img" />
+              <img src="/assets/Icons/twitter.svg" className="h-full" alt="img" />
             </button>
             <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
-              <img src="/assets/Images/linkedin.svg" alt="img" />
+              <img src="/assets/Icons/medium.svg" className="h-full" alt="img" />
             </button>
             <button className="focus:outline-none w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
-              <img src="/assets/Images/pinterest v2.svg" alt="img" />
+              <img src="/assets/Icons/github.svg" className="h-full" alt="img" />
             </button>
           </div>
         </div>
@@ -106,3 +127,24 @@ function Footer() {
 }
 
 export default Footer;
+
+const customStyle = {
+  overlay: {
+    backgroundColor: "#00000080",
+    zIndex: 50,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "start",
+  },
+  content: {
+    padding: "10px",
+    backgroundColor: "#ffffff",
+    width: "30%",
+    border: "0 px",
+    top: "auto",
+    left: "auto",
+    right: "auto",
+    bottom: "auto",
+    margin: "auto",
+  },
+};

@@ -228,6 +228,8 @@ export const RewardAbi: AbiItem | AbiItem[] = [
       { internalType: "uint256", name: "_time", type: "uint256" },
       { internalType: "uint256", name: "bUSDValue", type: "uint256" },
       { internalType: "uint256", name: "totalMintedUSDb", type: "uint256" },
+      { internalType: "uint256", name: "collatteralValue", type: "uint256" },
+      { internalType: "uint256", name: "beyondTokenValue", type: "uint256" },
     ],
     name: "userRewardDetailsFromReward",
     outputs: [{ internalType: "uint256", name: "_reward", type: "uint256" }],

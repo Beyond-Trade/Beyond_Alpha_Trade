@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import History from "../components/molecules/wallet/History";
 import StatesRow from "../components/molecules/wallet/StatesRow";
@@ -7,6 +7,9 @@ import WalletData from "../components/molecules/wallet/WalletData";
 
 function Wallet() {
   const [tab, setTab] = useState(0);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
   return (
     <div>
       <WalletBanner tab={tab} setTab={setTab} />

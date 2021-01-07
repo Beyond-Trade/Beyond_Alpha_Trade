@@ -16,6 +16,7 @@ function Rewards() {
     handleClose,
     isOpen,
     collecting,
+    collectableReward,
     handleCollect,
   } = useRewards();
   return (
@@ -54,7 +55,7 @@ function Rewards() {
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
                       <h6 className="font-normal">
-                        ${Number(reward.data / convertToUSDb).toFixed(2)}
+                        {Number(reward.data / convertToUSDb).toFixed(2)} BYN
                       </h6>
                     </div>
                   ) : (
@@ -63,7 +64,7 @@ function Rewards() {
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
                       <h6 className="font-normal">
-                        ${Number(reward.data / convertToUSDb).toFixed(2)}
+                        {Number(reward.data / convertToUSDb).toFixed(2)} BYN
                       </h6>
                     </div>
                   )
@@ -92,13 +93,22 @@ function Rewards() {
             </div> */}
 
             {rewardData?.length > 0 && (
-              <div className="flex justify-between xxl:text-sm text-xxs bg-white px-4 py-2">
+              <>
+              {/* <div className="flex justify-between xxl:text-sm text-xxs bg-white px-4 py-2">
                 <h6 className="font-medium">Total available</h6>
                 <h6 className="font-medium">
                   ${Number(rewards[0]).toFixed(2)}
-                  {/* {Number(rewards.reduce((a: any, b: any) => a + b, 0)).toFixed(2)} BYN */}
+                  
                 </h6>
-              </div>
+              </div> */}
+              <div className="flex justify-between xxl:text-sm text-xxs bg-white px-4 py-2 mt-4">
+              <h6 className="font-medium">Total claimable</h6>
+              <h6 className="font-medium">
+                {(Number(collectableReward)/ convertToUSDb).toFixed(2) } BYN
+                {/* {Number(rewards.reduce((a: any, b: any) => a + b, 0)).toFixed(2)} BYN */}
+              </h6>
+            </div>
+            </>
             )}
           </div>
           <div className="flex">

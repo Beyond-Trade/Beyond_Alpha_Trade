@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useRewards from "../../../hooks/stake/useRewards";
-
+const convertToUSDb = 1000000000000000000;
 const BottomSection = () => {
   const history = useHistory();
   const [state, setState] = useState({
@@ -22,7 +22,7 @@ const BottomSection = () => {
   const { balances, stackedBYN, unstacked, totalByn } = useSelector(
     (state: RootState) => state.wallet
   );
-  const { APY,rewards } = useRewards();
+  const { APY,rewards,collectableReward } = useRewards();
   React.useEffect(() => {
     const ETHObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.ETH
@@ -129,7 +129,7 @@ console.log("bottom section ",balances)
                 alt="img"
               />
               <label className="xxl:text-lg text-xs text-blue-1000">
-                ${rewards[0] ? Number(rewards[0]).toFixed(2) : "0.00"}
+                {collectableReward? (Number(collectableReward)/ convertToUSDb).toFixed(2) : "0.00"}BYN
               </label>
             </div>
           </div>

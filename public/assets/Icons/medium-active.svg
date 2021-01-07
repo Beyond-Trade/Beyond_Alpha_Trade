@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="medium-active" transform="translate(368 8734)">
+    <g id="Ellipse_17" data-name="Ellipse 17" transform="translate(-368 -8734)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="14" cy="14" r="14" stroke="none"/>
+      <circle cx="14" cy="14" r="13.5" fill="none"/>
+    </g>
+    <path id="Icon_awesome-medium-m" data-name="Icon awesome-medium-m" d="M2.378,6.385A.455.455,0,0,0,2.231,6L1.145,4.7V4.5H4.521l2.61,5.723L9.425,4.5h3.219v.2l-.929.891a.271.271,0,0,0-.1.26v6.548a.271.271,0,0,0,.1.26l.908.891v.2H8.055v-.2L9,12.632c.091-.091.091-.12.091-.26V7.081L6.471,13.723H6.117L3.074,7.081v4.451a.606.606,0,0,0,.169.51l1.223,1.483v.2H1v-.193l1.223-1.485a.587.587,0,0,0,.156-.51Z" transform="translate(-361.27 -8729.5)" fill="#fff"/>
+  </g>
+</svg>

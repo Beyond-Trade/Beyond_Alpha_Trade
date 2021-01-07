@@ -460,7 +460,10 @@ export const BeyondExProxAbi: AbiItem | AbiItem[] = [
       { internalType: "uint256", name: "_time", type: "uint256" },
     ],
     name: "userRewardDetails",
-    outputs: [{ internalType: "uint256", name: "reward", type: "uint256" }],
+    outputs: [
+      { internalType: "uint256", name: "reward", type: "uint256" },
+      { internalType: "uint256", name: "collectableReward", type: "uint256" },
+    ],
     payable: false,
     stateMutability: "view",
     type: "function",
