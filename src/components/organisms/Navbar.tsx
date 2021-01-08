@@ -95,7 +95,7 @@ function Navbar() {
       </div>
 
       {collapsed && (
-        <div className="">
+        <div className="flex items-center justify-center">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <div onClick={toggle}>
               <NavTab

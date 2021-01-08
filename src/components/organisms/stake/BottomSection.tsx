@@ -201,7 +201,7 @@ console.log("bottom section ",balances)
                     {item.cryptoBalance.toFixed(2)}
                   </h6>
                 </td>
-                <td className="text-center" style={{ width: "90px" }}>
+                <td className="text-right" style={{ width: "90px" }}>
                   <h6 className="ml-2 xxl:text-xl text-xs">
                     ${(item.cryptoBalance * item.rate || 0).toFixed(2)}
                   </h6>
