@@ -65,7 +65,7 @@ function StatesRow() {
           <text>TOTAL SYNTHETIC ASSET VALUE</text>
         </div>
         <h3 className="font-extrabold text-lg xxl:text-xl text-customBlack-500 text-center my-6 mx-2">
-          ${totalSynthValue ? totalSynthValue.toFixed(2) : "0.00"} USD
+          ${totalSynthValue ? totalSynthValue.toFixed(2) : "0.00"} USDb
         </h3>
       </div>
       <div className="border rounded mr-8 w-full mt-8">

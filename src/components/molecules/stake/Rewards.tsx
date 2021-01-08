@@ -7,6 +7,7 @@ import ClaimRewardModal from "./ClaimRewardModal";
 const convertToUSDb = 1000000000000000000;
 function Rewards() {
   const {
+    earlyRedemptionFee,
     rewardData,
     rewards,
     isLoading,
@@ -55,7 +56,7 @@ function Rewards() {
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
                       <h6 className="font-normal">
-                        {Number(reward.data / convertToUSDb).toFixed(2)} BYN
+                        {Number(reward.data / convertToUSDb).toFixed(6)} BYN
                       </h6>
                     </div>
                   ) : (
@@ -64,7 +65,7 @@ function Rewards() {
                         {moment(reward.time * 1000).format("LL")}
                       </h6>
                       <h6 className="font-normal">
-                        {Number(reward.data / convertToUSDb).toFixed(2)} BYN
+                        {Number(reward.data / convertToUSDb).toFixed(6)} BYN
                       </h6>
                     </div>
                   )
@@ -129,6 +130,8 @@ function Rewards() {
               }
             />
             <ClaimRewardModal
+             reward={Number(collectableReward)/ convertToUSDb}
+            earlyRedemptionFee={earlyRedemptionFee}
               isOpen={isOpen}
               close={handleClose}
               submit={submit}

@@ -157,8 +157,13 @@ function MakeOrders() {
           <text>${usdValue.toFixed(2)}</text>
         </div>
         <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-4">
-          <text>FEE ?</text>
-          <text>$7.29</text>
+          <text>FEE <p className="tooltip">
+                  ?
+                  <span className="tooltiptext">
+                  0.3% trade fee charged on amount of trade made.
+                  </span>
+                </p></text>
+          <text>${(((usdValue /100)*0.3) + ((21000 * fee) / 1e9)).toFixed(8)}</text>
         </div>
         <div className="flex justify-between text-xxs xxl:text-sm font-medium text-gray-700 mt-4">
           <text>GAS PRICE(GWE)</text>

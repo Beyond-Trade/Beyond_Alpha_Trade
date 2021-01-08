@@ -57,6 +57,20 @@ export const RewardAbi: AbiItem | AbiItem[] = [
   {
     constant: true,
     inputs: [
+      { internalType: "uint256", name: "investTime", type: "uint256" },
+      { internalType: "uint256", name: "_reward", type: "uint256" },
+    ],
+    name: "checkEarlyRedemptionFee",
+    outputs: [
+      { internalType: "uint256", name: "earlyRedemptionFee", type: "uint256" },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [
       { internalType: "uint256", name: "beyondTokenValue", type: "uint256" },
       { internalType: "uint256", name: "bUSDValue", type: "uint256" },
       { internalType: "uint256", name: "totalMintedUSDb", type: "uint256" },

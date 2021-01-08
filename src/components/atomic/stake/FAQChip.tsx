@@ -15,7 +15,7 @@ console.log(faqNo)
           {/* Lorem Ipsum is simply dummy text of the printing? */}
         </h5>
         <button className="focus:outline-none" onClick={handleToggle}>
-          {toggle ? (
+          {toggle  && faqNo === activeFAQ ?  (
             <img src="/assets/Icons/collapsible-minus.svg" alt="img" />
           ) : (
             <img src="/assets/Icons/collapsible-plus.svg" alt="img" />

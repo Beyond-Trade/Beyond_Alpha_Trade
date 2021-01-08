@@ -7,6 +7,8 @@ interface IProps {
   isOpen: boolean;
   close: Function;
   submit: Function;
+  earlyRedemptionFee:any;
+  reward:any;
 }
 
 function ClaimRewardModal(props: IProps) {
@@ -18,10 +20,13 @@ function ClaimRewardModal(props: IProps) {
           <img src="/assets/Icons/Cross.svg" />
         </button>
       </div>
-      <div className="flex text-center items-center border-b border-gray-400 pb-2 text-red-600 font-bold">
-          If you are claiming the reward before maturity the EARLY Redemption Fee will be deducted.
+      <div className="flex text-center justify-center items-center border-b border-gray-400 pb-2 font-bold">
+        Total Reward : {props.reward.toFixed(2)} BYN<br/>
+        Early Redumption Fee : {props.earlyRedemptionFee} BYN
+          {/* If you are claiming the reward before maturity the EARLY Redemption Fee {props.earlyRedemptionFee} will be deducted. */}
       </div>
       <div className="flex-col text-center items-center pt-2">
+        Net Reward : {Number(props.reward - props.earlyRedemptionFee).toFixed(2)} BYN<br/>
           Are you sure you want to continue ?
       </div>
       <div className="flex justify-center content-center">

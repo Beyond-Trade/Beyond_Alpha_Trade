@@ -97,7 +97,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
     switch (asset.syntheticCategory) {
         case SyntheticCategories.CRYPTOCURRENCY:
 
-            let rateObj = cryptoRates.find((x: any) => x.id == asset.marketRateApiID)
+            let rateObj = cryptoRates?.find((x: any) => x.id == asset.marketRateApiID)
             if (rateObj) {
                 balance.change24h = rateObj.price_change_percentage_24h;
                 balance.high24h = rateObj.high_24h;

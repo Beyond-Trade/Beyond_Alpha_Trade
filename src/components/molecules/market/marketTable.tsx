@@ -1,5 +1,9 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { getPairPrice } from "../../../services/generic.services";
+import { selectAssetPairAction } from "../../../store/actions/ExchangeActions";
+import { RootState } from "../../../store/reducers/Index";
 import GeneralButton from "../../atomic/GeneralButton";
 
 import MarketSort from "../../atomic/market/MarketSort";
@@ -11,6 +15,19 @@ interface IProps {
 }
 function MarketTable({ data, handleSort, search }: IProps) {
   const history = useHistory();
+  const {wallet:{balances} } = useSelector((state: RootState)=>state)
+  const navigate=(counter:any)=>{
+    if(counter != "ETH" && counter != "USDb"){
+      const marketBalance = balances.find((b)=>b.short === "USDb")
+      const counterBalance = balances.find((b)=>b.short === counter)
+      let rate = Number(getPairPrice(marketBalance?.rate||0, counterBalance?.rate||0))
+      selectAssetPairAction("USDb", counter, rate);
+      history.push("/trade")
+    }
+    else{
+      history.push("/trade")
+    }
+  }
   return (
     <table width="100%">
       <tr className="border-b border-t border-gray-400 text-xxs xxl:text-sm text-left text-gray-600 font-bold">
@@ -84,12 +101,13 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <img src="/assets/Images/Up.png" className="h-8" />
           </td> */}
             <td className="py-3 px-3">
-            <GeneralButton
+              {item.short === "ETH" || item.short === "USDb" ? null: <GeneralButton
               submitting={false}
-              submit={() => history.push("/trade")}
+              submit={() => navigate(item.short)}
               textValue={"TRADE"}
               otherClasses={"bg-customBlack-50 px-2 py-1 text-white xl:text-xs xxl:text-sm"}
-            />
+            />}
+            
               {/* <button
                 onClick={() => history.push("/trade")}
                 className="focus:outline-none flex content-center bg-customBlue-200 hover:bg-blue-500 px-2 py-1 text-white xl:text-xs xxl:text-sm rounded-sm"

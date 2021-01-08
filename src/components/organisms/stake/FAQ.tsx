@@ -2,57 +2,41 @@ import FAQChip from "../../atomic/stake/FAQChip";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import GeneralButton from "../../atomic/GeneralButton";
-
-function FAQ() {
-  const history = useHistory();
-
-  return (
-    <div className="px-20 py-12">
-      <h1 className="text-2xl xxl:text-4xl xl:pt-4 xxl:pt-8 font-bold text-customBlack-500">
-        FREQUENTLY ASKED QUESTIONS (FAQs)
-      </h1>
-      <p className="text-xs font-bold xxl:text-lg py-6 mt-3 text-customBlack-500">
-        We always appreciate if you take a minute to look at the most common
-        questions.
+const FAQleft=[
+  {
+    faqNo:1,
+            question:"What is Beyond protocol?",
+            answer:"Beyond is a decentralized platform for synthetic financial products. Users gain exposure to the underlying asset price without holding the actual asset through synthetic products"
+  },
+  {
+    faqNo:2,
+            question:"How does Beyond protocol different from other defi derivatives protocol?",
+            answer:"Beyond protocol is layer 2 solution resolving the issue of scalability, network congestion and high transaction fee. Beyond implies the innovative approach of combining the usual Bid/Ask Order book and mechanism of automated market maker. Beyond provides the arbitrage profits opportunities with the synthetic asset and its underlying assets. Arbitagers can buy the synthetics and use it to unlock the corresponding value of BYN tokens. Beyond protocol also has a special feature call synthetic auctions whereby during the price discrepancy of more than 10% between the synthetic  and underlying assets, the equilibrium in the price for the synthetic is restored."   
+  },
+  {
+    faqNo:3,
+    question:"What can I earn by participating in the Beyond Finance protocol?",
+    answer:
+      <p>
+        1.Staked BYN tokens – Earn a Staking Reward.
+        <br />
+        2.Staked/ BYN Holders – Earn Portion of Transaction Fee.
+        <br />
+        3.Investing (minting) Synthetic Assets – Earn Portion of Newly
+        Minted BYN Tokens as Added Incentive.
+        <br />
+        4.Beyond Governance – Receive Additional BYN Incentive.
+        <br />
+        5.Liquidity Provider – Earn LP rewards.
+        <br />
+        6.Lower Collateralization Ratio – Less Capital Intensive for
+        Users of BYN platform to Invest (mint) Synthetic Assets
       </p>
-      <div className="xl:flex lg:flex xl:px-20 lg:px-20 md:px-20 mt-4">
-        <div className="w-full xl:mr-2 lg:mr-2">
-          <FAQChip
-            faqNo={1}
-            question="What is Beyond protocol?"
-            answer="Beyond is a decentralized platform for synthetic financial products. Users gain exposure to the underlying asset price without holding the actual asset through synthetic products"
-          />
-          <FAQChip
-          faqNo={2}
-            question="How does Beyond protocol different from other defi derivatives protocol?"
-            answer="Beyond protocol is layer 2 solution resolving the issue of scalability, network congestion and high transaction fee. Beyond implies the innovative approach of combining the usual Bid/Ask Order book and mechanism of automated market maker. Beyond provides the arbitrage profits opportunities with the synthetic asset and its underlying assets. Arbitagers can buy the synthetics and use it to unlock the corresponding value of BYN tokens. Beyond protocol also has a special feature call synthetic auctions whereby during the price discrepancy of more than 10% between the synthetic  and underlying assets, the equilibrium in the price for the synthetic is restored.   "
-          />
-          <FAQChip
-          faqNo={3}
-            question="What can I earn by participating in the Beyond Finance protocol?"
-            answer={
-              <p>
-                1.Staked BYN tokens – Earn a Staking Reward.
-                <br />
-                2.Staked/ BYN Holders – Earn Portion of Transaction Fee.
-                <br />
-                3.Investing (minting) Synthetic Assets – Earn Portion of Newly
-                Minted BYN Tokens as Added Incentive.
-                <br />
-                4.Beyond Governance – Receive Additional BYN Incentive.
-                <br />
-                5.Liquidity Provider – Earn LP rewards.
-                <br />
-                6.Lower Collateralization Ratio – Less Capital Intensive for
-                Users of BYN platform to Invest (mint) Synthetic Assets
-              </p>
-            }
-          />
-          <FAQChip
-          faqNo={4}
-            question="What is Beyond’s development roadmap?"
-            answer={
-              <p>
+  },
+  {
+    faqNo:4,
+            question:"What is Beyond’s development roadmap?",
+            answer:<p>
                 1Q 2021 – BYN Token Distribution Beyond exchange official
                 version launch <br />
                 • Improved security. Enhanced scalability for mass user adoption{" "}
@@ -71,17 +55,16 @@ function FAQ() {
                 Organization transition <br />• All decisions related to
                 exchange operation will be autonomously done by BIP process
               </p>
-            }
-          />
-          <FAQChip
-          faqNo={5}
-            question="What is the first step to do in the Beyond Protocol?"
-            answer="Stake BYN token, then invest in synthetic to trade various synthetic products in the Beyond exchange."
-          />
-          <FAQChip
-          faqNo={6}
-            question="What is the process of trading synthetic assets in the Beyond Protocol?"
-            answer={
+  },
+  {
+    faqNo:5,
+    question:"What is the first step to do in the Beyond Protocol?",
+    answer:"Stake BYN token, then invest in synthetic to trade various synthetic products in the Beyond exchange."
+  },
+  {
+    faqNo:6,
+            question:"What is the process of trading synthetic assets in the Beyond Protocol?",
+            answer:
               <p>
                 Step 1 - Purchase the BYN Token
                 <br />
@@ -94,14 +77,13 @@ function FAQ() {
                 <br />
                 Step 5 - Redeem BYN token
               </p>
-            }
-          />
-        </div>
-        <div className="w-full xl:ml-2 lg:ml-2">
-          <FAQChip
-          faqNo={7}
-            question="Why stake BYN?"
-            answer={
+  }
+];
+const FAQright=[
+  {
+    faqNo:7,
+            question:"Why stake BYN?",
+            answer:
               <p>
                 1. Stake BYN to receive the staking rewards.
                 <br />
@@ -115,62 +97,136 @@ function FAQ() {
                 voting and every participant is rewarded with the BYN token for
                 the contribution.
               </p>
-            }
-          />
-          <FAQChip
-          faqNo={8}
-            question="Where do I get the BYN token?"
-            answer="From then Beyond Exchange, swap with your ETH and get BYN token. Alternatively BYN will be available in the other DEX and Centralized exchanges. "
-          />
-          <FAQChip
-          faqNo={9}
-            question="What does it mean by “Invest” synthetics?"
-            answer="For the ease of understanding and for the greater mass adoption, Beyond exchange uses the term “Invest” synthetics, instead of the term “Mint” synthetics which is generally used in the Blockchain Defi world. It means that BYN token is staked with a certain collateralization ratio and synthetic USDb gets issued for trading"
-          />
-          <FAQChip
-          faqNo={10}
-            question="What does collateral ratio of 300% mean?"
-            answer="The ratio of collateral of 300% is used to back each synthetic assets invested. For instance, a user can invest 1 USDb in the share pool, by staking 3USD worth of BYN token."
-          />
-          <FAQChip
-          faqNo={11}
-            question="What is Redemption fee?"
-            answer={
-              <p>
-                Redemption fee is for those staker to motivate to stake more and
-                to prevent from selling the reward token and to maintain the BYN
-                price and circulation. <br />
-                To promote and incentify our early investors to stake their
-                reward tokens as long as possible (~12-months). The redemption
-                fees are applied. For instance, the following example is to set
-                a redemption fee deduction schedule to the reward tokens.
-              </p>
-            }
-          />
-          <FAQChip
-          faqNo={12}
-            question="What do I do if my wallet is not connecting to the Beyond Platform"
-            answer={
-              <p>
-                Please clear your browser's cache. To clear the cache, follow
-                the following steps:
-                <br />
-                1. Open Chrome browser.
-                <br />
-                2. At the top right, click More.
-                <br />
-                3. Click More tools. Clear browsing data.
-                <br />
-                4. At the top, choose a time range. To delete everything, select
-                All time.
-                <br />
-                5. Next to "Cookies and other site data" and "Cached images and
-                files," check the boxes.
-                <br />
-                6. Click Clear data.
-              </p>
-            }
-          />
+  },
+  {
+    faqNo:8,
+    question:"Where do I get the BYN token?",
+    answer:"From then Beyond Exchange, swap with your ETH and get BYN token. Alternatively BYN will be available in the other DEX and Centralized exchanges. "
+  
+  },
+  {
+    faqNo:9,
+    question:"What does it mean by “Invest” synthetics?",
+    answer:"For the ease of understanding and for the greater mass adoption, Beyond exchange uses the term “Invest” synthetics, instead of the term “Mint” synthetics which is generally used in the Blockchain Defi world. It means that BYN token is staked with a certain collateralization ratio and synthetic USDb gets issued for trading"
+ 
+  },{
+    faqNo:10,
+    question:"What does collateral ratio of 300% mean?",
+    answer:"The ratio of collateral of 300% is used to back each synthetic assets invested. For instance, a user can invest 1 USDb in the share pool, by staking 3USD worth of BYN token."
+  },
+  {
+    faqNo:11,
+    question:"What is Redemption fee?",
+    answer:
+      <p>
+        Redemption fee is for those staker to motivate to stake more and
+        to prevent from selling the reward token and to maintain the BYN
+        price and circulation. <br />
+        To promote and incentify our early investors to stake their
+        reward tokens as long as possible (~12-months). The redemption
+        fees are applied. For instance, the following example is to set
+        a redemption fee deduction schedule to the reward tokens.
+      </p>
+  },
+  {
+    faqNo:12,
+    question:"What do I do if my wallet is not connecting to the Beyond Platform?",
+    answer:
+      <p>
+        Please clear your browser's cache. To clear the cache, follow
+        the following steps:
+        <br />
+        1. Open Chrome browser.
+        <br />
+        2. At the top right, click More.
+        <br />
+        3. Click More tools. Clear browsing data.
+        <br />
+        4. At the top, choose a time range. To delete everything, select
+        All time.
+        <br />
+        5. Next to "Cookies and other site data" and "Cached images and
+        files," check the boxes.
+        <br />
+        6. Click Clear data.
+      </p>
+  }
+]
+function FAQ() {
+  const [toggle, setToggle] = useState(false);
+  const [activeFAQ,setActiveFAQ]=useState(0)
+  const handleToggle = (faqNo:any) => {
+    setActiveFAQ(faqNo);
+    if(faqNo === activeFAQ){
+      setToggle((prev) => !prev)
+    }else{
+      setToggle(true)
+    }
+    }
+
+  const history = useHistory();
+
+  return (
+    <div className="px-20 py-12">
+      <h1 className="text-2xl xxl:text-4xl xl:pt-4 xxl:pt-8 font-bold text-customBlack-500">
+        FREQUENTLY ASKED QUESTIONS (FAQs)
+      </h1>
+      <p className="text-xs font-bold xxl:text-lg py-6 mt-3 text-customBlack-500">
+        We always appreciate if you take a minute to look at the most common
+        questions.
+      </p>
+      <div className="xl:flex lg:flex xl:px-20 lg:px-20 md:px-20 mt-4">
+        <div className="w-full xl:mr-2 lg:mr-2">
+          {
+            FAQleft.map((FAQ,i)=>(
+<div className={`rounded p-3 bg-white mt-2 shadow border hover:shadow-custom hover:border-customBlack-550 ${toggle && FAQ.faqNo === activeFAQ ?"border-customBlack-550":""}`}>
+      <div className="flex justify-between">
+        <h5 className="text-xs xxl:text-base font-medium">
+          {FAQ.question}
+        </h5>
+        <button className="focus:outline-none" onClick={()=>handleToggle(FAQ.faqNo)}>
+          {toggle  && FAQ.faqNo === activeFAQ ?  (
+            <img src="/assets/Icons/collapsible-minus.svg" alt="img" />
+          ) : (
+            <img src="/assets/Icons/collapsible-plus.svg" alt="img" />
+          )}
+        </button>
+      </div>
+      {toggle && FAQ.faqNo === activeFAQ ? (
+        <div className="flex bg-gray-300 p-3 m-3 font-normal text-xs xxl:text-sm justify-content">
+          {FAQ.answer}
+        </div>
+      ):null}
+    </div>
+            ))
+          }
+          
+        </div>
+        <div className="w-full xl:ml-2 lg:ml-2">
+        {
+            FAQright.map((FAQ,i)=>(
+<div className={`rounded p-3 bg-white mt-2 shadow border hover:shadow-custom hover:border-customBlack-550 ${toggle && FAQ.faqNo === activeFAQ ?"border-customBlack-550":""}`}>
+      <div className="flex justify-between">
+        <h5 className="text-xs xxl:text-base font-medium">
+          {FAQ.question}
+        </h5>
+        <button className="focus:outline-none" onClick={()=>handleToggle(FAQ.faqNo)}>
+          {toggle  && FAQ.faqNo === activeFAQ ?  (
+            <img src="/assets/Icons/collapsible-minus.svg" alt="img" />
+          ) : (
+            <img src="/assets/Icons/collapsible-plus.svg" alt="img" />
+          )}
+        </button>
+      </div>
+      {toggle && FAQ.faqNo === activeFAQ ? (
+        <div className="flex bg-gray-300 p-3 m-3 font-normal text-xs xxl:text-sm justify-content">
+          {FAQ.answer}
+        </div>
+      ):null}
+    </div>
+            ))
+          }
+
         </div>
       </div>
       <div className="flex">

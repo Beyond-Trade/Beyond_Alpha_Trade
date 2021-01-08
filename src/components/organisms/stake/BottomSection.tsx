@@ -60,7 +60,7 @@ console.log("bottom section ",balances)
               className="h-6 xxl:h-8"
             />
             <h6 className="ml-2 xxl:text-sm text-xs font-medium">
-              1 BYN = ${state.bynRate?.toFixed(2) || 0} USD
+              1 BYN = ${state.bynRate?.toFixed(2) || 0} USDb
             </h6>
           </div>
           <div className="flex items-center">
