@@ -45,7 +45,7 @@ const useRewards = () => {
     }).catch((res)=>{console.log(res, "?????????????ERROR?????????");})
   }, [balances]);
   const getRewardDetails = async (res: any) => {
-    let resCopy = res?._currentTime - 300;
+    let resCopy = res?._currentTime;
     // let startTime = res?._startTime;
     console.log(res, "==========RES==========");
     const rewardsData: any = [];
@@ -57,14 +57,14 @@ const useRewards = () => {
 // else{
 // currenttime-300 sa jo reward ata wo show kara
 // }
-    for (var i = 0; i <= 0; i++) {
+    for (var i = 0; i <= 1; i++) {
       if (resCopy > 0) {
         console.log(resCopy, "==========resCopy==========");
         let result = 0;
         await userRewardDetails(resCopy)
           .then((resData) => {
             console.log("invest time = ",resData.investTime ,"current = ", resCopy , ">>>>>>>>>>>>>>>>>>userRewardDetails<<<<<<<<<<<<<<<.",resData);
-            if(resData.investTime > res?._currentTime ){
+            if(resData.investTime > res?._currentTime  && i===1 ){
               console.log("IN IF PART");
               result = 0;
               detail = resData;
@@ -82,9 +82,8 @@ const useRewards = () => {
         resCopy = resCopy - 300;
         console.log(resCopy);
         Rewards.push(+result / convertToUSDb);
-        if (result > 0) {
+        
           rewardsData.push({ time: resCopy, data: result });
-        }
         // rewardsData.push({ time: resCopy, data: result });
       }
     }

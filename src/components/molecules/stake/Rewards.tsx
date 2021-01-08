@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 import useRewards from "../../../hooks/stake/useRewards";
 import GeneralButton from "../../atomic/GeneralButton";
 import ClaimRewardModal from "./ClaimRewardModal";
+import Web3 from "web3";
 const convertToUSDb = 1000000000000000000;
 function Rewards() {
   const {
@@ -53,7 +54,8 @@ function Rewards() {
                   index % 2 === 0 ? (
                     <div className="flex justify-between text-white xxl:text-sm text-xxs px-4 py-2 bg-customBlack-500">
                       <h6 className="font-normal">
-                        {moment(reward.time * 1000).format("LL")}
+                        {/* {moment(reward.time * 1000).format("LL")} */}
+                        Next Collectable reward
                       </h6>
                       <h6 className="font-normal">
                         {Number(reward.data / convertToUSDb).toFixed(6)} BYN
@@ -62,7 +64,8 @@ function Rewards() {
                   ) : (
                     <div className="flex justify-between xxl:text-sm text-xxs px-4 py-2 bg-customBlack-50 text-white">
                       <h6 className="font-normal">
-                        {moment(reward.time * 1000).format("LL")}
+                      Last 24 Hours Collectable Reward
+                        {/* {moment(reward.time * 1000).format("LL")} */}
                       </h6>
                       <h6 className="font-normal">
                         {Number(reward.data / convertToUSDb).toFixed(6)} BYN
@@ -131,7 +134,7 @@ function Rewards() {
             />
             <ClaimRewardModal
              reward={Number(collectableReward)/ convertToUSDb}
-            earlyRedemptionFee={earlyRedemptionFee}
+            earlyRedemptionFee={Web3.utils.fromWei(earlyRedemptionFee, 'ether') }
               isOpen={isOpen}
               close={handleClose}
               submit={submit}
