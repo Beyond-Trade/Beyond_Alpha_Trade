@@ -22,7 +22,7 @@ function ClaimRewardModal(props: IProps) {
       </div>
       <div className="flex text-center justify-center items-center border-b border-gray-400 pb-2 font-bold">
         Total Reward : {props.reward.toFixed(2)} BYN<br/>
-        Early Redumption Fee : {props.earlyRedemptionFee} BYN
+        Early Redumption Fee : {Number(props.earlyRedemptionFee).toFixed(2)} BYN
           {/* If you are claiming the reward before maturity the EARLY Redemption Fee {props.earlyRedemptionFee} will be deducted. */}
       </div>
       <div className="flex-col text-center items-center pt-2">
