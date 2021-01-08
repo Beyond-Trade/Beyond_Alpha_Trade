@@ -45,24 +45,32 @@ const useRewards = () => {
     }).catch((res)=>{console.log(res, "?????????????ERROR?????????");})
   }, [balances]);
   const getRewardDetails = async (res: any) => {
-    let resCopy = res?._currentTime;
+    let resCopy = res?._currentTime - 300;
     // let startTime = res?._startTime;
     console.log(res, "==========RES==========");
     const rewardsData: any = [];
     const Rewards: any = [];
     let detail;
-    for (var i = 0; i <= 1; i++) {
-      resCopy = resCopy - 300;
+//     tere pass jab aek dafa jab current time aur invest time a jae to
+// if (currenttime<invest time)
+// {reward should be zero}
+// else{
+// currenttime-300 sa jo reward ata wo show kara
+// }
+    for (var i = 0; i <= 0; i++) {
       if (resCopy > 0) {
         console.log(resCopy, "==========resCopy==========");
         let result = 0;
         await userRewardDetails(resCopy)
           .then((resData) => {
-            console.log(resData, ">>>>>>>>>>>>>>>>>>userRewardDetails<<<<<<<<<<<<<<<.");
-            if(resData.investTime < resCopy){
+            console.log("invest time = ",resData.investTime ,"current = ", resCopy , ">>>>>>>>>>>>>>>>>>userRewardDetails<<<<<<<<<<<<<<<.",resData);
+            if(resData.investTime > res?._currentTime ){
+              console.log("IN IF PART");
               result = 0;
+              detail = resData;
             }
             else{
+              console.log("IN ELSE PART");
               result = resData.reward;
             detail = resData;
             }
@@ -71,6 +79,7 @@ const useRewards = () => {
             console.log(err,"CATCH>>>>>>>>>>>>>>>>>>userRewardDetails<<<<<<<<<<<<<<<.");
             // setIsLoading(false);
           });
+        resCopy = resCopy - 300;
         console.log(resCopy);
         Rewards.push(+result / convertToUSDb);
         if (result > 0) {
