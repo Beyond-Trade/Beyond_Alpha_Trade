@@ -34,7 +34,8 @@ function Rewards() {
           <p className="text-xs xxl:text-base font-light text-black mt-6 font-normal">
             If you have staked your BYN tokens,
             <br />
-            you are eligible to collect BYN staking rewards
+            you are eligible to collect BYN staking rewards.<br/>
+            Your reward need to ve collected on daily bases.
           </p>
           <img
             src="/assets/Images/rewards.png"
@@ -134,7 +135,7 @@ function Rewards() {
             />
             <ClaimRewardModal
              reward={Number(collectableReward)/ convertToUSDb}
-            earlyRedemptionFee={Web3.utils.fromWei(earlyRedemptionFee, 'ether') }
+            earlyRedemptionFee={Web3.utils.fromWei(earlyRedemptionFee || "0", 'ether') }
               isOpen={isOpen}
               close={handleClose}
               submit={submit}

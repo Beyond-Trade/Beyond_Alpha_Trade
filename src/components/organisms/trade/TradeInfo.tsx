@@ -14,8 +14,9 @@ function TradeInfo() {
   } = useOrdersHistory(); 
   const myTradesData:any = myOrders.filter((item) => item.status === "Success" )
   console.log(myTradesData,"<<<<<<<<<<<<<<MMMMMMMMMMMMMMMM",selectedPair,">>>>>>>>>>>>>>>>>>>>>>>>.")
-  const myTradesFilteredData:any=myTradesData.filter((item:any)=>item.pair === selectedPair.counter+"/"+selectedPair.base);
-  const myOrderFilteredData:any =myTradesData.filter((item:any)=>item.pair === selectedPair.counter+"/"+selectedPair.base);
+  
+  const myTradesFilteredData:any=myTradesData.filter((item:any)=>item.pair.toLowerCase().includes(selectedPair.counter.toLowerCase()));
+  const myOrderFilteredData:any =myTradesData.filter((item:any)=>item.pair.toLowerCase().includes(selectedPair.counter.toLowerCase()));
   return (
     <div className="w-full mt-4 mr-4 rounded overflow-auto border px-2">
       <div className="w-94">

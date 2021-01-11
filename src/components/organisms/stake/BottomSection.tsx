@@ -36,7 +36,7 @@ const BottomSection = () => {
       ETHBal: ETHObj?.cryptoBalance || 0,
       bynRate: BYNObj?.rate === Infinity ? 0 : BYNObj?.rate || 0,
     }));
-    console.log(BYNObj?.rate,"FFFFFFFFFFFFFFFFFFFFFFFF")
+    console.log(rewards,"FFFFFFFFFFFFFFFFFFFFFFFF")
   }, [balances]);
   React.useEffect(() => {
     let stackedPerc = (stackedBYN * 100) / totalByn;
@@ -120,7 +120,7 @@ console.log("bottom section ",balances)
           </div>
           <div className="flex justify-between items-center mt-3">
             <h6 className="xxl:text-base text-xs font-normal">
-              Reward from staked BYN
+             Daily Collectable Reward from Staked BYN
             </h6>
             <div className="flex items-center">
               <img
@@ -129,7 +129,8 @@ console.log("bottom section ",balances)
                 alt="img"
               />
               <label className="xxl:text-lg text-xs text-blue-1000">
-                {collectableReward? (Number(collectableReward)/ convertToUSDb).toFixed(2) : "0.00"}BYN
+              {rewards.length > 0 ? rewards[0].toFixed(2):0.00 }BYN {}
+                {/* {rewards.length > 0 ? (Number(rewards[0])/ convertToUSDb).toFixed(2) : "0.00"}BYN  */}
               </label>
             </div>
           </div>
@@ -182,7 +183,7 @@ console.log("bottom section ",balances)
               <td className="text-center " style={{ width: "90px" }}>
                 <h4 className="xxl:text-lg text-xs">Balance</h4>
               </td>
-              <td className="text-center" style={{ width: "90px" }}>
+              <td className="text-right" style={{ width: "90px" }}>
                 <h4 className="xxl:text-lg text-xs">USD</h4>
               </td>
             </tr>

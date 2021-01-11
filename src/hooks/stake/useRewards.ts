@@ -24,7 +24,7 @@ const useRewards = () => {
   const [rewardsDetail, setRewardsDetail] = useState<any>({
     reward: "",
     collectableReward: "",
-    earlyRedemptionFee: "",
+    earlyRedemptionFee: "0",
     investTime: "",
   });
   const [isLoading, setIsLoading] = useState(true);

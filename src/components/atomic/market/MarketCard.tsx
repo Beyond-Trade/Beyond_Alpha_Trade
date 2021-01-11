@@ -6,13 +6,16 @@ interface IProps {
   coin: string;
   price: string;
   marginRight: string;
+  click: any;
 }
 
 function MarketCard(props: IProps) {
 
   return (
     <div
-      className={`border border-gray-400 rounded mb-4 w-full ${props.marginRight}`}
+      className={`border border-gray-400 rounded mb-4 w-full cursor-pointer ${props.marginRight}`}
+      onClick={props.click}
+      style={{backgroundColor: "rgb(235, 237, 240)"}}
     >
       <div className="border-b border-gray-400 py-1 px-2 flex justify-between rounded-t">
         <h5 className="text-xs xxl:text-sm font-semibold text-gray-600">

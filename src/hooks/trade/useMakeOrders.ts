@@ -102,13 +102,14 @@ const useMakeOrders = () => {
 
   const addTradeAction = () => {
     const price = getPairPrice(state.fromRate, state.toRate);
+    console.log(price,"ppppppppppppppppppppppppppppppppppp")
     dispatch(
       setMyOrder({
         date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
         pair: state.to + "/" + state.from,
         buying: Number(inputs.to).toFixed(2) + " " + state.to,
         selling: Number(inputs.from).toFixed(2) + " " + state.from,
-        price: Number(price).toFixed(2),
+        price: Number(price).toFixed(5),
         status: "pending",
         infoURL: "",
       })

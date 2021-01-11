@@ -9,7 +9,9 @@ import { RootState } from "../store/reducers/Index";
 import SearchTop from "../components/atomic/market/SearchTop";
 import useMarketData from "../hooks/Market/useMarketData";
 import { useSelector } from "react-redux";
-
+import { getPairPrice } from "../services/generic.services";
+import { selectAssetPairAction } from "../store/actions/ExchangeActions";
+import { useHistory } from "react-router-dom";
 function Market() {
   const {
     marketIndex,
@@ -43,27 +45,29 @@ function Market() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
+  const history = useHistory();
+  const navigate=(counter:any)=>{
+      const marketBalance = balances.find((b)=>b.short === "USDb")
+      const counterBalance = balances.find((b)=>b.short === counter)
+      let rate = Number(getPairPrice(marketBalance?.rate||0, counterBalance?.rate||0))
+      selectAssetPairAction("USDb", counter, rate);
+      history.push("/trade")
+  }
   return (
     <div className="px-8 xl:px-24 lg:px-24 md:px-24">
       <div className="mt-12 xl:flex lg:flex">
         <MarketCard
-          coin="POUND"
-          price={GBPRate ? Number(GBPRate.rate).toFixed(2) : "00.00"}
-          pair="GBP/ USDb"
-          image="/assets/Icons/pound.svg"
-          change={GBPRate ? Number(GBPRate.change24h).toFixed(2) : "00.00"}
-          marginRight="mr-4"
-        />
-        <MarketCard
-          coin="OIL"
-          price={OILRate ? Number(OILRate.rate).toFixed(2) : "00.00"}
-          pair="OIL/ USDb"
-          image="/assets/coins/oil.svg"
-          change={OILRate ? Number(OILRate.change24h).toFixed(2) : "00.00"}
+          coin="BITCOIN"
+          click={() => navigate("BTCb")}
+          price={BTCRate ? Number(BTCRate.rate).toFixed(2) : "00.00"}
+          pair="BTCb / USDb"
+          image="/assets/Icons/btc.svg"
+          change={BTCRate ? Number(BTCRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="ETHEREUM"
+          click={() => navigate("ETHb")}
           price={ETHbRate ? Number(ETHbRate.rate).toFixed(2) : "00.00"}
           pair="ETHEREUM/ USDb"
           image="/assets/Icons/Ethereum.svg"
@@ -71,11 +75,21 @@ function Market() {
           marginRight="mr-4"
         />
         <MarketCard
-          coin="BITCOIN"
-          price={BTCRate ? Number(BTCRate.rate).toFixed(2) : "00.00"}
-          pair="BTC/ USDb"
-          image="/assets/Icons/btc.svg"
-          change={BTCRate ? Number(BTCRate.change24h).toFixed(2) : "00.00"}
+          coin="POUND"
+          click={() => navigate("GBPb")}
+          price={GBPRate ? Number(GBPRate.rate).toFixed(2) : "00.00"}
+          pair="GBPb / USDb"
+          image="/assets/Icons/pound.svg"
+          change={GBPRate ? Number(GBPRate.change24h).toFixed(2) : "00.00"}
+          marginRight="mr-4"
+        />
+        <MarketCard
+          coin="OIL"
+          click={() => navigate("OILb")}
+          price={OILRate ? Number(OILRate.rate).toFixed(2) : "00.00"}
+          pair="OILb / USDb"
+          image="/assets/coins/oil.svg"
+          change={OILRate ? Number(OILRate.change24h).toFixed(2) : "00.00"}
           marginRight=""
         />
       </div>
