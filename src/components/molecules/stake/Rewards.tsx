@@ -35,7 +35,7 @@ function Rewards() {
             If you have staked your BYN tokens,
             <br />
             you are eligible to collect BYN staking rewards.<br/>
-            Your reward need to ve collected on daily bases.
+            Your reward need to be collected on daily bases.
           </p>
           <img
             src="/assets/Images/rewards.png"
