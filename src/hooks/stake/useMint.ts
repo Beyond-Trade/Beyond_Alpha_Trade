@@ -67,7 +67,7 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
           throw new Error("no data");
         }
         updateBalances();
-        alert.show("Invest successful", { type: "success" });
+        alert.show("Invested successful", { type: "success" });
         setState((prev) => ({ ...prev, submitting: false,amount:"",graphPercent:0,burnableByns:0,BYNStackingAmount:0 }));
       })
       .catch((e) => {

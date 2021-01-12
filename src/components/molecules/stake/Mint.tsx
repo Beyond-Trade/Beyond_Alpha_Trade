@@ -107,7 +107,7 @@ function Mint() {
                   <img src="/assets/Icons/info.png" className="w-4 ml-2" />
                   <span className="tooltiptext">
                     To Invest Synths on Beyond, user has to deposit 300%
-                    collateral of the value of synths being minted. This ensures
+                    collateral of the value of synths being invested. This ensures
                     Synths are backed by sufficient collateral to absorb large
                     price shocks.
                   </span>

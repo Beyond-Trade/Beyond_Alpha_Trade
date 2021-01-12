@@ -128,7 +128,7 @@ const useTransfer = () => {
 
   const onCoinSelect = (i: number) => {
     const balance = balances.find((balance) => balance.short === state.dropValues[i]);
-    setState((prev) => ({ ...prev, dropIndex: i, balance: balance?.cryptoBalance||0 }));
+    setState((prev) => ({ ...prev, dropIndex: i,amount:"", balance: balance?.cryptoBalance||0 }));
   };
 
   return {

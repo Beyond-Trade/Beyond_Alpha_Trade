@@ -25,7 +25,7 @@ import { updateBalances } from "../../services/wallet.service";
 const useCreateLoan = () => {
   const dispatch = useDispatch();
   const { balances } = useSelector((state: RootState) => state.wallet);
-  const { loanType, locked, } = useSelector((state: RootState) => state.loan);
+  const { loanType, locked,collatRatio } = useSelector((state: RootState) => state.loan);
   const gasFees = [1, 23, 34];
   const alert = useAlert();
   const [state, setState] = useState({
@@ -225,12 +225,12 @@ const useCreateLoan = () => {
   const handleLockedChange = (event: any) => {
     const { value } = event.target;
     // const price = getPairPrice(state.fromRate, state.toRate);
-    let actualLoan = ((value / 100) * 80).toString();
-    let USDValueBorrowed = ((value * state?.ETH?.rate) / 100) * 80;
+    let actualLoan = ((value / 100) * (100 - collatRatio)).toString();
+    let USDValueBorrowed = ((value * state?.ETH?.rate) / 100) * (100 - collatRatio);
     console.log("before if block", loanType);
     if (loanType === "USDb") {
       console.log("in if block ");
-      actualLoan = (((value * state.ETH.rate) / 100) * 80).toString();
+      actualLoan = (((value * state.ETH.rate) / 100) * (100 - collatRatio)).toString();
     }
     dispatch(
       handleLocked({
@@ -244,14 +244,14 @@ const useCreateLoan = () => {
     const { value } = event.target;
     // const price = getPairPrice(state.fromRate, state.toRate);
     // const from = price === 0 ? "0" : (Number(value) / Number(price)).toString();
-    let actualLoan = ((value / 100) * 20 + Number(value)).toString();
+    let actualLoan = ((value / 100) * collatRatio + Number(value)).toString();
     let USDValueBorrowed = value * state.ETH.rate;
     console.log(USDValueBorrowed);
     console.log("before if block", loanType);
     if (loanType === "USDb") {
       console.log("in if block ");
       USDValueBorrowed = value;
-      let valueToDeduct = (value / state.ETH.rate / 100) * 20;
+      let valueToDeduct = (value / state.ETH.rate / 100) * collatRatio;
       console.log(valueToDeduct, "valueToDeduct");
       actualLoan = (value / state.ETH.rate + valueToDeduct).toString();
     }
