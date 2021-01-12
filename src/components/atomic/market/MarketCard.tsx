@@ -33,7 +33,7 @@ function MarketCard(props: IProps) {
         <img src={props.image} alt="img" className="h-10 xxl:h-16" />
         <div className="text-xs xxl:text-base font-bold">
           <text>{props.coin}</text>
-          <text className=" block mt-2">{Number(props.price).toFixed(2)}</text>
+          <text className=" block mt-2">{props.price}</text>
         </div>
       </div>
     </div>

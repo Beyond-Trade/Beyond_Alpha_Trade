@@ -4,6 +4,7 @@ import Loader from "react-loader-spinner";
 import React from "react";
 import useTransfer from "../../../hooks/stake/useTransfer";
 import GeneralButton from "../../atomic/GeneralButton";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 function Transfer() {
   const {
@@ -65,7 +66,7 @@ function Transfer() {
               Transferable amount:
             </h6>
             <h6 className="text-xs xxl:text-sm font-bold text-customBlack-500">
-              {balance.toFixed(2)}{" "}
+              {toFixedNoRounding(balance,5)}{" "}
               {dropValues[dropIndex] === "Beyond"
                 ? "BYN"
                 : dropValues[dropIndex]}

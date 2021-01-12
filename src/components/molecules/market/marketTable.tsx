@@ -7,6 +7,7 @@ import { RootState } from "../../../store/reducers/Index";
 import GeneralButton from "../../atomic/GeneralButton";
 
 import MarketSort from "../../atomic/market/MarketSort";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 interface IProps {
   data: any;
@@ -83,7 +84,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
                 <text className="text-gray-500 ml-2">{item.name}</text>
               </div>
             </td>
-            <td className="py-3 px-3">${item.rate.toFixed(2)}</td>
+            <td className="py-3 px-3">${toFixedNoRounding(item.rate,5)}</td>
             <td className="py-3 px-3">
               <button
                 className={`rounded-sm px-1 ${
@@ -95,8 +96,8 @@ function MarketTable({ data, handleSort, search }: IProps) {
                 {item.change24h.toFixed(2)}%
               </button>
             </td>
-            <td className="py-3 px-3">${item.high24h.toFixed(2)}</td>
-            <td className="py-3 px-3">${item.low24h.toFixed(2)}</td>
+            <td className="py-3 px-3">${toFixedNoRounding(item.high24h,5)}</td>
+            <td className="py-3 px-3">${toFixedNoRounding(item.low24h,5)}</td>
             {/* <td className="py-3 px-3">
             <img src="/assets/Images/Up.png" className="h-8" />
           </td> */}

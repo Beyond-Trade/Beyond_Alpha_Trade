@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useRewards from "../../../hooks/stake/useRewards";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 const convertToUSDb = 1000000000000000000;
 const BottomSection = () => {
   const history = useHistory();
@@ -60,7 +61,7 @@ console.log("bottom section ",balances)
               className="h-6 xxl:h-8"
             />
             <h6 className="ml-2 xxl:text-sm text-xs font-medium">
-              1 BYN = ${state.bynRate?.toFixed(2) || 0} USDb
+              1 BYN = ${toFixedNoRounding(state.bynRate,5) || 0} USDb
             </h6>
           </div>
           <div className="flex items-center">
@@ -70,7 +71,7 @@ console.log("bottom section ",balances)
               className="h-6 xxl:h-8"
             />
             <h6 className="ml-2 xxl:text-sm text-xs font-medium">
-              1 ETH = ${state.ethRate?.toFixed(2)} USD
+              1 ETH = ${toFixedNoRounding(state.ethRate,5)} USD
             </h6>
           </div>
         </div>
@@ -78,15 +79,15 @@ console.log("bottom section ",balances)
           <div className="flex justify-between border-b border-gray-400 pb-3">
             <h6 className="xxl:text-sm text-xs font-normal">TOTAL BYN:</h6>
             <h6 className="xxl:text-sm text-xs font-medium text-blue-1000">
-              {state.totalBYN.toFixed(2)} BYN
+              {toFixedNoRounding(state.totalBYN,5)} BYN
             </h6>
           </div>
           <div className="flex justify-between my-5">
             <h6 className="xxl:text-sm text-xs font-medium">
-              Staked: {state.stackedBYN.toFixed(2)}
+              Staked: {toFixedNoRounding(state.stackedBYN,5)}
             </h6>
             <h6 className="xxl:text-sm text-xs font-medium">
-              Not Staked: {state.unstackedBYN.toFixed(2)}
+              Not Staked: {toFixedNoRounding(state.unstackedBYN,5)}
             </h6>
           </div>
           <div
@@ -129,7 +130,7 @@ console.log("bottom section ",balances)
                 alt="img"
               />
               <label className="xxl:text-lg text-xs text-blue-1000">
-              {rewards.length > 0 ? rewards[0].toFixed(2):0.00 }BYN {}
+              {rewards.length > 0 ? toFixedNoRounding(rewards[0],5):0.00 } BYN {}
                 {/* {rewards.length > 0 ? (Number(rewards[0])/ convertToUSDb).toFixed(2) : "0.00"}BYN  */}
               </label>
             </div>
@@ -199,12 +200,12 @@ console.log("bottom section ",balances)
                 </td>
                 <td className="text-center" style={{ width: "90px" }}>
                   <h6 className="ml-2 xxl:text-xl text-xs">
-                    {item.cryptoBalance.toFixed(2)}
+                    {toFixedNoRounding(item.cryptoBalance,5)}
                   </h6>
                 </td>
                 <td className="text-right" style={{ width: "90px" }}>
                   <h6 className="ml-2 xxl:text-xl text-xs">
-                    ${(item.cryptoBalance * item.rate || 0).toFixed(2)}
+                    ${toFixedNoRounding(item.cryptoBalance * item.rate || 0,5)}
                   </h6>
                 </td>
               </tr>

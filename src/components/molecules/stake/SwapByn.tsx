@@ -2,6 +2,7 @@ import Loader from "react-loader-spinner";
 import React from "react";
 import useSwap from "../../../hooks/stake/useSwap";
 import GeneralButton from "../../atomic/GeneralButton";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 interface IProps {}
 function SwapByn(props: IProps) {
@@ -47,7 +48,8 @@ function SwapByn(props: IProps) {
             </div>
             <div className="text-right">
               <h6 className="text-xs xxl:text-sm font-medium break-normal">
-                Balance: {balance.toFixed(2)}ETH
+              
+                Balance: {toFixedNoRounding(balance,5)}ETH
               </h6>
               <div className="flex items-center w-16 text-right justify-end mt-2">
                 <button

@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { getPairPrice } from "../services/generic.services";
 import { selectAssetPairAction } from "../store/actions/ExchangeActions";
 import { useHistory } from "react-router-dom";
+import { toFixedNoRounding } from "../components/_common/FixedNoRounding";
 function Market() {
   const {
     marketIndex,
@@ -59,16 +60,16 @@ function Market() {
         <MarketCard
           coin="BITCOIN"
           click={() => navigate("BTCb")}
-          price={BTCRate ? Number(BTCRate.rate).toFixed(2) : "00.00"}
+          price={BTCRate ? toFixedNoRounding(BTCRate.rate,5) : "00.00"}
           pair="BTCb / USDb"
           image="/assets/Icons/btc.svg"
-          change={BTCRate ? Number(BTCRate.change24h).toFixed(2) : "00.00"}
+          change={BTCRate ? Number(BTCRate.change24h).toFixed(2)  : "00.00"}
           marginRight="mr-4"
         />
         <MarketCard
           coin="ETHEREUM"
           click={() => navigate("ETHb")}
-          price={ETHbRate ? Number(ETHbRate.rate).toFixed(2) : "00.00"}
+          price={ETHbRate ? toFixedNoRounding(ETHbRate.rate,5): "00.00"}
           pair="ETHEREUM/ USDb"
           image="/assets/Icons/Ethereum.svg"
           change={ETHbRate ? Number(ETHbRate.change24h).toFixed(2) : "00.00"}
@@ -77,7 +78,7 @@ function Market() {
         <MarketCard
           coin="POUND"
           click={() => navigate("GBPb")}
-          price={GBPRate ? Number(GBPRate.rate).toFixed(2) : "00.00"}
+          price={GBPRate ? toFixedNoRounding(GBPRate.rate,5) : "00.00"}
           pair="GBPb / USDb"
           image="/assets/Icons/pound.svg"
           change={GBPRate ? Number(GBPRate.change24h).toFixed(2) : "00.00"}
@@ -86,7 +87,7 @@ function Market() {
         <MarketCard
           coin="OIL"
           click={() => navigate("OILb")}
-          price={OILRate ? Number(OILRate.rate).toFixed(2) : "00.00"}
+          price={OILRate ? toFixedNoRounding(OILRate.rate,5) : "00.00"}
           pair="OILb / USDb"
           image="/assets/coins/oil.svg"
           change={OILRate ? Number(OILRate.change24h).toFixed(2) : "00.00"}

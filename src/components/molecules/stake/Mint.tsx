@@ -3,6 +3,7 @@ import Loader from "react-loader-spinner";
 import React from "react";
 import useMint from "../../../hooks/stake/useMint";
 import GeneralButton from "../../atomic/GeneralButton";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 function Mint() {
   const {
@@ -99,7 +100,7 @@ function Mint() {
               <small className="block text-red-500 italic">{amountVal}</small>
             </div>
             <div className="flex text-customGray-400 justify-between text-xxs xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
-              <h6>Staking: {BYNStackingAmount.toFixed(2)} BYN</h6>
+              <h6>Staking: {toFixedNoRounding(BYNStackingAmount,5)} BYN</h6>
 
               <h6 className="flex">
                 Estimated C-Ratio: {cRatio}%

@@ -3,6 +3,7 @@ import React from "react";
 import useBurn from "../../../hooks/stake/useBurn";
 import GasFeeModal from "./GasFeeModal";
 import GeneralButton from "../../atomic/GeneralButton";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 function Burn() {
   const {
@@ -93,8 +94,8 @@ function Burn() {
           {burnType === 0 && (
             <div className="mt-6 text-xs xxl:text-sm">
               <div className="flex justify-between">
-                <p className=" font-medium text-gray-500">Invested USD: ${Number(maxBurn).toFixed(2) || "0.00"}</p>
-                <p className=" font-medium text-gray-500">Available USD: ${Number(balance).toFixed(2)  || "0.00"}</p>
+                <p className=" font-medium text-gray-500">Invested USD: ${toFixedNoRounding(maxBurn,5) || "0.00"}</p>
+                <p className=" font-medium text-gray-500">Available USD: ${toFixedNoRounding(balance,5) || "0.00"}</p>
               </div>
 
               <div ref={firstDiv} className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
