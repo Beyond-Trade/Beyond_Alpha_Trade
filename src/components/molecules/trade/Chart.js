@@ -80,7 +80,8 @@ function Chart({updatedSelectedPair,selectedPair}) {
 	// 	}
 
 	// 	return null;
-	// };
+  // };
+  console.log(selectedPair,"QQQQQQQQQQQQQQQQQQQQQQQQQQ")
   return (
     <div>
       <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />

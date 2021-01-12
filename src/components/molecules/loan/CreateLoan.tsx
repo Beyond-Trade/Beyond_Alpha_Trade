@@ -142,7 +142,7 @@ function CreateLoan() {
             </p>
           </div>
           <div className="flex justify-between">
-            <h3 className="text-gray-600 py-1">GASS PRICE (GWEI)</h3>
+            <h3 className="text-gray-600 py-1">GAS PRICE (GWEI)</h3>
             <p className="text-gray-600 py-1">
               {fee}{" "}
               <text

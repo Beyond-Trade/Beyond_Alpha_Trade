@@ -69,7 +69,10 @@ export const setTransations=(payload:Trade[])=>{
 export const selectAssetPairAction = (from: string, to: string, rate:number) => {
   const state: RootState = store.getState();
   const fromBalance = state.wallet.balances.find((item) => item.short === from);
+  console.log(fromBalance,"+++++++++FROM BALANCE+++++++++");
+  
   const toBalance = state.wallet.balances.find((item) => item.short === to);
+  console.log(toBalance,"+++++++++TO BALANCE+++++++++");
   store.dispatch(
     selectAssetPair(
       from,
@@ -81,9 +84,9 @@ export const selectAssetPairAction = (from: string, to: string, rate:number) => 
       fromBalance?.icon||"",
       toBalance?.icon||"",
       rate,
-      fromBalance?.change24h||0,
-      fromBalance?.high24h||0,
-      fromBalance?.low24h||0,
+      toBalance?.change24h||0,
+      toBalance?.high24h||0,
+      toBalance?.low24h||0,
     )
   );
 };
