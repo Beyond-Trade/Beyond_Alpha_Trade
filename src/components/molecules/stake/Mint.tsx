@@ -100,7 +100,7 @@ function Mint() {
               <small className="block text-red-500 italic">{amountVal}</small>
             </div>
             <div className="flex text-customGray-400 justify-between text-xxs xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
-              <h6>Staking: {toFixedNoRounding(BYNStackingAmount,5)} BYN</h6>
+              <h6>Staking: ~{toFixedNoRounding(BYNStackingAmount === Infinity ? 0 : BYNStackingAmount ,5)} BYN</h6>
 
               <h6 className="flex">
                 Estimated C-Ratio: {cRatio}%

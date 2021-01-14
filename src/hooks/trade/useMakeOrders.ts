@@ -1,9 +1,11 @@
+
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { addTrade } from "../../services/trade.service";
 import { updateBalances } from "../../services/wallet.service";
+import ConvertFromE from "../../components/_common/ConvertFromE"
 import {
   setMyOrder,
   updateMyLastOrder,
@@ -31,7 +33,7 @@ const useMakeOrders = () => {
     toImage: "",
     usdValue: 0,
   });
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState<any>({
     to: "",
     from: "",
     toVal: "",
@@ -39,6 +41,8 @@ const useMakeOrders = () => {
   });
 
   useEffect(() => {
+    
+    console.log("selectedPair.baseBalance = ",selectedPair.baseBalance,"selectedPair.counterBalance = ",selectedPair.counterBalance)
     setState((prev) => ({
       ...prev,
       to: selectedPair.counter,
@@ -52,6 +56,8 @@ const useMakeOrders = () => {
     }));
     setInputs({ to: "", fromVal: "", from: "", toVal: "" });
   }, [selectedPair]);
+  
+  console.log("state.fromBalance = ",state.fromBalance,"state.toBalance = ",state.toBalance)
 
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
   const closeFeeModal = () =>
@@ -60,6 +66,7 @@ const useMakeOrders = () => {
     setState((prev) => ({ ...prev, fee: fee, isFeeOpen: !close }));
 
   const toggleBuySell = () => {
+    
     setState((prev) => ({
       ...prev,
       to: prev.from,
@@ -71,7 +78,7 @@ const useMakeOrders = () => {
       fromImage: prev.toImage,
       toImage: prev.fromImage,
     }));
-    setInputs((prev) => ({
+    setInputs((prev:any) => ({
       ...prev,
       to: "",
       from: "",
@@ -81,13 +88,14 @@ const useMakeOrders = () => {
   };
 
   const setPercentage = (percent: number) => {
-    let amount = state.fromBalance * (percent / 100);
+    
+    let amount =Number(state.fromBalance) * (percent / 100);
     const price = getPairPrice(state.fromRate, state.toRate);
     const result = percent == 100 ? state.fromBalance : amount;
-    setInputs((prev) => ({
+    setInputs((prev:any) => ({
       ...prev,
-      from: result.toString(),
-      to: (Number(price) * Number(amount)).toString(),
+      from: result,
+      to: (Number(price) * Number(amount)),
     }));
     setState((prev) => ({ ...prev, usdValue: Number(amount) * prev.fromRate }));
   };
@@ -102,7 +110,7 @@ const useMakeOrders = () => {
 
   const addTradeAction = () => {
     const price = getPairPrice(state.fromRate, state.toRate);
-    console.log(price,"ppppppppppppppppppppppppppppppppppp")
+    console.log(inputs.from,"ppppppppppppppppppppppppppppppppppp")
     dispatch(
       setMyOrder({
         date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
@@ -114,7 +122,7 @@ const useMakeOrders = () => {
         infoURL: "",
       })
     );
-    addTrade(state.from, state.to, Number(inputs.from), state.fee)
+    addTrade(state.from, state.to, inputs.from, state.fee)
       .then((data) => {
         if (!data) {
           throw Error("Error");
@@ -157,19 +165,19 @@ const useMakeOrders = () => {
   const isValidated = () => {
     let validated = true;
     if (inputs.to === "") {
-      setInputs((prev) => ({ ...prev, toVal: "This Field is required" }));
+      setInputs((prev:any) => ({ ...prev, toVal: "This Field is required" }));
       validated = false;
     }
     if (inputs.from === "") {
-      setInputs((prev) => ({ ...prev, fromVal: "This Field is required" }));
+      setInputs((prev:any) => ({ ...prev, fromVal: "This Field is required" }));
       validated = false;
     }
     if (inputs.to.length > 0 && inputs.from.length > 0) {
-      setInputs((prev) => ({ ...prev, toVal: "", fromVal: ""  }));
+      setInputs((prev:any) => ({ ...prev, toVal: "", fromVal: ""  }));
       
     }
     if (Number(inputs.from) > state.fromBalance) {
-      setInputs((prev) => ({ ...prev, fromVal: "Not enough balance" }));
+      setInputs((prev:any) => ({ ...prev, fromVal: "Not enough balance" }));
       validated = false;
     }
     if (state.submitting) {
@@ -187,7 +195,7 @@ const useMakeOrders = () => {
   const handleFromChange = (event: any) => {
     const { value } = event.target;
     const price = getPairPrice(state.fromRate, state.toRate);
-    setInputs((prev) => ({
+    setInputs((prev:any) => ({
       ...prev,
       from: value,
       fromVal: "",
@@ -199,7 +207,7 @@ const useMakeOrders = () => {
     const { value } = event.target;
     const price = getPairPrice(state.fromRate, state.toRate);
     const from = price === 0 ? "0" : (Number(value) / Number(price)).toString();
-    setInputs((prev) => ({
+    setInputs((prev:any) => ({
       ...prev,
       to: value,
       toVal: "",

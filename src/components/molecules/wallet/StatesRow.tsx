@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import UseWalletOverView from "../../../hooks/wallet/useWalletOverView";
 import { couldStartTrivia } from "typescript";
 import { PieChart, Pie, Sector, Cell } from "recharts";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 const COLORS = ["#FF8042","#FFBB28","#0088FE"];
 function StatesRow() {
@@ -65,7 +66,7 @@ function StatesRow() {
           <text>TOTAL SYNTHETIC ASSET VALUE</text>
         </div>
         <h3 className="font-extrabold text-lg xxl:text-xl text-customBlack-500 text-center my-6 mx-2">
-          ${totalSynthValue ? totalSynthValue.toFixed(2) : "0.00"} USDb
+          ${totalSynthValue ? toFixedNoRounding(totalSynthValue,5) : "0.00"} USDb
         </h3>
       </div>
       <div className="border rounded mr-8 w-full mt-8">
@@ -162,7 +163,7 @@ function StatesRow() {
           <h5>TOTAL WALLET VALUE</h5>
         </div>
         <h3 className="font-extrabold text-lg xxl:text-xl text-customBlack-500 text-center my-6 mx-2">
-          ${totalWalletValue ? totalWalletValue.toFixed(2) : "0.00"} USD
+          ${totalWalletValue ? toFixedNoRounding(totalWalletValue,5) : "0.00"} USD
         </h3>
       </div>
     </div>

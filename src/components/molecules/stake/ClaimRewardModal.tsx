@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { feesDescription } from "../../../utils/constants";
 import GeneralButton from "../../atomic/GeneralButton";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 
 interface IProps {
   isOpen: boolean;
@@ -21,12 +22,12 @@ function ClaimRewardModal(props: IProps) {
         </button>
       </div>
       <div className="flex text-center justify-center items-center border-b border-gray-400 pb-2 font-bold">
-        Total Reward : {props.reward.toFixed(2)} BYN<br/>
-        Early Redumption Fee : {Number(props.earlyRedemptionFee).toFixed(2)} BYN
+        Total Reward : {toFixedNoRounding(props.reward || 0,5)} BYN<br/>
+        Early Redumption Fee : {toFixedNoRounding(props.earlyRedemptionFee || 0,5)} BYN
           {/* If you are claiming the reward before maturity the EARLY Redemption Fee {props.earlyRedemptionFee} will be deducted. */}
       </div>
       <div className="flex-col text-center items-center pt-2">
-        Net Reward : {Number(props.reward - props.earlyRedemptionFee).toFixed(2)} BYN<br/>
+        Net Reward : {toFixedNoRounding((props.reward - props.earlyRedemptionFee) || 0,5)} BYN<br/>
           Are you sure you want to continue ?
       </div>
       <div className="flex justify-center content-center">

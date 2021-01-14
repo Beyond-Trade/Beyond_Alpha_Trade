@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useRewards from "../../../hooks/stake/useRewards";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import ConvertFromE from "../../_common/ConvertFromE";
 const convertToUSDb = 1000000000000000000;
 const BottomSection = () => {
   const history = useHistory();
@@ -31,13 +32,15 @@ const BottomSection = () => {
     const BYNObj = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
+    
+    console.log(BYNObj,"FFFFFFFFFFFFF===BYNObj====FFFFFFFFFFF")
     setState((prev) => ({
       ...prev,
       ethRate: ETHObj?.rate || 0,
       ETHBal: ETHObj?.cryptoBalance || 0,
       bynRate: BYNObj?.rate === Infinity ? 0 : BYNObj?.rate || 0,
     }));
-    console.log(rewards,"FFFFFFFFFFFFFFFFFFFFFFFF")
+   
   }, [balances]);
   React.useEffect(() => {
     let stackedPerc = (stackedBYN * 100) / totalByn;
@@ -49,7 +52,7 @@ const BottomSection = () => {
       stackedBYNPercent: stackedPerc,
     }));
   }, [stackedBYN, unstacked, totalByn]);
-console.log("bottom section ",balances)
+console.log("bottom section ",unstacked , "======== " ,stackedBYN)
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
       <div className="w-full xl:mr-2 lg:mr-2 mb-4">
@@ -61,7 +64,7 @@ console.log("bottom section ",balances)
               className="h-6 xxl:h-8"
             />
             <h6 className="ml-2 xxl:text-sm text-xs font-medium">
-              1 BYN = ${toFixedNoRounding(state.bynRate,5) || 0} USDb
+              1 BYN = ${toFixedNoRounding(state.bynRate,5) || 0} USD
             </h6>
           </div>
           <div className="flex items-center">
@@ -137,7 +140,7 @@ console.log("bottom section ",balances)
           </div>
           <div className="flex justify-between items-center mt-3">
             <h6 className="xxl:text-base text-xs font-normal">
-            APY
+            Annual Percentage Yield (APY)
             </h6>
             <div className="flex items-center">
               <label className="xxl:text-lg text-xs text-blue-1000">
@@ -205,7 +208,8 @@ console.log("bottom section ",balances)
                 </td>
                 <td className="text-right" style={{ width: "90px" }}>
                   <h6 className="ml-2 xxl:text-xl text-xs">
-                    ${toFixedNoRounding(item.cryptoBalance * item.rate || 0,5)}
+                    {/* ${ConvertFromE(toFixedNoRounding((Number(item.cryptoBalance) * item.rate,5)))} */}
+                    ${toFixedNoRounding((Number(item.cryptoBalance) * item.rate) || 0,6)}
                   </h6>
                 </td>
               </tr>

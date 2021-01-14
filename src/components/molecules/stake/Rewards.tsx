@@ -60,7 +60,7 @@ function Rewards() {
                         Next Collectable reward
                       </h6>
                       <h6 className="font-normal">
-                        {toFixedNoRounding(reward.data / convertToUSDb,5)} BYN
+                        {toFixedNoRounding(((reward.data / convertToUSDb) || 0) ,5)} BYN
                       </h6>
                     </div>
                   ) : (
@@ -70,7 +70,7 @@ function Rewards() {
                         {/* {moment(reward.time * 1000).format("LL")} */}
                       </h6>
                       <h6 className="font-normal">
-                      {toFixedNoRounding(reward.data / convertToUSDb,5)} BYN
+                      {toFixedNoRounding(((reward.data / convertToUSDb) || 0) ,5)} BYN
                       </h6>
                     </div>
                   )
@@ -110,7 +110,7 @@ function Rewards() {
               <div className="flex justify-between xxl:text-sm text-xxs bg-white px-4 py-2 mt-4">
               <h6 className="font-medium">Total claimable</h6>
               <h6 className="font-medium">
-              {toFixedNoRounding(collectableReward / convertToUSDb,5)} BYN
+              {toFixedNoRounding(((collectableReward / convertToUSDb) || 0) ,5)} BYN
                 {/* {Number(rewards.reduce((a: any, b: any) => a + b, 0)).toFixed(2)} BYN */}
               </h6>
             </div>

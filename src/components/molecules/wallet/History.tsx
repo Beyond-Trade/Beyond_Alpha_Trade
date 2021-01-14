@@ -8,6 +8,7 @@ import { setTransations } from "../../../store/actions/ExchangeActions";
 import { toLower } from "lodash";
 import PaginationComponent from "./Paginaton";
 import Pagination from "./Paginaton";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 function History() {
   const { balances, selected } = useSelector(
     (state: RootState) => state.wallet
@@ -106,7 +107,7 @@ function History() {
                     {item.tokenSymbol}
                   </td>
                   <td className="w-1/6">
-                    {item.amount.toFixed(2)} {item.tokenSymbol}
+                    {toFixedNoRounding(item.amount,5)} {item.tokenSymbol}
                   </td>
                   <td className="w-1/6">{item.time}</td>
                   <td className="w-1/6">{item.confirmations}</td>

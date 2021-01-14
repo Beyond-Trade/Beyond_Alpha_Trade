@@ -4,6 +4,7 @@ import GasFeeModal from "../stake/GasFeeModal";
 import Loader from "react-loader-spinner";
 import useMakeOrders from "../../../hooks/trade/useMakeOrders";
 import GeneralButton from "../../atomic/GeneralButton";
+import ConvertFromE from "../../_common/ConvertFromE";
 
 function MakeOrders() {
   const {
@@ -71,7 +72,7 @@ function MakeOrders() {
         <div className="flex justify-between font-normal text-xs xxl:text-sm mt-4">
           <text className="text-black font-bold">Sell</text>
           <text className="text-gray-600">
-            Balance: {fromBalance.toFixed(2)}
+            Balance: {Number(fromBalance).toFixed(2)}
           </text>
         </div>
         <div
@@ -89,7 +90,7 @@ function MakeOrders() {
             className="focus:outline-none ml-2 w-full appearance-none"
             type="number"
             name="from"
-            value={inputs.from}
+            value={ConvertFromE(inputs.from)}
             min="0"
             step="0"
             ref={firstInput}
@@ -99,7 +100,7 @@ function MakeOrders() {
         <small className="italic text-red-500 text-xxs">{inputs.fromVal}</small>
         <div className="flex justify-between font-normal text-xs xxl:text-sm mt-4">
           <text className="text-black font-bold">Buy</text>
-          <text className="text-gray-600">Balance: {toBalance.toFixed(2)}</text>
+          <text className="text-gray-600">Balance: {Number(toBalance).toFixed(2)}</text>
         </div>
         <div
           ref={secondDiv}
@@ -119,7 +120,7 @@ function MakeOrders() {
             min="0"
             step="0"
             ref={secondInput}
-            value={inputs.to}
+            value={ConvertFromE(inputs.to)}
             onChange={handleToChange}
           />
         </div>

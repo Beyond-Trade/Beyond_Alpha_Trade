@@ -106,7 +106,7 @@ function EthAsCollateral({ ETH }: any) {
               <h3 className="text-gray-600 py-2">ETH PRICE (USD)</h3>
             </div>
             <div>
-              <h3 className="py-2">1.0 ETH</h3>
+              <h3 className="py-2">0 ETH</h3>
               <h3 className="py-2">{Number(collatRatio) + 100}%</h3>
               <h3 className="py-2">{Number(ethLocked) / toConvert}</h3>
               <h3 className="py-2">{Number(ETH?.rate).toFixed(2) || 0}</h3>

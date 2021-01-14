@@ -1,4 +1,4 @@
-import { collatteralRatio, mintERC20 } from "../../services/mint.service";
+import { beyondTokenValueInDollar, collatteralRatio, mintERC20 } from "../../services/mint.service";
 import { useEffect, useState } from "react";
 import { Balance } from "../../store/types/WalletState";
 import { ERC20Contracts } from "../../contracts/constants/contracts";
@@ -6,6 +6,8 @@ import { RootState } from "../../store/reducers/Index";
 import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { updateBalances } from "../../services/wallet.service";
+import Web3 from "web3";
+import ConvertFromE from "../../components/_common/ConvertFromE";
 
 const useMint = () => {
   const { balances } = useSelector((state: RootState) => state.wallet);
@@ -35,23 +37,38 @@ const useMint = () => {
   };
 
   useEffect(() => {
-    collatteralRatio().then((c) => {
-      setState((prev) => ({ ...prev, cRatio: c }));
-    });
-    const BYNObj = balances.find(
+    init()
+  }, [balances]);
+  const init = async () => {
+    try{
+    const BYNObj:any = balances.find(
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
+    const res = await beyondTokenValueInDollar()
+    const BynRate = Number(Web3.utils.fromWei(String(res) || "0", 'ether'))
+    const bynBalance = BYNObj?.cryptoBalance
 
-    setState((prev) => ({
+    const c = await collatteralRatio()
+
+    setState((prev) => {
+      
+      const temp = ConvertFromE(Number((((bynBalance * Number(BynRate)) / (Number(c) / 100)))))
+      const temp2= temp < 1 ? temp : temp -0.0001
+      return{
       ...prev,
-      BynRate: BYNObj?.rate || 0,
-      BynBalance: BYNObj?.cryptoBalance || 0,
+      // BynRate: BYNObj?.rate || 0,
+      cRatio: c,
       amountVal: "",
+      BynRate: BynRate,
+      BynBalance: bynBalance,
       // @ts-ignore
-      usdbBalance: Number((((BYNObj?.cryptoBalance * state.BynRate) / (state.cRatio / 100)))) || 0,
-      // ((BYNObj?.cryptoBalance * (state.cRatio / 100)) / state.BynRate).toFixed(4)
-    }));
-  }, [balances]);
+      usdbBalance: temp2 || 0,
+      // ((BYNObj?.cryptoBalance * (state.cRatio / 100)) / state.BynRate).  (4)
+    }});
+  }catch(e){
+    console.log(e)
+  }
+  }
 console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
   const close = () => setState((prev) => ({ ...prev, isOpen: false }));
   const openFeeModal = () => setState((prev) => ({ ...prev, isOpen: true }));
@@ -59,6 +76,7 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
     setState((prev) => ({ ...prev, fee: fee, isOpen: !close }));
 
   const mintToken = () => {
+    
     console.log(Number(state.amount), state.fee)
     setState((prev) => ({ ...prev, submitting: true }));
     mintERC20(Number(state.amount), state.fee)
@@ -79,6 +97,7 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
 
   const isValidated = () => {
     let validated = true;
+    console.log("state.BYNStackingAmount = ",state.BYNStackingAmount,"state.BynBalance = ",state.BynBalance)
     if (state.amount === "") {
       setState((prev) => ({ ...prev, amountVal: "This field is required" }));
       validated = false;
@@ -88,6 +107,7 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
       validated = false;
     }
     if (state.BYNStackingAmount > state.BynBalance || state.BynBalance === 0) {
+      console.log("state.BYNStackingAmount = ",state.BYNStackingAmount,"state.BynBalance = ",state.BynBalance)
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;
     }
@@ -114,15 +134,16 @@ console.log(state.BynRate,"<<<<<<<<<<<<<<<<<<BynRate")
   };
 
   const setMax = () => {
-    let stacking = ((state.usdbBalance / state.BynRate * (state.cRatio / 100)));
-    const burnable = Number(((state.usdbBalance / state.BynRate * (state.cRatio / 100))));
-    const percent = (burnable*100)/state.BynBalance
     
+    let stacking =(state.usdbBalance / Number(state.BynRate) * (state.cRatio / 100)) ;
+    const burnable = Number(((state.usdbBalance / state.BynRate * (state.cRatio / 100)))) || 0;
+    const percent = (burnable*100)/state.BynBalance || 0;
+    console.log(stacking);
     setState((prev) => ({
       ...prev,
       amount: String(state.usdbBalance),
       amountVal: "",
-      BYNStackingAmount: state.BynRate === 0 ? 0 : Number(stacking),
+      BYNStackingAmount: state.BynRate === 0 ? 0 :ConvertFromE(Number(stacking)),
       burnableByns: burnable,
       graphPercent: percent
     }));

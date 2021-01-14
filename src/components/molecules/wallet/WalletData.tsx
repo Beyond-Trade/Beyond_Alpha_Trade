@@ -1,9 +1,18 @@
 import React from "react";
 import { RootState } from "../../../store/reducers/Index";
 import { useSelector } from "react-redux";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import { Balance } from "../../../store/types/WalletState";
+import { ERC20Contracts } from "../../../contracts/constants/contracts";
 
 function WalletData() {
-  const { balances } = useSelector((state: RootState) => state.wallet);
+  const { balances, stackedBYN, unstacked, totalByn } = useSelector(
+    (state: RootState) => state.wallet
+  );
+  const BYNobj:any = balances.find(
+    (bal: Balance) => bal.short == ERC20Contracts.BEYOND
+  );
+  console.log(BYNobj)
   return (
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
       <div className="w-full rounded">
@@ -56,22 +65,54 @@ function WalletData() {
           <tbody>
             {balances.map((item) => (
               <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
-                <td className="w-1/4 pl-2 flex items-center my-2">
-                  {item.short  === "Beyond" ? "BYN":item.short}
+                <td className="-2 flex items-center my-2">
+                  {item.short  === "Beyond" ? "BYN (Not Staked)":item.short}
                 </td>
-                <td className="w-1/4">${item.rate === Infinity ? "0.00" : item.rate.toFixed(2)}</td>
+                <td className="w-1/4">${item.rate === Infinity ? "0.00" : toFixedNoRounding(item.rate,5)}</td>
                 <td className="w-1/4">
                   <div className="flex items-center">
-                    {item.cryptoBalance.toFixed(2)} {item.short  === "Beyond" ? "BYN":item.short}
+                    {toFixedNoRounding(item.cryptoBalance,5)} {item.short  === "Beyond" ? "BYN":item.short}
                   </div>
                 </td>
                 <td className="w-1/4">
                   <div className="flex items-center">
-                    ${item.cryptoBalance * item.rate > 0 ? (item.cryptoBalance * item.rate).toFixed(2) : "0.00"}
+                    ${item.cryptoBalance * item.rate > 0 ? toFixedNoRounding(item.cryptoBalance * item.rate,5) : "0.00000"}
                   </div>
                 </td>
               </tr>
             ))}
+            <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
+            <td className=" pl-2 flex items-center my-2">
+                BYN (Staked)
+                </td>
+                <td className="w-1/4">${BYNobj?.rate === Infinity  ?  "0.00000": toFixedNoRounding(BYNobj?.rate || "0.00000",5 )}</td>
+                <td className="w-1/4">
+                  <div className="flex items-center">
+                    {toFixedNoRounding(stackedBYN || "0.00000",5)} {"BYN"}
+                  </div>
+                </td>
+                <td className="w-1/4">
+                  <div className="flex items-center">
+                    ${stackedBYN * BYNobj?.rate > 0 ? toFixedNoRounding((stackedBYN * BYNobj?.rate) || "0.00000",5) : "0.00000"}
+                  </div>
+                </td>
+            </tr>
+            {/* <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
+            <td className=" pl-2 flex items-center my-2">
+                  Not Staked BYN
+                </td>
+                <td className="w-1/4">${BYNobj?.rate === Infinity  ?  "0.00000": toFixedNoRounding(BYNobj?.rate || "0.00000",5 )}</td>
+                <td className="w-1/4">
+                  <div className="flex items-center">
+                    {toFixedNoRounding(unstacked || "0.00000",5)} {"BYN"}
+                  </div>
+                </td>
+                <td className="w-1/4">
+                  <div className="flex items-center">
+                    ${unstacked * BYNobj?.rate > 0 ? toFixedNoRounding((unstacked * BYNobj?.rate) || "0.00000",5) : "0.00000"}
+                  </div>
+                </td>
+            </tr> */}
           </tbody>
         </table>
         {balances.length <= 0 && (

@@ -36,7 +36,7 @@ function YourWalet() {
               <h3 className="py-2">ETHb BALANCE</h3>
             </div>
             <div>
-  <h3 className="py-2">{state.ETHbBal.toFixed(2)}</h3>
+  <h3 className="py-2">{Number(state.ETHbBal).toFixed(2)}</h3>
             </div>
           </div>
           <div className="flex justify-between w-full items-center ">
@@ -48,7 +48,7 @@ function YourWalet() {
               <h3 className="py-2">ETH BALANCE</h3>
             </div>
             <div>
-              <h3 className="py-2">{state.ETHBal.toFixed(2)}</h3>
+              <h3 className="py-2">{Number(state.ETHBal).toFixed(2)}</h3>
             </div>
           </div>
         </div>

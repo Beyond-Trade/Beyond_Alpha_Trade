@@ -9,6 +9,7 @@ import { getCrypto, getForex, getSynthetixPrices } from './axios.service';
 import { BYNTokenValue } from './swap.service';
 import { getStackedByn } from './mint.service';
 import moment from "moment"
+import ConvertFromE from '../components/_common/ConvertFromE';
 
 
 let cryptoRates: any, forexRates: any, synthetixRates: any, activeAddress: any;
@@ -51,10 +52,11 @@ function getForexChange(symbol: any) {
         var startprice = (forexRates[yesterday])[symbol];
         var endprice = (forexRates[today])[symbol];
         var change = (endprice - startprice) / startprice * 100;
-        change = parseFloat(change.toFixed(2));
+        change = change;
+        // change = parseFloat(change.toFixed(2));
         return change;
-    }
-    else
+    } 
+    else 
         return 0
 }
 
@@ -144,7 +146,8 @@ export const getETHBalance = async (address: string): Promise<number> => {
     if (web3.currentProvider) {
         try {
             var balanceInWei = await web3.eth.getBalance(address)
-            balanceInWei = Web3.utils.fromWei(balanceInWei, 'ether')
+            
+            balanceInWei =  ConvertFromE(Web3.utils.fromWei(balanceInWei, 'ether'))
             return Number(balanceInWei);
         } catch (error) {
             return 0;
@@ -163,9 +166,11 @@ export const getERC20Balance = async (contractInfo: any, address: string): Promi
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo.contractAddress, {});
             try {
                 const balance = await contract.methods.balanceOf(address).call();
-                var balanceInWei = web3.utils.fromWei(balance, 'ether');
-                let bal: number = Number(Number(balanceInWei));// / Math.pow(10, contractInfo.decimal)
-                return bal;
+                
+                var balanceInWei =  ConvertFromE(web3.utils.fromWei(balance, 'ether'));
+                return balanceInWei;
+                // let bal: number = Number(balanceInWei);// / Math.pow(10, contractInfo.decimal)
+                // return bal;
             } catch (error) {
                 return 0;
             }
@@ -205,7 +210,7 @@ export const checkUserCollateralProx = async () => {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             // @ts-ignore
-            debugger
+            
             const tx = await contract.methods.checkUserCollateralProx(activeAddress).call()
             return tx;
         }
@@ -224,7 +229,7 @@ export const getExchangeProxDetails = async () => {
             // @ts-ignore
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress, { from: activeAddress });
             // @ts-ignore
-            debugger
+            
             const tx = await contract.methods.getExchangeProxDetails().call()
             return tx;
         }

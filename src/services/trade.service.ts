@@ -91,6 +91,8 @@ export const TradePairsLookup = [
 ];
 
 export const addTrade = async (from: string, to: string, amount: number, gasFee: number) => {
+  debugger
+  console.log(amount)
   if (from === ERC20Contracts.USDb) {
     const res = await mintSynth(to, amount, gasFee);
     return res;

@@ -6,6 +6,7 @@ import { Web3Wrapper } from '@0x/web3-wrapper';
 import BigNumber from 'bignumber.js'
 import {ethers} from "ethers"
 import { updateStackBalances } from "../store/actions/WalletActions";
+import ConvertFromE from "../components/_common/ConvertFromE";
 let web3: Web3 = new Web3();
 
 export const mintERC20 = async (amount: number, /*erc20ContractName: ERC20Contracts,*/ gasPrice: any) => {
@@ -57,12 +58,11 @@ export const getStackedByn = async (): Promise<boolean> => {
                 console.log(data,"===============DATA===========")
                 let bynContract = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
                 // @ts-ignore
-               let unstackedBYN = Number(data.unstackedBYN) / Math.pow(10, bynContract.decimal);
+               let unstackedBYN = ConvertFromE(Number(Web3.utils.fromWei(data.unstackedBYN, 'ether')));
                 // @ts-ignore
-               let stackedBYN = Number(data.stackedBYN) / Math.pow(10, bynContract.decimal);
+               let stackedBYN = ConvertFromE(Number(Web3.utils.fromWei(data.stackedBYN, 'ether')));
                 // @ts-ignore
-                let totalBYN = Number(data.totalBYN) / Math.pow(10, bynContract.decimal);
-
+                let totalBYN = ConvertFromE(Number(Web3.utils.fromWei(data.totalBYN, 'ether')));
                 store.dispatch(updateStackBalances(totalBYN,unstackedBYN,stackedBYN));
                 return true;
             } catch (error) {
@@ -107,6 +107,27 @@ export const collatteralRatio = async (): Promise<number> => {
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
             try {
                 const ratio = await contract.methods.collatteralRatio().call();
+                return ratio;
+            } catch (error) {
+                return 0;
+            }
+        }
+    }
+    else return 0;
+}
+
+export const beyondTokenValueInDollar = async () => {
+    web3 = store.getState().wallet.web3;
+    let walletInfo = store.getState().wallet;
+
+    let activeAddress = walletInfo.selected.address;
+    const contractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND_EX_PROX)
+    if (web3.currentProvider) {
+        if (contractInfo) {
+            // @ts-ignore
+            const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
+            try {
+                const ratio = await contract.methods.beyondTokenValueInDollar().call();
                 return ratio;
             } catch (error) {
                 return 0;
