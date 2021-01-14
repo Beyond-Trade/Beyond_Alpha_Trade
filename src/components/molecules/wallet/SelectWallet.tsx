@@ -52,9 +52,9 @@ function SelectWallet(props: IProps) {
               <td className="px-2">
                 {item.address.slice(0, 5) + "..." + item.address.slice(-5)}
               </td>
-              <td className="px-2">{item.BYNBalance.toFixed(2)}</td>
-              <td className="px-2">{item.USDbBalance.toFixed(2)}</td>
-              <td className="px-2">{item.EthBalance.toFixed(2)}</td>
+              <td className="px-2">{Number(item.BYNBalance).toFixed(2)}</td>
+              <td className="px-2">{Number(item.USDbBalance).toFixed(2)}</td>
+              <td className="px-2">{Number(item.EthBalance).toFixed(2)}</td>
               <td className="px-2"><a target="_blank" href={EtherscanBrowsUrl + item.address}>
                 {" "}
                 <img

@@ -137,7 +137,7 @@ function Burn() {
                 value={byn}
                 min="0"
                 step="0"
-                onChange={handleBYNChange}
+                // onChange={handleBYNChange}
               />
             </div>
           )}

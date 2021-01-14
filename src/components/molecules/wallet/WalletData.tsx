@@ -65,7 +65,7 @@ function WalletData() {
           <tbody>
             {balances.map((item) => (
               <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
-                <td className="-2 flex items-center my-2">
+                <td className="flex items-center my-2">
                   {item.short  === "Beyond" ? "BYN (Not Staked)":item.short}
                 </td>
                 <td className="w-1/4">${item.rate === Infinity ? "0.00" : toFixedNoRounding(item.rate,5)}</td>
@@ -82,7 +82,7 @@ function WalletData() {
               </tr>
             ))}
             <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
-            <td className=" pl-2 flex items-center my-2">
+            <td className="flex items-center my-2">
                 BYN (Staked)
                 </td>
                 <td className="w-1/4">${BYNobj?.rate === Infinity  ?  "0.00000": toFixedNoRounding(BYNobj?.rate || "0.00000",5 )}</td>
