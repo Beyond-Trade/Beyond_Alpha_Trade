@@ -40,7 +40,6 @@ function Chart({updatedSelectedPair,selectedPair}) {
   // const { t } = useTranslation();
   // // const { colors } = React.useContext(ThemeContext);
   // const {PERIOD_LABELS_MAP,setSelectedPeriod,records,activePeriod}= useTradeChart()
-  // console.log(records,"==========IN CHART==========")
   
   // const CustomTooltip = ({
 	// 	active,
@@ -81,7 +80,6 @@ function Chart({updatedSelectedPair,selectedPair}) {
 
 	// 	return null;
   // };
-  console.log(selectedPair,"QQQQQQQQQQQQQQQQQQQQQQQQQQ")
   return (
     <div>
       <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />

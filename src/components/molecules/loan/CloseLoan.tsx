@@ -31,7 +31,6 @@ function CloseLoan() {
   useEffect(() => {
     loanDetails().then((res) => {
       setReturnLoanObj(res);
-      console.log(res);
     });
   }, [loanType, isReturning, OpenLoansNo]);
   // parseFloat(((21000 * fee) / 1e9).toFixed(8));

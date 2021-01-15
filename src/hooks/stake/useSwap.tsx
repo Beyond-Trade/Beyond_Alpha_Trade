@@ -60,7 +60,6 @@ const useSwap = () => {
         setState((prev) => ({ ...prev, swapping: false, from: "", to: "" }));
       })
       .catch((e) => {
-        console.log("e", e);
         alert.show("Unable to Get BYN", { type: "error" });
         setState((prev) => ({ ...prev, swapping: false }));
       });

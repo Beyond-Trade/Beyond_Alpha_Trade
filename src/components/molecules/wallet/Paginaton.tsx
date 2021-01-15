@@ -65,7 +65,6 @@ function Pagination({ data, pageSize, onChange }: IProps) {
   }
   const handleChange = (page:any) => {
       if(page > pageNumber){
-          console.log("in size greater than total pages")
           return;
       }
       if(page < 1){

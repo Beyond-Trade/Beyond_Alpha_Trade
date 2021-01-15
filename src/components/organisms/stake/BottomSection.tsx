@@ -33,7 +33,6 @@ const BottomSection = () => {
       (bal: Balance) => bal.short == ERC20Contracts.BEYOND
     );
     
-    console.log(BYNObj,"FFFFFFFFFFFFF===BYNObj====FFFFFFFFFFF")
     setState((prev) => ({
       ...prev,
       ethRate: ETHObj?.rate || 0,
@@ -52,7 +51,6 @@ const BottomSection = () => {
       stackedBYNPercent: stackedPerc,
     }));
   }, [stackedBYN, unstacked, totalByn]);
-console.log("bottom section ",unstacked , "======== " ,stackedBYN)
   return (
     <div className="xl:flex lg:flex mt-8 px-20 lg:px-48 xl:px-48 mb-20">
       <div className="w-full xl:mr-2 lg:mr-2 mb-4">

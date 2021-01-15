@@ -10,7 +10,6 @@ import Transfer from "../../molecules/stake/Transfer";
 
 function MidSection() {
   const location = useLocation();
-  console.log(location.pathname, "<<<<<<<<<<<<<<<<<");
   const history = useHistory();
   const [tabIndex, setTab] = useState(0);
   useEffect(() => {

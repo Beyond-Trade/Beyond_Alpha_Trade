@@ -3,7 +3,6 @@ import useTradeChart from "../../../hooks/trade/useTradeChart";
 import GeneralButton from "../GeneralButton";
 
 function Periodlabels({PERIOD_LABELS_MAP,setSelectedPeriod,active}:any) {
-    console.log(active,"WWWWWWWWWWWWWWW")
   return (
     <div className="flex flex-row float-right mr-8">
       {PERIOD_LABELS_MAP.map((period:any) => (

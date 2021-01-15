@@ -5,7 +5,6 @@ import { RootState } from "../../../store/reducers/Index";
 import { Balance } from "../../../store/types/WalletState";
 function YourWalet() {
   const { balances } = useSelector((state: RootState) => state.wallet)
-  console.log(balances,"------------------------------")
   const [state, setState] = useState({
     ETHBal: 0,
     ETHbBal: 0,

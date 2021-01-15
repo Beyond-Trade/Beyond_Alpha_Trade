@@ -12,14 +12,12 @@ const UseWalletOverView = () => {
   useEffect(()=>{
     
     getExchangeProxDetails().then((res)=>{
-        console.log(res,"KKKKKKKKKKKKKKKKKKKKK")
         dispatch(SetTargetCRatioAction(res?._collatteralRatio))
-    }).catch((e)=>console.log(e))
+    }).catch((e)=>{})
 
     checkUserCollateralProx().then((res)=>{
-        console.log(res,"KKKKKKKKKKKKKKKKKKKKK")
         dispatch(SetCurrentCRatioAction(res?.collatteralRatioUpdated))
-    }).catch((e)=>console.log(e))
+    }).catch((e)=>{})
     // SetCurrentCRatioAction()
   },[balances])
 };

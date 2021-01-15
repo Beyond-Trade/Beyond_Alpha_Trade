@@ -87,10 +87,8 @@ export const getContractTransactions = async (contractAddress: any) => {
 }
 
 export const getUserContractTransactions = async (contractAddress: any,userAddress:any) => {
-    console.log("contractAddress==>",contractAddress,"userAddress==>",userAddress)
 const url= etherscan_baseurl + '/api?module=account&action=tokentx&contractaddress=' + contractAddress + '&address=' + userAddress + '&page=1&offset=1000&sort=asc&apikey=' + ETHERSCAN_API;
     var response = await axios.get(url);
-    console.log(response,"AXIOS CALL")
     let result = response.data.result;
 
     if (result.includes('Error')) { return 0 }

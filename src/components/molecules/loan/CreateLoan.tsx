@@ -45,7 +45,6 @@ function CreateLoan() {
       }
     };
   }, []);
-  // console.log(loanType,"=========(((((LOANTYPE)))))========")
   const [hovered, setHovered] = React.useState(false);
   const toggleHover = () => setHovered(!hovered);
   return (

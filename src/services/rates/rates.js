@@ -52,12 +52,7 @@ export const fetchSynthRateUpdates = async (
     // quoteCurrencyKeyCopy.concat("s");
     let quoteCurrencyKeyCopy = "s" + quoteCurrencyKey.slice(0, -1);
     let baseCurrencyKeyCopy = "s" + baseCurrencyKey.slice(0, -1);
-    console.log(
-      "baseCurrencyKey = ",
-      baseCurrencyKeyCopy,
-      "quoteCurrencyKey = ",
-      quoteCurrencyKeyCopy
-    );
+   
     const [baseRates, quoteRates] = await Promise.all(
       // ["sBTC", "sUSD"].map((synthName) =>
       [
@@ -71,11 +66,6 @@ export const fetchSynthRateUpdates = async (
           max: 6000,
         })
       )
-    );
-    console.log(
-      baseRates,
-      quoteRates,
-      "==============BEFORE RATES SET==========="
     );
     // If quote or rate is sUSD then we just get
     // the base or quote rates as they're already in sUSD

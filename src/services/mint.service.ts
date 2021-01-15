@@ -55,7 +55,6 @@ export const getStackedByn = async (): Promise<boolean> => {
             const contract = new web3.eth.Contract(contractInfo.contractAbi, contractInfo?.contractAddress);
             try {
                 const data = await contract.methods.getBYNDetails(activeAddress).call();
-                console.log(data,"===============DATA===========")
                 let bynContract = ContractLookup.find(contract => contract.contractName === ERC20Contracts.BEYOND)
                 // @ts-ignore
                let unstackedBYN = ConvertFromE(Number(Web3.utils.fromWei(data.unstackedBYN, 'ether')));

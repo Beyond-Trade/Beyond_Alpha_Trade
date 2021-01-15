@@ -60,8 +60,6 @@ const useCreateLoan = () => {
       ETHb: ETHbObj,
       USDb: USDbObj,
     }));
-    console.log(USDbObj, "USDbObj");
-    console.log(ETHbObj, "ETHbObj");
   }, [balances]);
 
   useEffect(() => {
@@ -87,11 +85,9 @@ const useCreateLoan = () => {
 
   const submit = (isMatchedType: any) => {
     if (!isValidated()) {
-      console.log(state.locked, "SUBMIT IS Cancled=========");
       return;
     }
     // addTradeAction();
-    console.log(state.locked, "SUBMIT IS CALLED");
     getLoanAction(isMatchedType);
   };
 
@@ -118,8 +114,6 @@ const useCreateLoan = () => {
           }));
         })
         .catch((e) => {
-          console.log("Error!", e);
-
           alert.show("Unable to add ETHb loan", { type: "error" });
           setState((prev) => ({
             ...prev,
@@ -144,8 +138,6 @@ const useCreateLoan = () => {
           setState((prev) => ({ ...prev, isSubmitting: false }));
         })
         .catch((e) => {
-          console.log("Error!", e);
-
           alert.show("Unable to add USDb loan", { type: "error" });
           setState((prev) => ({ ...prev, isSubmitting: false }));
         });
@@ -171,8 +163,6 @@ const useCreateLoan = () => {
           setState((prev) => ({ ...prev, isReturning: false }));
         })
         .catch((e) => {
-          console.log("Error!", e);
-
           alert.show("Unable return ETHb loan", { type: "error" });
           setState((prev) => ({ ...prev, isReturning: false }));
         });
@@ -194,8 +184,6 @@ const useCreateLoan = () => {
           setState((prev) => ({ ...prev, isReturning: false }));
         })
         .catch((e) => {
-          console.log("Error!", e);
-
           alert.show("Unable return USDb loan", { type: "error" });
           setState((prev) => ({ ...prev, isReturning: false }));
         });
@@ -227,9 +215,7 @@ const useCreateLoan = () => {
     // const price = getPairPrice(state.fromRate, state.toRate);
     let actualLoan = ((value / 100) * (100 - collatRatio)).toString();
     let USDValueBorrowed = ((value * state?.ETH?.rate) / 100) * (100 - collatRatio);
-    console.log("before if block", loanType);
     if (loanType === "USDb") {
-      console.log("in if block ");
       actualLoan = (((value * state.ETH.rate) / 100) * (100 - collatRatio)).toString();
     }
     dispatch(
@@ -246,13 +232,9 @@ const useCreateLoan = () => {
     // const from = price === 0 ? "0" : (Number(value) / Number(price)).toString();
     let actualLoan = ((value / 100) * collatRatio + Number(value)).toString();
     let USDValueBorrowed = value * state.ETH.rate;
-    console.log(USDValueBorrowed);
-    console.log("before if block", loanType);
     if (loanType === "USDb") {
-      console.log("in if block ");
       USDValueBorrowed = value;
       let valueToDeduct = (value / state.ETH.rate / 100) * collatRatio;
-      console.log(valueToDeduct, "valueToDeduct");
       actualLoan = (value / state.ETH.rate + valueToDeduct).toString();
     }
     dispatch(

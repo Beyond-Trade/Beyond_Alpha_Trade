@@ -47,7 +47,6 @@ function useBurn() {
       if(maxBurn){
         const burnMaxBYN = Web3.utils.fromWei(maxBurn._bUSDValue, 'ether');
         setState((prev) => ({ ...prev, maxBurn: String(burnMaxBYN)}));
-        console.log("maxBurn>>>>>>>>>>>",burnMaxBYN)
       }
     })
     if (balance) {
@@ -94,9 +93,7 @@ function useBurn() {
     //     if(!data){
     //         throw new Error("No provider");
     //     }
-    //     console.log('data', data)
     // }).catch((e)=>{
-    //     console.log('e', e)
     // })
   };
   const submit = () => {
@@ -112,7 +109,6 @@ function useBurn() {
   };
 
   const releaseCollateral = () => {
-    console.log(state.amount, state.fee, "<<<<<<<<<<");
     releaseCollateralRatio(state.amount, state.fee)
       .then((data) => {
         if (!data) {
@@ -123,7 +119,6 @@ function useBurn() {
         setState((prev) => ({ ...prev, burning: false, amount: "", byn: "" }));
       })
       .catch((e) => {
-        console.log("e", e);
         alert.show("Error while Redeem!", { type: "error" });
         setState((prev) => ({ ...prev, burning: false }));
       });
@@ -140,7 +135,6 @@ function useBurn() {
         setState((prev) => ({ ...prev, burning: false }));
       })
       .catch((e) => {
-        console.log("e", e);
         alert.show("Error!", { type: "error" });
         setState((prev) => ({ ...prev, burning: false }));
       });
@@ -148,7 +142,6 @@ function useBurn() {
 
   const isValidated = () => {
     let validated = true;
-    console.log(Number(state.amount) , state.balance ,"==========AMOUNT AND BALNCE")
     if (state.burnType === 0 && Number(state.amount) > state.balance) {
       setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
       validated = false;

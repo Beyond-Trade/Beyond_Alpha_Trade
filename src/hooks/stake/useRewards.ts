@@ -32,22 +32,19 @@ const useRewards = () => {
   useEffect(() => {
     getExchangeProxDetails()
       .then((res) => {
-        console.log(res, "??????????????????????");
         setAPY(res._APY);
       })
       .catch((err) => {});
     currentTime().then((res) => {
       setCurrent(res?._currentTime);
       // var myDate = new Date( your epoch date *1000);
-      console.log(res);
       
       getRewardDetails(res);
-    }).catch((res)=>{console.log(res, "?????????????ERROR?????????");})
+    }).catch((res)=>{})
   }, [balances]);
   const getRewardDetails = async (res: any) => {
     let resCopy = res?._currentTime;
     // let startTime = res?._startTime;
-    console.log(res, "==========RES==========");
     const rewardsData: any = [];
     const Rewards: any = [];
     let detail;
@@ -59,28 +56,22 @@ const useRewards = () => {
 // }
     for (var i = 0; i <= 1; i++) {
       if (resCopy > 0) {
-        console.log(resCopy, "==========resCopy==========");
         let result = 0;
         await userRewardDetails(resCopy)
           .then((resData) => {
-            console.log("invest time = ",resData.investTime ,"current = ", resCopy , ">>>>>>>>>>>>>>>>>>userRewardDetails<<<<<<<<<<<<<<<.",resData);
-            if(resData.investTime > res?._currentTime  && i===1 ){
-              console.log("IN IF PART");
+             if(resData.investTime > res?._currentTime  && i===1 ){
               result = 0;
               detail = resData;
             }
             else{
-              console.log("IN ELSE PART");
               result = resData.reward;
             detail = resData;
             }
           })
           .catch((err) => {
-            console.log(err,"CATCH>>>>>>>>>>>>>>>>>>userRewardDetails<<<<<<<<<<<<<<<.");
             // setIsLoading(false);
           });
         resCopy = resCopy - 300;
-        console.log(resCopy);
         Rewards.push(+result / convertToUSDb);
         
           rewardsData.push({ time: resCopy, data: result });
@@ -93,8 +84,6 @@ const useRewards = () => {
     setRewardData([...rewardsData]);
     setIsLoading(false);
   };
-  console.log(rewardData);
-  console.log(rewards, "/////////////////");
   const handleClaim = () => {
     setIsOpen(true);
   };
@@ -112,7 +101,6 @@ const useRewards = () => {
           : alert.show("Unable to Collect Reward", { type: "error" });
       })
       .catch((err) => {
-        console.log(err);
         setCollecting(false);
         if (err.code === 4001) {
           alert.show(err.message, { type: "error" });
@@ -133,7 +121,6 @@ const useRewards = () => {
           : alert.show("Unable to Claim Reward", { type: "error" });
       })
       .catch((err) => {
-        console.log(err);
         setClaiming(false);
         if (err.code === 4001) {
           alert.show(err.message, { type: "error" });

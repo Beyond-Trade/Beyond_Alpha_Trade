@@ -72,8 +72,6 @@ const useTransfer = () => {
         setState((prev) => ({ ...prev, submitting: false,amount:"",address:"" }));
       })
       .catch((e) => {
-        console.log("transfer ether error", e);
-
         alert.show('Unable to transfer', {type:'error'})
         setState((prev) => ({ ...prev, submitting: false }));
       });
@@ -95,7 +93,6 @@ const useTransfer = () => {
         setState((prev) => ({ ...prev, submitting: false,amount:"",address:"" }));
       })
       .catch((e) => {
-        console.log('e', e)
         alert.show('Unable to transfer', {type:'error'})
         setState((prev) => ({ ...prev, submitting: false }));
       });

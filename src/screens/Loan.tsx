@@ -13,10 +13,6 @@ function Loan() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
   const { ETH } = useCreateLoan();
-  // useEffect(() => {
-  //   loanDetails().then((res) => console.log(res));
-  // });
-  // console.log(locked,"==============------------------------")
   return (
     <div>
       <LoanBanner />

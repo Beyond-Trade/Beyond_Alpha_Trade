@@ -14,12 +14,6 @@ function StatesRow() {
   const { balances, currentCRatio, targetCRatio } = useSelector(
     (state: RootState) => state.wallet
   );
-  console.log(
-    currentCRatio,
-    "?????????????????/",
-    targetCRatio,
-    "aaaaaaaaaaaaaaaa"
-  );
   let totalWalletValue = balances.reduce((a: any, b: any) => {
     return a + Number(b.cryptoBalance * b.rate);
   }, 0);
@@ -52,7 +46,6 @@ function StatesRow() {
   let othersBalPercentage =
     ((totalSynthValue - (bynBalanceData + USDbBalanceData)) / totalSynthValue) *
     100;
-  console.log(othersBalPercentage);
 
   const data = [
     { name: 'Group A', value: totalBynPercentage },

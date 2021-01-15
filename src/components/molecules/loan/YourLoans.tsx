@@ -19,7 +19,6 @@ function YourLoans() {
   useEffect(() => {
     loanDetails().then((res) => {
       setReturnLoanObj(res);
-      console.log(res);
     });
   }, [loanType, , OpenLoansNo]);
   return (

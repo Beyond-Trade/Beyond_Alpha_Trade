@@ -18,7 +18,6 @@ function History() {
     (state: RootState) => state.exchange
   );
   const [transationData,setTransationData]=useState<any>([])
-  console.log(selected, "AND", ContractLookup);
   useEffect(() => {
     if (transationsHistory.length > 0) return;
     ContractLookup.forEach((element, i) => {
@@ -38,7 +37,6 @@ function History() {
   useEffect(()=>{
     setTransationData(transationsHistory.slice(0, 10))
   },[transationsHistory])
-  console.log("AFTER USEEFFECT >>>>>>>>.", transationsHistory);
   return (
     <div className="px-8 xl:px-24 lg:px-24 mt-8 mb-8">
       <div className="w-full rounded mr-8">
@@ -48,7 +46,6 @@ function History() {
           </h3>
           {transationsHistory.length > 0 ?(
           <Pagination data={transationsHistory} pageSize={10} onChange={(pageData:any)=>{
-            console.log(pageData)
             setTransationData(pageData)}} />
           ):null}
         </div>

@@ -25,10 +25,8 @@ function EthAsCollateral({ ETH }: any) {
     collatRatio,
     ethLocked,
   } = useSelector((state: RootState) => state.loan);
-  console.log(OpenLoansNo);
 
   const LoanTypeAction = (type: any) => {
-    console.log(type, "======TYPE=======");
     dispatch(setLoanTypeAction(type));
   };
   const toConvert = 1000000000000000000;

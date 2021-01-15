@@ -16,7 +16,6 @@ function SelectWallet(props: IProps) {
   const changeSelectedWallet = async (wallet: any): Promise<any> => {
     dispatch(SetSelectedWalletAction(wallet));
   };
-  console.log(wallets,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
   return (
     <div className="px-6 pb-2">
       <div className="text-center font-medium w-full text-green-400 mt-8">

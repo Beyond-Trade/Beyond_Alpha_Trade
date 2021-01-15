@@ -12,7 +12,6 @@ function WalletData() {
   const BYNobj:any = balances.find(
     (bal: Balance) => bal.short == ERC20Contracts.BEYOND
   );
-  console.log(BYNobj)
   return (
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
       <div className="w-full rounded">
@@ -64,6 +63,7 @@ function WalletData() {
           </tr>
           <tbody>
             {balances.map((item) => (
+              <>
               <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
                 <td className="flex items-center my-2">
                   {item.short  === "Beyond" ? "BYN (Not Staked)":item.short}
@@ -80,8 +80,7 @@ function WalletData() {
                   </div>
                 </td>
               </tr>
-            ))}
-            <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
+              {item.short === "Beyond"?<tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
             <td className="flex items-center my-2">
                 BYN (Staked)
                 </td>
@@ -96,7 +95,10 @@ function WalletData() {
                     ${stackedBYN * BYNobj?.rate > 0 ? toFixedNoRounding((stackedBYN * BYNobj?.rate) || "0.00000",5) : "0.00000"}
                   </div>
                 </td>
-            </tr>
+            </tr>:null}
+              </>
+            ))}
+            
             {/* <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
             <td className=" pl-2 flex items-center my-2">
                   Not Staked BYN

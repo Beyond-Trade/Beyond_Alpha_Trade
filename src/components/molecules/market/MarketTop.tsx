@@ -8,7 +8,7 @@ interface IProps {
 }
 function MarketTop({ data }: IProps) {
   const { balances } = useSelector((state: RootState) => state.wallet);
-  console.log(balances);
+
   return (
     <table width="100%">
       <tr className="border-b border-t border-gray-400 xl:text-xxs xxl:text-sm text-left text-gray-600 font-medium">

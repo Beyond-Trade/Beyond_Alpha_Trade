@@ -41,7 +41,6 @@ export default SelectWalletModal;
 
 const getWidth = () => {
   const width = window.innerWidth
-  console.log('width', width)
   if(width > 1300){
     return "25%"
   }

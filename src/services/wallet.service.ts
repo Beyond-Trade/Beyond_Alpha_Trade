@@ -15,7 +15,7 @@ import ConvertFromE from '../components/_common/ConvertFromE';
 let cryptoRates: any, forexRates: any, synthetixRates: any, activeAddress: any;
 let web3: Web3 = new Web3();
 
-var curDate = new Date(Date.now());
+// var curDate = new Date(Date.now());
 // var today = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + curDate.getDate();
 // var yesterday = curDate.getFullYear() + "-" + (curDate.getMonth() + 1) + "-" + (curDate.getDate() - 1);
 var today=moment().format('YYYY-MM-DD')
@@ -23,14 +23,14 @@ var yesterday=moment().add(-1, 'days').format('YYYY-MM-DD')
 
 const loadRates = async () => {
     var cryptoCoinsIds = ContractLookup.reduce(function (filtered: any, option: any) {
-        if (option.syntheticCategory == SyntheticCategories.CRYPTOCURRENCY && !option.isFixedRate && !option.isNativeToken && option.isSyntheticAsset) {
+        if (option.syntheticCategory === SyntheticCategories.CRYPTOCURRENCY && !option.isFixedRate && !option.isNativeToken && option.isSyntheticAsset) {
             filtered.push(option.marketRateApiID);
         }
         return filtered;
     }, []).join(",");
 
     var forexCoinsIds = ContractLookup.reduce(function (filtered: any, option: any) {
-        if (option.syntheticCategory == SyntheticCategories.FOREX && !option.isFixedRate && !option.isNativeToken && option.isSyntheticAsset) {
+        if (option.syntheticCategory === SyntheticCategories.FOREX && !option.isFixedRate && !option.isNativeToken && option.isSyntheticAsset) {
             filtered.push(option.marketRateApiID);
         }
         return filtered;
@@ -80,12 +80,11 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
     if (synthetixRates) {
         try {
 
-            let synthRate = synthetixRates.find((x: any) => x.id == asset.oracleRateID);
+            let synthRate = synthetixRates.find((x: any) => x.id === asset.oracleRateID);
 
             balance.rate = synthRate ? synthRate.rate / Math.pow(10, asset.decimal) : 0;
         }
         catch (e) {
-            console.log(e)
         }
     }
     if (activeAddress) {
@@ -99,7 +98,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
     switch (asset.syntheticCategory) {
         case SyntheticCategories.CRYPTOCURRENCY:
 
-            let rateObj = cryptoRates?.find((x: any) => x.id == asset.marketRateApiID)
+            let rateObj = cryptoRates?.find((x: any) => x.id === asset.marketRateApiID)
             if (rateObj) {
                 balance.change24h = rateObj.price_change_percentage_24h;
                 balance.high24h = rateObj.high_24h;
@@ -117,7 +116,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
     }
     if (asset.isMainToken) {
         const ETHcontractInfo = ContractLookup.find(contract => contract.contractName === ERC20Contracts.ETH)
-        let EthPriceObj = cryptoRates.find((x: any) => x.id == ETHcontractInfo?.marketRateApiID)
+        let EthPriceObj = cryptoRates.find((x: any) => x.id === ETHcontractInfo?.marketRateApiID)
         let ethRate = EthPriceObj ? EthPriceObj.current_price : 0;
         let tokenValue: number = await BYNTokenValue();
 
@@ -159,7 +158,6 @@ export const getETHBalance = async (address: string): Promise<number> => {
 
 // @ts-ignore
 export const getERC20Balance = async (contractInfo: any, address: string): Promise<number> => {
-    console.log(contractInfo,"SSSSSSSSSSSSSSSSs")
     web3 = store.getState().wallet.web3;
     if (web3.currentProvider) {
         if (contractInfo) {

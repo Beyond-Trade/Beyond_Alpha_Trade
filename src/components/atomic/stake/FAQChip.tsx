@@ -6,7 +6,6 @@ function FAQChip({question,answer,faqNo}:any) {
   const handleToggle = () => {
     setActiveFAQ(faqNo);
     setToggle((prev) => !prev)};
-console.log(faqNo)
   return (
     <div className={`rounded p-3 bg-white mt-2 shadow border hover:shadow-custom hover:border-customBlack-550 ${toggle ?"border-customBlack-550":""}`}>
       <div className="flex justify-between">

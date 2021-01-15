@@ -21,7 +21,6 @@ const initialState = {
 };
 
 export function LoanTypeReducer(state = initialState, action: any) {
-  console.log(action.payload, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
   switch (action.type) {
     case SWITCH_LOAN_TYPE:
       return {

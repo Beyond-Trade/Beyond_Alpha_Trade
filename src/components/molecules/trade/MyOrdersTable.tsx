@@ -7,9 +7,7 @@ interface IProps {
 }
 
 function MyOrdersTable(props: IProps) {
-  const myOrderData:any = props.data.filter((item) => item.status === "cancelled" || item.status === "Failed" || item.status === "pending")
-  console.log(myOrderData)
-  console.log(props.data,"<<<<<<<>>>>>>")
+  const myOrderData:any = props.data.filter((item) => item.status === "cancelled" || item.status === "Failed" || item.status === "pending");
   return (
     <React.Fragment>
       <div className="nobar"  style={{height:"200px"}}>

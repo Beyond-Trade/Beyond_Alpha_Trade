@@ -13,7 +13,6 @@ function TradeInfo() {
     selectedPair
   } = useOrdersHistory(); 
   const myTradesData:any = myOrders.filter((item) => item.status === "Success" )
-  console.log(myTradesData,"<<<<<<<<<<<<<<MMMMMMMMMMMMMMMM",selectedPair,">>>>>>>>>>>>>>>>>>>>>>>>.")
   
   const myTradesFilteredData:any=myTradesData.filter((item:any)=>item.pair.toLowerCase().includes(selectedPair.counter.toLowerCase()));
   const myOrderFilteredData:any =myTradesData.filter((item:any)=>item.pair.toLowerCase().includes(selectedPair.counter.toLowerCase()));

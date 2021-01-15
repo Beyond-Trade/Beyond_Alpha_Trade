@@ -42,10 +42,8 @@ const useTradeChart = () => {
     },
   ];
   useEffect(() => {
-    console.log(selectedPair, "selectedPair");
     fetchSynthRateUpdates(selectedPair.counter, selectedPair.base, activePeriod).then(
       (res: any) => {
-        console.log(res, "BBBBBBBBBBBBBBBBBB");
         dispatch(updateSelectAssetPair(res))
         if (res) setRecords([...res.rates]);
       }
@@ -53,10 +51,8 @@ const useTradeChart = () => {
   }, [selectedPair]);
   const setSelectedPeriod = (period: any) => {
     setActivePeriod(period);
-    console.log(selectedPair, "selectedPair");
     fetchSynthRateUpdates(selectedPair.counter, selectedPair.base, period).then(
       (res: any) => {
-        console.log(res, "BBBBBBBBBBBBBBBBBB");
         dispatch(updateSelectAssetPair(res))
         if (res) setRecords([...res.rates]);
       }
@@ -72,17 +68,14 @@ const useTradeChart = () => {
 
 export default useTradeChart;
 
-// console.log(res, "==========orignal data==========");
 //       const graphData: any = [];
 //       res?.forEach((item: any) => {
 //         //   let datee:any=moment(item.timestamp).format("yyyy-mm-dd")
-//         //   console.log(datee)
 //         graphData.push({
 //           time: moment(item.timetamp).format("YYYY-MM-DD"),
 //           value: Number(item.rate),
 //         });
 //       });
-//       console.log(graphData, "==========getRates==========");
 //       const chartDiv = document.getElementById("myTradeChart");
 //       if (chartDiv) chartDiv.innerHTML = "";
 //       let chart = createChart(chartDiv || "", {
@@ -121,7 +114,6 @@ export default useTradeChart;
 //       chart.subscribeCrosshairMove((param) => {
 //         const dataRl: any = param.seriesPrices.get(areaSeries);
 //         if (dataRl) {
-//           console.log("rerender chart", dataRl);
 //         }
 //       });
 //       areaSeries.setData(graphData);

@@ -26,7 +26,6 @@ const usePairSelection = () => {
         if(balances.length>0){
             getPrices()
         }
-        console.log("render test", selectedPair)
         const marketBalance = balances.find((b)=>b.short === selectedPair.base)
         const counterBalance = balances.find((b)=>b.short === selectedPair.counter)
         let rate = Number(getPairPrice(marketBalance?.rate||0, counterBalance?.rate||0))

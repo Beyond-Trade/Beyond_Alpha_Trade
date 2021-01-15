@@ -11,7 +11,6 @@ import { RootState } from "../store/reducers/Index";
 
 function Trade() {
   const { selectedPair,updatedSelectedPair } = useSelector((state: RootState) => state.exchange);
-  console.log(moment().format("LT"), "==========TIME=========");
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])

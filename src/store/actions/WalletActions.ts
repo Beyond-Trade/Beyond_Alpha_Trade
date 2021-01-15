@@ -3,11 +3,9 @@ import { Balance, Wallet } from "../types/WalletState";
 import {SAVE_C_RATIO,SAVE_TARGET_C_RATIO, GetWalletInfoType, LOADING_BALANCE_PENDING, RESET_WALLET_DATA, SAVE_BALANCE_DATA, SAVE_WALLET_DATA, SAVE_WEB3_DATA, SET_Selected_DATA, UPDATE_STACK_BALANCE } from "./WalletActionTypes";
 
 export const SetCurrentCRatioAction = (payload:any) => {
-    console.log(payload,"LLLLLLLLLLLLLLLLLLLLL")
     return { type: SAVE_C_RATIO,payload };
 };
 export const SetTargetCRatioAction = (payload:any) => {
-    console.log(payload)
     return { type: SAVE_TARGET_C_RATIO,payload };
 };
 

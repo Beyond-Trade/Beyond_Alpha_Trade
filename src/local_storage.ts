@@ -31,7 +31,6 @@ export class LocalStorage {
     }
 
     public resetWalletConnected(): void {
-        // console.log("seee")
         this._storage.setItem(walletConnectedKey, JSON.stringify(false));
         this._storage.setItem(walletAddressKey, JSON.stringify(false));
     }
@@ -44,11 +43,9 @@ export class LocalStorage {
         let wallets = this.getWallets();
 
         wallets = [...wallets, wallet];
-        console.log('all wallets', wallets);
         wallets = wallets.filter((value, index, self) => {
             return self.findIndex(v => v.wallet === value.wallet && v.address === value.address) === index;
         })
-        console.log(wallets);
         this._storage.setItem(walletKey, JSON.stringify(wallets));
     }
 

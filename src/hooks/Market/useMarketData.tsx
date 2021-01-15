@@ -27,7 +27,6 @@ const useMarketData = () => {
         marketTop.push(item);
       }
     });
-    // console.log(categorys);
     let unique = categorys.filter(
       (item: any, i: any, ar: any) => ar.indexOf(item) === i
     );
@@ -40,13 +39,11 @@ const useMarketData = () => {
       marketTopData: marketTop,
     }));
 
-    console.log(unique);
   }, [balances]);
   const handleSearch = (e: any) => {
     setState((prev) => ({ ...prev, search: e.target.value }));
   };
   const handleSort = (sortOn: any, orderBy: any) => {
-    console.log(orderBy);
     let data: any = [];
     if (orderBy === "asc") {
       data = state.activeData.sort(
@@ -59,7 +56,6 @@ const useMarketData = () => {
     } else {
       data = state.orgActiveData;
     }
-    console.log(data);
     setState((prev) => ({ ...prev, activeData: data }));
   };
   const setIndex = (index: number) => {

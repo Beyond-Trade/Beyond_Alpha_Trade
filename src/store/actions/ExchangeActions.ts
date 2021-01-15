@@ -62,17 +62,14 @@ export const searchAsset = (search: string): GetExchangeInfoType => {
 };
 
 export const setTransations=(payload:Trade[])=>{
-  console.log("<<<<<<<<<<<<<<<<<<<<in SET TRANSATIONS ACTION >>>>>>>>>>>>>",payload)
   return {type:SET_TRANSATIONS,payload}
 }
 
 export const selectAssetPairAction = (from: string, to: string, rate:number) => {
   const state: RootState = store.getState();
   const fromBalance = state.wallet.balances.find((item) => item.short === from);
-  console.log(fromBalance,"+++++++++FROM BALANCE+++++++++");
   
   const toBalance = state.wallet.balances.find((item) => item.short === to);
-  console.log(toBalance,"+++++++++TO BALANCE+++++++++");
   store.dispatch(
     selectAssetPair(
       from,

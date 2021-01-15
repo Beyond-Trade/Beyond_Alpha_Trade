@@ -41,9 +41,7 @@ const useMakeOrders = () => {
   });
 
   useEffect(() => {
-    
-    console.log("selectedPair.baseBalance = ",selectedPair.baseBalance,"selectedPair.counterBalance = ",selectedPair.counterBalance)
-    setState((prev) => ({
+     setState((prev) => ({
       ...prev,
       to: selectedPair.counter,
       from: selectedPair.base,
@@ -56,8 +54,6 @@ const useMakeOrders = () => {
     }));
     setInputs({ to: "", fromVal: "", from: "", toVal: "" });
   }, [selectedPair]);
-  
-  console.log("state.fromBalance = ",state.fromBalance,"state.toBalance = ",state.toBalance)
 
   const openFeeModal = () => setState((prev) => ({ ...prev, isFeeOpen: true }));
   const closeFeeModal = () =>
@@ -110,7 +106,6 @@ const useMakeOrders = () => {
 
   const addTradeAction = () => {
     const price = getPairPrice(state.fromRate, state.toRate);
-    console.log(inputs.from,"ppppppppppppppppppppppppppppppppppp")
     dispatch(
       setMyOrder({
         date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
@@ -127,8 +122,7 @@ const useMakeOrders = () => {
         if (!data) {
           throw Error("Error");
         }
-        updateBalances()
-        console.log(data, "=========in then block");
+        updateBalances();
         dispatch(
           updateMyLastOrder({
             date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
@@ -149,7 +143,6 @@ const useMakeOrders = () => {
         setState((prev) => ({ ...prev, submitting: false }));
       })
       .catch((e) => {
-        console.log("Error!", e);
         dispatch(
           updateMyLastOrder({
             date: moment().format("MMM Do YY") + " | " + moment().format("LT"),
