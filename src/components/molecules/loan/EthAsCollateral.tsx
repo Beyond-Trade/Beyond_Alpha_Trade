@@ -6,6 +6,7 @@ import {
 } from "../../../services/loan.service";
 import { setLoanTypeAction } from "../../../store/actions/LoanTypeAction";
 import { RootState } from "../../../store/reducers/Index";
+import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 function EthAsCollateral({ ETH }: any) {
   const dispatch = useDispatch();
   // const [state, setState] = useState({
@@ -87,8 +88,8 @@ function EthAsCollateral({ ETH }: any) {
               </h3>
               <h3 className="py-2">
                 {loanType === "ETHb"
-                  ? Number(ETHbSupply) / toConvert
-                  : Number(USDbSupply) / toConvert}
+                  ? toFixedNoRounding((Number(ETHbSupply) / toConvert),5)
+                  : toFixedNoRounding((Number(USDbSupply) / toConvert),5)}
               </h3>
             </div>
           </div>
@@ -100,12 +101,12 @@ function EthAsCollateral({ ETH }: any) {
             <div>
               <h3 className="text-gray-600 py-2">MIN. COLLAT. SIZE</h3>
               <h3 className="text-gray-600 py-2">COLLAT. RATIO</h3>
-              <h3 className="text-gray-600 py-2">LOCKED ETH</h3>
+              <h3 className="text-gray-600 py-2">TOTAL LOCKED ETH</h3>
               <h3 className="text-gray-600 py-2">ETH PRICE (USD)</h3>
             </div>
             <div>
               <h3 className="py-2">0 ETH</h3>
-              <h3 className="py-2">{Number(collatRatio) + 100}%</h3>
+              <h3 className="py-2">{collatRatio > 0 ? Number(collatRatio) + 100 : 150}%</h3>
               <h3 className="py-2">{Number(ethLocked) / toConvert}</h3>
               <h3 className="py-2">{Number(ETH?.rate).toFixed(2) || 0}</h3>
             </div>

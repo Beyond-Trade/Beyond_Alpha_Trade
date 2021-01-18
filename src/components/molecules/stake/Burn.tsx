@@ -4,8 +4,10 @@ import useBurn from "../../../hooks/stake/useBurn";
 import GasFeeModal from "./GasFeeModal";
 import GeneralButton from "../../atomic/GeneralButton";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import { useHistory } from "react-router-dom";
 
 function Burn() {
+  const history=useHistory()
   const {
     maxBurn,
     amount,
@@ -91,6 +93,20 @@ function Burn() {
             />
             </div>
           </div>
+          <div
+              // className="flex items-end text-right cursor-pointer"
+              style={{display:"flex",flexDirection:"row",justifyContent:"flex-end",width:"100%",marginTop:"10px"}}
+              onClick={() => history.push("/")}
+            >
+              <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
+              Check your collateral ratio
+              </label>
+              <img
+                src="/assets/Icons/see details arrow.svg"
+                className="ml-1 w-3"
+                alt="img"
+              />
+            </div>
           {burnType === 0 && (
             <div className="mt-6 text-xs xxl:text-sm">
               <div className="flex justify-between">
@@ -115,17 +131,12 @@ function Burn() {
               <small className="italic text-red-400 text-xs">{amountVal}</small>
             </div>
           )}
-          {burnType === 0 && (
-            <div
-              onClick={showBYNField}
-              className="text-center mt-2 text-xs xxl:text-sm text-customGray-400 cursor-pointer font-medium"
+          <div
+              // onClick={showBYNField}
+              className="text-center mt-2 text-xs xxl:text-sm text-customGray-400 font-medium"
             >
-              {!showBYN && "View transferable BYN"}
-              {showBYN && "Transferable BYN being unlocked:"}
+              Transferable BYN being unlocked:
             </div>
-          )}
-
-          {showBYN && burnType === 0 && (
             <div ref={secondDiv}  className="border border-gray-400 bg-white text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
               <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
                 BYN
@@ -140,7 +151,34 @@ function Burn() {
                 // onChange={handleBYNChange}
               />
             </div>
-          )}
+            
+            
+          {/* {burnType === 0 && (
+            <div
+              onClick={showBYNField}
+              className="text-center mt-2 text-xs xxl:text-sm text-customGray-400 cursor-pointer font-medium"
+            >
+              {!showBYN && "View transferable BYN"}
+              {showBYN && "Transferable BYN being unlocked:"}
+            </div>
+          )} */}
+
+          {/* {showBYN && burnType === 0 && (
+            <div ref={secondDiv}  className="border border-gray-400 bg-white text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
+              <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
+                BYN
+              </text>
+              <input
+              ref={secondInput}
+                className="focus:outline-none text-sm ml-2 py-1 w-full text-customBlack-500"
+                type="number"
+                value={byn}
+                min="0"
+                step="0"
+                // onChange={handleBYNChange}
+              />
+            </div>
+          )} */}
 
           <div
             className={`mt-${

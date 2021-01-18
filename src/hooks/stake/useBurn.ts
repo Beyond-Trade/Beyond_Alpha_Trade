@@ -143,7 +143,7 @@ function useBurn() {
   const isValidated = () => {
     let validated = true;
     if (state.burnType === 0 && Number(state.amount) > state.balance) {
-      setState((prev) => ({ ...prev, amountVal: "Not enough balance" }));
+      setState((prev) => ({ ...prev, amountVal: "Not enough available USDb, please get more USDb." }));
       validated = false;
     }
     if (state.burnType === 0 && Number(state.amount) <= 0) {
