@@ -78,20 +78,6 @@ function MidSection() {
         notActiveString="text-customBlack-50"
         activeString="text-customBlack-500"
         activeBorder="border-customBlack-500"
-          text="Transfer"
-          from=""
-          to=""
-          subText="Send to external wallet"
-          onClick={() => {
-            setTab(3);
-            history.push("/stake/transfer");
-          }}
-          active={tabIndex === 3}
-        />
-        <MidSectionTab
-        notActiveString="text-customBlack-50"
-        activeString="text-customBlack-500"
-        activeBorder="border-customBlack-500"
           text="Redeem"
           from="USDb"
           to="BYN"
@@ -101,6 +87,20 @@ function MidSection() {
             history.push("/stake/redeem");
           }}
           active={tabIndex === 4}
+        />
+        <MidSectionTab
+        notActiveString="text-customBlack-50"
+        activeString="text-customBlack-500"
+        activeBorder="border-customBlack-500"
+          text="Transfer"
+          from=""
+          to=""
+          subText="Send to external wallet"
+          onClick={() => {
+            setTab(3);
+            history.push("/stake/transfer");
+          }}
+          active={tabIndex === 3}
         />
       </div>
       {location.pathname === "/stake/get_byn" && <SwapByn />}
