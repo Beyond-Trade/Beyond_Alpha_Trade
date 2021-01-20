@@ -137,7 +137,7 @@ export const ContractLookup:IContractLookup[] = [
     {
         contractName: ERC20Contracts.EURb,
         contractAddress: "0x6f37D5E716Fb16ed13d80d31D4323C3811E0835F",
-        marketRateApiID: "Euro",
+        marketRateApiID: "Eur",
         oracleRateID: "sEUR",
         fullName: "Euro",
         contractAbi: EURbAbi,

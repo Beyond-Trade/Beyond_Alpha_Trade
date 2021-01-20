@@ -35,8 +35,7 @@ const loadRates = async () => {
         }
         return filtered;
     }, []).join(",");
-
-
+    debugger
     [cryptoRates, forexRates, synthetixRates] = await Promise.all([
         getCrypto(cryptoCoinsIds),
         getForex({
@@ -47,6 +46,7 @@ const loadRates = async () => {
 }
 
 function getForexChange(symbol: any) {
+    // debugger
     symbol = symbol.toUpperCase();
     if (forexRates) {
         var startprice = (forexRates[yesterday])[symbol];
@@ -62,7 +62,6 @@ function getForexChange(symbol: any) {
 
 
 const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
-
     let balance: Balance = {
         name: asset.fullName,
         short: asset.contractName,
@@ -76,7 +75,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
         isSiteToken: asset.isMainToken,
         icon: `/${asset.icon}`
     }
-
+debugger
     if (synthetixRates) {
         try {
 
@@ -95,6 +94,7 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
             balance.cryptoBalance = await getERC20Balance(asset, activeAddress);
         }
     }
+    debugger
     switch (asset.syntheticCategory) {
         case SyntheticCategories.CRYPTOCURRENCY:
 

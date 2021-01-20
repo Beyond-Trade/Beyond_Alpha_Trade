@@ -44,6 +44,7 @@ const useTradeChart = () => {
   useEffect(() => {
     fetchSynthRateUpdates(selectedPair.counter, selectedPair.base, activePeriod).then(
       (res: any) => {
+        console.log(res,"///////////////////////")
         dispatch(updateSelectAssetPair(res))
         if (res) setRecords([...res.rates]);
       }

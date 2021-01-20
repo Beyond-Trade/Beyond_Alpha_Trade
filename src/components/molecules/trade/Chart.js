@@ -39,7 +39,7 @@ import MarketData from "./MarketData";
 function Chart({updatedSelectedPair,selectedPair}) {
   // const { t } = useTranslation();
   // // const { colors } = React.useContext(ThemeContext);
-  // const {PERIOD_LABELS_MAP,setSelectedPeriod,records,activePeriod}= useTradeChart()
+  const {PERIOD_LABELS_MAP,setSelectedPeriod,records,activePeriod}= useTradeChart()
   
   // const CustomTooltip = ({
 	// 	active,

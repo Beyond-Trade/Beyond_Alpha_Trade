@@ -7,7 +7,7 @@ import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 import { useHistory } from "react-router-dom";
 
 function Burn() {
-  const history=useHistory()
+  const history = useHistory();
   const {
     maxBurn,
     amount,
@@ -48,15 +48,24 @@ function Burn() {
     };
   }, []);
   return (
-    <div className="border border-gray-400 mt-6 py-10 px-10"
-    style={{ backgroundColor: "#EBEDF0" }}>
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">REDEEM</h3>
+    <div
+      className="border border-gray-400 mt-6 py-10 px-10"
+      style={{ backgroundColor: "#EBEDF0" }}
+    >
+      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">
+        REDEEM
+      </h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
           <p className="text-xs font-normal xxl:text-base font-light text-black mt-6">
-          Redeem USDb to unlock your staked BYN,
-            <br /> allowing you to freely transfer
-            your non-stacked BYN.
+            Redeem USDb to unlock your staked BYN,
+            <br /> allowing you to freely transfer your non-stacked BYN.
+            <br />
+            To redeem, you need to maintain your collateral ratio to 300% at all
+            times.
+            <br />
+            If you are not able to redeem, please try fixing your collateral
+            ratio.
           </p>
           <img
             src="/assets/Images/redeem.png"
@@ -71,55 +80,69 @@ function Burn() {
               Confirm or enter amount to Redeem:
             </p>
             <div className="flex mt-2">
-            <GeneralButton
-              submitting={false}
-              submit={setMax}
-              textValue={"Redeem Max"}
-              otherClasses={`focus:outline-none whitespace-no-wrap ${
-                burnType === 0
-                  ? "bg-customBlack-500 text-white"
-                  : "bg-customBlack-50 text-white"
-              } py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 `}
-            />
               <GeneralButton
-              submitting={false}
-              submit={checkCollateral}
-              textValue={"Fix your collateralization Ratio"}
-              otherClasses={`focus:outline-none ${
-                burnType === 1
-                  ? "bg-customBlack-500 text-white"
-                  : "bg-customBlack-50 text-white"
-              } py-1 px-3 text-xxs xxl:text-xs font-medium ml-2 xl:h-8 xxl:h-10 w-full`}
-            />
+                submitting={false}
+                submit={setMax}
+                textValue={"Redeem Max"}
+                otherClasses={`focus:outline-none whitespace-no-wrap ${
+                  burnType === 0
+                    ? "bg-customBlack-500 text-white"
+                    : "bg-customBlack-50 text-white"
+                } py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 `}
+              />
+              <GeneralButton
+                submitting={false}
+                submit={checkCollateral}
+                textValue={"Fix your collateralization Ratio"}
+                otherClasses={`focus:outline-none ${
+                  burnType === 1
+                    ? "bg-customBlack-500 text-white"
+                    : "bg-customBlack-50 text-white"
+                } py-1 px-3 text-xxs xxl:text-xs font-medium ml-2 xl:h-8 xxl:h-10 w-full`}
+              />
             </div>
           </div>
           <div
-              // className="flex items-end text-right cursor-pointer"
-              style={{display:"flex",flexDirection:"row",justifyContent:"flex-end",width:"100%",marginTop:"10px"}}
-              onClick={() => history.push("/")}
-            >
-              <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
+            // className="flex items-end text-right cursor-pointer"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              width: "100%",
+              marginTop: "10px",
+            }}
+            onClick={() => history.push("/")}
+          >
+            <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
               Check your collateral ratio
-              </label>
-              <img
-                src="/assets/Icons/see details arrow.svg"
-                className="ml-1 w-3"
-                alt="img"
-              />
-            </div>
+            </label>
+            <img
+              src="/assets/Icons/see details arrow.svg"
+              className="ml-1 w-3"
+              alt="img"
+            />
+          </div>
           {burnType === 0 && (
             <div className="mt-6 text-xs xxl:text-sm">
               <div className="flex justify-between">
-                <p className=" font-medium text-gray-500">Invested USDb: ${toFixedNoRounding(maxBurn || 0,5) || "0.00"}</p>
-                <p className=" font-medium text-gray-500">Available USDb: ${toFixedNoRounding(balance || 0,5) || "0.00"}</p>
+                <p className=" font-medium text-gray-500">
+                  Invested USDb: ${toFixedNoRounding(maxBurn || 0, 5) || "0.00"}
+                </p>
+                <p className=" font-medium text-gray-500">
+                  Available USDb: $
+                  {toFixedNoRounding(balance || 0, 5) || "0.00"}
+                </p>
               </div>
 
-              <div ref={firstDiv} className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
+              <div
+                ref={firstDiv}
+                className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550"
+              >
                 <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
                   USDb
                 </text>
                 <input
-                ref={firstInput}
+                  ref={firstInput}
                   className="focus:outline-none text-sm ml-2 py-1 w-full text-customBlack-500"
                   type="number"
                   value={amount}
@@ -131,28 +154,33 @@ function Burn() {
               <small className="italic text-red-400 text-xs">{amountVal}</small>
             </div>
           )}
-          <div
-              // onClick={showBYNField}
-              className="text-center mt-2 text-xs xxl:text-sm text-customGray-400 font-medium"
-            >
-              Transferable BYN being unlocked:
-            </div>
-            <div ref={secondDiv}  className="border border-gray-400 bg-white text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
-              <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
-                BYN
-              </text>
-              <input
-              ref={secondInput}
-                className="focus:outline-none text-sm ml-2 py-1 w-full text-customBlack-500"
-                type="number"
-                value={byn}
-                min="0"
-                step="0"
-                // onChange={handleBYNChange}
-              />
-            </div>
-            
-            
+          {burnType === 0 && (
+            <>
+              <div
+                // onClick={showBYNField}
+                className="text-center mt-2 text-xs xxl:text-sm text-customGray-400 font-medium"
+              >
+                Transferable BYN being unlocked:
+              </div>
+              <div
+                ref={secondDiv}
+                className="border border-gray-400 bg-white text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550"
+              >
+                <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
+                  BYN
+                </text>
+                <input
+                  ref={secondInput}
+                  className="focus:outline-none text-sm ml-2 py-1 w-full text-customBlack-500"
+                  type="number"
+                  value={byn}
+                  min="0"
+                  step="0"
+                  // onChange={handleBYNChange}
+                />
+              </div>
+            </>
+          )}
           {/* {burnType === 0 && (
             <div
               onClick={showBYNField}
@@ -194,11 +222,11 @@ function Burn() {
             </text>
           </div>
           <GeneralButton
-              submitting={burning}
-              submit={submit}
-              textValue={burnType === 0 ?"REDEEM NOW":"FIX NOW"}
-              otherClasses={`bg-customBlack-500 text-xs xxl:text-sm w-full py-2 mt-2`}
-            />
+            submitting={burning}
+            submit={submit}
+            textValue={burnType === 0 ? "REDEEM NOW" : "FIX NOW"}
+            otherClasses={`bg-customBlack-500 text-xs xxl:text-sm w-full py-2 mt-2`}
+          />
           {/* <button
             onClick={submit}
             className="focus:outline-none bg-customBlue-200 text-white flex justify-center text-xs xxl:text-sm w-full rounded py-2 mt-2"
