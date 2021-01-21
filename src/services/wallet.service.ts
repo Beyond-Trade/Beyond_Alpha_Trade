@@ -10,6 +10,7 @@ import { BYNTokenValue } from './swap.service';
 import { getStackedByn } from './mint.service';
 import moment from "moment"
 import ConvertFromE from '../components/_common/ConvertFromE';
+import { fetchSynthRateUpdates, fetchSynthVolumeInUSD } from './rates/rates';
 
 
 let cryptoRates: any, forexRates: any, synthetixRates: any, activeAddress: any;
@@ -35,7 +36,7 @@ const loadRates = async () => {
         }
         return filtered;
     }, []).join(",");
-    debugger
+    
     [cryptoRates, forexRates, synthetixRates] = await Promise.all([
         getCrypto(cryptoCoinsIds),
         getForex({
@@ -46,7 +47,7 @@ const loadRates = async () => {
 }
 
 function getForexChange(symbol: any) {
-    // debugger
+    // 
     symbol = symbol.toUpperCase();
     if (forexRates) {
         var startprice = (forexRates[yesterday])[symbol];
@@ -69,13 +70,14 @@ const getPriceObject = async (asset: IContractLookup): Promise<Balance> => {
         change24h: 0,
         high24h: 0,
         low24h: 0,
+        volume24h:0,
         cryptoBalance: 0,
         category: asset.syntheticCategory,
         isEther: asset.isNativeToken,
         isSiteToken: asset.isMainToken,
         icon: `/${asset.icon}`
     }
-debugger
+
     if (synthetixRates) {
         try {
 
@@ -94,21 +96,48 @@ debugger
             balance.cryptoBalance = await getERC20Balance(asset, activeAddress);
         }
     }
-    debugger
     switch (asset.syntheticCategory) {
         case SyntheticCategories.CRYPTOCURRENCY:
-
+            let crpVolume= await fetchVolumeData(asset.contractName,"USDb",24).catch((res)=>{
+                return 0;
+            })
             let rateObj = cryptoRates?.find((x: any) => x.id === asset.marketRateApiID)
+
             if (rateObj) {
                 balance.change24h = rateObj.price_change_percentage_24h;
                 balance.high24h = rateObj.high_24h;
                 balance.low24h = rateObj.low_24h;
+                balance.volume24h = crpVolume;
             }
             break;
 
         case SyntheticCategories.FOREX:
-            let fchange = getForexChange(asset.marketRateApiID);
-            balance.change24h = fchange ? fchange : 0;
+            let forexVolume= await fetchVolumeData(asset.contractName,"USDb",24).catch((res)=>{
+                return 0;
+            })
+            let obj= await synthRateUpdates(asset.contractName,"sUSD",24).catch((res)=>{
+                return { low: 0, high: 0, change: 0}
+            })
+            if (obj) {
+                balance.change24h = obj.change;
+                balance.high24h = obj.high;
+                balance.low24h = obj.low;
+                balance.volume24h = forexVolume;
+            }
+            break;
+            case SyntheticCategories.COMMODITIES:
+                let commoditiesVolume= await fetchVolumeData(asset.contractName,"USDb",24).catch((res)=>{
+                    return 0;
+                })
+            let objj= await synthRateUpdates(asset.contractName,"sUSD",24).catch((res)=>{
+                return { low: 0, high: 0, change: 0}
+            })
+            if (objj) {
+                balance.change24h = objj.change;
+                balance.high24h = objj.high;
+                balance.low24h = objj.low;
+                balance.volume24h = commoditiesVolume;
+            }
             break;
     }
     if (asset.isFixedRate) {
@@ -124,7 +153,18 @@ debugger
     }
     return balance;
 }
-
+const synthRateUpdates=async(counter:any, base:any, activePeriod:any)=>{
+    const data=await fetchSynthRateUpdates(counter, base, activePeriod)
+    return data
+}
+const fetchVolumeData = async (counter:any, base:any, activePeriod:any) => {
+    const totalVolume = await fetchSynthVolumeInUSD(
+      base,
+      counter,
+      activePeriod
+    );
+    return totalVolume;
+  };
 export const updateBalances = async () => {
     let walletInfo = store.getState().wallet;
 

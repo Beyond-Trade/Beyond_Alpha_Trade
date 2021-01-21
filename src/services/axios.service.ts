@@ -13,15 +13,14 @@ export async function getCrypto(coinIds: any) {
         coinIds = encodeURI(coinIds);
         const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" + coinIds + "&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         var prices = await axios.get(url);
+        
         return prices.data;
     } catch (error) {
         return error;
     }
 }
-
 export async function getForex(params: any) {
     try {
-
         const url = 'https://api.exchangerate.host/timeseries?start_date=' + params.yesterday + '&end_date=' + params.today + '&symbols=' + params.symbols + '&base=USD'
         var prices = await axios.get(url);
         return prices.data.rates;

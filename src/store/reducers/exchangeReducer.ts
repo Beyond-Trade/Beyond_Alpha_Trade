@@ -27,6 +27,7 @@ const initialState: ExchangeState = {
     change24h: 0,
     high24h: 0,
     low24h: 0,
+    volume24h:0,
   },
   transationsHistory: [],
   marketData: TradePairsLookup,
@@ -61,6 +62,7 @@ export function exchangeReducer(
           change24h: action.change24h,
           high24h: action.high24h,
           low24h: action.low24h,
+          volume24h:action.volume24h,
         },
       };
     case UPDATE_SELECT_ASSET_PAIR:

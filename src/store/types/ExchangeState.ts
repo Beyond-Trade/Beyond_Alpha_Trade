@@ -11,6 +11,7 @@ export interface AssetPair {
   change24h: number;
   high24h: number;
   low24h: number;
+  volume24h:number;
 }
 
 export interface MarketPair {

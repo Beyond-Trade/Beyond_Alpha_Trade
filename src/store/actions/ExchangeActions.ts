@@ -24,7 +24,8 @@ export const selectAssetPair = (
   rate: number,
   change24h: number,
   high24h: number,
-  low24h: number
+  low24h: number,
+  volume24h:number,
 ): GetExchangeInfoType => {
   return {
     type: SELECT_ASSET_PAIR,
@@ -40,6 +41,7 @@ export const selectAssetPair = (
     change24h,
     high24h,
     low24h,
+    volume24h,
   };
 };
 export const updateSelectAssetPair = (payload:any) => {
@@ -84,6 +86,7 @@ export const selectAssetPairAction = (from: string, to: string, rate:number) => 
       toBalance?.change24h||0,
       toBalance?.high24h||0,
       toBalance?.low24h||0,
+      toBalance?.volume24h || 0,
     )
   );
 };

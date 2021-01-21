@@ -62,6 +62,12 @@ function MarketTable({ data, handleSort, search }: IProps) {
             <MarketSort handleSort={handleSort} sortOn={"low24h"} />
           </div>
         </td>
+        <td className="py-2 px-3">
+          <div className="flex items-center">
+          24 HOUR VOLUME
+            {/* <MarketSort handleSort={handleSort} sortOn={"short"} /> */}
+          </div>
+        </td>
         {/* <td className="py-2 px-3">
           <div className="flex items-center">
             24 HOUR TREND
@@ -98,6 +104,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
             </td>
             <td className="py-3 px-3">${toFixedNoRounding(item.high24h,5)}</td>
             <td className="py-3 px-3">${toFixedNoRounding(item.low24h,5)}</td>
+            <td className="py-3 px-3">${toFixedNoRounding(item.volume24h,5)}</td>
             {/* <td className="py-3 px-3">
             <img src="/assets/Images/Up.png" className="h-8" />
           </td> */}

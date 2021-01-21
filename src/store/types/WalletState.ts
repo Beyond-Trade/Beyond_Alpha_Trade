@@ -15,6 +15,7 @@ export interface Balance {
     change24h: number;
     high24h: number;
     low24h: number;
+    volume24h:number;
     cryptoBalance: number;
     category: SyntheticCategories;
     isEther: boolean;

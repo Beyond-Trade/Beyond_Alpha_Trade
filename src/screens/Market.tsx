@@ -31,6 +31,7 @@ function Market() {
   const myOrderData: any = activeData.filter(
     (item: any) => item.short != "Beyond"
   );
+  console.log(myOrderData);
   let GBPRate = balances.filter(function (obj: any) {
     return obj.short == ERC20Contracts.GBPb;
   })[0];
