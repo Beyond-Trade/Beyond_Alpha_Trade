@@ -3,6 +3,7 @@ import React from "react";
 import useSwap from "../../../hooks/stake/useSwap";
 import GeneralButton from "../../atomic/GeneralButton";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import AssetRateCard from "../../atomic/stake/AssetRateCard";
 
 interface IProps {}
 function SwapByn(props: IProps) {
@@ -18,7 +19,7 @@ function SwapByn(props: IProps) {
   } = useSwap();
 
   return (
-    <div className="border border-gray-400 mt-6 py-10 px-10"  style={{backgroundColor:"#EBEDF0"}}> 
+    <div className="border border-gray-400 mt-6 py-10 "  style={{backgroundColor:"#EBEDF0"}}> 
       <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">GET BYN</h3>
       <div className="xl:flex lg:flex">
         <div className="w-full">
@@ -29,7 +30,7 @@ function SwapByn(props: IProps) {
             <br />
             Everything starts from here.
           </p>
-          <img src="/assets/Images/swap.png" className="h-24 m-auto mt-10" alt="img" />
+          <AssetRateCard/>
         </div>
         <div className="w-full px-6">
           {/* <GeneralTab tabs={["SWAP", "POOL"]} onClick={() => {}} index={0} /> */}
