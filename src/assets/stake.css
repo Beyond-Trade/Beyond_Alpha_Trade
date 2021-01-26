@@ -133,3 +133,13 @@ textarea::placeholder {
 .boldText{
   font-family: 'PantonBlackCaps';
 }
+
+tr:nth-child(odd){
+  background-color: #E2E8F0;
+}
+tr:nth-child(even){
+  background-color: #F0F3F7;
+}
+#stackTableHader{
+  background-color: black;
+}

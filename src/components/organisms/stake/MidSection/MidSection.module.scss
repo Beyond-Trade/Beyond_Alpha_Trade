@@ -1,0 +1,53 @@
+.midSection{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    padding: 20px 10px;
+    .leftButton{
+        cursor: pointer;
+        border-radius: 4px;
+        height: 80px;
+        width: 140px;
+        padding: 10px;
+        background-color: white;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .seprator{
+        height: 8px;
+        width: 50px;
+        background-color: #6A6A6A;
+    }
+    .rightButton{
+        cursor: pointer;
+        border-radius: 4px;
+        height: 80px;
+        width: 140px;
+        padding: 10px;
+        background-color: #6A6A6A;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .activeButton{
+        cursor: pointer;
+        border-radius: 4px;
+        height: 80px;
+        width: 140px;
+        padding: 10px;
+        background-color: #3DE7E8;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

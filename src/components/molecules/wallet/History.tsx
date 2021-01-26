@@ -51,8 +51,8 @@ function History() {
         </div>
         <div>
           <table width="100%">
-            <tr className="border-b text-xxs xxl:text-base text-left text-gray-600 font-medium">
-              <td className="w-1/6 pl-2 flex items-center">
+            <tr className="border-b text-xxs xxl:text-base text-left text-white font-medium " id="stackTableHader">
+              <td className="w-1/6 w-full flex items-center justify-center py-4">
                 ASSETS
                 <img
                   src="/assets/Icons/up-down-arrow.svg"
@@ -80,7 +80,7 @@ function History() {
                   />
                 </div>
               </td>
-              <td className="w-1/6">
+              <td className="w-1/6 ">
                 <div className="flex items-center">
                   CONFIRMATIONS
                   <img
@@ -100,7 +100,7 @@ function History() {
             <tbody>
               {transationData?.length > 0 ? transationData.map((item:any) => (
                 <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
-                  <td className="w-1/6 pl-2 flex items-center my-2 py-2">
+                  <td className="w-1/6 pl-2 items-center text-center my-2 py-2">
                     {item.tokenSymbol}
                   </td>
                   <td className="w-1/6">
@@ -114,6 +114,7 @@ function History() {
                       : "Recived"}
                   </td>
                   <td className="w-1/6">
+                    <button></button>
                     <a
                       href={item.infoURL ? item.infoURL : "#"}
                       style={
@@ -126,7 +127,7 @@ function History() {
                           : {}
                       }
                       target="_blank"
-                      className="focus:outline-none cursor-pointer text-customBlue-200 underline px-2 py-1 font-bold text-xs rounded-sm"
+                      className="focus:outline-none cursor-pointer text-black border border-black px-4 py-1 font-bold text-xs rounded-sm"
                     >
                       VIEW
                     </a>

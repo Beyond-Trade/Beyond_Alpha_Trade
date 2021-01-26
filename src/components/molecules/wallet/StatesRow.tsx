@@ -54,7 +54,7 @@ function StatesRow() {
   ];
   return (
     <div className="px-8 xl:px-24 lg:px-24 xl:flex lg:flex">
-      <div className="border rounded mr-8 w-full mt-8">
+      <div className="rounded mr-8 w-full shadow-lg mt-8">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <text>TOTAL SYNTHETIC ASSET VALUE</text>
         </div>
@@ -62,45 +62,19 @@ function StatesRow() {
           ${totalSynthValue ? toFixedNoRounding(totalSynthValue,5) : "0.00"} USDb
         </h3>
       </div>
-      <div className="border rounded mr-8 w-full mt-8">
+      <div className="shadow-lg rounded mr-8 w-full mt-8">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>SYNTHETIC ASSET BREAKDOWN</h5>
         </div>
         <div className="flex content-between justify-between px-8">
-          {
-            !totalBynPercentage && !totalUSDbBalancePercentage && !othersBalPercentage ? <img
-            src="/assets/Icons/chart.svg"
-            alt="img"
-            className="h-12 xxl:h-20 my-2"
-          />:null
-          }
+          
           {/* <img
             src="/assets/Icons/Synthetic asset breakdown.svg"
             alt="img"
             className="h-12 xxl:h-20 my-2 mr-6"
           /> */}
 
-          {/*  */}
-          <PieChart width={66} height={66}>
-            <Pie
-              data={data}
-              // cx={120}
-              // cy={200}
-              innerRadius={17}
-              outerRadius={30}
-              fill="#8884d8"
-              paddingAngle={5}
-              dataKey="value"
-            >
-              {data.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-          {/*  */}
+          
           <div className="text-xxs xxl:text-lg">
             <div className="flex items-center text-xs xxl:text-sm font-bold mt-1">
               <h6 className="ml-1 mr-2 font-bold" style={{color:"#FF8042"}}>BYN</h6>
@@ -130,9 +104,40 @@ function StatesRow() {
               </h6>
             </div>
           </div>
+          {
+            !totalBynPercentage && !totalUSDbBalancePercentage && !othersBalPercentage ? <img
+            src="/assets/Icons/chart.svg"
+            alt="img"
+            className="h-12 xxl:h-20 my-2"
+          />:null
+          }
+        {/*  */}
+        {
+            totalBynPercentage || totalUSDbBalancePercentage || othersBalPercentage ?
+        <PieChart width={66} height={66}>
+            <Pie
+              data={data}
+              // cx={120}
+              // cy={200}
+              innerRadius={17}
+              outerRadius={30}
+              fill="#8884d8"
+              paddingAngle={5}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>:null
+}
+          {/*  */}
         </div>
       </div>
-      <div className="rounded border mr-8 mt-8 w-full">
+      <div className="rounded shadow-lg mr-8 mt-8 w-full">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>COLLETERLIZATION RATIO</h5>
         </div>
@@ -151,7 +156,7 @@ function StatesRow() {
           </div>
         </div>
       </div>
-      <div className="border rounded mt-8 w-full">
+      <div className="shadow-lg rounded mt-8 w-full">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>TOTAL WALLET VALUE</h5>
         </div>

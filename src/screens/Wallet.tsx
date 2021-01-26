@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 
 import History from "../components/molecules/wallet/History";
 import StatesRow from "../components/molecules/wallet/StatesRow";
-import WalletBanner from "../components/atomic/wallet/WalletBanner";
+import WalletBanner from "../components/atomic/wallet/WalletBanner/WalletBanner";
 import WalletData from "../components/molecules/wallet/WalletData";
 
 function Wallet() {
