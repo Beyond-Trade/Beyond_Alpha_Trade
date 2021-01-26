@@ -64,7 +64,7 @@ function Navbar() {
               <img src="/assets/Images/beyond.svg" className="h-14 xxl:h-16" onClick={()=>history.push("/market")} />
             </div>
             <div className="hidden sm:block md:ml-6">
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 h-full items-center">
                 <NavTab
                   path="/stake/get_byn"
                   text="STAKE"

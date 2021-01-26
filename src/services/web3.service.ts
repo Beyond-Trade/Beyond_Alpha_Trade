@@ -33,6 +33,7 @@ const web3: Web3 = new Web3();
 
 // @ts-ignore
 export const initializeWeb3 = async (source: web3Sources): Promise<any> => {
+    debugger
     store.dispatch(loadingBalancePending())
     try {
         switch (source) {
