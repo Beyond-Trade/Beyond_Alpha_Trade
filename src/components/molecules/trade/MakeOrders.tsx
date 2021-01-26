@@ -47,7 +47,7 @@ function MakeOrders() {
     };
   }, []);
   return (
-    <div className="border rounded xl:ml-4 lg:ml-4 md:ml-4 mt-4 md:w-94 xl:w-94 lg:w-94 xxl:w-1/2 px-2">
+    <div className="border rounded xl:ml-4 lg:ml-4 mt-4 w-full lg:w-94 xxl:w-1/2 px-2">
       <div className="border-b py-1 xxl:py-2 flex justify-between items-center rounded-t">
         <h5 className="text-xs xxl:text-base font-bold text-gray-500">
           BUY/SELL

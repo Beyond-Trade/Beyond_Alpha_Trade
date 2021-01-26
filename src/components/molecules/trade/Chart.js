@@ -84,7 +84,7 @@ function Chart({updatedSelectedPair,selectedPair}) {
     <div>
       <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} />
     
-    <div className="xl:h-chartH xxl:h-chartHXXL" >
+    <div className="h-94 xl:h-chartH xxl:h-chartHXXL" >
       <TradingViewWidget
         // symbol={`${assetChartNames[selectedPair.counter]}${assetChartNames[selectedPair.base] }`}
         symbol={`${assetChartNames[selectedPair.counter] === "OIL"? "USOIL":assetChartNames[selectedPair.counter]+assetChartNames[selectedPair.base]}`}
