@@ -17,6 +17,7 @@ interface IProps {
 function MarketTable({ data, handleSort, search }: IProps) {
   const history = useHistory();
   const {wallet:{balances} } = useSelector((state: RootState)=>state)
+  let rowType = 1
   const navigate=(counter:any)=>{
     if(counter != "ETH" && counter != "USDb"){
       const marketBalance = balances.find((b)=>b.short === "USDb")
@@ -30,41 +31,42 @@ function MarketTable({ data, handleSort, search }: IProps) {
     }
   }
   return (
+    <div className="bg-mediumGray p-4 overflow-auto">
     <table width="100%">
-      <tr className="border-b border-t border-gray-400 text-xxs xxl:text-sm text-left text-gray-600 font-bold">
-        <td className="py-2 px-3">
+      <tr className="bg-white text-sm xxl:text-base text-left text-mediumGray font-semibold">
+        <td className="py-3 px-3">
           <div className="flex items-center">
-            ASSET
+            Asset
             {/* <MarketSort handleSort={handleSort} sortOn={"short"} /> */}
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
-            LAST PRICE
+            Last Price
             <MarketSort handleSort={handleSort} sortOn={"rate"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
-            24 HOUR CHANGE
+            24h Change
             <MarketSort handleSort={handleSort} sortOn={"change24h"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
-            24 HOUR HIGH
+            High
             <MarketSort handleSort={handleSort} sortOn={"high24h"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
-            24 HOUR LOW
+            Low
             <MarketSort handleSort={handleSort} sortOn={"low24h"} />
           </div>
         </td>
         <td className="py-2 px-3">
           <div className="flex items-center">
-          24 HOUR VOLUME
+          24h Volume
             {/* <MarketSort handleSort={handleSort} sortOn={"short"} /> */}
           </div>
         </td>
@@ -75,19 +77,20 @@ function MarketTable({ data, handleSort, search }: IProps) {
           </div>
         </td> */}
         <td className="py-2 px-3">
-          <div className="flex items-center content-center">TRADE NOW</div>
+          <div className="flex items-center content-center">Trade Now</div>
         </td>
       </tr>
       {data
         .filter((data: any) =>
           data.short.toLowerCase().includes(search.toLowerCase())
         )
-        .map((item: any) => (
-          <tr className="text-xs xxl:text-sm text-left text-gray-700 border-b border-gray-400 font-medium">
-            <td className="py-3 px-3">
+        .map((item: any) => {
+          rowType=rowType*-1
+          return <tr className={`text-xs xxl:text-sm text-left ${rowType>0?'bg-mediumLightGray':''} text-gray-300 font-semibold`}>
+            <td className="py-4 px-3">
               <div className="flex items-center">
-                <text className="text-black">{item.short}</text>
-                <text className="text-gray-500 ml-2">{item.name}</text>
+                <text className="text-customPink">{item.short}</text>
+                <text className="ml-2 font-normal">{item.name}</text>
               </div>
             </td>
             <td className="py-3 px-3">${toFixedNoRounding(item.rate,5)}</td>
@@ -95,8 +98,8 @@ function MarketTable({ data, handleSort, search }: IProps) {
               <button
                 className={`rounded-sm px-1 ${
                   item.change24h >= 0
-                    ? "bg-green-200 text-green-400"
-                    : "bg-red-200 text-red-400"
+                    ? "text-green-400"
+                    : "text-red-400"
                 } `}
               >
                 {item.change24h.toFixed(2)}%
@@ -113,7 +116,7 @@ function MarketTable({ data, handleSort, search }: IProps) {
               submitting={false}
               submit={() => navigate(item.short)}
               textValue={"TRADE"}
-              otherClasses={"bg-customBlack-50 px-2 py-1 text-white xl:text-xs xxl:text-sm"}
+              otherClasses={"bg-customPink px-2 py-1 text-white xl:text-xs xxl:text-sm"}
             />}
             
               {/* <button
@@ -124,8 +127,9 @@ function MarketTable({ data, handleSort, search }: IProps) {
               </button> */}
             </td>
           </tr>
-        ))}
+        })}
     </table>
+    </div>
   );
 }
 

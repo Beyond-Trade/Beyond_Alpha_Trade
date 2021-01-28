@@ -4,6 +4,7 @@ import React from "react";
 import useMint from "../../../hooks/stake/useMint";
 import GeneralButton from "../../atomic/GeneralButton";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import AssetRateCard from "../../atomic/stake/AssetRateCard";
 
 function Mint() {
   const {
@@ -42,32 +43,30 @@ function Mint() {
     };
   }, []);
   return (
-    <div className="border border-gray-400 mt-6 py-10 px-10" style={{backgroundColor:"#EBEDF0"}}>
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">INVEST</h3>
-      <div className="xl:flex lg:flex">
-        <div className="w-full">
-          <p className="text-xs xxl:text-base font-light text-black mt-6 font-normal">
+    <div className="mt-6 py-10">
+      
+      <div className="lg:flex">
+        <div className="w-full lg:mr-6">
+        <div className="flex items-center">
+        <img src="/assets/Icons/invest.png" />
+      <h3 className="xl:text-2xl xxl:text-4xl ml-4 font-bold text-customBlack-500">
+        Invest
+      </h3>
+      </div>
+          <p className="text-base font-normal xxl:text-lg font-light mt-6">
           Get USDb, by staking your BYN.
-            <br />
             You can trade various synthetic assets using USDb
-            <br />
             as well as earn daily staking reward from your staked BYN.
-            <br />
           </p>
-          <img
-            src="/assets/Images/rewards.png"
-            style={{ height: "150px" }}
-            alt="img"
-            className="m-auto mt-10"
-          />
+          <AssetRateCard />
         </div>
-        <div className="w-full px-6 justify-center items-center">
+        <div className="w-full lg:ml-6">
           <div className="flex flex-col justify-center items-center">
-            <div className="mt-8 xl:w-full xxl:w-4/5">
-              <p className="text-xs xl:text-xs xxl:text-sm font-medium">
-                Enter amount to invest USDb:
+            <div className="mt-8 w-full">
+              <p className="text-base xxl:text-lg font-normal">
+                Enter amount to invest <text className="font-medium">USDb:</text>
               </p>
-              <div ref={firstDiv} className="bg-white mt-2 rounded border border-white px-2 xl:px-4 xxl:px-6 hover:shadow-custom hover:border-customBlack-550 text-gray-700 xl:text-sm xxl:text-sm flex justify-center items-center xl:py-2 xxl:py-2">
+              <div ref={firstDiv} className="bg-white mt-2 rounded border border-blackGray px-2 xl:px-4 xxl:px-6 hover:shadow-custom hover:border-customBlack-550 text-gray-700 xl:text-sm xxl:text-sm flex justify-center items-center xl:py-2 xxl:py-2">
                 <text className="focus:outline-none text-gray-600 text-xs xl:text-xs xxl:text-sm font-medium flex items-center border-r pr-4 border-gray-500">
                   USDb
                 </text>
@@ -87,7 +86,7 @@ function Mint() {
               submitting={false}
               submit={setMax}
               textValue={"Max"}
-              otherClasses={"bg-customBlack-500  text-xs xl:text-xs xxl:text-sm py-1 xl:py-1 xxl:py-2 px-4 ml-2"}
+              otherClasses={"bg-customPink rounded-lg text-xs xxl:text-sm py-1 xl:py-1 xxl:py-2 px-4 ml-2"}
             />
                 {/* <button
                   onClick={setMax}
@@ -99,8 +98,8 @@ function Mint() {
 
               <small className="block text-red-500 italic">{amountVal}</small>
             </div>
-            <div className="flex text-customGray-400 justify-between text-xxs xl:text-xxs xxl:text-sm xl:w-full xxl:w-4/5 font-medium mt-1">
-              <h6>Staking: ~{toFixedNoRounding(BYNStackingAmount === Infinity ? 0 : BYNStackingAmount ,5)} BYN</h6>
+            <div className="flex text-customBlack justify-between text-xxs xl:text-xs xxl:text-sm w-full mt-1">
+              <h6>Staking: <text className="font-medium">~{toFixedNoRounding(BYNStackingAmount === Infinity ? 0 : BYNStackingAmount ,5)} BYN</text></h6>
 
               <h6 className="flex">
                 Estimated C-Ratio: {cRatio}%
@@ -170,8 +169,8 @@ function Mint() {
               </div>
             </div>
           </div> */}
-          <div className="mt-8 text-center text-xs xl:text-xs xxl:text-sm font-normal">
-            <text className="text-customGray-400">Ethereum network fee: $0/{fee} GWEI</text>
+          <div className="mt-12 text-xs xl:text-sm xxl:text-base font-medium">
+            <text className="text-customBlack">Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
               className="text-customBlack-500 underline ml-1 cursor-pointer"
@@ -179,12 +178,12 @@ function Mint() {
               EDIT
             </text>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="">
           <GeneralButton
               submitting={submitting}
               submit={submit}
               textValue={"INVEST NOW"}
-              otherClasses={"bg-customBlack-500 text-xs xxl:text-sm w-full xxl:w-4/5 rounded py-2 xxl:py-3 mt-2"}
+              otherClasses={"bg-customPink text-xs xxl:text-sm w-full rounded py-2 xxl:py-3 mt-2"}
             />
             {/* <button
               onClick={submit}

@@ -6,6 +6,7 @@ import GeneralButton from "../../atomic/GeneralButton";
 import ClaimRewardModal from "./ClaimRewardModal";
 import Web3 from "web3";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import AssetRateCard from "../../atomic/stake/AssetRateCard";
 const convertToUSDb = 1000000000000000000;
 function Rewards() {
   const {
@@ -24,29 +25,26 @@ function Rewards() {
   } = useRewards();
   return (
     <div
-      className="border border-gray-400 mt-6 py-10 px-10"
-      style={{ backgroundColor: "#EBEDF0" }}
+      className="mt-6 py-10"
     >
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">
+      <div className="xl:flex lg:flex">
+        <div className="w-full lg:mr-6 mb-4">
+        <div className="flex items-center">
+        <img src="/assets/Icons/reward-real.png" />
+      <h3 className="xl:text-2xl xxl:text-4xl ml-4 font-bold text-customBlack-500">
         REWARDS
       </h3>
-      <div className="xl:flex lg:flex">
-        <div className="w-full mb-4">
-          <p className="text-xs xxl:text-base font-light text-black mt-6 font-normal">
+      </div>
+          <p className="text-base font-normal xxl:text-lg font-light text-black mt-6">
             If you have staked your BYN tokens,
-            <br />
-            you are eligible to collect BYN staking rewards.<br/>
+            you are eligible to collect BYN staking rewards.
             Your reward need to be collected on daily bases.
           </p>
-          <img
-            src="/assets/Images/rewards.png"
-            alt="img"
-            className="h-24 m-auto mt-10"
-          />
+          <AssetRateCard />
         </div>
-        <div className="w-full px-10">
+        <div className="w-full lg:ml-6">
           <div className="rounded pb-1">
-            <div className="flex justify-between text-customGray-400 py-1 xxl:text-base text-xs font-medium rounded-t">
+            <div className="flex justify-between text-customBlack py-1 xxl:text-base text-sm font-medium rounded-t">
               <h4>Distribution Date</h4>
               <h4>Rewards Quantity</h4>
             </div>
@@ -123,7 +121,7 @@ function Rewards() {
               submit={handleClaim}
               textValue={"CLAIM"}
               otherClasses={
-                "bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8 mr-1"
+                "bg-customBlack-500 text-xs xxl:text-base w-full text-white py-2 xxl:py-3 mt-8 mr-1"
               }
             />
             <GeneralButton
@@ -131,7 +129,7 @@ function Rewards() {
               submit={handleCollect}
               textValue={"COLLECT"}
               otherClasses={
-                "bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-8 ml-1"
+                "bg-customBlack-500 text-xs xxl:text-base w-full text-white py-2 xxl:py-3 mt-8 ml-1"
               }
             />
             <ClaimRewardModal

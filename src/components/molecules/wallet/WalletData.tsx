@@ -12,6 +12,26 @@ function WalletData() {
   const BYNobj:any = balances.find(
     (bal: Balance) => bal.short == ERC20Contracts.BEYOND
   );
+  let rowType = 1
+  const getSecondRow = () => {
+    rowType=rowType*-1
+    return <tr className="py-20 text-sm xxl:text-base text-left font-normal" style={{backgroundColor: rowType>0?'#E2E8F0':'#F0F3F7'}}>
+    <td className="flex items-center my-2 justify-center font-semibold text-customPink">
+        BYN (Staked)
+        </td>
+        <td className="w-1/4 text-center">${BYNobj?.rate === Infinity  ?  "0.00000": toFixedNoRounding(BYNobj?.rate || "0.00000",5 )}</td>
+        <td className="w-1/4">
+          <div className="flex items-center justify-center">
+            {toFixedNoRounding(stackedBYN || "0.00000",5)} {"BYN"}
+          </div>
+        </td>
+        <td className="w-1/4">
+          <div className="flex items-center justify-center">
+            ${stackedBYN * BYNobj?.rate > 0 ? toFixedNoRounding((stackedBYN * BYNobj?.rate) || "0.00000",5) : "0.00000"}
+          </div>
+        </td>
+    </tr>
+  }
   return (
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
       <div className="w-full rounded overflow-auto	">
@@ -62,10 +82,12 @@ function WalletData() {
             </td>
           </tr>
           <tbody>
-            {balances.map((item) => (
-              <>
-              <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
-                <td className="flex items-center my-2 justify-center" style={{color:"#3DE7E8"}}>
+            {balances.map((item) => {
+              rowType=rowType*-1
+              let color = {backgroundColor: rowType>0?'#E2E8F0':'#F0F3F7'}
+              return <>
+              <tr className={`py-20 text-sm xxl:text-base text-left font-normal`} style={color}>
+                <td className="flex items-center my-2 justify-center font-semibold text-customPink">
                   {item.short  === "Beyond" ? "BYN (Not Staked)":item.short}
                 </td>
                 <td className="w-1/4 text-center">${item.rate === Infinity ? "0.00" : toFixedNoRounding(item.rate,5)}</td>
@@ -80,24 +102,9 @@ function WalletData() {
                   </div>
                 </td>
               </tr>
-              {item.short === "Beyond"?<tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
-            <td className="flex items-center my-2 justify-center" style={{color:"#3DE7E8"}}>
-                BYN (Staked)
-                </td>
-                <td className="w-1/4 text-center">${BYNobj?.rate === Infinity  ?  "0.00000": toFixedNoRounding(BYNobj?.rate || "0.00000",5 )}</td>
-                <td className="w-1/4">
-                  <div className="flex items-center justify-center">
-                    {toFixedNoRounding(stackedBYN || "0.00000",5)} {"BYN"}
-                  </div>
-                </td>
-                <td className="w-1/4">
-                  <div className="flex items-center justify-center">
-                    ${stackedBYN * BYNobj?.rate > 0 ? toFixedNoRounding((stackedBYN * BYNobj?.rate) || "0.00000",5) : "0.00000"}
-                  </div>
-                </td>
-            </tr>:null}
+              {item.short === "Beyond"?getSecondRow():null}
               </>
-            ))}
+            })}
             
             {/* <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
             <td className=" pl-2 flex items-center my-2">

@@ -37,6 +37,7 @@ function History() {
   useEffect(()=>{
     setTransationData(transationsHistory.slice(0, 10))
   },[transationsHistory])
+  let rowType = 1
   return (
     <div className="px-8 xl:px-24 lg:px-24 mt-8 mb-8">
       <div className="w-full rounded mr-8">
@@ -98,8 +99,10 @@ function History() {
               </td>
             </tr>
             <tbody>
-              {transationData?.length > 0 ? transationData.map((item:any) => (
-                <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal">
+              {transationData?.length > 0 ? transationData.map((item:any) => {
+                rowType=rowType*-1
+                let color = {backgroundColor: rowType>0?'#E2E8F0':'#F0F3F7'}
+                return <tr className="py-20 text-xs xxl:text-base border-b text-left font-normal" style={color}>
                   <td className="w-1/6 pl-2 items-center text-center my-2 py-2">
                     {item.tokenSymbol}
                   </td>
@@ -133,7 +136,7 @@ function History() {
                     </a>
                   </td>
                 </tr>
-              )):null}
+}):null}
             </tbody>
           </table>
           {transationsHistory.length === 0 && (

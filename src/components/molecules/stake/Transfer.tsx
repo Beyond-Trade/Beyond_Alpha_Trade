@@ -5,6 +5,7 @@ import React from "react";
 import useTransfer from "../../../hooks/stake/useTransfer";
 import GeneralButton from "../../atomic/GeneralButton";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
+import AssetRateCard from "../../atomic/stake/AssetRateCard";
 
 function Transfer() {
   const {
@@ -45,23 +46,22 @@ function Transfer() {
     };
   }, []);
   return (
-    <div className="border border-gray-400 mt-6 py-10 px-10"
-    style={{ backgroundColor: "#EBEDF0" }}>
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">TRANSFER</h3>
+    <div className="mt-6 py-10">
       <div className="xl:flex lg:flex">
-        <div className="w-full">
-          <p className="text-xs font-normal xxl:text-base font-light text-black mt-6">
+        <div className="w-full lg:mr-6">
+        <div className="flex items-center">
+        <img src="/assets/Icons/getByn.svg" />
+      <h3 className="xl:text-2xl xxl:text-4xl ml-4 font-bold text-customBlack-500">
+        TRANSFER
+      </h3>
+      </div>
+          <p className="text-base font-normal xxl:text-lg font-light text-black mt-8">
             Transfer your ETH, BYN or other synthetic asset
           </p>
-          <img
-            src="/assets/Images/transfer.png"
-            style={{ height: "150px" }}
-            alt="img"
-            className="m-auto mt-10"
-          />
+          <AssetRateCard />
         </div>
-        <div className="w-full px-6">
-          <div className="flex justify-between py-3 px-4 rounded-sm border border-gray-400 ">
+        <div className="w-full lg:ml-6">
+          <div className="flex justify-between py-3">
             <h6 className="text-xs xxl:text-sm font-medium text-black">
               Transferable amount:
             </h6>
@@ -72,9 +72,8 @@ function Transfer() {
                 : dropValues[dropIndex]}
             </h6>
           </div>
-          <div className="mt-6 text-xs xxl:text-sm">
-            <p className="font-medium">Enter amount:</p>
-            <div ref={firstDiv} className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
+          <div className="mt-1 text-xs xxl:text-sm">
+            <div ref={firstDiv} className="border-2 border-blackGray bg-white mt-2 px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550">
               <Dropdown
                 fields={dropValues}
                 index={dropIndex}
@@ -94,7 +93,7 @@ function Transfer() {
               submitting={false}
               submit={setMax}
               textValue={"Max"}
-              otherClasses={"bg-customBlack-500 px-2 py-1 "}
+              otherClasses={"bg-customPink rounded-lg px-3 py-1 "}
             />
               {/* <button
                 onClick={setMax}
@@ -106,8 +105,8 @@ function Transfer() {
             <small className="block text-red-500 italic">{amountVal}</small>
           </div>
           <div className="mt-6 text-xs xxl:text-sm">
-            <p className="font-medium">Enter destination address:</p>
-            <div ref={secondDiv} className="border border-gray-400  hover:shadow-custom hover:border-customBlack-550 bg-white  mt-2 rounded px-4 py-2 flex items-center">
+            <div ref={secondDiv} className="border-2 border-blackGray hover:shadow-custom hover:border-customBlack-550 bg-white mt-2 px-4 py-2 flex items-center">
+            <p className="font-normal whitespace-no-wrap">Enter destination address:</p>
               <input
               ref={secondInput}
                 className="focus:outline-none ml-2 py-1 w-full text-gray-600 font-medium"
@@ -120,7 +119,7 @@ function Transfer() {
             </div>
             <small className="block text-red-500 italic">{addressVal}</small>
           </div>
-          <div className="mt-24 text-center text-gray-600 text-xs xxl:text-sm font-medium">
+          <div className="mt-4 text-blackGray text-sm xxl:text-base font-medium">
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
               onClick={openFeeModal}
@@ -133,7 +132,7 @@ function Transfer() {
               submitting={submitting}
               submit={submit}
               textValue={"SEND NOW"}
-              otherClasses={"bg-customBlack-500 text-xs xxl:text-base w-full py-2 xxl:py-3 mt-2"}
+              otherClasses={"bg-customPink text-xs xxl:text-base w-full py-2 xxl:py-3 mt-2"}
             />
           {/* <button
             onClick={submit}

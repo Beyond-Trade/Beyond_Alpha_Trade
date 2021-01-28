@@ -38,12 +38,12 @@ function Trade() {
       <div className="sm:flex mt-8 w-full">
         <PairSelection />
         <div className="lg:ml-4 order-1 lg:order-2 w-full" style={isTablet?{}:{ width: "80%" }}>
-          <h3
+          {/* <h3
             className=" text-customBlack-500 text-2xl ml-4"
             style={{ fontWeight: "bolder" }}
           >
             {selectedPair.counter + " / " + selectedPair.base}
-          </h3>
+          </h3> */}
           {/* <MarketData selectedPair={selectedPair} updatedSelectedPair={updatedSelectedPair} /> */}
           <div className="md:flex w-full">
             {!isTablet && (

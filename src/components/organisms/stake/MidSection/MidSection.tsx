@@ -31,7 +31,8 @@ function MidSection() {
   }, [location]);
   return (
     <>
-      <div className={styles.midSection}>
+      <div className="overflow-auto">
+      <div className={styles.midSection} style={{minWidth:'700px'}}>
         <div
           className={tabIndex === 0 ? styles.activeButton : styles.leftButton}
           onClick={() => {
@@ -113,7 +114,8 @@ function MidSection() {
           
         </div>
       </div>
-      <div className="px-8 sm:px-16 md:px-20 xl:px-48 lg:px-48 mt-12">
+      </div>
+      <div className="px-16 xl:px-24 xxl:px-36 mt-12">
         {location.pathname === "/stake/get_byn" && <SwapByn />}
         {location.pathname === "/stake/invest" && <Mint />}
         {location.pathname === "/stake/rewards" && <Rewards />}

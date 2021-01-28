@@ -50,11 +50,10 @@ function CreateLoan() {
   return (
     <>
       <div
-        className="border border-gray-400 rounded mr-8 px-2 w-full"
-        style={{ backgroundColor: "#EBEDF0" }}
+        className="border border-lightGray mr-8 px-6 w-full"
       >
-        <div className="border-b border-gray-400 rounded-t flex justify-between text-gray-600 text-xs xxl:text-base py-2 font-medium">
-          <h5 className="py-1">CREATE LOAN</h5>
+        <div className="rounded-t flex justify-center text-gray-700 text-lg xxl:text-xl py-4 font-semibold">
+          <h5 className="py-1">Creat Loan</h5>
         </div>
         <div className="py-3 text-xxs xxl:text-sm">
           <div className="flex justify-between">
@@ -68,7 +67,7 @@ function CreateLoan() {
             ref={firstDiv}
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
-            className={`rounded flex border border-gray-400 hover:shadow-custom hover:border-customBlack-550 text-gray-600 px-2 py-2 font-medium`}
+            className={`flex border border-lightGray hover:shadow-custom hover:border-customBlack-550 text-gray-600 px-2 py-2 font-medium`}
           >
             <h3 className="py-1 mr-10 flex items-center">
               <img
@@ -81,8 +80,7 @@ function CreateLoan() {
             </h3>
             <input
               ref={firstInput}
-              className="focus:outline-none ml-2 w-full appearance-none"
-              style={{ backgroundColor: "#EBEDF0" }}
+              className="focus:outline-none ml-2 w-full bg-white appearance-none"
               type="number"
               name="locked"
               value={locked}
@@ -106,7 +104,7 @@ function CreateLoan() {
           </div>
           <div
             ref={secondDiv}
-            className="border border-gray-400 hover:shadow-custom hover:border-customBlack-550  rounded flex text-gray-600 px-2 py-2 font-medium"
+            className="border border-lightGray hover:shadow-custom hover:border-customBlack-550 flex text-gray-600 px-2 py-2 font-medium"
           >
             <h3 className="py-1 mr-10 flex items-center">
               <img
@@ -118,9 +116,8 @@ function CreateLoan() {
             </h3>
             <input
               ref={secondInput}
-              className="focus:outline-none ml-2 w-full appearance-none"
+              className="focus:outline-none ml-2 w-full bg-white appearance-none"
               type="number"
-              style={{ backgroundColor: "#EBEDF0" }}
               name="borrowed"
               min="0"
               step="0"
@@ -164,7 +161,7 @@ function CreateLoan() {
               submitting={isSubmitting}
               submit={() => submit(loanType)}
               textValue={"SUBMIT"}
-              otherClasses={"bg-customBlack-500 p-2 xxl:p-3 w-full"}
+              otherClasses={"bg-customPink p-2 xxl:p-3 w-full"}
             />
             {/* <button
               className="bg-customBlue-200 p-2 xxl:p-3 w-full text-white rounded"

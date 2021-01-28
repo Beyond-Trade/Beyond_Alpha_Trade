@@ -8,19 +8,20 @@ function Footer() {
   const alert = useAlert();
   return (
     <div className="bg-customBlack-500 px-20 pt-16 mt-5 text-white">
-      <div className="xl:flex lg:flex">
-        <div className="w-full text-xs xxl:text-base">
-          <h1 className="font-bold text-xl xxl:text-4xl"><img src="/assets/Images/beyond.svg"/></h1>
-          <p className=" mt-4">
+      <div className="font-normal text-lg xxl:text-xl lg:flex">
+        <div className="w-full">
+          <h1 className=""><img src="/assets/Images/beyond.svg"/></h1>
+          <p className="mt-4">
             A decentralized platform for creating and trading
             <br /> synthetic financial products designed to suit the needs
             <br />
             of the investors of various asset classes
           </p>
-          <p className=" mt-4">contact@beyondfinance.io</p>
+          <p className="mt-4">contact@beyondfinance.io</p>
         </div>
-        <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
-          <h4 className="text-white text-sm xxl:text-lg font-semibold">
+        <div className="flex">
+        <div className="flex flex-col mt-6 lg:mt-1 items-start pr-20">
+          <h4 className="text-white text-xl xxl:text-2xl font-semibold">
             PRODUCTS
           </h4>
           <NavLink to="/stake/get_byn" className="mt-4 cursor-pointer">
@@ -36,8 +37,8 @@ function Footer() {
             Loan
           </NavLink>
         </div>
-        <div className="flex flex-col text-xs mt-6 lg:mt-1 xxl:text-base items-start pr-20">
-          <h4 className="text-white text-sm xxl:text-lg font-semibold">
+        <div className="flex flex-col mt-6 lg:mt-1 items-start pr-20">
+          <h4 className="text-white text-xl xxl:text-2xl font-semibold">
             COMPANY
           </h4>
           <a
@@ -89,6 +90,7 @@ function Footer() {
             Contact us
           </a>
         </div>
+        </div>
         <Modal isOpen={isOpen} style={customStyle}>
           <div className="flex justify-end items-center pb-2">
             <button
@@ -127,35 +129,42 @@ function Footer() {
             Disclaimer
           </NavLink>
         </div> */}
-        <div className="flex flex-col mt-6 lg:mt-1 items-start pr-20">
-          <h4 className="text-white xl:text-sm xxl:text-lg font-semibold">
+        <div className="flex flex-col items-center mt-6 lg:mt-1 items-start pr-20">
+          <h4 className="text-white xl:text-lg text-center xxl:text-2xl font-semibold">
             SOCIAL
           </h4>
           <div className="flex mt-4">
-            <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full ">
+            <button className="focus:outline-none mr-5 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full ">
               <img
-                src="/assets/Icons/telegram.svg"
+                src="/assets/Icons/telegram-icon.svg"
                 className="h-full"
                 alt="img"
               />
             </button>
-            <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
+            <button className="focus:outline-none mr-5 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
               <img
-                src="/assets/Icons/twitter.svg"
+                src="/assets/Icons/twitter-icon.svg"
                 className="h-full"
                 alt="img"
               />
             </button>
-            <button className="focus:outline-none mr-4 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
+            <button className="focus:outline-none mr-5 w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
               <img
-                src="/assets/Icons/medium.svg"
+                src="/assets/Icons/medium-icon.svg"
+                className="h-full"
+                alt="img"
+              />
+            </button>
+            <button className="focus:outline-none w-8 mr-5 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
+              <img
+                src="/assets/Icons/github-icon.svg"
                 className="h-full"
                 alt="img"
               />
             </button>
             <button className="focus:outline-none w-8 xxl:w-10 h-8 xxl:h-10 flex justify-center items-center rounded-full">
               <img
-                src="/assets/Icons/github.svg"
+                src="/assets/Icons/reddit.svg"
                 className="h-full"
                 alt="img"
               />
@@ -163,7 +172,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="text-xxs xxl:text-base mt-16 pb-10">
+      <div className="text-base font-semibold xxl:text-lg mt-16 pb-10">
         <hr/>
         <p className="">
           ©Copyright Beyond 2020. All rights reserved - Design by Coding Pixel.

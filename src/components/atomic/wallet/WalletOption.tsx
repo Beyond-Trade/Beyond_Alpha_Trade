@@ -8,6 +8,7 @@ interface IProps {
   image: string;
   type: string;
   onConnected: Function;
+  style:string
 }
 function WalletOption(props: IProps) {
   const dispatch = useDispatch();
@@ -21,18 +22,16 @@ function WalletOption(props: IProps) {
   };
   return (
     <button
-      className="focus:outline-none flex items-center rounded w-full mt-5"
+      className={`focus:outline-none items-center flex flex-col py-8 w-full items-center rounded-lg bg-gray-600 mt-5 ${props.style}`}
       onClick={() => {
         connectToWallet(props.type);
       }}
     >
-      <div className="w-16 h-16 flex justify-center items-center p-4 rounded-full bg-gray-500">
 
         <img src={props.image} className="h-full" />
 
-      </div>
       <div
-        className="flex justify-center ml-8 bg-white rounded-r text-sm font-medium"
+        className="text-sm font-medium text-white"
       >
         {props.text}
       </div>

@@ -7,6 +7,34 @@ interface IProps {
 }
 
 function AllTradesTable(props:any) {
+  
+  const renderTable = () => {
+    let rowType = 1
+    return props.data.map((item:any) => {
+      rowType=rowType*-1
+      return <tr className={`text-xs text-left text-black font-medium hover:bg-gray-400 ${rowType>0?'bg-gray-300':''}`}>
+        <td className="py-3 px-3">
+          <text>{item.date}</text>
+        </td>
+        <td className="py-3 px-3">{item.pair}</td>
+        <td className="py-3 px-3">{item.buying}</td>
+        <td className="py-3 px-3">{item.selling}</td>
+        <td className="py-3 px-3">{item.price}</td>
+        {/* <td className="py-3 px-3">$1896.04</td> */}
+        <td className="py-3 px-3">{item.status}</td>
+        <td className="py-3 px-3">
+          <a
+            href={item.infoURL ? item.infoURL : "#"}
+            style={item.infoURL === "" ? {pointerEvents:"none",cursor:"default",color:"gray"}:{}}
+            target="_blank"
+            className="focus:outline-none cursor-pointer text-customBlack-500 underline px-2 py-1 font-bold text-xs rounded-sm"
+          >
+            VIEW
+          </a>
+        </td>
+      </tr>
+  })
+  }
   return (
     <React.Fragment>
       {/* <table width="100%">
@@ -67,7 +95,7 @@ function AllTradesTable(props:any) {
       </table> */}
       <div className="nobar"  style={{height:"200px"}}>
        <table width="100%">
-        <tr className="text-xxs xxl:text-sm text-left text-gray-600 font-medium border-b border-t">
+        <tr className="text-xxs xxl:text-sm text-left text-blackGray font-medium bg-gray-400">
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	xl:w-20 xxl:w-32">
               DATE | TIME
@@ -114,29 +142,7 @@ function AllTradesTable(props:any) {
             <div className="flex items-center">VERIFY</div>
           </td>
         </tr>
-        {props.data.map((item:any) => (
-          <tr className="text-xs text-left text-black font-medium hover:bg-gray-200  border-b">
-            <td className="py-3 px-3">
-              <text>{item.date}</text>
-            </td>
-            <td className="py-3 px-3">{item.pair}</td>
-            <td className="py-3 px-3">{item.buying}</td>
-            <td className="py-3 px-3">{item.selling}</td>
-            <td className="py-3 px-3">{item.price}</td>
-            {/* <td className="py-3 px-3">$1896.04</td> */}
-            <td className="py-3 px-3">{item.status}</td>
-            <td className="py-3 px-3">
-              <a
-                href={item.infoURL ? item.infoURL : "#"}
-                style={item.infoURL === "" ? {pointerEvents:"none",cursor:"default",color:"gray"}:{}}
-                target="_blank"
-                className="focus:outline-none cursor-pointer text-customBlack-500 underline px-2 py-1 font-bold text-xs rounded-sm"
-              >
-                VIEW
-              </a>
-            </td>
-          </tr>
-        ))}
+        {renderTable()}
       </table>
       {props.data.length === 0 && (
         <div className="h-full text-blue-500 text-xs xxl:text-sm flex justify-center items-center">

@@ -24,6 +24,12 @@ module.exports = {
 
       black: "#000",
       white: "#fff",
+      customPink: '#3DE7E8',
+      blackGray: '#232323',
+      darkGray: '#303030',
+      lightGray: '#585859',
+      mediumLightGray: '#474747',
+      mediumGray: '#3b3b3b',
 
       gray: {
         100: "#f7fafc",

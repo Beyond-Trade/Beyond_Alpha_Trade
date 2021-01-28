@@ -22,16 +22,16 @@ function YourLoans() {
     });
   }, [loanType, , OpenLoansNo]);
   return (
-    <div className="border border-gray-400 w-full whitespace-nowrap px-2 mb-4 overflow-auto rounded mr-8 mt-3" style={{backgroundColor:"#EBEDF0"}}>
-      <div className=" w-auto rounded-t pl-2 pt-2">
-        <h3 className="font-medium text-xs xxl:text-base  text-gray-600">
+    <div className="w-full border border-lightGray whitespace-nowrap px-4 mb-4 overflow-auto mr-8 mt-1">
+      <div className=" w-auto rounded-t pl-2 pb-2 pt-2">
+        <h3 className="font-medium text-xs xxl:text-base text-darkGray">
           YOUR LOANS
         </h3>
       </div>
       <table width="100%">
-        <tr className="border-b border-gray-400 px-2 text-xxs xxl:text-xs text-left text-gray-600 font-medium">
+        <tr className="border border-lightGray text-xs xxl:text-sm text-left text-darkGray font-medium">
           <td className="w-1/7 ">
-            <div className="flex items-center " style={{ width: "130px" }}>
+            <div className="flex items-center pl-3 whitespace-no-wrap py-3" style={{ width: "130px" }}>
               AMOUNT BORROWED{" "}
               <img
                 src="/assets/Icons/up-down-arrow.svg"

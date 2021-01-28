@@ -5,14 +5,14 @@ import { Order } from "../../../store/types/ExchangeState";
 interface IProps {
   data: Order[];
 }
-
+let rowType=1
 function MyOrdersTable(props: IProps) {
   const myOrderData:any = props.data.filter((item) => item.status === "cancelled" || item.status === "Failed" || item.status === "pending");
   return (
     <React.Fragment>
       <div className="nobar"  style={{height:"200px"}}>
       <table width="100%">
-        <tr className="border-b border-t text-xxs xxl:text-sm text-left text-gray-600 font-medium">
+        <tr className="text-xxs bg-gray-400 xxl:text-sm text-left text-blackGray font-medium">
           <td className="py-2 px-3">
             <div className="flex items-center whitespace-nowrap	xl:w-20 xxl:w-32">
               DATE | TIME
@@ -59,8 +59,9 @@ function MyOrdersTable(props: IProps) {
             <div className="flex items-center">VERIFY</div>
           </td>
         </tr>
-        {myOrderData?.map((item:any) => (
-          <tr className="border-b text-xs text-left text-black font-medium hover:bg-gray-300">
+        {myOrderData?.map((item:any) => {
+          rowType=rowType*-1
+          return <tr className={`${rowType>0?'bg-gray-300':''} text-xs text-left text-black font-medium hover:bg-gray-300`}>
             <td className="py-3 px-3">
               <text>{item.date}</text>
             </td>
@@ -81,7 +82,7 @@ function MyOrdersTable(props: IProps) {
               </a>
             </td>
           </tr>
-        ))}
+        })}
       </table>
       {myOrderData.length === 0 && (
         <div className="h-full text-blue-500 xl:text-xs xxl:text-sm flex justify-center items-center">

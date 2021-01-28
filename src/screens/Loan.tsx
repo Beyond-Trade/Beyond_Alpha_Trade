@@ -17,7 +17,7 @@ function Loan() {
     <div>
       <LoanBanner />
       <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
-        <div className="flex-1 xl:mr-8 xxl:mr-10 lg:mr-8">
+        <div className="flex-1 mr-1">
           <EthAsCollateral ETH={ETH} />
           <YourWalet />
           <YourLoans />

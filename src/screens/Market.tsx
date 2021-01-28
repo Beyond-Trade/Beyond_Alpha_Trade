@@ -13,6 +13,8 @@ import { getPairPrice } from "../services/generic.services";
 import { selectAssetPairAction } from "../store/actions/ExchangeActions";
 import { useHistory } from "react-router-dom";
 import { toFixedNoRounding } from "../components/_common/FixedNoRounding";
+import MarketTab from "../components/atomic/MarketTab";
+import MarketTopTab from "../components/atomic/MarketTopTab";
 function Market() {
   const {
     marketIndex,
@@ -56,48 +58,60 @@ function Market() {
       history.push("/trade")
   }
   return (
-    <div className="px-8 xl:px-24 lg:px-24 md:px-24">
-      <div className="mt-12 xl:flex lg:flex">
+    <div className="px-8 xl:px-24 lg:px-10">
+      <div className="mt-12 lg:flex">
+        <div className="md:flex w-full">
         <MarketCard
           coin="BITCOIN"
           click={() => navigate("BTCb")}
           price={BTCRate ? toFixedNoRounding(BTCRate.rate,5) : "00.00"}
-          pair="BTCb / USDb"
-          image="/assets/Icons/btc.svg"
+          pair="BTCb"
+          image="/assets/Icons/btc-market.png"
+          graph={`/assets/Icons/graph-${BTCRate?Number(BTCRate.change24h)>0?'green':'red':'red'}.png`}
           change={BTCRate ? Number(BTCRate.change24h).toFixed(2)  : "00.00"}
           marginRight="mr-4"
+          volume={BTCRate?Number(BTCRate.volume24h).toFixed(2):"0.0"}
         />
         <MarketCard
           coin="ETHEREUM"
           click={() => navigate("ETHb")}
           price={ETHbRate ? toFixedNoRounding(ETHbRate.rate,5): "00.00"}
-          pair="ETHEREUM/ USDb"
-          image="/assets/Icons/Ethereum.svg"
+          pair="ETHEREUM"
+          image="/assets/Icons/eth-market.png"
+          graph={`/assets/Icons/graph-${ETHbRate?Number(ETHbRate.change24h)>0?'green':'red':'red'}.png`}
           change={ETHbRate ? Number(ETHbRate.change24h).toFixed(2) : "00.00"}
-          marginRight="mr-4"
+          marginRight="lg:mr-4"
+          volume={ETHbRate?Number(ETHbRate.volume24h).toFixed(2):"0.0"}
         />
+        </div>
+        <div className="md:flex w-full">
         <MarketCard
           coin="POUND"
           click={() => navigate("GBPb")}
           price={GBPRate ? toFixedNoRounding(GBPRate.rate,5) : "00.00"}
-          pair="GBPb / USDb"
-          image="/assets/Icons/pound.svg"
+          pair="GBPb"
+          image="/assets/Icons/gbp-market.png"
+          graph={`/assets/Icons/graph-${GBPRate?Number(GBPRate.change24h)>0?'green':'red':'red'}.png`}
           change={GBPRate ? Number(GBPRate.change24h).toFixed(2) : "00.00"}
           marginRight="mr-4"
+          volume={GBPRate?Number(GBPRate.volume24h).toFixed(2):"0.0"}
         />
         <MarketCard
           coin="OIL"
           click={() => navigate("OILb")}
           price={OILRate ? toFixedNoRounding(OILRate.rate,5) : "00.00"}
-          pair="OILb / USDb"
+          pair="OILb"
           image="/assets/coins/oil.svg"
+          graph={`/assets/Icons/graph-${OILRate?Number(OILRate.change24h)>0?'green':'red':'red'}.png`}
           change={OILRate ? Number(OILRate.change24h).toFixed(2) : "00.00"}
           marginRight=""
+          volume={OILRate?Number(OILRate.volume24h).toFixed(2):"0.0"}
         />
+        </div>
       </div>
-      <div className="xl:flex lg:flex">
-        <div className="w-full mb-4 mr-4 rounded overflow-auto border border-gray-400 px-2">
-          <GenericTab
+      <div className="flex-col flex lg:flex-row">
+        <div className="w-full mb-4 lg:mr-4 order-2 lg:order-1">
+          <MarketTab
             index={marketIndex}
             onSelect={setIndex}
             tabs={marketTabs}
@@ -108,10 +122,10 @@ function Market() {
             search={search}
           />
         </div>
-        <div className="xl:w-chartH lg:w-chartH ">
-          <SearchTop handleSearch={handleSearch} search={search} />
-          <div className="border rounded border-gray-400 px-2">
-          <GenericTab index={topIndex} onSelect={setTopIndex} tabs={topTabs} />
+        <div className="lg:w-2/5 order-1 lg:order-2">
+          {/* <SearchTop handleSearch={handleSearch} search={search} /> */}
+          <div className="">
+          <MarketTopTab index={topIndex} onSelect={setTopIndex} tabs={topTabs} />
           <MarketTop data={marketTopData} />
           </div>
         </div>

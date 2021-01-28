@@ -29,45 +29,55 @@ function MarketData(props: any) {
     fetchVolumeData();
     MarketExchangesData();
   });
-  console.log(props.selectedPair)
+
   return (
-    <div className="border rounded py-2 px-6 flex justify-between whitespace-nowrap overflow-auto mb-4 w-full">
-      <div>
-        <h5 className="text-gray-500 text-xxs boldText xl:text-xxs lg:text-xxs">
+    <div className="border-2 border-gray-400 py-2 px-2 flex justify-between whitespace-nowrap overflow-auto mb-4 w-full">
+      <div className="w-full">
+        <div className="bg-gray-300 py-2 w-full pl-2">
+        <h5 className="text-xs font-semibold xxl:text-sm">
           Price
         </h5>
-        <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">
+        </div>
+        <h2 className="font-medium ml-2 text-sm xs:text-xs xl:text-base lg:text-base">
           {Number(props.selectedPair.rate).toFixed(2)} USDb
         </h2>
       </div>
-      <div>
-        <h5 className="text-gray-500 text-xxs boldText xl:text-xxs lg:text-xxs">
+      <div className="w-full">
+        <div className="bg-gray-300 py-2 w-full">
+        <h5 className="text-xs font-semibold xxl:text-sm">
           Change(24h)
         </h5>
+        </div>
         <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">
           {props.selectedPair.change24h.toFixed(2)} %
         </h2>
       </div>
-      <div>
-        <h5 className="text-gray-500 boldText text-xxs xl:text-xxs lg:text-xxs">
+      <div className="w-full">
+      <div className="bg-gray-300 py-2 w-full">
+        <h5 className="text-xs font-semibold xxl:text-sm">
           High(24h)
         </h5>
+        </div>
         <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">
           {props.selectedPair.high24h.toFixed(2)} USDb
         </h2>
       </div>
-      <div>
-        <h5 className="text-gray-500 text-xxs boldText xl:text-xxs lg:text-xxs">
+      <div className="w-full">
+      <div className="bg-gray-300 py-2 w-full">
+        <h5 className="text-xs font-semibold xxl:text-sm">
           Low(24h)
         </h5>
+        </div>
         <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">
           {props.selectedPair.low24h.toFixed(2)} USDb
         </h2>
       </div>
-      <div>
-        <h5 className="text-gray-500 text-xxs boldText xl:text-xxs lg:text-xxs">
-          24H VOLUME
+      <div className="w-full">
+        <div className="bg-gray-300 py-2 w-full">
+        <h5 className="text-xs font-semibold xxl:text-sm">
+        24H VOLUME
         </h5>
+        </div>
         <h2 className="font-medium text-sm xs:text-xs xl:text-base lg:text-base">
           {props.selectedPair.volume24h.toFixed(2)} USDb
         </h2>

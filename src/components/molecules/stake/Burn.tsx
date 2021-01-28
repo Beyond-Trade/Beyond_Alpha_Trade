@@ -5,6 +5,7 @@ import GasFeeModal from "./GasFeeModal";
 import GeneralButton from "../../atomic/GeneralButton";
 import { toFixedNoRounding } from "../../_common/FixedNoRounding";
 import { useHistory } from "react-router-dom";
+import AssetRateCard from "../../atomic/stake/AssetRateCard";
 
 function Burn() {
   const history = useHistory();
@@ -49,32 +50,26 @@ function Burn() {
   }, []);
   return (
     <div
-      className="border border-gray-400 mt-6 py-10 px-10"
-      style={{ backgroundColor: "#EBEDF0" }}
+      className="mt-6 py-10"
     >
-      <h3 className="xl:text-lg xxl:text-2xl font-bold text-customBlack-500">
+      <div className="xl:flex lg:flex">
+        <div className="w-full lg:mr-6">
+        <div className="flex items-center">
+        <img src="/assets/Icons/reward.png" />
+      <h3 className="xl:text-2xl xxl:text-4xl ml-4 font-bold text-customBlack-500">
         REDEEM
       </h3>
-      <div className="xl:flex lg:flex">
-        <div className="w-full">
-          <p className="text-xs font-normal xxl:text-base font-light text-black mt-6">
-            Redeem USDb to unlock your staked BYN,
-            <br /> allowing you to freely transfer your non-stacked BYN.
-            <br />
+      </div>
+          <p className="text-base font-normal xxl:text-lg font-light text-black mt-8">
+            Redeem USDb to unlock your staked BYN, allowing you to freely transfer your non-stacked BYN.
             To redeem, you need to maintain your collateral ratio to 300% at all
             times.
-            <br />
             If you are not able to redeem, please try fixing your collateral
             ratio.
           </p>
-          <img
-            src="/assets/Images/redeem.png"
-            style={{ height: "150px" }}
-            alt="img"
-            className="m-auto mt-10"
-          />
+          <AssetRateCard />
         </div>
-        <div className="w-full px-6">
+        <div className="w-full lg:ml-6">
           <div className="mt-6">
             <p className="text-xs font-medium xxl:text-sm">
               Confirm or enter amount to Redeem:
@@ -88,7 +83,7 @@ function Burn() {
                   burnType === 0
                     ? "bg-customBlack-500 text-white"
                     : "bg-customBlack-50 text-white"
-                } py-1 px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 `}
+                } px-3 text-xxs xxl:text-xs xl:h-8 xxl:h-10 `}
               />
               <GeneralButton
                 submitting={false}
@@ -113,7 +108,7 @@ function Burn() {
             }}
             onClick={() => history.push("/")}
           >
-            <label className="xxl:text-sm text-xxs font-normal text-blue-1000 cursor-pointer">
+            <label className="xxl:text-sm text-xxs font-normal cursor-pointer">
               Check your collateral ratio
             </label>
             <img
@@ -125,10 +120,10 @@ function Burn() {
           {burnType === 0 && (
             <div className="mt-6 text-xs xxl:text-sm">
               <div className="flex justify-between">
-                <p className=" font-medium text-gray-500">
+                <p className=" font-medium">
                   Invested USDb: ${toFixedNoRounding(maxBurn || 0, 5) || "0.00"}
                 </p>
-                <p className=" font-medium text-gray-500">
+                <p className=" font-medium">
                   Available USDb: $
                   {toFixedNoRounding(balance || 0, 5) || "0.00"}
                 </p>
@@ -136,9 +131,9 @@ function Burn() {
 
               <div
                 ref={firstDiv}
-                className="border border-gray-400 bg-white mt-2 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550"
+                className="border-2 border-blackGray bg-white mt-2 px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550"
               >
-                <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
+                <text className="focus:outline-none font-medium flex items-center border-r pr-4 border-gray-500">
                   USDb
                 </text>
                 <input
@@ -158,20 +153,20 @@ function Burn() {
             <>
               <div
                 // onClick={showBYNField}
-                className="text-center mt-2 text-xs xxl:text-sm text-customGray-400 font-medium"
+                className="text-center mt-2 text-xs xxl:text-sm font-medium"
               >
                 Transferable BYN being unlocked:
               </div>
               <div
                 ref={secondDiv}
-                className="border border-gray-400 bg-white text-xs xxl:text-sm mt-4 rounded px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550"
+                className="border-2 border-blackGray bg-white text-xs xxl:text-sm mt-4 px-4 py-2 flex items-center hover:shadow-custom hover:border-customBlack-550"
               >
-                <text className="focus:outline-none text-gray-400 font-medium flex items-center border-r pr-4 border-gray-500">
+                <text className="focus:outline-none font-medium flex items-center border-r pr-4 border-gray-500">
                   BYN
                 </text>
                 <input
                   ref={secondInput}
-                  className="focus:outline-none text-sm ml-2 py-1 w-full text-customBlack-500"
+                  className="focus:outline-none text-sm ml-2 py-1 w-full"
                   type="number"
                   value={byn}
                   min="0"
@@ -210,8 +205,8 @@ function Burn() {
 
           <div
             className={`mt-${
-              showBYN ? "10" : "24"
-            } text-center text-customGray-400 text-xs xxl:text-sm font-medium`}
+              showBYN ? "6" : "16"
+            } text-sm xxl:text-base font-normal`}
           >
             <text>Ethereum network fee: $0/{fee} GWEI</text>
             <text
@@ -225,7 +220,7 @@ function Burn() {
             submitting={burning}
             submit={submit}
             textValue={burnType === 0 ? "REDEEM NOW" : "FIX NOW"}
-            otherClasses={`bg-customBlack-500 text-xs xxl:text-sm w-full py-2 mt-2`}
+            otherClasses={`bg-customPink text-xs xxl:text-sm w-full py-2 mt-2`}
           />
           {/* <button
             onClick={submit}

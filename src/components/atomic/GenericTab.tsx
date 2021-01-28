@@ -11,10 +11,10 @@ function GenericTab(props: IProps) {
     <div className="rounded flex justify-between py-2 px-2">
       {props.tabs.map((item, index) => (
         <button
-          className={`focus:outline-none py-1 w-full text-center hover:bg-gray-200 hover:text-black text-xs xxl:text-sm font-medium ${
+          className={`focus:outline-none py-1 mx-1 w-full text-center hover:bg-customPink hover:text-black text-xs xxl:text-sm font-medium ${
             index === props.index
-              ? "bg-gray-200 text-black"
-              : " text-gray-500"
+              ? " bg-customPink text-black"
+              : " bg-gray-300"
           }`}
           onClick={() => props.onSelect(index)}
           style={{

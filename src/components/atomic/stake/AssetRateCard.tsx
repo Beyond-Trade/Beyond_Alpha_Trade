@@ -31,25 +31,25 @@ const AssetRateCard = () => {
   }, [balances]);
  
   return (
-      <div className="w-full xl:mr-2 lg:mr-2 mb-4">
-        <div className="border border-gray-400 flex justify-between items-center py-2 xxl:py-3 px-4 xxl:px-6 rounded" style={{backgroundColor:"#EBEDF0"}}>
+      <div className="w-full xl:mr-2 lg:mr-2 mb-4 mt-12">
+        <div className="border-2 border-lightGray flex justify-between items-center py-2 xxl:py-4 px-4 xxl:px-6">
           <div className="flex items-center" >
             <img
-              src="/assets/Icons/BYN-small.svg"
+              src="/assets/Icons/byn-coin-small.svg"
               alt="img"
-              className="h-6 xxl:h-8"
+              className="h-10 xxl:h-12"
             />
-            <h6 className="ml-2 xxl:text-sm text-xs font-medium">
+            <h6 className="ml-2 xxl:text-base text-sm font-bold">
               1 BYN = ${toFixedNoRounding(state.bynRate,5) || 0} USD
             </h6>
           </div>
           <div className="flex items-center">
             <img
-              src="/assets/Icons/Ethereum.svg"
+              src="/assets/Icons/ether-coin.svg"
               alt="img"
-              className="h-6 xxl:h-8"
+              className="h-10 xxl:h-12"
             />
-            <h6 className="ml-2 xxl:text-sm text-xs font-medium">
+            <h6 className="ml-2 xxl:text-base text-sm font-bold">
               1 ETH = ${toFixedNoRounding(state.ethRate,5)} USD
             </h6>
           </div>

@@ -19,7 +19,7 @@ function GeneralButton({
         onMouseEnter={toggleHover}
         onMouseLeave={toggleHover}
           onClick={submit}
-          className={` focus:outline-none hover:shadow-custom hover:bg-customBlack-550 hover:text-white flex justify-center items-center text-white ${otherClasses} rounded `}
+          className={` focus:outline-none hover:shadow-custom font-medium hover:bg-customBlack-550 hover:text-white flex justify-center items-center text-black ${otherClasses} rounded `}
         >
           {!submitting && textValue}
           {submitting && (

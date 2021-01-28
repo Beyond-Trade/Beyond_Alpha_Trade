@@ -42,22 +42,22 @@ export default SelectWalletModal;
 const getWidth = () => {
   const width = window.innerWidth
   if(width > 1300){
-    return "25%"
+    return "45%"
   }
   if(width > 1000&& width<1300){
-    return "30%"
-  }
-  if(width < 1000 && width > 800){
-    return "40%"
-  }
-  if(width < 800 && width > 600){
     return "50%"
   }
-  if(width < 600 && width > 400){
+  if(width < 1000 && width > 800){
+    return "65%"
+  }
+  if(width < 800 && width > 600){
     return "70%"
   }
+  if(width < 600 && width > 400){
+    return "90%"
+  }
   if(width < 400){
-    return "70%"
+    return "90%"
   }
 }
 
@@ -70,9 +70,9 @@ const customStyle = {
     alignItems: "center",
   },
   content: {
-    borderRadius:"20px",
+    borderRadius:"5px",
     padding: "10px",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#303030",
     width: getWidth(),
     border: "0 px",
     top: "auto",

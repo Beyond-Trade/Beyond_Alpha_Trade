@@ -25,11 +25,11 @@ function YourWalet() {
   }, [balances]);
   return (
     <>
-      <div className="border-gray-400 border px-2 rounded mr-8 w-full mt-3 text-xs xxl:text-sm" style={{backgroundColor:"#EBEDF0"}}>
-        <div className="border-gray-400 border-b rounded-t flex justify-between items-center text-gray-600 px-2 py-3 font-medium">
+      <div className="border-lightGray border px-6 mr-8 w-full mt-1 pb-4 text-sm xxl:text-base">
+        <div className="flex justify-between items-center text-lightGray px-2 py-3 font-semibold">
           <h5>YOUR WALET</h5>
         </div>
-        <div className="flex justify-between py-4">
+        <div className="flex justify-between py-2 px-5 border font-semibold border-lightGray">
           <div className="flex justify-between w-full">
             <div>
               <h3 className="py-2">ETHb BALANCE</h3>

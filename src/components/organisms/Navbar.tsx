@@ -10,8 +10,21 @@ function Navbar() {
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
   const toggle = () => setCollapsed((prev) => !prev);
+  const isAbsolute = () => {
+    let absolute = true
+    if(history.location.pathname==='/trade'){
+      absolute=false
+    }
+    if(history.location.pathname==='/market'){
+      absolute=false
+    }
+    if(history.location.pathname==='/loan'){
+      absolute=false
+    }
+    return absolute
+  }
   return (
-    <nav className="bg-customBlack-500">
+    <nav className={`${isAbsolute()?'bg-transparent absolute top-0 left-0 right-0':'bg-black'} z-10`}>
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 xxl:py-4">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">

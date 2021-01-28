@@ -44,15 +44,15 @@ function CloseLoan() {
       : false;
   return (
     <>
-      <div className="border border-gray-400 rounded mr-8 w-full mt-3 px-2 text-xxs xxl:text-sm" style={{backgroundColor:"#EBEDF0"}}>
-        <div className="border-b border-gray-400 rounded-t flex justify-between text-gray-600 text-xs xxl:text-base px-2 py-2 font-medium">
+      <div className="border border-lightGray mr-8 w-full mt-3 px-2 text-xxs xxl:text-sm">
+        <div className="flex justify-center text-base xxl:text-lg px-2 py-2 font-medium">
           <h5 className="py-1">CLOSE LOAN</h5>
         </div>
         <div className="p-3">
-          <div className="font-normal">
-            <h3 className="text-gray-600 py-1"> ETH BEING UNLOCKED</h3>
+          <div className="font-semibold">
+            <h3 className="py-1"> ETH BEING UNLOCKED</h3>
 
-            <p className="text-gray-600 py-1">
+            <p className="py-1">
               Balance :{" "}
               {loanType === "ETHb"
                 ? returnLoanObj?._totalValueAfterLoanFeeETHb / toConvert || 0
@@ -60,11 +60,11 @@ function CloseLoan() {
             </p>
           </div>
 
-          <div className="font-normal">
-            <h3 className="text-gray-600 py-1">
+          <div className="font-semibold">
+            <h3 className="py-1">
               {loanType === "ETHb" ? "ETHb" : "USDb"} BEING UNBORROWED
             </h3>
-            <p className="text-gray-600 py-1">
+            <p className="py-1">
               Balance :{" "}
               {loanType === "ETHb"
                 ? returnLoanObj?._loanValueETHb / toConvert || 0
@@ -72,9 +72,9 @@ function CloseLoan() {
             </p>
           </div>
 
-          <div className="flex justify-between font-normal">
-            <h3 className="text-gray-600 py-1">sUSD VALUE</h3>
-            <p className="text-gray-600 py-1">
+          <div className="flex justify-between font-semibold">
+            <h3 className="py-1">sUSD VALUE</h3>
+            <p className="py-1">
               $
               {loanType === "ETHb"
                 ? (returnLoanObj?._loanValueETHb / toConvert) * ETH?.rate || 0
@@ -83,14 +83,14 @@ function CloseLoan() {
           </div>
 
           <div className="flex justify-between font-normal">
-            <h3 className="text-gray-600 py-1">FEE ?</h3>
-            <p className="text-gray-600 py-1">
+            <h3 className="py-1">FEE ?</h3>
+            <p className="py-1">
               ${parseFloat(((21000 * fee) / 1e9).toFixed(8))}
             </p>
           </div>
           <div className="flex justify-between font-normal">
-            <h3 className="text-gray-600 py-1">GAS PRICE (GWEI)</h3>
-            <p className="text-gray-600 py-1">
+            <h3 className="py-1">GAS PRICE (GWEI)</h3>
+            <p className="py-1">
               {fee}{" "}
               <text
                 onClick={openFeeModal}

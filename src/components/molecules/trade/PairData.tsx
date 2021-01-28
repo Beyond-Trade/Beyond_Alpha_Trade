@@ -8,11 +8,11 @@ interface IProps {
   onSelect: Function;
   search: string;
 }
-
+let rowType = -1
 function PairData(props: IProps) {
   return (
     <table width="100%">
-      <tr className="text-xxs border-b border-t xxl:text-sm text-left text-black font-medium">
+      <tr className="text-xxs bg-gray-400 xxl:text-sm text-left text-black font-medium">
         <td className="py-2 px-3">PAIR</td>
         <td className="py-2 px-3">
           <div className="flex items-center justify-end" style={nowrap}>
@@ -27,12 +27,13 @@ function PairData(props: IProps) {
             item.coin.toUpperCase().includes(props.search) ||
             props.search === ""
         )
-        .map((item) => (
-          <tr
+        .map((item) => {
+          rowType= rowType*-1
+          return <tr
             onClick={() =>
               props.onSelect(props.data.marketCoin, item.coin, item.rate)
             }
-            className="hover:bg-gray-200 border-b cursor-pointer text-xs xxl:text-sm text-left text-gray-600 font-medium"
+            className={`hover:bg-gray-400 cursor-pointer ${rowType>0?'':'bg-gray-300'} text-xs xxl:text-sm text-left text-gray-600 font-medium`}
           >
             <td className="py-3 px-3">
               <div className="flex items-center" style={nowrap}>
@@ -45,7 +46,7 @@ function PairData(props: IProps) {
               {item.rate.toFixed(2)} {assetChartNames[props.data.marketCoin]+"b"}
             </td>
           </tr>
-        ))}
+        })}
     </table>
   );
 }
