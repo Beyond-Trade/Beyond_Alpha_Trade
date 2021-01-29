@@ -109,7 +109,7 @@ function CloseLoan() {
               otherClasses={`p-2 xxl:p-3 w-full text-white rounded ${
                 isDisabled()
                   ? "cursor-not-allowed bg-customBlack-50"
-                  : "bg-customBlack-500"
+                  : "bg-customPink"
               }`}
             />
             {/* <button

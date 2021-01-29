@@ -27,14 +27,14 @@ function GasFeeModal(props: IProps) {
           submitting={false}
           submit={() => props.select(item, true)}
           textValue={feesDescription[index] + " " + item}
-          otherClasses={`${props.activeFee===item?'bg-customBlack-500 text-white':'bg-customBlack-50'} py-2 w-full mt-2`}
+          otherClasses={`${props.activeFee===item?'bg-customPink text-white':'bg-customBlack-50'} py-2 w-full mt-2`}
         />
         ))}
         <GeneralButton
           submitting={false}
           submit={() => props.close()}
           textValue={"Done"}
-          otherClasses={`bg-customBlack-500 py-2 w-full mt-2`}
+          otherClasses={`bg-customPink py-2 w-full mt-2`}
         />
       </div>
     </Modal>
