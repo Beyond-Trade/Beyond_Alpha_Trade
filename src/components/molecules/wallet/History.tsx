@@ -41,12 +41,12 @@ function History() {
   return (
     <div className="px-8 xl:px-24 lg:px-24 mt-8 mb-8">
       <div className="w-full rounded mr-8">
-        <div className="flex justify-between rounded-t pl-2 pt-2 mb-4">
+        <div className="flex justify-between rounded-t overflow-auto pl-2 pt-2 mb-4">
           <h3 className="font-medium text-xs xxl:text-lg mb-3 text-gray-600">
             HISTORY
           </h3>
-          {transationsHistory.length > 0 ?(
-          <Pagination data={transationsHistory} pageSize={10} onChange={(pageData:any)=>{
+          {true ?(
+          <Pagination data={[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]} pageSize={2} onChange={(pageData:any)=>{
             setTransationData(pageData)}} />
           ):null}
         </div>
