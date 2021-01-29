@@ -14,13 +14,20 @@ function SelectWalletModal(props: IProps) {
     (state: RootState) => state.wallet
   );
   const [typeIndex, setType] = useState(0);
+  const [temp, setTemp] = useState(false);
 
   useEffect(() => {
     setType(isConnected ? 1 : 0);
   }, [isConnected]);
+  useEffect(()=>{
+    window.addEventListener('resize', ()=>{
+      setTemp(prev=>!prev)
+    });
+  },[])
 
   return (
-    <Modal isOpen={props.isOpen} style={customStyle}>
+    <Modal isOpen={props.isOpen} style={{...customStyle, content:{...customStyle.content
+    , width: getWidth()}}}>
       <button
         onClick={() => props.close()}
         className="focus:outline-none float-right absolute"
