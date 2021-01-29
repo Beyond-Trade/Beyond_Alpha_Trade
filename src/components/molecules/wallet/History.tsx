@@ -45,8 +45,8 @@ function History() {
           <h3 className="font-medium text-xs xxl:text-lg mb-3 text-gray-600">
             HISTORY
           </h3>
-          {true ?(
-          <Pagination data={[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]} pageSize={2} onChange={(pageData:any)=>{
+          {transationData?.length > 0 ?(
+          <Pagination data={transationData} pageSize={10} onChange={(pageData:any)=>{
             setTransationData(pageData)}} />
           ):null}
         </div>
