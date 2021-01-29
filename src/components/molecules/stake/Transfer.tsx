@@ -50,7 +50,7 @@ function Transfer() {
       <div className="xl:flex lg:flex">
         <div className="w-full lg:mr-6">
         <div className="flex items-center">
-        <img src="/assets/Icons/getByn.svg" />
+        <img src="/assets/Icons/transfer-latest.svg" />
       <h3 className="xl:text-2xl xxl:text-4xl ml-4 font-bold text-customBlack-500">
         TRANSFER
       </h3>

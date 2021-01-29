@@ -46,13 +46,13 @@ const BottomSection = () => {
   }
 
   return (
-    <div className="mt-8 px-16 xl:px-24 xxl:px-36 mb-20">
+    <div className="mt-8 px-6 sm:px-16 xl:px-24 xxl:px-36 mb-20">
       <div className="lg:flex w-full mb-12">
       <StakedNotStaked />
       <DailyRewards />
       </div>
-      <div className="w-full  whitespace-nowrap overflow-auto">
-        <div className="pb-4 px-2 bg-blackGray text-white">
+      <div className="w-full bg-blackGray whitespace-no-wrap overflow-auto">
+        <div className="pb-4 px-2 text-white">
           <table width="100%">
             <tr className="flex justify-between bg-lightGray py-2 xxl:py-2 mt-3 px-8 text-xs font-bold">
               <td className="items-center w-44 mr-8 xxl:mr-0">

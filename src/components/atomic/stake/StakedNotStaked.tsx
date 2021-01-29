@@ -29,10 +29,10 @@ function StakedNotStaked() {
 
   return (
     <div
-      className=" p-4 xxl:p-6 bg-blackGray w-full flex lg:mr-6"
+      className=" p-4 xxl:p-6 bg-blackGray w-full flex flex-col sm:flex-row items-center lg:mr-6"
     >
       <img src="/assets/Icons/byn-coin.svg" className="mr-8" />
-      <div className="w-full">
+      <div className="w-full mt-3 sm:mt-0">
       <div className="flex justify-between pb-3">
         <h6 className="xxl:text-base text-sm font-medium text-white">TOTAL <text className="text-customGray-300 text-sm">(BYN)</text></h6>
         <h6 className="xxl:text-sm text-xs font-medium text-customGray-300">

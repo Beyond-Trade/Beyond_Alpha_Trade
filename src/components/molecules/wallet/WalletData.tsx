@@ -34,7 +34,7 @@ function WalletData() {
   }
   return (
     <div className="flex mt-8 px-8 xl:px-24 lg:px-24 mb-16">
-      <div className="w-full rounded overflow-auto	">
+      <div className="w-full rounded overflow-auto	whitespace-no-wrap">
         {/* <div className="bg-gray-300 rounded-t pl-2 pt-2"> */}
           {/* <h3 className="font-medium text-xs xxl:text-lg text-gray-600">
             YOUR SYNTHS

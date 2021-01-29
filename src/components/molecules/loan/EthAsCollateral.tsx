@@ -40,7 +40,7 @@ function EthAsCollateral({ ETH }: any) {
             <div
               onClick={() => LoanTypeAction("ETHb")}
               // onClick={handleETHb}
-              className={`ml-12 xxl:ml-32 py-1 px-4 mr-4 rounded-sm cursor-pointer ${
+              className={`ml-4 lg:ml-12 xxl:ml-32 py-1 px-4 mr-4 rounded-sm cursor-pointer ${
                 loanType === "ETHb"
                   ? "bg-customPink text-black"
                   : "bg-lightGray text-white"
@@ -73,27 +73,34 @@ function EthAsCollateral({ ETH }: any) {
             />
           </a>
         </div>
-            <div className="flex justify-between border border-lightGray px-5">
+            <div className="sm:flex justify-between border border-lightGray px-5">
+              <div className="flex w-full">
               <div className="w-full">
               <h3 className="text-lightGray py-2">INTEREST FEE</h3>
               </div>
-              <div className="w-full">
+              <div className="w-full text-right sm:text-left">
               <h3 className=" py-2">{interestFee || 0}%</h3>
               </div>
+              </div>
+              <div className="flex w-full">
               <div className="w-full">
               <h3 className="text-lightGray py-2">MIN. COLLAT. SIZE</h3>
               </div>
               <div className="w-full text-right">
               <h3 className="py-2">0 ETH</h3>
               </div>
+              </div>
             </div>
-            <div className="flex justify-between px-5">
+            <div className="sm:flex justify-between px-5">
+            <div className="flex w-full">
             <div className="w-full">
               <h3 className="text-lightGray py-2">MINTING FEE</h3>
               </div>
-              <div className="w-full">
+              <div className="w-full text-right sm:text-left">
               <h3 className="py-2">0.50%</h3>
               </div>
+              </div>
+              <div className="flex w-full">
               <div className="w-full">
               <h3 className="text-lightGray py-2">COLLAT. RATIO</h3>
               </div>
@@ -102,42 +109,51 @@ function EthAsCollateral({ ETH }: any) {
                 {collatRatio > 0 ? Number(collatRatio) + 100 : 150}%
               </h3>
               </div>
+              </div>
             </div>
-            <div className="flex justify-between border border-lightGray px-5">
+            <div className="sm:flex justify-between border border-lightGray px-5">
+            <div className="flex w-full">
             <div className="w-full">
               <h3 className="text-lightGray py-2"># OF OPEN LOANS</h3>
               </div>
-              <div className="w-full">
+              <div className="w-full text-right sm:text-left">
               <h3 className="py-2">{OpenLoansNo || "0"}</h3>
               </div>
+              </div>
+              <div className="flex w-full">
               <div className="w-full">
               <h3 className="text-lightGray py-2">TOTAL LOCKED ETH</h3>
               </div>
               <div className="w-full text-right">
               <h3 className="py-2">{Number(ethLocked) / toConvert}</h3>
               </div>
+              </div>
             </div>
-            <div className="flex justify-between px-5">
+            <div className="sm:flex justify-between px-5">
+            <div className="flex w-full">
             <div className="w-full">
               <h3 className="text-lightGray py-2">
                 {loanType === "ETHb" ? "ETHb" : "USDb"} LIMIT
               </h3>
               </div>
-              <div className="w-full">
+              <div className="w-full text-right sm:text-left">
               <h3 className="py-2">
                 {loanType === "ETHb" ? "5,000" : "10,000,000"}
               </h3>
               </div>
+              </div>
+              <div className="flex w-full">
               <div className="w-full">
               <h3 className="text-lightGray py-2">ETH PRICE (USD)</h3>
               </div>
               <div className="w-full text-right">
               <h3 className="py-2">{Number(ETH?.rate).toFixed(2) || 0}</h3>
               </div>
+              </div>
             </div>
             <div className="flex justify-between border border-lightGray px-5">
-              <div className="w-full" />
-              <div className="w-full" />
+              <div className="w-full hidden sm:block" />
+              <div className="w-full hidden sm:block" />
               <div className="w-full">
               <h3 className="text-lightGray py-2">
                 {loanType === "ETHb" ? "ETHb" : "USDb"} SUPPLY

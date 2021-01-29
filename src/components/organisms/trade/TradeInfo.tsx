@@ -17,8 +17,8 @@ function TradeInfo() {
   const myTradesFilteredData:any=myTradesData.filter((item:any)=>item.pair.toLowerCase().includes(selectedPair.counter.toLowerCase()));
   const myOrderFilteredData:any =myTradesData.filter((item:any)=>item.pair.toLowerCase().includes(selectedPair.counter.toLowerCase()));
   return (
-    <div className="w-full mt-4 mr-4 rounded overflow-auto border px-2">
-      <div className="w-94">
+    <div className="w-full mt-4 mr-4 rounded border whitespace-no-wrap px-2">
+      <div className="overflow-auto">
         <GenericTab
           index={tabIndex}
           onSelect={setTab}

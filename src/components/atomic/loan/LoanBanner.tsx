@@ -30,8 +30,8 @@ function LoanBanner() {
         />
         <div className="absolute inset-0 flex justify-center items-center">
           <div className="text-center">
-            <h1 className="font-bold text-white" style={{fontSize: '2.6vw'}}>LOAN</h1>
-            <small className="text-white">Manage Your Loans Easily.</small>
+            <h1 className="font-bold text-white text-3xl md:text-4xl lg:text-5xl">Loan</h1>
+            <small className="text-white text-sm lg:text-base xxl:text-lg">Manage Your Loans Easily.</small>
           </div>
         </div>
       </div>

@@ -106,10 +106,10 @@ function CloseLoan() {
               submit={() => returnLoanAction()}
               textValue={"SUBMIT"}
               isDisabled={isDisabled()}
-              otherClasses={`p-2 xxl:p-3 w-full text-white rounded ${
+              otherClasses={`p-2 xxl:p-3 w-full text-black rounded ${
                 isDisabled()
-                  ? "cursor-not-allowed bg-customBlack-50"
-                  : "bg-customBlack-500"
+                  ? "cursor-not-allowed bg-customPink"
+                  : "bg-customPink"
               }`}
             />
             {/* <button

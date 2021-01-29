@@ -16,13 +16,13 @@ function Loan() {
   return (
     <div>
       <LoanBanner />
-      <div className="xl:flex lg:flex px-8 md:px-16 xl:px-24 lg:px-24 mt-8">
-        <div className="flex-1 mr-1">
+      <div className="flex flex-col lg:flex-row px-4 md:px-16 xl:px-24 lg:px-24 mt-8">
+        <div className="flex-1 lg:mr-1 mt-2 lg:mt-0 order-2 lg:order-1">
           <EthAsCollateral ETH={ETH} />
           <YourWalet />
           <YourLoans />
         </div>
-        <div className="xl:w-300 lg:w-300 xxl:w-28% xxxl:1/4">
+        <div className="xl:w-300 order-1 lg:order-2 lg:w-300 xxl:w-28% xxxl:1/4">
           <CreateLoan />
           <CloseLoan />
         </div>

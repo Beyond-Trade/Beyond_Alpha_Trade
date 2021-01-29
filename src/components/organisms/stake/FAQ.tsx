@@ -180,7 +180,7 @@ function FAQ() {
   const history = useHistory();
 
   return (
-    <div className="px-20 py-12">
+    <div className="px-6 sm:px-20 py-12">
       <h1 className="text-2xl xxl:text-5xl xl:pt-4 xxl:pt-8 font-bold text-customBlack-500">
         FAQs
       </h1>

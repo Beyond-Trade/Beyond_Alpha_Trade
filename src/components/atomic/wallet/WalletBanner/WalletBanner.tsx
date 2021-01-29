@@ -11,7 +11,7 @@ function WalletBanner(props: IProps) {
       <div className={styles.walletText}>
         WALLET / {props.tab === 0 ? "OVERVIEW" : "HISTORY"}
       </div>
-      <div className={styles.infoText}>
+      <div className="text-xs lg:text-sm xxl:text-base">
         {props.tab === 0
           ? "Your current wallet overview & stats"
           : "Your Current Wallet Exchange History."}

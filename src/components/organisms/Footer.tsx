@@ -19,7 +19,7 @@ function Footer() {
           </p>
           <p className="mt-4">contact@beyondfinance.io</p>
         </div>
-        <div className="flex">
+        <div className="sm:flex">
         <div className="flex flex-col mt-6 lg:mt-1 items-start pr-20">
           <h4 className="text-white text-xl xxl:text-2xl font-semibold">
             PRODUCTS

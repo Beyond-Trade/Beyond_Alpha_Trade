@@ -53,8 +53,9 @@ function StatesRow() {
     { name: 'Group C', value: othersBalPercentage },
   ];
   return (
-    <div className="px-8 xl:px-24 lg:px-24 xl:flex lg:flex">
-      <div className="rounded mr-8 w-full shadow-lg mt-8">
+    <div className="px-8 lg:px-24 lg:flex">
+<div className="sm:flex w-full">
+      <div className="rounded mr-8 w-full shadow-lg mt-8 pb-3 sm:pb-0">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <text>TOTAL SYNTHETIC ASSET VALUE</text>
         </div>
@@ -62,18 +63,12 @@ function StatesRow() {
           ${totalSynthValue ? toFixedNoRounding(totalSynthValue,5) : "0.00"} USDb
         </h3>
       </div>
-      <div className="shadow-lg rounded mr-8 w-full mt-8">
+
+      <div className="shadow-lg rounded lg:mr-8 w-full mt-8 pb-3 sm:pb-0">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>SYNTHETIC ASSET BREAKDOWN</h5>
         </div>
         <div className="flex content-between justify-between px-8">
-          
-          {/* <img
-            src="/assets/Icons/Synthetic asset breakdown.svg"
-            alt="img"
-            className="h-12 xxl:h-20 my-2 mr-6"
-          /> */}
-
           
           <div className="text-xxs xxl:text-lg">
             <div className="flex items-center text-xs xxl:text-sm font-bold mt-1">
@@ -83,11 +78,6 @@ function StatesRow() {
               </h6>
             </div>
             <div className="flex items-center text-xs xxl:text-sm font-bold mt-1">
-              {/* <img
-                src="/assets/Icons/Purple.Ellipse.svg"
-                alt="img"
-                className="h-3 xxl:h-4 "
-              /> */}
               <h6 className="ml-1 mr-2 font-bold" style={{color:"#FFBB28"}}>USDb</h6>
               <h6>
                 {totalUSDbBalancePercentage
@@ -137,7 +127,9 @@ function StatesRow() {
           {/*  */}
         </div>
       </div>
-      <div className="rounded shadow-lg mr-8 mt-8 w-full">
+      </div>
+<div className="sm:flex w-full">
+      <div className="rounded shadow-lg mr-8 mt-8 pb-3 sm:pb-0 w-full">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>COLLETERLIZATION RATIO</h5>
         </div>
@@ -156,13 +148,15 @@ function StatesRow() {
           </div>
         </div>
       </div>
-      <div className="shadow-lg rounded mt-8 w-full">
+
+      <div className="shadow-lg rounded mt-8 pb-3 sm:pb-0 w-full">
         <div className="rounded-t text-gray-500 border-b text-xs xxl:text-base px-2 py-1 font-medium">
           <h5>TOTAL WALLET VALUE</h5>
         </div>
         <h3 className="font-extrabold text-lg xxl:text-xl text-customBlack-500 text-center my-6 mx-2">
           ${totalWalletValue ? toFixedNoRounding(totalWalletValue,5) : "0.00"} USD
         </h3>
+      </div>
       </div>
     </div>
   );

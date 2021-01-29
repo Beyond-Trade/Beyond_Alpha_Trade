@@ -31,7 +31,7 @@ function MarketData(props: any) {
   });
 
   return (
-    <div className="border-2 border-gray-400 py-2 px-2 flex justify-between whitespace-nowrap overflow-auto mb-4 w-full">
+    <div className="border-2 border-gray-400 py-2 px-2 flex overflow-auto whitespace-no-wrap justify-between whitespace-nowrap overflow-auto mb-4 w-full">
       <div className="w-full">
         <div className="bg-gray-300 py-2 w-full pl-2">
         <h5 className="text-xs font-semibold xxl:text-sm">

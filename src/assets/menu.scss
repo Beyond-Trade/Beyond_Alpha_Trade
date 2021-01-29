@@ -1,0 +1,111 @@
+// / Position and sizing of burger button /
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+// / Color/shape of burger icon bars /
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #a90000;
+}
+
+// / Position and sizing of clickable cross button /
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+// / Color/shape of close button cross /
+.bm-cross {
+  background-color: white;
+  outline: none;
+}
+
+#react-burger-cross-btn {
+  outline: none;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+// / General sidebar styles /
+.bm-menu {
+  background: #353240;
+  padding: 2.5em 1.5em 0;
+}
+
+// / Morph shape necessary with bubble or elastic /
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+// / Wrapper for item list /
+.bm-item-list {
+  color: #ffffff;
+  padding: 0.8em;
+  outline: none;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+// / Individual item /
+.bm-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  margin: 8px 0;
+  outline: none;
+
+  a:link, a:visited {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+
+}
+
+// / Styling of overlay /
+.bm-overlay {
+  background: rgba(255, 255, 255, 0);
+}
+
+
+//Navigation Custom Styling
+.burger-menu-link {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  &__icon {
+    width: 20px;
+    display: flex;
+    align-items: center;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  &__text {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+}

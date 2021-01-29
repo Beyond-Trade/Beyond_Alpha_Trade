@@ -22,14 +22,14 @@ function WalletSection(props: IProps) {
         </div>
         <button
           onClick={() => setOpen(true)}
-          className="focus:outline-none font-bold px-4 py-1 rounded-full bg-customPink text-customBlack-500 text-xs xxl:text-lg ml-12 flex items-center"
+          className="focus:outline-none font-bold px-4 py-1 rounded-full bg-customPink text-customBlack-500 text-xxs md:text-xs xxl:text-lg ml-12 flex items-center"
         >
-          {loadingBalance && <Loader type="TailSpin" color="#ffffff" height={10} width={10} />}
-          {loadingBalance && <text className="ml-2">Processing...</text>}
+          {loadingBalance && <Loader type="TailSpin" color="#000000" height={10} width={10} />}
+          {loadingBalance && <text className="ml-2 hidden md:block">Processing...</text>}
           {!loadingBalance&&<img
             src="/assets/Icons/wallet.png"
             alt="img"
-            className="mr-2 h-4"
+            className="mr-2 h-4 hidden md:block"
           />}
           {!isConnected && !loadingBalance && "Connect Wallet"}
           {isConnected && !loadingBalance && (

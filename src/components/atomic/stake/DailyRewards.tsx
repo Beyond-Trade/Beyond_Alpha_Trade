@@ -9,10 +9,10 @@ function DailyRewards() {
 
   return (
     <div
-      className="w-full flex p-4 xxl:p-6 bg-blackGray text-customGray-300 mt-6 lg:mt-0 lg:ml-6"
+      className="w-full flex flex-col sm:flex-row items-center p-4 xxl:p-6 bg-blackGray text-customGray-300 mt-6 lg:mt-0 lg:ml-6"
     >
         <img src="/assets/Icons/award.svg" className="mr-8" />
-        <div className="w-full">
+        <div className="w-full mt-3 sm:mt-0">
       <div className="flex justify-between">
         <h6 className="xxl:text-base text-sm font-medium">DAILY REWARD(BYN)</h6>
         <div

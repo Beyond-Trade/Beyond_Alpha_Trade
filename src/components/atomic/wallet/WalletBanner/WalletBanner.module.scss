@@ -1,6 +1,6 @@
 .wrapper{
     background-color: black;
-    height: 30vw;
+    height: 300px;
     width: 100%;
     color: #fff;
     display: flex;
@@ -21,8 +21,8 @@ font-size: 30px;
         column-gap: 20px;
         .button{
             cursor: pointer;
-            height: 50px;
-            width: 150px;
+            height: 40px;
+            width: 120px;
             border-radius: 12px;
             border: 2px solid white;
             display: flex;
@@ -31,8 +31,8 @@ font-size: 30px;
         }
         .activeButton{
             cursor: pointer;
-            height: 50px;
-            width: 150px;
+            height: 40px;
+            width: 120px;
             border-radius: 12px;
             border: 2px solid #3DE7E8;
             color: #3DE7E8;

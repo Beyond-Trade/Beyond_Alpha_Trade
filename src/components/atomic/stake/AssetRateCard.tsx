@@ -32,7 +32,7 @@ const AssetRateCard = () => {
  
   return (
       <div className="w-full xl:mr-2 lg:mr-2 mb-4 mt-12">
-        <div className="border-2 border-lightGray flex justify-between items-center py-2 xxl:py-4 px-4 xxl:px-6">
+        <div className="border-2 border-lightGray sm:flex justify-between items-center py-2 xxl:py-4 px-4 xxl:px-6">
           <div className="flex items-center" >
             <img
               src="/assets/Icons/byn-coin-small.svg"
@@ -43,7 +43,7 @@ const AssetRateCard = () => {
               1 BYN = ${toFixedNoRounding(state.bynRate,5) || 0} USD
             </h6>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center mt-2 sm:mt-0">
             <img
               src="/assets/Icons/ether-coin.svg"
               alt="img"

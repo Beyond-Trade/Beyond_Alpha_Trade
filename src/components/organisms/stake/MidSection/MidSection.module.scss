@@ -5,11 +5,9 @@
     align-items: center;
     justify-content: center;
     background-color: black;
-    padding: 20px 10px;
     .leftButton{
         cursor: pointer;
         border-radius: 4px;
-        height: 80px;
         width: 140px;
         padding: 10px;
         background-color: white;
@@ -27,8 +25,7 @@
     .rightButton{
         cursor: pointer;
         border-radius: 4px;
-        height: 80px;
-        width: 140px;
+        width: 150px;
         padding: 10px;
         background-color: #6A6A6A;
         color: white;
@@ -40,8 +37,7 @@
     .activeButton{
         cursor: pointer;
         border-radius: 4px;
-        height: 80px;
-        width: 140px;
+        width: 150px;
         padding: 10px;
         background-color: #3DE7E8;
         color: black;

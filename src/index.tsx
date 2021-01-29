@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './assets/main.css'
 import './assets/stake.css'
+import "./assets/menu.scss";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
