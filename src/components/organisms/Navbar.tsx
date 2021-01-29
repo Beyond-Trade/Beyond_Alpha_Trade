@@ -42,7 +42,7 @@ function Navbar() {
       >
         <div onClick={handleMenu} className="bm-item">
           <NavTab
-            path="/stake"
+            path="/stake/get_byn"
             text="STAKE"
             active={location.pathname === "/stake"}
           />
