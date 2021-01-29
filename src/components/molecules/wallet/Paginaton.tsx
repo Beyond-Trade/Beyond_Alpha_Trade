@@ -85,7 +85,7 @@ function Pagination({ data, pageSize, onChange }: IProps) {
           submitting={false}
           submit={()=>handleChange(activePage-1)}
           textValue={"Prev"}
-          otherClasses="mx-1 p-1 bg-customBlack-500"
+          otherClasses="mx-1 p-1 text-white bg-customBlack-500"
         />
       {/* <button
         type="button"
@@ -99,7 +99,7 @@ function Pagination({ data, pageSize, onChange }: IProps) {
           submitting={false}
           submit={()=>handleChange(index+1)}
           textValue={index + 1}
-          otherClasses={`mx-1 p-2 ${activePage === index + 1 ? "bg-customBlack-500":"bg-customBlack-50"}`}
+          otherClasses={`mx-1 p-2 text-white ${activePage === index + 1 ? "bg-customBlack-500":"bg-customBlack-500"}`}
         />
         // <button
         //   type="button"
@@ -113,7 +113,7 @@ function Pagination({ data, pageSize, onChange }: IProps) {
           submitting={false}
           submit={()=>handleChange(activePage+1)}
           textValue={"Next"}
-          otherClasses="mx-1 p-1 bg-customBlack-500"
+          otherClasses="mx-1 p-1 text-white bg-customBlack-500"
         />
       {/* <button
         type="button"

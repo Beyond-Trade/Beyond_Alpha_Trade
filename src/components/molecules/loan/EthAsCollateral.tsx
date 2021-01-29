@@ -34,9 +34,10 @@ function EthAsCollateral({ ETH }: any) {
   return (
     <>
       <div className="border border-lightGray mr-8 px-8 py-6 w-full">
+      <h5 className="block sm:hidden">ETH AS COLLATERAL</h5>
         <div className="rounded-t flex justify-between items-center text-lightGray text-xs xxl:text-sm py-4 font-medium">
           <div className="flex items-center text-blackGray">
-            <h5>ETH AS COLLATERAL</h5>
+            <h5 className="hidden sm:block">ETH AS COLLATERAL</h5>
             <div
               onClick={() => LoanTypeAction("ETHb")}
               // onClick={handleETHb}
